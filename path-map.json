@@ -20,6 +20,14 @@
     "savePath": "components/-N0ZzaKUwnQK3TzHXqJT/code"
   },
   {
+    "filePath": "components/u-SignUpFormTest/index.json",
+    "savePath": "components/-N3phmWQsC1oRuqB0HUi"
+  },
+  {
+    "filePath": "components/u-SignUpFormTest/compoenentCode.vue",
+    "savePath": "components/-N3phmWQsC1oRuqB0HUi/code"
+  },
+  {
     "filePath": "components/u-Icons-Checkmark/index.json",
     "savePath": "components/-N47H3yh9WSaVtiQ3ZK4"
   },
@@ -196,6 +204,14 @@
     "customCodeName": "Betterverse_Tangle"
   },
   {
+    "filePath": "customCode/css/[OFF] DonorPortal_Register/SignIn.css",
+    "savePath": "customCode/css/-N2WWMi8UTbLp7b6igYC/code",
+    "customCodeName": "[OFF] DonorPortal_Register/SignIn",
+    "customCodeScope": {
+      "-N-46yNIuPyCZOyD9XoT": true
+    }
+  },
+  {
     "filePath": "customCode/css/DonorPortal_ProfileSetup.css",
     "savePath": "customCode/css/-N2WeNRjoeXfe8c_1W1Z/code",
     "customCodeName": "DonorPortal_ProfileSetup",
@@ -296,7 +312,7 @@
     "customCodeName": "DonorPortal_Register/SignIn",
     "customCodeScope": {
       "-Mx_5FLL2jlxjXYUMdIL": {
-        "-MyvhrGOZpHXGi82DJ4i": true
+        "-N0ZsOs2dAbF9PTr_Hz0": true
       }
     }
   },
@@ -336,16 +352,6 @@
     "customCodeScope": {
       "-Mx_5FLL2jlxjXYUMdIL": {
         "-MyvUthgoLrT0z0HdIX9": true
-      }
-    }
-  },
-  {
-    "filePath": "customCode/html/DonorPortal_Register.html",
-    "savePath": "customCode/html/-N47KPPlXV1MYnesGzQt/code",
-    "customCodeName": "DonorPortal_Register",
-    "customCodeScope": {
-      "-Mx_5FLL2jlxjXYUMdIL": {
-        "-N0ZsOs2dAbF9PTr_Hz0": true
       }
     }
   },
@@ -397,7 +403,9 @@
     "savePath": "customCode/js/-N0VP7t2DrxAweg2M0Xz/code",
     "customCodeName": "TreeNationAPI",
     "customCodeScope": {
-      "-N-46yNIuPyCZOyD9XoT": true
+      "-Mx_2_VCOc__FGnUdqrq": {
+        "-Mx_41fC3fbG4mJnI2Pj": true
+      }
     }
   },
   {
@@ -421,16 +429,6 @@
     "filePath": "customCode/js/Include_BNCringe_Fonts.js",
     "savePath": "customCode/js/-N3z7pKpaA2cgd-wlVwS/code",
     "customCodeName": "Include_BNCringe_Fonts"
-  },
-  {
-    "filePath": "customCode/js/Utilities_DebounceInput.js",
-    "savePath": "customCode/js/-N48WcJMn3RsPb0pw9Sd/code",
-    "customCodeName": "Utilities_DebounceInput",
-    "customCodeScope": {
-      "-Mx_5FLL2jlxjXYUMdIL": {
-        "-N0ZsOs2dAbF9PTr_Hz0": true
-      }
-    }
   },
   {
     "filePath": "tables/capturedDonationData.json",
@@ -789,14 +787,6 @@
     "savePath": "widgets/-Mxd3KyhX2HFJSxI1Cp2"
   },
   {
-    "filePath": "widgets/-Mxd3KyhX2HFJSxI1Cp2/detailTemplate.html",
-    "savePath": "widgets/-Mxd3KyhX2HFJSxI1Cp2/detailTemplate"
-  },
-  {
-    "filePath": "widgets/-Mxd3KyhX2HFJSxI1Cp2/template.html",
-    "savePath": "widgets/-Mxd3KyhX2HFJSxI1Cp2/template"
-  },
-  {
     "filePath": "widgets/-Mxd8zVCHRt-FQuL-BEW/widget.json",
     "savePath": "widgets/-Mxd8zVCHRt-FQuL-BEW"
   },
@@ -849,20 +839,12 @@
     "savePath": "widgets/-MyrT9OPDWM2mrQeGEcI"
   },
   {
-    "filePath": "widgets/-MyrT9OPDWM2mrQeGEcI/detailTemplate.html",
-    "savePath": "widgets/-MyrT9OPDWM2mrQeGEcI/detailTemplate"
-  },
-  {
     "filePath": "widgets/-MyrT9OPDWM2mrQeGEcI/template.html",
     "savePath": "widgets/-MyrT9OPDWM2mrQeGEcI/template"
   },
   {
     "filePath": "widgets/-MyrTWJWNSTnXmhxtJsb/widget.json",
     "savePath": "widgets/-MyrTWJWNSTnXmhxtJsb"
-  },
-  {
-    "filePath": "widgets/-MyrTWJWNSTnXmhxtJsb/detailTemplate.html",
-    "savePath": "widgets/-MyrTWJWNSTnXmhxtJsb/detailTemplate"
   },
   {
     "filePath": "widgets/-MyrTWJWNSTnXmhxtJsb/template.html",
@@ -941,20 +923,12 @@
     "savePath": "widgets/-Mzz7Jc7T4wd_hkU2JZB"
   },
   {
-    "filePath": "widgets/-Mzz7Jc7T4wd_hkU2JZB/detailTemplate.html",
-    "savePath": "widgets/-Mzz7Jc7T4wd_hkU2JZB/detailTemplate"
-  },
-  {
     "filePath": "widgets/-Mzz7Jc7T4wd_hkU2JZB/template.html",
     "savePath": "widgets/-Mzz7Jc7T4wd_hkU2JZB/template"
   },
   {
     "filePath": "widgets/-Mzz7YWP1ffylSbYW1YL/widget.json",
     "savePath": "widgets/-Mzz7YWP1ffylSbYW1YL"
-  },
-  {
-    "filePath": "widgets/-Mzz7YWP1ffylSbYW1YL/detailTemplate.html",
-    "savePath": "widgets/-Mzz7YWP1ffylSbYW1YL/detailTemplate"
   },
   {
     "filePath": "widgets/-Mzz7YWP1ffylSbYW1YL/template.html",
@@ -1001,10 +975,6 @@
     "savePath": "widgets/-N1IpXSQdojOjnVCezd3"
   },
   {
-    "filePath": "widgets/-N1IpXSQdojOjnVCezd3/template.html",
-    "savePath": "widgets/-N1IpXSQdojOjnVCezd3/template"
-  },
-  {
     "filePath": "widgets/-N2hJuXe8OuHEhTaYjv_/widget.json",
     "savePath": "widgets/-N2hJuXe8OuHEhTaYjv_"
   },
@@ -1029,12 +999,8 @@
     "savePath": "widgets/-N2pCFxlb04P4guMWTo1"
   },
   {
-    "filePath": "widgets/-N2pCFxlb04P4guMWTo1/template.html",
-    "savePath": "widgets/-N2pCFxlb04P4guMWTo1/template"
-  },
-  {
-    "filePath": "widgets/-N48ENNVFYy-P6DXYlTP/widget.json",
-    "savePath": "widgets/-N48ENNVFYy-P6DXYlTP"
+    "filePath": "widgets/-N48paV6kz2mXvy7BwtD/widget.json",
+    "savePath": "widgets/-N48paV6kz2mXvy7BwtD"
   },
   {
     "filePath": "widgetsComputed/CharityPortal_SetFilter.js",
