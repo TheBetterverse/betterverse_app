@@ -1,0 +1,115 @@
+<div id="nft-modal" class="nft-modal">
+    <div class="row no-gutters">
+
+        <div class="col-md-6 no-gutters">
+            <div class="leftside">
+                <center>
+                    <video autoplay loop style="width: 100%;">
+                        <source src="https://drive.google.com/uc?export=download&id=1Mt2cvrXHr4rgACDTHiGBGMIMDpXBHLkO" type="video/mp4">
+                    </video>
+                </center>
+            </div>
+        </div>
+
+        <div class="col-md-6 no-gutters">
+            <div class="rightside">
+
+                <div class="modal-close-container">
+                    <b-button @click="DonorPortal_TriggerNFTModal('hide')">x</b-button>
+                </div>
+
+                <div class="nft-information-container">
+                    <h1>Tree Name Here #1</h1>
+                    <h1>You've captured {{DonorPortal_GetSpecificDonation().yearlyCarbonSequestration}}kgs of CO2 
+                        by planting {{DonorPortal_GetSpecificDonation().numberOfTreesPlanted}} trees 
+                        in {{DonorPortal_GetSpecificDonation().$charityProject.displayLocation}}
+                    </h1>
+                
+                    <h1>Charity Name: {{DonorPortal_GetSpecificDonation().$charity$displayLocation}}</h1>
+                    <div class="row">
+                        <div class="col">
+                            <b-card>
+                                <h2>Donation</h2>
+                                <h1>${{DonorPortal_GetSpecificDonation().donationAmount}}</h1>
+                            </b-card>
+                        </div>
+
+                        <div class="col">
+                            <b-card>
+                                <h2>Trees planted</h2>
+                                <h1>{{DonorPortal_GetSpecificDonation().numberOfTreesPlanted}}</h1>
+                            </b-card>
+                        </div>  
+
+                        <div class="col">
+                            <b-card>
+                                <h2>CO2 Capture</h2>
+                                <h1>{{DonorPortal_GetSpecificDonation().yearlyCarbonSequestration}}kg</h1>
+                            </b-card>
+                        </div>  
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <b-card>
+                                <h2>Location</h2>
+                                <h1>{{DonorPortal_GetSpecificDonation().$charityProject.displayLocation}}</h1>
+                            </b-card>
+                        </div>  
+                        <div class="col">
+                            <b-card>
+                                <h2>Date</h2>
+                                <h1>{{DonorPortal_GetSpecificDonation().donationDate}}</h1>
+                            </b-card>
+                        </div>  
+                    </div>
+
+                    <h3>You're making a great impact!</h3>
+                        <div v-for="item in DonorPortal_GetSpecificDonation().$charityProject.$keyImpactAreas$display">
+                        <b-badge style="margin: 10px;">
+                            {{item}}
+                        </b-badge>
+                    </div>
+
+                    <h1>Tree Name Here #1</h1>
+                    <h2>Owned by {{DonorPortal_GetCurrentUserNames('username')}}</h2>
+                    <div class="row">
+                        <div class="col">
+                            <h2>Biome</h2>
+                            <h3>ATTRIBUTE HERE</h3>
+                        </div>
+                        <div class="col">
+                            <h2>Species</h2>
+                            <h3>ATTRIBUTE HERE</h3>
+                        </div>
+                        <div class="col">
+                            <h2>Palette</h2>
+                            <h3>ATTRIBUTE HERE</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h2>Fungi or Flora</h2>
+                            <h3>ATTRIBUTE HERE</h3>
+                        </div>
+                        <div class="col">
+                            <h2>Growth Stage</h2>
+                            <h3>ATTRIBUTE HERE</h3>
+                        </div>
+                        <div class="col">
+                            <h2>Rarity</h2>
+                            <h3>ATTRIBUTE HERE</h3>
+                        </div>
+                    </div>
+
+                    <h1> You have {{DonorPortal_GetCurrentUserDonationsCount()}} other NFTs </h1>
+                    <div v-for="item in DonorPortal_GetCurrentUserDonationRows()">
+                        <b-card>TREE NAME HERE</b-card>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

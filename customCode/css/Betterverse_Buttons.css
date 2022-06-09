@@ -1,0 +1,33 @@
+.dateFilterContainer{
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+.bvButton{
+    margin-right: 10px;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding-right: 8px;
+    padding-left: 8px;
+    background-color: #ECEAE3;
+}
+
+.bvButton:hover{
+    margin-right: 10px;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding-right: 8px;
+    padding-left: 8px;
+    background-color: black;
+    color: white;
+}
+
+.bvButton.selected{
+    margin-right: 10px;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding-right: 8px;
+    padding-left: 8px;
+    background-color: black;
+    color: white;
+}

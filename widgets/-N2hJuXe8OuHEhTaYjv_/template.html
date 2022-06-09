@@ -1,0 +1,6 @@
+<img v-if="DonorPortal_GetCurrentUserProfilePicture() != false" class="profile-image" :src="DonorPortal_GetCurrentUserProfilePicture()" style="max-width: 50px;"/>
+
+<p>{{DonorPortal_GetCurrentUserNames("full")}}</p>
+
+<p>Joined: {{DonorPortal_GetCurrentUserJoinedDate()}}</p>
+

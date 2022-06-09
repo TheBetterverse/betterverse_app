@@ -1,0 +1,37 @@
+<div class="walletInfoContainer">
+
+  <div class="row justify-content-center">
+    
+    <!--Display Wallet Balance Here-->
+    <b-card class="walletCard balance">
+      <p>USDC: {{ DonorPortal_DisplayUSDCBalance }}</p>
+      <p>USDT: {{ DonorPortal_DisplayUSDTBalance }}</p>
+      <p>ETH: {{ DonorPortal_DisplayETHBalance }}</p>
+    </b-card>
+
+    <!--RAMP Functionality Here -->
+    <b-card class="walletCard">
+      <b-button @click="DonorPortal_TopUpWallet()">Top Up Wallet</b-button>
+    </b-card>
+
+    <!--Disconnect Wallet Here -->
+    <b-card v-if="DonorPortal_GetCurrentUserWalletAddress() != null" class="walletCard"> 
+      <b-button @click="DonorPortal_DisconnectWallet()">Disconnect Wallet</b-button>
+
+    </b-card>
+    
+    <!--Create New Wallet Here -->
+    <b-card v-if="DonorPortal_GetCurrentUserWalletAddress() == null" class="walletCard">
+      <b-button v-b-modal.connectWalletModal>Connect Wallet</b-button>
+      <!-- <b-button type="button" data-toggle="modal" data-target="#connectWalletModal">Connect Wallet</b-button> -->
+      <b-button @click="DonorPortal_CreateWallet('Torus')">Create new Wallet</b-button>
+    
+    </b-card>
+
+  </div>
+
+</div>
+<b-card>
+  <div style="height: 700px;" id="ramp-container">
+  </div>
+</b-card>

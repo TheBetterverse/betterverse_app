@@ -1,0 +1,6 @@
+<h3>Address: 
+    <p>{{DonorPortal_GetCurrentUserWalletAddress()}}</p>
+    <span v-if="DonorPortal_GetCurrentUserWalletProvider() != null">Wallet Provider: {{DonorPortal_GetCurrentUserWalletProvider()}}</span>
+</h3>
+
+<p style="font-family: Documan;" v-if="DonorPortal_GetCurrentUserWalletAddress() == null">No Wallet Connected</p>

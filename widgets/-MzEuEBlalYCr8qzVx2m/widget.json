@@ -1,0 +1,26 @@
+{
+  "autoHeight": true,
+  "classes": "",
+  "columnCount": 12,
+  "columnMaxWidth": "200",
+  "columnMinWidth": "200",
+  "dataSource": "capturedDonationData",
+  "gsOptions": {
+    "h": 14,
+    "w": 24,
+    "x": 0,
+    "y": 12
+  },
+  "itemsPerPage": 20,
+  "offSet": 0,
+  "perPage": 2,
+  "styles": "",
+  "subtab": "-MyvUthgoLrT0z0HdIX9",
+  "tab": "-Mx_5FLL2jlxjXYUMdIL",
+  "title": "My Donations",
+  "type": "card-list",
+  "useContainerForDetail": false,
+  "useContainerForList": false,
+  "viewOfGrid": "myRows",
+  "widthType": "minAndMaxWidth"
+}

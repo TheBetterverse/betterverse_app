@@ -1,0 +1,21 @@
+{
+  "autoHeight": true,
+  "classes": "",
+  "dependency": "dataGrid/nFTTypes",
+  "gsOptions": {
+    "h": 8,
+    "w": 24,
+    "x": 0,
+    "y": 39
+  },
+  "layout": "b-card",
+  "overflow": "height: auto",
+  "props": {
+    "gridId": "nFTTypes"
+  },
+  "styles": "",
+  "subtab": "-Mx_3SXgBk5SECkRduDE",
+  "tab": "-Mx_2_VCOc__FGnUdqrq",
+  "title": "",
+  "type": "DataGrid"
+}
