@@ -311,9 +311,7 @@
     "savePath": "customCode/html/-N2W12j9j57em58vNrK2/code",
     "customCodeName": "DonorPortal_Register/SignIn",
     "customCodeScope": {
-      "-Mx_5FLL2jlxjXYUMdIL": {
-        "-N0ZsOs2dAbF9PTr_Hz0": true
-      }
+      "-N48uIJZrqSslpcm1w51": true
     }
   },
   {
@@ -352,6 +350,16 @@
     "customCodeScope": {
       "-Mx_5FLL2jlxjXYUMdIL": {
         "-MyvUthgoLrT0z0HdIX9": true
+      }
+    }
+  },
+  {
+    "filePath": "customCode/html/DonorPortal_Register.html",
+    "savePath": "customCode/html/-N48ty0F7qL8f_b-2pCU/code",
+    "customCodeName": "DonorPortal_Register",
+    "customCodeScope": {
+      "-Mx_5FLL2jlxjXYUMdIL": {
+        "-N0ZsOs2dAbF9PTr_Hz0": true
       }
     }
   },
@@ -585,6 +593,10 @@
   {
     "filePath": "pages/-N3z71e2MNBMTo2As59M.json",
     "savePath": "tabs/-N3z71e2MNBMTo2As59M"
+  },
+  {
+    "filePath": "pages/-N48uIJZrqSslpcm1w51.json",
+    "savePath": "tabs/-N48uIJZrqSslpcm1w51"
   },
   {
     "filePath": "themeSettings.json",

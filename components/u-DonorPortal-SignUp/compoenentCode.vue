@@ -11,7 +11,7 @@
         <b-col class="d-flex align-items-center">
           <icon-betterverse id="md-logo"/>
         </b-col>
-        
+
         <b-col class="text-right">
           <small>Have an account?<br><a href="#">Log in</a></small>
         </b-col>
@@ -41,19 +41,19 @@
           </span>
 
           <input
+            v-model="email"
+            :disabled="$getGlobalModel('signUpProcess')"
+            @input="onInput"
+
             type="text"
             id="email-input"
             name="email-input"
             autocomplete="on"
             placeholder="Type e-mail address"
-
-            v-model="email"
-            :disabled="$getGlobalModel('signUpProcess')"
-            @input="onInput"
           />
 
           <span>
-            <icon-checkmark shown/>
+            <icon-checkmark shown isvalid />
           </span>
         </div>
 
@@ -88,7 +88,7 @@
           />
 
           <span>
-            <icon-checkmark shown isvalid />
+            <icon-checkmark shown/>
           </span>
 
           <span @click="togglePasswordVisibility">
@@ -133,7 +133,6 @@ const DEFAULT_TIMEOUT = 6500 // in miliseconds
 
 function debounceInput(cb, delay = 640) {
   let timeout
-
   return (...args) => {
     clearInterval(timeout)
     timeout = setTimeout(() => {
@@ -160,7 +159,7 @@ module.exports = {
   },
 
   methods: {
-    /* Events */
+    // events
 
     onSubmit(e) {
       console.log(e)
@@ -171,7 +170,7 @@ module.exports = {
       console.log(e)
     },
 
-    /* View */
+    // functionality
 
     togglePasswordVisibility() {
       if (this.inputType === 'password') this.inputType = 'text'
@@ -180,9 +179,7 @@ module.exports = {
 
     displayError(errMsgArray, message) {
       if (errMsgArray.includes(message)) return
-
       errMsgArray.push(message)
-
       setTimeout(() => {
         let index = errMsgArray.indexOf(message)
         errMsgArray.splice(index, 1)
@@ -192,6 +189,7 @@ module.exports = {
     clearErrors(errMsgArray) {
       errMsgArray.splice(0, errMsgArray.length)
     }
+
   },
 
   components: {
@@ -270,14 +268,11 @@ input {
 #continue-email-button {
   color: white;
   background: black;
-
   height: 32px;
   padding: 6px 8px 6px 12px;
   gap: 4px;
-
   border: 1px solid #000000;
   border-radius: 30px;
-
   display: flex;
   align-items: center;
   justify-content: center;
