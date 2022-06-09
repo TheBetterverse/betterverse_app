@@ -1,0 +1,17 @@
+{
+  "dependency": "dataGrid/roles",
+  "gsOptions": {
+    "h": 24,
+    "w": 24,
+    "x": 0,
+    "y": 0
+  },
+  "inherited": true,
+  "layout": "b-card",
+  "overflow": "height: auto",
+  "props": {
+    "gridId": "roles"
+  },
+  "tab": "-MHvdcSECmWF7vm6FN0P",
+  "type": "DataGrid"
+}

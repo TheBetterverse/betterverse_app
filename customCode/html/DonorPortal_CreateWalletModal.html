@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="modal fade" id="createWalletModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Create a Wallet</h4>
+          <!--button type="button" class="close" data-dismiss="modal">&times;</button-->
+        </div>
+        <div class="modal-body">
+          <ul>
+
+            <!--https://docs.tor.us/wallet/get-started-->
+            <a href="https://toruswallet.io/" target="_blank">
+              <b-button @click="DonorPortal_CreateWallet('Torus')">Torus (Recommended)</b-button>
+            </a>
+
+            <a href="https://metamask.io/" target="_blank">
+              <b-button @click="">Metamask</b-button>
+            </a>
+
+            <a href="https://www.coinbase.com/learn/tips-and-tutorials/how-to-set-up-a-crypto-wallet" target="_blank">
+              <b-button @click="">Coinbase Wallet</b-button>
+            </a>
+        
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>

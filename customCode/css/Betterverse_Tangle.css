@@ -1,0 +1,59 @@
+.sidenav{
+    background-color: #ECEAE3 !important;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.sidenav._light .navbar-heading {
+    color: black !important;
+}
+
+.sidenav .navbar-heading{
+    color: black;
+    font-family: Documan !important;
+    font-size: 23px !important;
+}
+
+.sidenav .nav-link-text{
+    color: black;
+    font-family: Documan !important;
+    font-size: 13px !important;
+}
+
+.sidenav .nav-link span{
+    color: black;
+    font-family: Documan !important;
+}
+
+
+.sidenav .navbar-nav .nav-item .collapse.show .nav-link.active {
+    color: black;
+}
+
+.sidenav._light .navbar-nav > .nav-item .collapse .nav-link {
+    color: black;
+}
+
+.sidenav .fa-icon{
+    color: black;
+}
+
+.nav-link.active svg{
+    color: white !important;
+}
+
+.sidenav._light .navbar-nav > .nav-item > .nav-link.active {
+    background: black !important;
+}
+
+.nav-link.active .sidenav .nav-item__icon svg{
+    color: white !important;
+}
+
+.nav-link.active .nav-link-text{
+    color: white;
+}
+
+.sidenav .button-add{
+    background: black !important;
+}
+

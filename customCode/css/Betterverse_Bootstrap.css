@@ -1,0 +1,12 @@
+.badge-primary {
+    background: #eceae3 !important;
+    color: black;
+
+    background-color: black;
+}
+
+.displayColumn span {
+    color: black !important;
+    cursor: pointer;
+}
+

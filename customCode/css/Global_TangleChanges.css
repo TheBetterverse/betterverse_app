@@ -1,0 +1,13 @@
+.sc-launcher{
+    display: none !important;
+}
+
+/*Display Tangle right nav bar over html elements */
+.splitpanes__pane{
+    z-index: 1;
+}
+
+.profileImageWrapper .mr-0{
+    display: hidden !important;
+
+}

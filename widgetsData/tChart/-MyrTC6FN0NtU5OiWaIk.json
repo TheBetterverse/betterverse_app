@@ -1,0 +1,58 @@
+{
+  "chartName": "treesPlantedByProject",
+  "chartType": "pie",
+  "colorPalette": {
+    "colorPalette": {
+      "label": "Green",
+      "value": "green"
+    }
+  },
+  "datalabels": {
+    "hidden": false
+  },
+  "filter": {
+    "condition": "AND",
+    "rules": [
+      {
+        "expression": true,
+        "hidden": true,
+        "key": "charities",
+        "name": "charities",
+        "operator": "=",
+        "value": "$getUser('charityProfile')"
+      }
+    ]
+  },
+  "filterValues": {
+    "hidden": true
+  },
+  "groupBy": [
+    {
+      "column": "charityProject",
+      "key": "-MyrTFzflsqEHjhyflYI"
+    }
+  ],
+  "labels": {
+    "hidden": false,
+    "position": "right"
+  },
+  "metrics": [
+    {
+      "column": "yearlyCarbonSequestration",
+      "customFormatValue": ", ",
+      "format": "custom",
+      "key": "-MyrZIUHlCj1ksxoP65M",
+      "operator": "sum"
+    },
+    {
+      "column": "numberOfTreesPlanted",
+      "customFormatValue": ",",
+      "format": "custom",
+      "key": "-MyrTEnA7Y6K1aBb-YoH",
+      "operator": "sum"
+    }
+  ],
+  "outsideLabels": {
+    "visible": false
+  }
+}

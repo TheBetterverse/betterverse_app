@@ -1,0 +1,77 @@
+.workspaceGridLayout{
+    margin-top: 55px !important;
+}
+
+.navbar-container{
+    z-index: 1;
+}
+
+.navbar-top {
+    position: fixed;
+    left: 0%;
+    top: 0px;
+    right: 0%;
+    bottom: auto;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: 70px;
+    margin-top: -1px;
+    margin-right: -1px;
+    margin-left: -1px;
+    background-color: #ECEAE3;
+    border-bottom: 2px solid #DCDCDC;
+}
+
+.navbar.logoContainer{
+    flex-grow: 1;
+    border-right: 0;
+    width: 40px;
+}
+
+.navbar .logo{
+    width: 40px;
+    margin-left: 20px;
+}
+
+
+.navbar.right a {
+    color: black;
+    margin-left:15px;
+    margin-right: 15px;
+    width: 100%;
+    text-align: center;
+    font-family: Documan;
+    font-size: 0.9em;
+}
+
+.navbar.right:hover{
+    font-weight:bold;   
+    color:black;
+    cursor: pointer;
+}
+
+.navbar .profile-image{
+    border-radius:100%;
+    display:inline-block;
+    border:1px solid black;
+    width: 40px;
+    height: 40px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

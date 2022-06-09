@@ -1,0 +1,21 @@
+{
+  "autoHeight": true,
+  "classes": "",
+  "dependency": "dataGrid/treeInformation",
+  "gsOptions": {
+    "h": 19,
+    "w": 24,
+    "x": 0,
+    "y": 20
+  },
+  "layout": "b-card",
+  "overflow": "height: auto;",
+  "props": {
+    "gridId": "treeInformation"
+  },
+  "styles": "",
+  "subtab": "-Mx_3SXgBk5SECkRduDE",
+  "tab": "-Mx_2_VCOc__FGnUdqrq",
+  "title": "",
+  "type": "DataGrid"
+}

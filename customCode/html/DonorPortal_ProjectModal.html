@@ -1,0 +1,78 @@
+<div id="project-modal" class="project-modal">
+    <div class="row no-gutters">
+
+        <div class="col-md-6 no-gutters">
+            <div class="leftside">
+                <center>
+                    <img class="project-image" v-if="DonorPortal_GetSpecificProject().projectImage" :src="DonorPortal_GetSpecificProject().projectImage.url"/>
+                </center>
+            </div>
+        </div>
+
+        <div class="col-md-6 no-gutters">
+            <div class="rightside">
+                <div class="modal-close-container">
+                    <b-button @click="DonorPortal_TriggerProjectModal('hide')">x</b-button>
+                </div>
+
+                <div class="project-information-container">
+                    <div v-if="DonorPortal_GetSpecificProject().projectName">
+                        <h1>{{DonorPortal_GetSpecificProject().projectName}}</h1>
+                    </div>
+
+                    <div v-if="DonorPortal_GetSpecificProject().charity">
+                        <h2>{{DonorPortal_GetSpecificProject().$charity$display}}</h2>
+                    </div>
+
+                    <div>
+                        <h2>Trees Planted: {{DonorPortal_GetProjectTotalTreesPlanted()}} </h2>
+                    </div>
+
+                    <div v-if="DonorPortal_GetSpecificProject().overview">
+                        <h3>Project Overview:</h3>
+                        <p>{{DonorPortal_GetSpecificProject().overview}}</p>
+                    </div>
+
+                    <div v-if="DonorPortal_GetSpecificProject().ecologicalBenefits">
+                        <h3>Ecological Benefits:</h3>
+                        <p>{{DonorPortal_GetSpecificProject().ecologicalBenefits}}</p>
+                    </div>
+
+                    <div v-if="DonorPortal_GetSpecificProject().communityBenefits">
+                        <h3>Community Benefits:</h3>
+                        <p>{{DonorPortal_GetSpecificProject().communityBenefits}}</p>
+                    </div>
+
+                    <h3>Location(s):</h3>
+                    <div v-for="item in DonorPortal_GetSpecificProject().$locations$display">
+                      <b-badge style="margin: 10px;">
+                        {{item}}
+                      </b-badge>
+                    </div>
+
+
+                    <h3>State/Province:</h3>
+                    <div v-for="item in DonorPortal_GetSpecificProject().$stateProvince$display">
+                      <b-badge style="margin: 10px;">
+                        {{item}}
+                      </b-badge>
+                    </div>
+
+
+                    <h3 v-if="DonorPortal_GetSpecificProject().noEndDate == false">End Date:
+                    <p>{{DonorPortal_GetSpecificProject().$endDate$display}}</p>
+                    </h3>
+
+                    <h3>Key Impact Areas:</h3>
+                    <div v-for="item in DonorPortal_GetSpecificProject().$keyImpactAreas$display">
+                      <b-badge style="margin: 10px;">
+                        {{item}}
+                      </b-badge>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

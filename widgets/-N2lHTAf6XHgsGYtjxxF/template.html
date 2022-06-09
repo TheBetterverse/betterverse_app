@@ -1,0 +1,24 @@
+<div class="row">
+
+  <div class="col">
+    <h2>Total Donated</h2>
+    <h1>${{DonorPortal_GetCurrentUserTotalDonationsAmount('$')}} </h1>
+    <h2>{{DonorPortal_GetCurrentUserComparisonCurrency()}}</h2>
+  </div>
+
+  <div class="col">
+    <h2>Trees Planted</h2>
+    <h1>{{DonorPortal_GetCurrentUserTotalTreesPlanted()}} </h1>
+  </div>
+
+  <div class="col">
+    <h2>CO2 Capture</h2>
+    <h1>{{DonorPortal_GetCurrentUserTotalCarbonSequestration()}} kg</h1>
+  </div>
+
+  <div class="col">
+    <h2>Locations</h2>
+    <h1>{{DonorPortal_GetCurrentUserTotalDonationsProjectsLocations}}</h1>
+  </div>
+
+</div>

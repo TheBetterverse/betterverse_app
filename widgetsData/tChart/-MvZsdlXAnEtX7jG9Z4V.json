@@ -1,0 +1,48 @@
+{
+  "chartName": "Country",
+  "chartType": "horizontalBar",
+  "colorPalette": {
+    "colorPalette": {
+      "label": "Green",
+      "value": "green"
+    }
+  },
+  "datalabels": {
+    "hidden": true
+  },
+  "filter": {
+    "condition": "AND",
+    "rules": [
+      {
+        "expression": true,
+        "hidden": true,
+        "key": "charities",
+        "name": "charities",
+        "operator": "=",
+        "value": "$getUser('charityProfile')"
+      }
+    ]
+  },
+  "filterValues": {
+    "hidden": true
+  },
+  "groupBy": [
+    {
+      "column": "donationLocation",
+      "key": "-MvZseuibuEca4a-Z1P-"
+    }
+  ],
+  "labels": {
+    "hidden": true
+  },
+  "metrics": [
+    {
+      "column": "donations",
+      "key": "-MvZsmiNquYpCwVuezbG",
+      "operator": "count"
+    }
+  ],
+  "outsideLabels": {
+    "visible": true
+  }
+}

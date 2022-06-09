@@ -1,0 +1,73 @@
+<!-- Existing User -->
+<div v-if="DonorPortal_GetCurrentUserProfileComplete() == true" class="navbar-container">
+    <div class="navbar-top">
+        <div class="navbar logoContainer">
+            <img class="logo" src="https://uploads-ssl.webflow.com/613e414d36aa8cb1b070c82f/6150c11fa58d4be8cbbbe1a6_betterverse-logomark-black.svg">
+        </div>
+
+        <div class="navbar right">
+            <a class="navbar-menu-item" @click="$setCurrentSubTab('-MyvUthgoLrT0z0HdIX9', '-Mx_5FLL2jlxjXYUMdIL')">
+                Dashboard
+            </a>
+        </div>
+        <div class="navbar right">
+            <a class="navbar-menu-item" @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ', '-Mx_5FLL2jlxjXYUMdIL')">
+                Resources
+            </a>
+        </div>
+        <div class="navbar right">
+            <a class="navbar-menu-item" @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ', '-Mx_5FLL2jlxjXYUMdIL')">
+                View Projects
+            </a>
+        </div>
+
+
+        <div class="navbar right">
+            <a class="navbar-menu-item wallet-container">
+                <div v-if="DonorPortal_GetCurrentUserWalletAddress() != null" class="wallet-connected">({{DonorPortal_GetCurrentUserWalletProvider()}}) {{DonorPortal_DisplayUSDCBalance}} USDC </div>
+                <div v-if="DonorPortal_GetCurrentUserWalletAddress() == null" class="wallet-not-connected" v-b-modal.connectWalletModal>Connect Wallet</div>
+            </a>
+        </div>
+
+        <div class="navbar right">
+            <a class="navbar-menu-item" @click="$setCurrentSubTab('-MyvhrGOZpHXGi82DJ4i', '-Mx_5FLL2jlxjXYUMdIL')">
+                <img v-if="DonorPortal_GetCurrentUserProfilePicture() != false" class="profile-image" :src="DonorPortal_GetCurrentUserProfilePicture()" style="max-width: 50px;"/>
+                <i v-if="DonorPortal_GetCurrentUserProfilePicture() == false" class="fas fa-user fa-2x profile-image"></i>
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<!-- Anonymous User -->
+<div v-if="DonorPortal_GetCurrentUserProfileComplete() == false" class="navbar-container">
+    <div class="navbar-top">
+        <div class="navbar left">
+            <img class="logo" src="https://uploads-ssl.webflow.com/613e414d36aa8cb1b070c82f/6150c11fa58d4be8cbbbe1a6_betterverse-logomark-black.svg">
+        </div>
+        <div class="navbar center">
+        </div>
+        <div class="navbar right">
+            <a class="navbar-menu-item" @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ', '-Mx_5FLL2jlxjXYUMdIL')">
+                Donate
+            </a>
+        </div>
+        <div v-if="!fbUser.email" class="navbar right">
+            <a class="navbar-menu-item" @click="$setCurrentSubTab('-N0ZsOs2dAbF9PTr_Hz0', '-Mx_5FLL2jlxjXYUMdIL')">
+                Sign In/Register
+            </a>
+        </div>
+
+        <div v-if="fbUser.email" class="navbar right">
+            <a class="navbar-menu-item" @click="$setCurrentSubTab('-MysZOod447ZdKXNCTey', '-Mx_5FLL2jlxjXYUMdIL'); $setUser('profileSetUpStep', 1);">
+                My Profile
+            </a>
+        </div>
+
+        <div v-if="Global_GetUserRoles && Global_GetUserRoles.includes('Admin')" class="navbar right">
+            <a class="navbar-menu-item" @click="$setCurrentTab('-MxoSCGlYuOM5c6lkU0_')">
+                Admin
+            </a>
+        </div>
+    </div>
+</div>
