@@ -27,7 +27,7 @@
         "width": 190,
         "height": 87,
         "attachment": {
-          "script": "const { userId } = context.webhookdata\r\nconst email = await getUserEmailByUID(userId)\r\n\r\nconst msg = {\r\n\r\n  to: email,\r\n\r\n  from: 'noreply@betterverse.app',\r\n\r\n  subject: 'Betterverse | Donation Confirmation',\r\n\r\n  text: 'Thanks for donating through Betterverse...',\r\n\r\n}\r\n\r\nsgMail.send(msg).catch(err => {\r\n\r\n  console.log(err)\r\n\r\n})\r\n\r\n"
+          "script": "const { userId } = context.webhookdata\nconst email = await getUserEmailByUID(userId)\n\nconst msg = {\n\n  to: email,\n\n  from: 'noreply@betterverse.app',\n\n  subject: 'Betterverse | Donation Confirmation',\n\n  text: 'Thanks for donating through Betterverse...',\n\n}\n\nsgMail.send(msg).catch(err => {\n\n  console.log(err)\n\n})\n\n"
         },
         "name": "script-task",
         "clazz": "scriptTask",
