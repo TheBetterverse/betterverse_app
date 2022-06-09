@@ -124,6 +124,35 @@
 
       </div>
 
+      <hr />
+
+      <div class="my-2">Or continue with</div>
+      <div class="d-inline-flex w-100">
+
+        <button-signup
+          icon="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png"
+        >
+          Google
+        </button-signup>
+
+        <button-signup
+          icon="https://cdn-icons-png.flaticon.com/512/145/145802.png"
+        >
+          Facebook
+        </button-signup>
+
+        <button-signup
+          icon="https://camo.githubusercontent.com/323fb0ba057ee8c0b4fdd6e89e35967cb30cfcfd/68747470733a2f2f7669676e657474652e77696b69612e6e6f636f6f6b69652e6e65742f7468652d6d696e6572732d686176656e2d70726f6a6563742f696d616765732f642f64642f446973636f72642e706e672f7265766973696f6e2f6c61746573743f63623d3230313730333038303333353436"
+        >
+          Discord
+        </button-signup>
+
+      </div>
+
+      <div class="mt-6 d-none d-lg-block">           
+        <small>Already have an account? <a href="#">Log in</a></small>
+      </div>
+
     </form>
   </div>
 </template>
@@ -162,11 +191,17 @@ module.exports = {
     // events
 
     onSubmit(e) {
+      console.log("Normal")
       console.log(e)
-      $setGlobalModel('signUpProcess', true)
+      // $setGlobalModel('signUpProcess', true)
     },
 
     onInput(e) {
+      console.log(e)
+    },
+
+    signUpGoogle(e) {
+      console.log("Google!")
       console.log(e)
     },
 
@@ -198,7 +233,8 @@ module.exports = {
     IconLeftarrow: $getCustomComponent('u-Icons-Leftarrow'),
     IconLock: $getCustomComponent('u-Icons-Lock'),
     IconMail: $getCustomComponent('u-Icons-Mail'),
-    IconBetterverse: $getCustomComponent('u-Icons-Betterverse')
+    IconBetterverse: $getCustomComponent('u-Icons-Betterverse'),
+    ButtonSignup: $getCustomComponent('u-Button-SignUp')
   }
 }
 </script>
@@ -207,6 +243,10 @@ module.exports = {
 body {
   font-size: 14px;
   font-weight: 500;
+}
+
+button {
+  margin-right: 10px;
 }
 
 .container, .row, .col {
