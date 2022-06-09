@@ -1,17 +1,22 @@
 <script>
 module.exports = {
-  data() {
-    return {
-      hidden: Boolean,
-      isvalid: Boolean
+  props: {
+    shown: {
+      type: Boolean,
+      default: false
+    },
+    isvalid: {
+      type: Boolean,
+      default: false
     }
   }
 }
 </script>
 
 <template>
+  a
   <svg
-    v-if="isvalid && !hidden"
+    v-if="isvalid && shown"
     xmlns="http://www.w3.org/2000/svg"
     width="20"
     height="20"
@@ -27,27 +32,25 @@ module.exports = {
   </svg>
 
   <svg
-    v-else-if="!isvalid && !hidden"
+    v-else-if="!isvalid && shown"
     xmlns="http://www.w3.org/2000/svg"
     width="20"
     height="20"
     viewBox="0 0 20 20"
     fill="none"
   >
+    <circle cx="10" cy="10" r="8" fill="#E15564" />
     <path
-      d="M10 4C14.5 4 17 9 17 10C17 11 14.5 16 10 16C5.5 16 3 11 3 10C3 9 5.5 4 10 4Z"
-      stroke="black"
-      stroke-width="1.2"
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M13.9192 6.91924L6.91924 13.9192L6 13L13 6L13.9192 6.91924Z"
+      fill="white"
     />
-    <circle cx="10" cy="10" r="3" stroke="black" stroke-width="1.2" />
-    <line
-      x1="4.84853"
-      y1="5"
-      x2="15"
-      y2="15.1515"
-      stroke="black"
-      stroke-width="1.2"
-      stroke-linecap="round"
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M6.91924 6L13.9192 13L13 13.9192L6 6.91924L6.91924 6Z"
+      fill="white"
     />
   </svg>
 </template>

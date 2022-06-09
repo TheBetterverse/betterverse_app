@@ -15,6 +15,42 @@ body {
   font-weight: 500;
 }
 
-h1, h2, h3, p {
+h1 {
+  font-family: 'BN Cringe Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 45px;
+  line-height: 48px;
+  color: black !important;
+}
+
+h2 {
+  font-family: 'BN Cringe Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  color: black !important;  
+}
+
+p {
+  font-size: 14px !important;
+  font-family: Documan !important;
+  font-weight: 500 !important;
+  padding: 15px 0 !important;
+}
+
+small {
+  font-size: 12px !important;
+  font-weight: 500 !important;
+}
+
+a {
+  color: black !important;
+  font-weight: 700 !important;        
+  text-decoration: underline !important;
+}
+
+a:visited {
   color: black !important;
 }

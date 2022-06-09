@@ -2,11 +2,6 @@
 
 <script>
 module.exports = {
-  data() {
-    return {
-      shown: this.shown
-    }
-  },
   props: {
     shown: Boolean
   }

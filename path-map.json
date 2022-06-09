@@ -60,11 +60,11 @@
     "savePath": "components/-N47HfqN3fMqHpnd967q/code"
   },
   {
-    "filePath": "components/u-DonorPortalSignUp/index.json",
+    "filePath": "components/u-DonorPortal-SignUp/index.json",
     "savePath": "components/-N47KJAgCjpSOJm394gH"
   },
   {
-    "filePath": "components/u-DonorPortalSignUp/compoenentCode.vue",
+    "filePath": "components/u-DonorPortal-SignUp/compoenentCode.vue",
     "savePath": "components/-N47KJAgCjpSOJm394gH/code"
   },
   {
@@ -421,6 +421,16 @@
     "filePath": "customCode/js/Include_BNCringe_Fonts.js",
     "savePath": "customCode/js/-N3z7pKpaA2cgd-wlVwS/code",
     "customCodeName": "Include_BNCringe_Fonts"
+  },
+  {
+    "filePath": "customCode/js/Utilities_DebounceInput.js",
+    "savePath": "customCode/js/-N48WcJMn3RsPb0pw9Sd/code",
+    "customCodeName": "Utilities_DebounceInput",
+    "customCodeScope": {
+      "-Mx_5FLL2jlxjXYUMdIL": {
+        "-N0ZsOs2dAbF9PTr_Hz0": true
+      }
+    }
   },
   {
     "filePath": "tables/capturedDonationData.json",
@@ -1023,8 +1033,8 @@
     "savePath": "widgets/-N2pCFxlb04P4guMWTo1/template"
   },
   {
-    "filePath": "widgets/-N47PAOXCwB1yp-nG2FQ/widget.json",
-    "savePath": "widgets/-N47PAOXCwB1yp-nG2FQ"
+    "filePath": "widgets/-N48ENNVFYy-P6DXYlTP/widget.json",
+    "savePath": "widgets/-N48ENNVFYy-P6DXYlTP"
   },
   {
     "filePath": "widgetsComputed/CharityPortal_SetFilter.js",
@@ -1273,6 +1283,10 @@
   {
     "filePath": "widgetsComputed/Global_ScrollToElement.js",
     "savePath": "widgetsComputed/Global_ScrollToElement"
+  },
+  {
+    "filePath": "widgetsComputed/Utilities_DebounceInput.js",
+    "savePath": "widgetsComputed/Utilities_DebounceInput"
   },
   {
     "filePath": "widgetsData/dataGrid/capturedDonationData.json",

@@ -32,45 +32,65 @@
 
       <!-- E-mail Input -->
       <div class="field-wrapper">
+
         <label for="email-input">Continue with email</label>
+
         <div class="input-wrapper">
           <span>
             <icon-mail class="prefix-icon" />
           </span>
+
           <input
-            v-model="email"
             type="text"
             id="email-input"
             name="email-input"
             autocomplete="on"
             placeholder="Type e-mail address"
+
+            v-model="email"
+            :disabled="$getGlobalModel('signUpProcess')"
+            @input="onInput"
           />
+
           <span>
-            <icon-checkmark />
+            <icon-checkmark shown/>
           </span>
         </div>
+
         <div class="error-div">
           <small v-for="err in emailErrors" class="error-message"
             >{{ err }}<br
           /></small>
         </div>
+
       </div>
 
       <!-- Password Input -->
       <div class="field-wrapper">
+
         <label for="password-input">Password</label>
+
         <div class="input-wrapper">
           <span>
             <icon-lock class="prefix-icon" />
           </span>
+
           <input
-            v-model="password"
-            :type="inputType"
             id="password-input"
             name="password"
             autocomplete="new-password"
             placeholder="Type password"
+
+            v-model="password"
+            :type="inputType"
+            :disabled="$getGlobalModel('signUpProcess')"
+            @input="onInput"
           />
+
+          <span>
+            <icon-checkmark shown isvalid />
+          </span>
+
           <span @click="togglePasswordVisibility">
             <icon-eye
               :shown="inputType === 'text'"
@@ -78,19 +98,30 @@
             />
           </span>
         </div>
+
         <div class="error-div">
           <small v-for="err in passwordErrors" class="error-message"
             >{{ err }}<br
           /></small>
         </div>
+
       </div>
 
       <!-- Continue button -->
       <div class="button-wrapper d-flex justify-content-end">
-        <button id="continue-email-button">
+
+        <b-spinner v-if="$getGlobalModel('signUpProcess')" small></b-spinner>
+
+        <button
+          v-else
+
+          id="continue-email-button"
+          :disabled="$getGlobalModel('signUpProcess')"
+        >
           Continue with email
           <span id="continue-email-arrow"><icon-leftarrow /></span>
         </button>
+
       </div>
 
     </form>
@@ -99,6 +130,17 @@
 
 <script>
 const DEFAULT_TIMEOUT = 6500 // in miliseconds
+
+function debounceInput(cb, delay = 640) {
+  let timeout
+
+  return (...args) => {
+    clearInterval(timeout)
+    timeout = setTimeout(() => {
+      cb(...args)
+    }, delay)
+  }
+}
 
 module.exports = {
   data() {
@@ -113,19 +155,27 @@ module.exports = {
     }
   },
 
+  mounted() {
+    this.onInput = debounceInput(this.onInput)
+  },
+
   methods: {
-    // events
+    /* Events */
 
     onSubmit(e) {
-      this.displayError(this.passwordErrors, 'Invalid password')
+      console.log(e)
+      $setGlobalModel('signUpProcess', true)
     },
 
-    // functionality
+    onInput(e) {
+      console.log(e)
+    },
+
+    /* View */
 
     togglePasswordVisibility() {
       if (this.inputType === 'password') this.inputType = 'text'
       else this.inputType = 'password'
-      console.log(`toggled to: ${this.inputType}`)
     },
 
     displayError(errMsgArray, message) {
@@ -145,7 +195,7 @@ module.exports = {
   },
 
   components: {
-    IconCheckMark: $getCustomComponent('u-Icons-Checkmark'),
+    IconCheckmark: $getCustomComponent('u-Icons-Checkmark'),
     IconEye: $getCustomComponent('u-Icons-Eye'),
     IconLeftarrow: $getCustomComponent('u-Icons-Leftarrow'),
     IconLock: $getCustomComponent('u-Icons-Lock'),
@@ -159,22 +209,6 @@ module.exports = {
 body {
   font-size: 14px;
   font-weight: 500;
-}
-
-h1 {
-  font-family: 'BN Cringe Sans';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 45px;
-  line-height: 48px;
-}
-
-h2 {
-  font-family: 'BN Cringe Sans';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 28px;
 }
 
 .container, .row, .col {
