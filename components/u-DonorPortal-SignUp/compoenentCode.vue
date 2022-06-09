@@ -217,8 +217,8 @@ function hasMinLength(length) {
 /* ********************************************  */
 
 const emailValidators = [
-  {validator: emailDontExist,     errorMessage: "Email is already registered"}
-  {validator: emailIsRightFormat, errorMessage: "Email format is invalid"},
+  {validator: emailDontExist,     errorMessage: "Email is already registered"},
+  {validator: emailIsRightFormat, errorMessage: "Email format is invalid"}
 ]
 
 const passwordValidators = [
