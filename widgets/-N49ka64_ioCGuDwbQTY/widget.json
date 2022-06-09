@@ -1,14 +1,12 @@
 {
   "component": "-N47KJAgCjpSOJm394gH",
   "gsOptions": {
-    "h": 11,
+    "h": 10,
     "w": 6,
-    "x": 0,
+    "x": 3,
     "y": 0
   },
   "layout": "b-card",
-  "offSet": 0,
-  "perPage": 2,
   "tab": "-N3z71e2MNBMTo2As59M",
   "type": "custom"
 }
