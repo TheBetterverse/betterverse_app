@@ -151,10 +151,6 @@
                   {
                     "id": "private",
                     "text": "Private"
-                  },
-                  {
-                    "id": "finished",
-                    "text": "Finished"
                   }
                 ],
                 "ajaxDataUrl": "",

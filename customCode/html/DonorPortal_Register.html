@@ -1,0 +1,46 @@
+<div class="row no-gutters">
+
+  <!-- Top left logo -->
+  <b-container class="d-none d-lg-block col-7 vh-100 overflow-hidden">
+    <div id="lg-logo" class="d-none d-lg-block">
+        <u-Icons-Betterverse color="white" />
+    </div>  
+    <img src="https://uploads-ssl.webflow.com/62554ccc10f0e2be91a8c9fc/625588041fd50e823f154e46_img-hero-landscape.jpg" />
+  </b-container>
+  
+  
+  <!-- Main form area -->
+  <b-container class="col-12 col-lg-5 flexcenter">
+    <div class="form-area">      
+      <u-DonorPortalSignUp>
+        <h1>Welcome to the <b>Betterverse</b></h1>
+        <h2>Here you can edit the header text inside the form</h2>
+      </u-DonorPortalSignUp>
+    </div>
+  </b-container>
+
+</div>
+
+
+<style>
+  /* Boostrap-Vue grid */    
+  #lg-logo {
+    position: absolute;
+    z-index: 10;
+    top: 24px;
+    left: 30px;
+  }
+  
+  .form-area {
+    min-width: 200px;
+    width: 90%;
+    max-width: 380px;
+  }
+  
+  /* utilities */
+  .flexcenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>

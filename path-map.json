@@ -20,12 +20,60 @@
     "savePath": "components/-N0ZzaKUwnQK3TzHXqJT/code"
   },
   {
-    "filePath": "components/u-SignUpFormTest/index.json",
-    "savePath": "components/-N3phmWQsC1oRuqB0HUi"
+    "filePath": "components/u-Icons-Checkmark/index.json",
+    "savePath": "components/-N47H3yh9WSaVtiQ3ZK4"
   },
   {
-    "filePath": "components/u-SignUpFormTest/compoenentCode.vue",
-    "savePath": "components/-N3phmWQsC1oRuqB0HUi/code"
+    "filePath": "components/u-Icons-Checkmark/compoenentCode.vue",
+    "savePath": "components/-N47H3yh9WSaVtiQ3ZK4/code"
+  },
+  {
+    "filePath": "components/u-Icons-Eye/index.json",
+    "savePath": "components/-N47H9hK1y2JTwsE9V4e"
+  },
+  {
+    "filePath": "components/u-Icons-Eye/compoenentCode.vue",
+    "savePath": "components/-N47H9hK1y2JTwsE9V4e/code"
+  },
+  {
+    "filePath": "components/u-Icons-Leftarrow/index.json",
+    "savePath": "components/-N47HYSzapgZISsfENzD"
+  },
+  {
+    "filePath": "components/u-Icons-Leftarrow/compoenentCode.vue",
+    "savePath": "components/-N47HYSzapgZISsfENzD/code"
+  },
+  {
+    "filePath": "components/u-Icons-Lock/index.json",
+    "savePath": "components/-N47HcXDdR2v2LjJN_qI"
+  },
+  {
+    "filePath": "components/u-Icons-Lock/compoenentCode.vue",
+    "savePath": "components/-N47HcXDdR2v2LjJN_qI/code"
+  },
+  {
+    "filePath": "components/u-Icons-Mail/index.json",
+    "savePath": "components/-N47HfqN3fMqHpnd967q"
+  },
+  {
+    "filePath": "components/u-Icons-Mail/compoenentCode.vue",
+    "savePath": "components/-N47HfqN3fMqHpnd967q/code"
+  },
+  {
+    "filePath": "components/u-DonorPortalSignUp/index.json",
+    "savePath": "components/-N47KJAgCjpSOJm394gH"
+  },
+  {
+    "filePath": "components/u-DonorPortalSignUp/compoenentCode.vue",
+    "savePath": "components/-N47KJAgCjpSOJm394gH/code"
+  },
+  {
+    "filePath": "components/u-Icons-Betterverse/index.json",
+    "savePath": "components/-N47bicaStfBdRF8SawF"
+  },
+  {
+    "filePath": "components/u-Icons-Betterverse/compoenentCode.vue",
+    "savePath": "components/-N47bicaStfBdRF8SawF/code"
   },
   {
     "filePath": "customCode/css/Login/Register.css",
@@ -148,14 +196,6 @@
     "customCodeName": "Betterverse_Tangle"
   },
   {
-    "filePath": "customCode/css/[OFF] DonorPortal_Register/SignIn.css",
-    "savePath": "customCode/css/-N2WWMi8UTbLp7b6igYC/code",
-    "customCodeName": "[OFF] DonorPortal_Register/SignIn",
-    "customCodeScope": {
-      "-N-46yNIuPyCZOyD9XoT": true
-    }
-  },
-  {
     "filePath": "customCode/css/DonorPortal_ProfileSetup.css",
     "savePath": "customCode/css/-N2WeNRjoeXfe8c_1W1Z/code",
     "customCodeName": "DonorPortal_ProfileSetup",
@@ -256,7 +296,7 @@
     "customCodeName": "DonorPortal_Register/SignIn",
     "customCodeScope": {
       "-Mx_5FLL2jlxjXYUMdIL": {
-        "-N0ZsOs2dAbF9PTr_Hz0": true
+        "-MyvhrGOZpHXGi82DJ4i": true
       }
     }
   },
@@ -296,6 +336,16 @@
     "customCodeScope": {
       "-Mx_5FLL2jlxjXYUMdIL": {
         "-MyvUthgoLrT0z0HdIX9": true
+      }
+    }
+  },
+  {
+    "filePath": "customCode/html/DonorPortal_Register.html",
+    "savePath": "customCode/html/-N47KPPlXV1MYnesGzQt/code",
+    "customCodeName": "DonorPortal_Register",
+    "customCodeScope": {
+      "-Mx_5FLL2jlxjXYUMdIL": {
+        "-N0ZsOs2dAbF9PTr_Hz0": true
       }
     }
   },
@@ -347,9 +397,7 @@
     "savePath": "customCode/js/-N0VP7t2DrxAweg2M0Xz/code",
     "customCodeName": "TreeNationAPI",
     "customCodeScope": {
-      "-Mx_2_VCOc__FGnUdqrq": {
-        "-Mx_41fC3fbG4mJnI2Pj": true
-      }
+      "-N-46yNIuPyCZOyD9XoT": true
     }
   },
   {
@@ -975,12 +1023,8 @@
     "savePath": "widgets/-N2pCFxlb04P4guMWTo1/template"
   },
   {
-    "filePath": "widgets/-N3z7ZTOBfIy6OGrF0sP/widget.json",
-    "savePath": "widgets/-N3z7ZTOBfIy6OGrF0sP"
-  },
-  {
-    "filePath": "widgets/-N3z7ZTOBfIy6OGrF0sP/template.html",
-    "savePath": "widgets/-N3z7ZTOBfIy6OGrF0sP/template"
+    "filePath": "widgets/-N47PAOXCwB1yp-nG2FQ/widget.json",
+    "savePath": "widgets/-N47PAOXCwB1yp-nG2FQ"
   },
   {
     "filePath": "widgetsComputed/CharityPortal_SetFilter.js",

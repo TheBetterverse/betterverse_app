@@ -1,10 +1,10 @@
 {
   "dependency": "dataGrid/charities",
   "gsOptions": {
-    "h": 12,
+    "h": 10,
     "w": 24,
     "x": 0,
-    "y": 18
+    "y": 0
   },
   "layout": "b-card",
   "overflow": "height: auto",

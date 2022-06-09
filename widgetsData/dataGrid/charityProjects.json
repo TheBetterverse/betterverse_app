@@ -65,11 +65,6 @@
       "order": 3,
       "type": "date"
     },
-    "inactiveProject": {
-      "displayName": "inactiveProject",
-      "order": 26,
-      "type": "checkbox"
-    },
     "keyImpactAreas": {
       "displayName": "keyImpactAreas",
       "invisible": true,
@@ -188,49 +183,6 @@
             "label": "",
             "order": 0,
             "controls": [
-              {
-                "type": "checkbox",
-                "name": "control_21fadfc0-e71d-11ec-a4d8-3f0911b1973d",
-                "fieldName": "control_21fadfc0-e71d-11ec-a4d8-3f0911b1973d",
-                "label": "inactiveProject",
-                "order": 0,
-                "defaultValue": "",
-                "value": "",
-                "className": "col-md-6",
-                "readonly": false,
-                "readonlyCondition": "",
-                "placeholder": "",
-                "required": false,
-                "requiredCondition": "",
-                "isMultiLine": false,
-                "isInteger": false,
-                "decimalPlace": 0,
-                "isTodayValue": false,
-                "isTodayValueCreated": true,
-                "dateFormat": "mm/dd/yy hh:mm p",
-                "isCurrentUser": false,
-                "isCurrentUserOwner": true,
-                "isNowTimeValue": false,
-                "timeFormat": "HH:mm",
-                "isMultiple": false,
-                "isAjax": false,
-                "dataOptions": [],
-                "ajaxDataUrl": "",
-                "isChecked": false,
-                "vif": "",
-                "customCode": "",
-                "invisible": false,
-                "invisibleCondition": "",
-                "invisibleInDataGrid": false,
-                "invisibleLabel": false,
-                "enableCustomValidation": false,
-                "customValidationRule": "",
-                "customValidationErrorMessage": "",
-                "mask": "",
-                "lookupOpenInModalDisabled": false,
-                "editorMode": "javascript",
-                "propName": "inactiveProject"
-              },
               {
                 "type": "select",
                 "name": "control_616cb720-ac3d-11ec-90ef-ed2c12ab9a48",
@@ -1392,7 +1344,7 @@
       }
     ],
     "layout": "collapse",
-    "_uniqueId": 0.4488172285308467
+    "_uniqueId": 0.43384009232325615
   },
   "source": "charityProjects",
   "storageType": "dashboard",
@@ -1438,9 +1390,6 @@
         "endDate": {
           "invisible": false,
           "order": 4
-        },
-        "inactiveProject": {
-          "order": 26
         },
         "keyImpactAreas": {
           "invisible": true,
