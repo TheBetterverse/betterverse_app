@@ -1,0 +1,17 @@
+{
+  "dependency": "dataGrid/charities",
+  "gsOptions": {
+    "h": 12,
+    "w": 24,
+    "x": 0,
+    "y": 18
+  },
+  "layout": "b-card",
+  "overflow": "height: auto",
+  "props": {
+    "gridId": "charities"
+  },
+  "subtab": "-Mx_41fC3fbG4mJnI2Pj",
+  "tab": "-Mx_2_VCOc__FGnUdqrq",
+  "type": "DataGrid"
+}

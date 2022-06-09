@@ -1,0 +1,21 @@
+{
+  "autoHeight": true,
+  "classes": "",
+  "dependency": "dataGrid/currencies",
+  "gsOptions": {
+    "h": 20,
+    "w": 24,
+    "x": 0,
+    "y": 99
+  },
+  "layout": "b-card",
+  "overflow": "height: auto",
+  "props": {
+    "gridId": "currencies"
+  },
+  "styles": "",
+  "subtab": "-Mx_3SXgBk5SECkRduDE",
+  "tab": "-Mx_2_VCOc__FGnUdqrq",
+  "title": "",
+  "type": "DataGrid"
+}

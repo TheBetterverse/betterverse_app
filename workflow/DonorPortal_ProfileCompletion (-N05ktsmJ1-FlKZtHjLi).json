@@ -1,0 +1,117 @@
+{
+  "data": {
+    "metaData": {
+      "id": "-N05ktsmJ1-FlKZtHjLi",
+      "statusField": null
+    },
+    "nodes": [
+      {
+        "id": "node1650454711508",
+        "x": 564.29,
+        "y": 437.59,
+        "width": 190,
+        "height": 64,
+        "attachment": {
+          "color": "#ffffff"
+        },
+        "name": "start-event",
+        "clazz": "startEvent",
+        "label": "Start Event",
+        "icon": {
+          "name": "flag",
+          "color": "hsl(154, 64%, 49%)"
+        }
+      },
+      {
+        "id": "node1650454838370",
+        "x": 908.57,
+        "y": 416.16,
+        "width": 190,
+        "height": 108,
+        "attachment": {
+          "script": "const { userId } = context.webhookdata\r\nconst email = await getUserEmailByUID(userId)\r\n\r\nconst msg = {\r\n\r\n  to: email,\r\n\r\n  from: 'noreply@betterverse.app',\r\n\r\n  subject: 'Welcome to Betterverse!',\r\n\r\n  text: 'welcome to betterverse text.....',\r\n\r\n}\r\n\r\nsgMail.send(msg).catch(err => {\r\n\r\n  console.log(err)\r\n\r\n})\r\n\r\n"
+        },
+        "name": "script-task",
+        "clazz": "scriptTask",
+        "label": "Send Confirmation Email",
+        "icon": {
+          "name": "terminal",
+          "color": "hsl(218, 54%, 20%)"
+        }
+      },
+      {
+        "id": "node1650456027757",
+        "x": 1251.43,
+        "y": 438.14,
+        "width": 190,
+        "height": 65,
+        "attachment": {
+          "color": "#ffffff"
+        },
+        "name": "end-event",
+        "clazz": "endEvent",
+        "label": "End Event",
+        "icon": {
+          "name": "stop-circle",
+          "color": "hsl(348, 91%, 59%)"
+        }
+      },
+      {
+        "id": "node1654280848680",
+        "x": 487.5800813079112,
+        "y": 433.7561856850939,
+        "width": 190,
+        "height": 64,
+        "attachment": {
+          "script": ""
+        },
+        "name": "script-task",
+        "clazz": "scriptTask",
+        "label": "Script Task",
+        "icon": {
+          "name": "terminal",
+          "color": "hsl(218, 54%, 20%)"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "source": "node1650454838370-right",
+        "target": "node1650456027757",
+        "endSocket": "left",
+        "id": "line-1650457554071",
+        "label": "Send Confirmation Email",
+        "targetLabel": "End Event",
+        "type": {
+          "startPlug": "behind",
+          "color": "#5e73e4",
+          "size": 2,
+          "path": "grid",
+          "dash": null
+        }
+      },
+      {
+        "source": "node1650454711508-right",
+        "target": "node1650454838370",
+        "endSocket": "left",
+        "id": "line-1650457948510",
+        "label": "Start Event",
+        "targetLabel": "Send Confirmation Email",
+        "type": {
+          "startPlug": "behind",
+          "color": "#5e73e4",
+          "size": 2,
+          "path": "grid",
+          "dash": null
+        }
+      }
+    ],
+    "transform": {
+      "x": -711.8979548204996,
+      "y": -362.63617309879186,
+      "scale": 1.373964817020912
+    }
+  },
+  "name": "DonorPortal_ProfileCompletion",
+  "scheduled": false
+}

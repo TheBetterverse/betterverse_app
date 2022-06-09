@@ -1,0 +1,15 @@
+{
+  "dependency": "dataGrid/capturedDonationData",
+  "gsOptions": {
+    "h": 6,
+    "w": 24
+  },
+  "layout": "b-card",
+  "overflow": "height: auto",
+  "props": {
+    "gridId": "capturedDonationData"
+  },
+  "subtab": "-Mx_2usUurl5khXeNjdl",
+  "tab": "-Mx_2_VCOc__FGnUdqrq",
+  "type": "DataGrid"
+}

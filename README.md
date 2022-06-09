@@ -1,1 +1,0 @@
-# betterverse_app

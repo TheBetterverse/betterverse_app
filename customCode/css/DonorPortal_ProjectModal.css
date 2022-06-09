@@ -1,0 +1,34 @@
+.project-modal{
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    background-color: #ECEAE3;
+    left: 0%;
+    top: 0px;
+    display: none;
+    overflow: auto;
+    max-height: 100vh;
+}
+
+.modal-close-container{
+   position:absolute;
+   top:0;
+   right:0;
+   padding: 15px;
+}
+
+.leftside, rightside{
+    width: 100%;
+}
+
+.leftside{
+    background: grey;
+}
+
+.rightside{
+    padding: 30px;
+}
+
+.project-image{
+    width: 100%;
+}

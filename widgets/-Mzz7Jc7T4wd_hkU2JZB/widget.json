@@ -1,0 +1,26 @@
+{
+  "autoHeight": false,
+  "classes": "",
+  "columnCount": 1,
+  "columnMaxWidth": "250",
+  "columnMinWidth": "200",
+  "dataSource": "DonorPortal_SearchAllProjects",
+  "gsOptions": {
+    "h": 14,
+    "w": 24,
+    "x": 0,
+    "y": 5
+  },
+  "itemsPerPage": 20,
+  "offSet": 0,
+  "overflow": "height: auto;",
+  "perPage": 2,
+  "styles": "",
+  "subtab": "-Myvhn-hQMIUPkvnAyCQ",
+  "tab": "-Mx_5FLL2jlxjXYUMdIL",
+  "title": "",
+  "type": "card-list",
+  "useContainerForDetail": false,
+  "useContainerForList": false,
+  "widthType": "minAndMaxWidth"
+}

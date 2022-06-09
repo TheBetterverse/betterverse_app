@@ -1,0 +1,1373 @@
+[
+  {
+    "filePath": "chat.json",
+    "savePath": "chat"
+  },
+  {
+    "filePath": "components/u-SignUpForm/index.json",
+    "savePath": "components/-N0ZywIPA3OV2BcJq-Yf"
+  },
+  {
+    "filePath": "components/u-SignUpForm/compoenentCode.vue",
+    "savePath": "components/-N0ZywIPA3OV2BcJq-Yf/code"
+  },
+  {
+    "filePath": "components/u-SignInForm/index.json",
+    "savePath": "components/-N0ZzaKUwnQK3TzHXqJT"
+  },
+  {
+    "filePath": "components/u-SignInForm/compoenentCode.vue",
+    "savePath": "components/-N0ZzaKUwnQK3TzHXqJT/code"
+  },
+  {
+    "filePath": "components/u-SignUpFormTest/index.json",
+    "savePath": "components/-N3phmWQsC1oRuqB0HUi"
+  },
+  {
+    "filePath": "components/u-SignUpFormTest/compoenentCode.vue",
+    "savePath": "components/-N3phmWQsC1oRuqB0HUi/code"
+  },
+  {
+    "filePath": "customCode/css/Login/Register.css",
+    "savePath": "customCode/css/-MvU35ut2ARCdHp1hjEF/code",
+    "customCodeName": "Login/Register",
+    "customCodeScope": {
+      "login": true
+    }
+  },
+  {
+    "filePath": "customCode/css/Betterverse_Bootstrap.css",
+    "savePath": "customCode/css/-MvYLPXgaHOT2LWKJD3-/code",
+    "customCodeName": "Betterverse_Bootstrap",
+    "customCodeScope": {
+      "-MuQhD_ga5WSG7VLA7e9": true,
+      "-MuQhJ9sL4b5cFhg2acs": true,
+      "-MuQhQ8L-ryXECMvT4Au": true,
+      "-MuQhTxCcVdIJuOVCSVc": true,
+      "-MuQhZ0F2co30nrMchOm": true,
+      "-MuQh_I2as8J-C7BVqZo": true,
+      "-MuQhboZEjQsfkD2UntC": true,
+      "-MuQhqPXsFcZcQyPN7U2": true,
+      "-MuQrSatt4cKDM6Sv2tJ": true,
+      "-MuQtPW9NJ3mOIusNJx3": true,
+      "-Mx_2_VCOc__FGnUdqrq": {
+        "-Mx_2usUurl5khXeNjdl": true,
+        "-Mx_3SXgBk5SECkRduDE": true,
+        "-Mx_41fC3fbG4mJnI2Pj": true
+      },
+      "global": true
+    }
+  },
+  {
+    "filePath": "customCode/css/CharityPortal_Navbar.css",
+    "savePath": "customCode/css/-Mx_961RReJ-dF0UYQBi/code",
+    "customCodeName": "CharityPortal_Navbar",
+    "customCodeScope": {
+      "-Mx_5BGnALCWCXiGI_Dm": {
+        "-Mx_6HX9p6ioJWoofFIw": true
+      }
+    }
+  },
+  {
+    "filePath": "customCode/css/DonorPortal_HideTangleElements.css",
+    "savePath": "customCode/css/-Mx_J-DTJ9p7qkvLA_6n/code",
+    "customCodeName": "DonorPortal_HideTangleElements",
+    "customCodeScope": {
+      "-Mx_5BGnALCWCXiGI_Dm": {
+        "-Mx_6HX9p6ioJWoofFIw": true
+      },
+      "-Mx_5FLL2jlxjXYUMdIL": true
+    }
+  },
+  {
+    "filePath": "customCode/css/Betterverse_Background.css",
+    "savePath": "customCode/css/-Mx_PaLt0nMx4aRJ4PZf/code",
+    "customCodeName": "Betterverse_Background",
+    "customCodeScope": {
+      "-Mx_5BGnALCWCXiGI_Dm": {
+        "-Mx_6HX9p6ioJWoofFIw": true
+      },
+      "-Mx_5FLL2jlxjXYUMdIL": true
+    }
+  },
+  {
+    "filePath": "customCode/css/Betterverse_Buttons.css",
+    "savePath": "customCode/css/-Mxd4c9Qo3AvX3LI0Ldw/code",
+    "customCodeName": "Betterverse_Buttons",
+    "customCodeScope": {
+      "-Mx_5BGnALCWCXiGI_Dm": {
+        "-Mx_6HX9p6ioJWoofFIw": true
+      },
+      "-Mx_5FLL2jlxjXYUMdIL": true
+    }
+  },
+  {
+    "filePath": "customCode/css/CharityPortal_Metrics.css",
+    "savePath": "customCode/css/-MxdCZxfcgjm2Z7Jv18c/code",
+    "customCodeName": "CharityPortal_Metrics",
+    "customCodeScope": {
+      "-Mx_5BGnALCWCXiGI_Dm": {
+        "-Mx_6HX9p6ioJWoofFIw": true
+      }
+    }
+  },
+  {
+    "filePath": "customCode/css/DonorPortal_Navbar.css",
+    "savePath": "customCode/css/-MyvbiOqkjw5tXJDpDvD/code",
+    "customCodeName": "DonorPortal_Navbar",
+    "customCodeScope": {
+      "-Mx_5FLL2jlxjXYUMdIL": true
+    }
+  },
+  {
+    "filePath": "customCode/css/DonorPortal_WalletPage.css",
+    "savePath": "customCode/css/-Mz05iZfmHMOJG_CLvJO/code",
+    "customCodeName": "DonorPortal_WalletPage",
+    "customCodeScope": {
+      "-Mx_5FLL2jlxjXYUMdIL": {
+        "-MyvhrGOZpHXGi82DJ4i": true
+      }
+    }
+  },
+  {
+    "filePath": "customCode/css/DonorPortal_CardListCards.css",
+    "savePath": "customCode/css/-N-2UHuz1nWJ8e5vGsM4/code",
+    "customCodeName": "DonorPortal_CardListCards",
+    "customCodeScope": {
+      "-Mx_5FLL2jlxjXYUMdIL": true
+    }
+  },
+  {
+    "filePath": "customCode/css/Global_TangleChanges.css",
+    "savePath": "customCode/css/-N-wxrKXYGkwImCTRSnL/code",
+    "customCodeName": "Global_TangleChanges"
+  },
+  {
+    "filePath": "customCode/css/Betterverse_Tangle.css",
+    "savePath": "customCode/css/-N0DEpsuViusWl3KzroV/code",
+    "customCodeName": "Betterverse_Tangle"
+  },
+  {
+    "filePath": "customCode/css/[OFF] DonorPortal_Register/SignIn.css",
+    "savePath": "customCode/css/-N2WWMi8UTbLp7b6igYC/code",
+    "customCodeName": "[OFF] DonorPortal_Register/SignIn",
+    "customCodeScope": {
+      "-N-46yNIuPyCZOyD9XoT": true
+    }
+  },
+  {
+    "filePath": "customCode/css/DonorPortal_ProfileSetup.css",
+    "savePath": "customCode/css/-N2WeNRjoeXfe8c_1W1Z/code",
+    "customCodeName": "DonorPortal_ProfileSetup",
+    "customCodeScope": {
+      "-Mx_5FLL2jlxjXYUMdIL": {
+        "-MysZOod447ZdKXNCTey": true
+      }
+    }
+  },
+  {
+    "filePath": "customCode/css/DevTools_WorkspaceAccess.css",
+    "savePath": "customCode/css/-N2gvb8yb5cg3KSOki_v/code",
+    "customCodeName": "DevTools_WorkspaceAccess",
+    "customCodeScope": {
+      "-Mx_5BGnALCWCXiGI_Dm": true,
+      "-Mx_5FLL2jlxjXYUMdIL": true
+    }
+  },
+  {
+    "filePath": "customCode/css/DonorPortal_ProjectModal.css",
+    "savePath": "customCode/css/-N2vLGdVQdQ4hUbgGfms/code",
+    "customCodeName": "DonorPortal_ProjectModal",
+    "customCodeScope": {
+      "-Mx_5FLL2jlxjXYUMdIL": {
+        "-Myvhn-hQMIUPkvnAyCQ": true
+      }
+    }
+  },
+  {
+    "filePath": "customCode/css/DonorPortal_NFTModal.css",
+    "savePath": "customCode/css/-N3P8FRU9hSuf5kC7ow7/code",
+    "customCodeName": "DonorPortal_NFTModal",
+    "customCodeScope": {
+      "-Mx_5FLL2jlxjXYUMdIL": {
+        "-MyvUthgoLrT0z0HdIX9": true
+      }
+    }
+  },
+  {
+    "filePath": "customCode/css/DonorPortal_Global.css",
+    "savePath": "customCode/css/-N3tLfNlo5I6ToVeWURv/code",
+    "customCodeName": "DonorPortal_Global",
+    "customCodeScope": {
+      "-Mx_5FLL2jlxjXYUMdIL": true
+    }
+  },
+  {
+    "filePath": "customCode/html/CharityPortal_Navbar.html",
+    "savePath": "customCode/html/-Mx_6J61wvQtvA2b-V52/code",
+    "customCodeName": "CharityPortal_Navbar",
+    "customCodeScope": {
+      "-Mx_5BGnALCWCXiGI_Dm": {
+        "-Mx_6HX9p6ioJWoofFIw": true
+      }
+    }
+  },
+  {
+    "filePath": "customCode/html/Login/Register.html",
+    "savePath": "customCode/html/-Mys7Xh9ZEhpjpDl8wCN/code",
+    "customCodeName": "Login/Register",
+    "customCodeScope": {
+      "login": true
+    }
+  },
+  {
+    "filePath": "customCode/html/DonorPortal_Navbar.html",
+    "savePath": "customCode/html/-Myvbf-OwE6zGMZgsLI6/code",
+    "customCodeName": "DonorPortal_Navbar",
+    "customCodeScope": {
+      "-Mx_5FLL2jlxjXYUMdIL": {
+        "-MyvUthgoLrT0z0HdIX9": true,
+        "-Myvhn-hQMIUPkvnAyCQ": true,
+        "-MyvhrGOZpHXGi82DJ4i": true,
+        "-MyvhuxlADmoGBl7zLnO": true,
+        "-N0_SDmYe-3EuTeLRMpy": true
+      }
+    }
+  },
+  {
+    "filePath": "customCode/html/DonorPortal_ConnectWalletModal.html",
+    "savePath": "customCode/html/-MzK07789DBLTdil_8CM/code",
+    "customCodeName": "DonorPortal_ConnectWalletModal",
+    "customCodeScope": {
+      "-Mx_5FLL2jlxjXYUMdIL": true
+    }
+  },
+  {
+    "filePath": "customCode/html/DonorPortal_CreateWalletModal.html",
+    "savePath": "customCode/html/-MzKSGVMY-vfAF76x9yv/code",
+    "customCodeName": "DonorPortal_CreateWalletModal",
+    "customCodeScope": {
+      "-Mx_5FLL2jlxjXYUMdIL": true
+    }
+  },
+  {
+    "filePath": "customCode/html/DonorPortal_Register/SignIn.html",
+    "savePath": "customCode/html/-N2W12j9j57em58vNrK2/code",
+    "customCodeName": "DonorPortal_Register/SignIn",
+    "customCodeScope": {
+      "-Mx_5FLL2jlxjXYUMdIL": {
+        "-N0ZsOs2dAbF9PTr_Hz0": true
+      }
+    }
+  },
+  {
+    "filePath": "customCode/html/DonorPortal_ProfileSetup.html",
+    "savePath": "customCode/html/-N2WdNX8nNGA0ItdXcZ2/code",
+    "customCodeName": "DonorPortal_ProfileSetup",
+    "customCodeScope": {
+      "-Mx_5FLL2jlxjXYUMdIL": {
+        "-MysZOod447ZdKXNCTey": true
+      }
+    }
+  },
+  {
+    "filePath": "customCode/html/DevTools_WorkspaceAccess.html",
+    "savePath": "customCode/html/-N2gtAGIWoeROoJPIs4t/code",
+    "customCodeName": "DevTools_WorkspaceAccess",
+    "customCodeScope": {
+      "-Mx_5BGnALCWCXiGI_Dm": true,
+      "-Mx_5FLL2jlxjXYUMdIL": true
+    }
+  },
+  {
+    "filePath": "customCode/html/DonorPortal_ProjectModal.html",
+    "savePath": "customCode/html/-N2vLB7JGLvL_9dyOsOL/code",
+    "customCodeName": "DonorPortal_ProjectModal",
+    "customCodeScope": {
+      "-Mx_5FLL2jlxjXYUMdIL": {
+        "-Myvhn-hQMIUPkvnAyCQ": true
+      }
+    }
+  },
+  {
+    "filePath": "customCode/html/DonorPortal_NFTModal.html",
+    "savePath": "customCode/html/-N3P7nr7N0gvnEeTc-MY/code",
+    "customCodeName": "DonorPortal_NFTModal",
+    "customCodeScope": {
+      "-Mx_5FLL2jlxjXYUMdIL": {
+        "-MyvUthgoLrT0z0HdIX9": true
+      }
+    }
+  },
+  {
+    "filePath": "customCode/js/Redirect.js",
+    "savePath": "customCode/js/-MyhbtSo5FHi08VoZP5b/code",
+    "customCodeName": "Redirect",
+    "customCodeScope": {
+      "_parentOnly_-Mx_5FLL2jlxjXYUMdIL": true
+    }
+  },
+  {
+    "filePath": "customCode/js/CharityPortal_ResetFilter.js",
+    "savePath": "customCode/js/-MymOBda_-fC-O2AFtkr/code",
+    "customCodeName": "CharityPortal_ResetFilter",
+    "customCodeScope": {
+      "-Mx_5BGnALCWCXiGI_Dm": {
+        "-Mx_6HX9p6ioJWoofFIw": true
+      }
+    }
+  },
+  {
+    "filePath": "customCode/js/Include_Documan_Fonts.js",
+    "savePath": "customCode/js/-N-bb4UTACvEXz6dA_rR/code",
+    "customCodeName": "Include_Documan_Fonts"
+  },
+  {
+    "filePath": "customCode/js/UpdateExchangeRate_GBPtoUSD.js",
+    "savePath": "customCode/js/-N0GIAoDOcvRxNhNImW4/code",
+    "customCodeName": "UpdateExchangeRate_GBPtoUSD",
+    "customCodeScope": {
+      "-Mx_2_VCOc__FGnUdqrq": {
+        "-Mx_41fC3fbG4mJnI2Pj": true
+      }
+    }
+  },
+  {
+    "filePath": "customCode/js/UpdateExchangeRate_EURtoUSD.js",
+    "savePath": "customCode/js/-N0GIQWz0XSS0lnjEnAb/code",
+    "customCodeName": "UpdateExchangeRate_EURtoUSD",
+    "customCodeScope": {
+      "-Mx_2_VCOc__FGnUdqrq": {
+        "-Mx_41fC3fbG4mJnI2Pj": true
+      }
+    }
+  },
+  {
+    "filePath": "customCode/js/TreeNationAPI.js",
+    "savePath": "customCode/js/-N0VP7t2DrxAweg2M0Xz/code",
+    "customCodeName": "TreeNationAPI",
+    "customCodeScope": {
+      "-Mx_2_VCOc__FGnUdqrq": {
+        "-Mx_41fC3fbG4mJnI2Pj": true
+      }
+    }
+  },
+  {
+    "filePath": "customCode/js/Redirect_AdminOnly.js",
+    "savePath": "customCode/js/-N0_nIpBnRfLnMVRXRLs/code",
+    "customCodeName": "Redirect_AdminOnly",
+    "customCodeScope": {
+      "-Mx_2_VCOc__FGnUdqrq": true,
+      "-MxoSCGlYuOM5c6lkU0_": true
+    }
+  },
+  {
+    "filePath": "customCode/js/DonorPortal_LoadTorus.js",
+    "savePath": "customCode/js/-N2RwknmyvtNIOK4S9h1/code",
+    "customCodeName": "DonorPortal_LoadTorus",
+    "customCodeScope": {
+      "_parentOnly_-Mx_5FLL2jlxjXYUMdIL": true
+    }
+  },
+  {
+    "filePath": "customCode/js/Include_BNCringe_Fonts.js",
+    "savePath": "customCode/js/-N3z7pKpaA2cgd-wlVwS/code",
+    "customCodeName": "Include_BNCringe_Fonts"
+  },
+  {
+    "filePath": "tables/capturedDonationData.json",
+    "savePath": "models/capturedDonationData",
+    "isModel": true,
+    "modelKey": "capturedDonationData"
+  },
+  {
+    "filePath": "tables/charities.json",
+    "savePath": "models/charities",
+    "isModel": true,
+    "modelKey": "charities"
+  },
+  {
+    "filePath": "tables/charityCategory.json",
+    "savePath": "models/charityCategory",
+    "isModel": true,
+    "modelKey": "charityCategory"
+  },
+  {
+    "filePath": "tables/charityProjects.json",
+    "savePath": "models/charityProjects",
+    "isModel": true,
+    "modelKey": "charityProjects"
+  },
+  {
+    "filePath": "tables/currencies.json",
+    "savePath": "models/currencies",
+    "isModel": true,
+    "modelKey": "currencies"
+  },
+  {
+    "filePath": "tables/extensions.json",
+    "savePath": "models/extensions",
+    "isModel": true,
+    "modelKey": "extensions"
+  },
+  {
+    "filePath": "tables/keyImpactAreas.json",
+    "savePath": "models/keyImpactAreas",
+    "isModel": true,
+    "modelKey": "keyImpactAreas"
+  },
+  {
+    "filePath": "tables/locations.json",
+    "savePath": "models/locations",
+    "isModel": true,
+    "modelKey": "locations"
+  },
+  {
+    "filePath": "tables/nFTTypes.json",
+    "savePath": "models/nFTTypes",
+    "isModel": true,
+    "modelKey": "nFTTypes"
+  },
+  {
+    "filePath": "tables/organisationTypes.json",
+    "savePath": "models/organisationTypes",
+    "isModel": true,
+    "modelKey": "organisationTypes"
+  },
+  {
+    "filePath": "tables/pages.json",
+    "savePath": "models/pages",
+    "isModel": true,
+    "modelKey": "pages"
+  },
+  {
+    "filePath": "tables/paymentMethod.json",
+    "savePath": "models/paymentMethod",
+    "isModel": true,
+    "modelKey": "paymentMethod"
+  },
+  {
+    "filePath": "tables/roles.json",
+    "savePath": "models/roles",
+    "isModel": true,
+    "modelKey": "roles"
+  },
+  {
+    "filePath": "tables/stateProvince.json",
+    "savePath": "models/stateProvince",
+    "isModel": true,
+    "modelKey": "stateProvince"
+  },
+  {
+    "filePath": "tables/treeInformation.json",
+    "savePath": "models/treeInformation",
+    "isModel": true,
+    "modelKey": "treeInformation"
+  },
+  {
+    "filePath": "tables/workflows.json",
+    "savePath": "models/workflows",
+    "isModel": true,
+    "modelKey": "workflows"
+  },
+  {
+    "filePath": "settings.json",
+    "savePath": "settings"
+  },
+  {
+    "filePath": "subPages/-Mx_2_VCOc__FGnUdqrq/-Mx_2usUurl5khXeNjdl.json",
+    "savePath": "subTabs/-Mx_2_VCOc__FGnUdqrq/-Mx_2usUurl5khXeNjdl"
+  },
+  {
+    "filePath": "subPages/-Mx_2_VCOc__FGnUdqrq/-Mx_3SXgBk5SECkRduDE.json",
+    "savePath": "subTabs/-Mx_2_VCOc__FGnUdqrq/-Mx_3SXgBk5SECkRduDE"
+  },
+  {
+    "filePath": "subPages/-Mx_2_VCOc__FGnUdqrq/-Mx_41fC3fbG4mJnI2Pj.json",
+    "savePath": "subTabs/-Mx_2_VCOc__FGnUdqrq/-Mx_41fC3fbG4mJnI2Pj"
+  },
+  {
+    "filePath": "subPages/-Mx_5BGnALCWCXiGI_Dm/-Mx_6HX9p6ioJWoofFIw.json",
+    "savePath": "subTabs/-Mx_5BGnALCWCXiGI_Dm/-Mx_6HX9p6ioJWoofFIw"
+  },
+  {
+    "filePath": "subPages/-Mx_5FLL2jlxjXYUMdIL/-MysZOod447ZdKXNCTey.json",
+    "savePath": "subTabs/-Mx_5FLL2jlxjXYUMdIL/-MysZOod447ZdKXNCTey"
+  },
+  {
+    "filePath": "subPages/-Mx_5FLL2jlxjXYUMdIL/-MyvUthgoLrT0z0HdIX9.json",
+    "savePath": "subTabs/-Mx_5FLL2jlxjXYUMdIL/-MyvUthgoLrT0z0HdIX9"
+  },
+  {
+    "filePath": "subPages/-Mx_5FLL2jlxjXYUMdIL/-Myvhn-hQMIUPkvnAyCQ.json",
+    "savePath": "subTabs/-Mx_5FLL2jlxjXYUMdIL/-Myvhn-hQMIUPkvnAyCQ"
+  },
+  {
+    "filePath": "subPages/-Mx_5FLL2jlxjXYUMdIL/-MyvhrGOZpHXGi82DJ4i.json",
+    "savePath": "subTabs/-Mx_5FLL2jlxjXYUMdIL/-MyvhrGOZpHXGi82DJ4i"
+  },
+  {
+    "filePath": "subPages/-Mx_5FLL2jlxjXYUMdIL/-N0ZsOs2dAbF9PTr_Hz0.json",
+    "savePath": "subTabs/-Mx_5FLL2jlxjXYUMdIL/-N0ZsOs2dAbF9PTr_Hz0"
+  },
+  {
+    "filePath": "pages/-Mx_2_VCOc__FGnUdqrq.json",
+    "savePath": "tabs/-Mx_2_VCOc__FGnUdqrq"
+  },
+  {
+    "filePath": "pages/-Mx_5BGnALCWCXiGI_Dm.json",
+    "savePath": "tabs/-Mx_5BGnALCWCXiGI_Dm"
+  },
+  {
+    "filePath": "pages/-Mx_5FLL2jlxjXYUMdIL.json",
+    "savePath": "tabs/-Mx_5FLL2jlxjXYUMdIL"
+  },
+  {
+    "filePath": "pages/-N-46yNIuPyCZOyD9XoT.json",
+    "savePath": "tabs/-N-46yNIuPyCZOyD9XoT"
+  },
+  {
+    "filePath": "pages/-N3z71e2MNBMTo2As59M.json",
+    "savePath": "tabs/-N3z71e2MNBMTo2As59M"
+  },
+  {
+    "filePath": "themeSettings.json",
+    "savePath": "themeSettings"
+  },
+  {
+    "filePath": "userWidgetsData/1x6sQdI2SWg2nEpoPSUPqg4Wvdb2.json",
+    "savePath": "userWidgetsData/1x6sQdI2SWg2nEpoPSUPqg4Wvdb2"
+  },
+  {
+    "filePath": "userWidgetsData/6GieEffPXOfpK6l8l1BruNR4JU62.json",
+    "savePath": "userWidgetsData/6GieEffPXOfpK6l8l1BruNR4JU62"
+  },
+  {
+    "filePath": "userWidgetsData/8gxDQ2MUSDMGEWXGQ7BUyO3S5Fw1.json",
+    "savePath": "userWidgetsData/8gxDQ2MUSDMGEWXGQ7BUyO3S5Fw1"
+  },
+  {
+    "filePath": "userWidgetsData/A17sh0eqjAgy0W0sLceZIIufQJc2.json",
+    "savePath": "userWidgetsData/A17sh0eqjAgy0W0sLceZIIufQJc2"
+  },
+  {
+    "filePath": "userWidgetsData/AEU5GU3xGDhGgTDm0bkl7J453mt1.json",
+    "savePath": "userWidgetsData/AEU5GU3xGDhGgTDm0bkl7J453mt1"
+  },
+  {
+    "filePath": "userWidgetsData/AtQWJSCeY5a0u7vsfjkqXx0qbK73.json",
+    "savePath": "userWidgetsData/AtQWJSCeY5a0u7vsfjkqXx0qbK73"
+  },
+  {
+    "filePath": "userWidgetsData/DbrdBLPBwkTUe0EwhQfMVgintn92.json",
+    "savePath": "userWidgetsData/DbrdBLPBwkTUe0EwhQfMVgintn92"
+  },
+  {
+    "filePath": "userWidgetsData/Hw0i4it4IOTnEfj4BlAeB5IeOA62.json",
+    "savePath": "userWidgetsData/Hw0i4it4IOTnEfj4BlAeB5IeOA62"
+  },
+  {
+    "filePath": "userWidgetsData/HxM93BrOMBbEhnFoE8ZDg2GC7zC2.json",
+    "savePath": "userWidgetsData/HxM93BrOMBbEhnFoE8ZDg2GC7zC2"
+  },
+  {
+    "filePath": "userWidgetsData/KPDGQN7ljFW22YciqqmH443AWzD2.json",
+    "savePath": "userWidgetsData/KPDGQN7ljFW22YciqqmH443AWzD2"
+  },
+  {
+    "filePath": "userWidgetsData/KyOeNIGivtXdqzbPw6K74Ve4Wfh2.json",
+    "savePath": "userWidgetsData/KyOeNIGivtXdqzbPw6K74Ve4Wfh2"
+  },
+  {
+    "filePath": "userWidgetsData/LOAyaO8vpqS0mt3SFbmmgXN99ct1.json",
+    "savePath": "userWidgetsData/LOAyaO8vpqS0mt3SFbmmgXN99ct1"
+  },
+  {
+    "filePath": "userWidgetsData/MTI2Og1pzfXtqQKJbBkzUZUnh3x1.json",
+    "savePath": "userWidgetsData/MTI2Og1pzfXtqQKJbBkzUZUnh3x1"
+  },
+  {
+    "filePath": "userWidgetsData/Q4z5QCS24efmUNkCS6gFSzwpUKD2.json",
+    "savePath": "userWidgetsData/Q4z5QCS24efmUNkCS6gFSzwpUKD2"
+  },
+  {
+    "filePath": "userWidgetsData/QhdBHXuPTgRBLSOZVUGqtr4bZaJ3.json",
+    "savePath": "userWidgetsData/QhdBHXuPTgRBLSOZVUGqtr4bZaJ3"
+  },
+  {
+    "filePath": "userWidgetsData/RnBWMTRT1zWzuFooOJWSnNraxi13.json",
+    "savePath": "userWidgetsData/RnBWMTRT1zWzuFooOJWSnNraxi13"
+  },
+  {
+    "filePath": "userWidgetsData/T8cgDb3WH1OnMDBgOmvCa6lBNtv1.json",
+    "savePath": "userWidgetsData/T8cgDb3WH1OnMDBgOmvCa6lBNtv1"
+  },
+  {
+    "filePath": "userWidgetsData/XDi2DHqtkaM3t9cdgi6xiF4nJW13.json",
+    "savePath": "userWidgetsData/XDi2DHqtkaM3t9cdgi6xiF4nJW13"
+  },
+  {
+    "filePath": "userWidgetsData/dYHq8tYtupOB8HyDP81sUzSSJC82.json",
+    "savePath": "userWidgetsData/dYHq8tYtupOB8HyDP81sUzSSJC82"
+  },
+  {
+    "filePath": "userWidgetsData/gnioIMbCuJRqaZktbmYN9DSkAmA2.json",
+    "savePath": "userWidgetsData/gnioIMbCuJRqaZktbmYN9DSkAmA2"
+  },
+  {
+    "filePath": "userWidgetsData/invknB4Yj8dIAM5AKrSyqQCiHgZ2.json",
+    "savePath": "userWidgetsData/invknB4Yj8dIAM5AKrSyqQCiHgZ2"
+  },
+  {
+    "filePath": "userWidgetsData/kQ0xtYykpBgJiMAK8JplUGNFPU42.json",
+    "savePath": "userWidgetsData/kQ0xtYykpBgJiMAK8JplUGNFPU42"
+  },
+  {
+    "filePath": "userWidgetsData/kwa7wLRw9pY4g6mrSYRl1490Bjp2.json",
+    "savePath": "userWidgetsData/kwa7wLRw9pY4g6mrSYRl1490Bjp2"
+  },
+  {
+    "filePath": "userWidgetsData/mvhT7sNTcEM5BdibKTLtmFZg6RE3.json",
+    "savePath": "userWidgetsData/mvhT7sNTcEM5BdibKTLtmFZg6RE3"
+  },
+  {
+    "filePath": "userWidgetsData/qHt9ozlgOoUqPUCgWAIaX81bzuA3.json",
+    "savePath": "userWidgetsData/qHt9ozlgOoUqPUCgWAIaX81bzuA3"
+  },
+  {
+    "filePath": "userWidgetsData/rC3Im0KZsschZQG0D6zOrPG3GiZ2.json",
+    "savePath": "userWidgetsData/rC3Im0KZsschZQG0D6zOrPG3GiZ2"
+  },
+  {
+    "filePath": "userWidgetsData/rZdbbJECIcZVK1EizX4NyAuWzKn1.json",
+    "savePath": "userWidgetsData/rZdbbJECIcZVK1EizX4NyAuWzKn1"
+  },
+  {
+    "filePath": "userWidgetsData/t1rFZdXtAtSZLSZpr6slr4buGV53.json",
+    "savePath": "userWidgetsData/t1rFZdXtAtSZLSZpr6slr4buGV53"
+  },
+  {
+    "filePath": "userWidgetsData/xuTSVRW20mS00HV0ANw51A2ts862.json",
+    "savePath": "userWidgetsData/xuTSVRW20mS00HV0ANw51A2ts862"
+  },
+  {
+    "filePath": "userWidgetsData/ze3W14fSQCYywWF6T9UolmjyoYs2.json",
+    "savePath": "userWidgetsData/ze3W14fSQCYywWF6T9UolmjyoYs2"
+  },
+  {
+    "filePath": "widgets/-MAKH7Sfxsy-ttTrhiy2/widget.json",
+    "savePath": "widgets/-MAKH7Sfxsy-ttTrhiy2"
+  },
+  {
+    "filePath": "widgets/-MHvdcUWqPOns7viJsBR/widget.json",
+    "savePath": "widgets/-MHvdcUWqPOns7viJsBR"
+  },
+  {
+    "filePath": "widgets/-MuQhDbjulusxEn633s3/widget.json",
+    "savePath": "widgets/-MuQhDbjulusxEn633s3"
+  },
+  {
+    "filePath": "widgets/-MuQhJCagTHJuZzWvt7E/widget.json",
+    "savePath": "widgets/-MuQhJCagTHJuZzWvt7E"
+  },
+  {
+    "filePath": "widgets/-MuQhQB735hVCgJ8raed/widget.json",
+    "savePath": "widgets/-MuQhQB735hVCgJ8raed"
+  },
+  {
+    "filePath": "widgets/-MuQhTzvg7mgc3K7Hxlu/widget.json",
+    "savePath": "widgets/-MuQhTzvg7mgc3K7Hxlu"
+  },
+  {
+    "filePath": "widgets/-MuQhZ34OBpeB0B2tUpi/widget.json",
+    "savePath": "widgets/-MuQhZ34OBpeB0B2tUpi"
+  },
+  {
+    "filePath": "widgets/-MuQh_KUxvqpwgkEGUgQ/widget.json",
+    "savePath": "widgets/-MuQh_KUxvqpwgkEGUgQ"
+  },
+  {
+    "filePath": "widgets/-MuQhbrM5nUtPG-tARgS/widget.json",
+    "savePath": "widgets/-MuQhbrM5nUtPG-tARgS"
+  },
+  {
+    "filePath": "widgets/-MuQhqSLvU0eFLRb1sV7/widget.json",
+    "savePath": "widgets/-MuQhqSLvU0eFLRb1sV7"
+  },
+  {
+    "filePath": "widgets/-MuQrSejP8H1GEQlTPW1/widget.json",
+    "savePath": "widgets/-MuQrSejP8H1GEQlTPW1"
+  },
+  {
+    "filePath": "widgets/-MuQtPZrAqTULaRcnEZf/widget.json",
+    "savePath": "widgets/-MuQtPZrAqTULaRcnEZf"
+  },
+  {
+    "filePath": "widgets/-MvZhb6HnjM6GSNXziVO/widget.json",
+    "savePath": "widgets/-MvZhb6HnjM6GSNXziVO"
+  },
+  {
+    "filePath": "widgets/-MvZhb6HnjM6GSNXziVO/detailTemplate.html",
+    "savePath": "widgets/-MvZhb6HnjM6GSNXziVO/detailTemplate"
+  },
+  {
+    "filePath": "widgets/-MvZhb6HnjM6GSNXziVO/template.html",
+    "savePath": "widgets/-MvZhb6HnjM6GSNXziVO/template"
+  },
+  {
+    "filePath": "widgets/-MvZsc5T4w5xgye7yAyx/widget.json",
+    "savePath": "widgets/-MvZsc5T4w5xgye7yAyx"
+  },
+  {
+    "filePath": "widgets/-MvZsc5T4w5xgye7yAyx/detailTemplate.html",
+    "savePath": "widgets/-MvZsc5T4w5xgye7yAyx/detailTemplate"
+  },
+  {
+    "filePath": "widgets/-MvZsc5T4w5xgye7yAyx/template.html",
+    "savePath": "widgets/-MvZsc5T4w5xgye7yAyx/template"
+  },
+  {
+    "filePath": "widgets/-Mxd3KyhX2HFJSxI1Cp2/widget.json",
+    "savePath": "widgets/-Mxd3KyhX2HFJSxI1Cp2"
+  },
+  {
+    "filePath": "widgets/-Mxd3KyhX2HFJSxI1Cp2/detailTemplate.html",
+    "savePath": "widgets/-Mxd3KyhX2HFJSxI1Cp2/detailTemplate"
+  },
+  {
+    "filePath": "widgets/-Mxd3KyhX2HFJSxI1Cp2/template.html",
+    "savePath": "widgets/-Mxd3KyhX2HFJSxI1Cp2/template"
+  },
+  {
+    "filePath": "widgets/-Mxd8zVCHRt-FQuL-BEW/widget.json",
+    "savePath": "widgets/-Mxd8zVCHRt-FQuL-BEW"
+  },
+  {
+    "filePath": "widgets/-Mxd8zVCHRt-FQuL-BEW/detailTemplate.html",
+    "savePath": "widgets/-Mxd8zVCHRt-FQuL-BEW/detailTemplate"
+  },
+  {
+    "filePath": "widgets/-Mxd8zVCHRt-FQuL-BEW/template.html",
+    "savePath": "widgets/-Mxd8zVCHRt-FQuL-BEW/template"
+  },
+  {
+    "filePath": "widgets/-Mxd9cDTxgc9V1C8CUmD/widget.json",
+    "savePath": "widgets/-Mxd9cDTxgc9V1C8CUmD"
+  },
+  {
+    "filePath": "widgets/-Mxd9cDTxgc9V1C8CUmD/detailTemplate.html",
+    "savePath": "widgets/-Mxd9cDTxgc9V1C8CUmD/detailTemplate"
+  },
+  {
+    "filePath": "widgets/-Mxd9cDTxgc9V1C8CUmD/template.html",
+    "savePath": "widgets/-Mxd9cDTxgc9V1C8CUmD/template"
+  },
+  {
+    "filePath": "widgets/-MylF3FHl94UxX_teQ3u/widget.json",
+    "savePath": "widgets/-MylF3FHl94UxX_teQ3u"
+  },
+  {
+    "filePath": "widgets/-MylF3FHl94UxX_teQ3u/detailTemplate.html",
+    "savePath": "widgets/-MylF3FHl94UxX_teQ3u/detailTemplate"
+  },
+  {
+    "filePath": "widgets/-MylF3FHl94UxX_teQ3u/template.html",
+    "savePath": "widgets/-MylF3FHl94UxX_teQ3u/template"
+  },
+  {
+    "filePath": "widgets/-MyqsWcDE6UQ_ZSBTfKa/widget.json",
+    "savePath": "widgets/-MyqsWcDE6UQ_ZSBTfKa"
+  },
+  {
+    "filePath": "widgets/-MyqsWcDE6UQ_ZSBTfKa/detailTemplate.html",
+    "savePath": "widgets/-MyqsWcDE6UQ_ZSBTfKa/detailTemplate"
+  },
+  {
+    "filePath": "widgets/-MyqsWcDE6UQ_ZSBTfKa/template.html",
+    "savePath": "widgets/-MyqsWcDE6UQ_ZSBTfKa/template"
+  },
+  {
+    "filePath": "widgets/-MyrT9OPDWM2mrQeGEcI/widget.json",
+    "savePath": "widgets/-MyrT9OPDWM2mrQeGEcI"
+  },
+  {
+    "filePath": "widgets/-MyrT9OPDWM2mrQeGEcI/detailTemplate.html",
+    "savePath": "widgets/-MyrT9OPDWM2mrQeGEcI/detailTemplate"
+  },
+  {
+    "filePath": "widgets/-MyrT9OPDWM2mrQeGEcI/template.html",
+    "savePath": "widgets/-MyrT9OPDWM2mrQeGEcI/template"
+  },
+  {
+    "filePath": "widgets/-MyrTWJWNSTnXmhxtJsb/widget.json",
+    "savePath": "widgets/-MyrTWJWNSTnXmhxtJsb"
+  },
+  {
+    "filePath": "widgets/-MyrTWJWNSTnXmhxtJsb/detailTemplate.html",
+    "savePath": "widgets/-MyrTWJWNSTnXmhxtJsb/detailTemplate"
+  },
+  {
+    "filePath": "widgets/-MyrTWJWNSTnXmhxtJsb/template.html",
+    "savePath": "widgets/-MyrTWJWNSTnXmhxtJsb/template"
+  },
+  {
+    "filePath": "widgets/-Mys1q3cG3Oor3OV5hgp/widget.json",
+    "savePath": "widgets/-Mys1q3cG3Oor3OV5hgp"
+  },
+  {
+    "filePath": "widgets/-Mys1q3cG3Oor3OV5hgp/detailTemplate.html",
+    "savePath": "widgets/-Mys1q3cG3Oor3OV5hgp/detailTemplate"
+  },
+  {
+    "filePath": "widgets/-Mys1q3cG3Oor3OV5hgp/template.html",
+    "savePath": "widgets/-Mys1q3cG3Oor3OV5hgp/template"
+  },
+  {
+    "filePath": "widgets/-Mys1uj5ByGzzqaiM90b/widget.json",
+    "savePath": "widgets/-Mys1uj5ByGzzqaiM90b"
+  },
+  {
+    "filePath": "widgets/-Mys1uj5ByGzzqaiM90b/detailTemplate.html",
+    "savePath": "widgets/-Mys1uj5ByGzzqaiM90b/detailTemplate"
+  },
+  {
+    "filePath": "widgets/-Mys1uj5ByGzzqaiM90b/template.html",
+    "savePath": "widgets/-Mys1uj5ByGzzqaiM90b/template"
+  },
+  {
+    "filePath": "widgets/-Mys2FUNRQO5GkWvLTUF/widget.json",
+    "savePath": "widgets/-Mys2FUNRQO5GkWvLTUF"
+  },
+  {
+    "filePath": "widgets/-Mys2FUNRQO5GkWvLTUF/detailTemplate.html",
+    "savePath": "widgets/-Mys2FUNRQO5GkWvLTUF/detailTemplate"
+  },
+  {
+    "filePath": "widgets/-Mys2FUNRQO5GkWvLTUF/template.html",
+    "savePath": "widgets/-Mys2FUNRQO5GkWvLTUF/template"
+  },
+  {
+    "filePath": "widgets/-Mys2sHKnmNaTiblssVm/widget.json",
+    "savePath": "widgets/-Mys2sHKnmNaTiblssVm"
+  },
+  {
+    "filePath": "widgets/-Mys2sHKnmNaTiblssVm/detailTemplate.html",
+    "savePath": "widgets/-Mys2sHKnmNaTiblssVm/detailTemplate"
+  },
+  {
+    "filePath": "widgets/-Mys2sHKnmNaTiblssVm/template.html",
+    "savePath": "widgets/-Mys2sHKnmNaTiblssVm/template"
+  },
+  {
+    "filePath": "widgets/-MzEuEBlalYCr8qzVx2m/widget.json",
+    "savePath": "widgets/-MzEuEBlalYCr8qzVx2m"
+  },
+  {
+    "filePath": "widgets/-MzEuEBlalYCr8qzVx2m/detailTemplate.html",
+    "savePath": "widgets/-MzEuEBlalYCr8qzVx2m/detailTemplate"
+  },
+  {
+    "filePath": "widgets/-MzEuEBlalYCr8qzVx2m/template.html",
+    "savePath": "widgets/-MzEuEBlalYCr8qzVx2m/template"
+  },
+  {
+    "filePath": "widgets/-MzPFv403aHCywlv6uEK/widget.json",
+    "savePath": "widgets/-MzPFv403aHCywlv6uEK"
+  },
+  {
+    "filePath": "widgets/-MzPKRiajVPGkMmejW4x/widget.json",
+    "savePath": "widgets/-MzPKRiajVPGkMmejW4x"
+  },
+  {
+    "filePath": "widgets/-Mzz7Jc7T4wd_hkU2JZB/widget.json",
+    "savePath": "widgets/-Mzz7Jc7T4wd_hkU2JZB"
+  },
+  {
+    "filePath": "widgets/-Mzz7Jc7T4wd_hkU2JZB/detailTemplate.html",
+    "savePath": "widgets/-Mzz7Jc7T4wd_hkU2JZB/detailTemplate"
+  },
+  {
+    "filePath": "widgets/-Mzz7Jc7T4wd_hkU2JZB/template.html",
+    "savePath": "widgets/-Mzz7Jc7T4wd_hkU2JZB/template"
+  },
+  {
+    "filePath": "widgets/-Mzz7YWP1ffylSbYW1YL/widget.json",
+    "savePath": "widgets/-Mzz7YWP1ffylSbYW1YL"
+  },
+  {
+    "filePath": "widgets/-Mzz7YWP1ffylSbYW1YL/detailTemplate.html",
+    "savePath": "widgets/-Mzz7YWP1ffylSbYW1YL/detailTemplate"
+  },
+  {
+    "filePath": "widgets/-Mzz7YWP1ffylSbYW1YL/template.html",
+    "savePath": "widgets/-Mzz7YWP1ffylSbYW1YL/template"
+  },
+  {
+    "filePath": "widgets/-N-46yPlzklr4mGQHXwq/widget.json",
+    "savePath": "widgets/-N-46yPlzklr4mGQHXwq"
+  },
+  {
+    "filePath": "widgets/-N-46yPlzklr4mGQHXwq/template.html",
+    "savePath": "widgets/-N-46yPlzklr4mGQHXwq/template"
+  },
+  {
+    "filePath": "widgets/-N1In6hkn1KcwYXyKwpU/widget.json",
+    "savePath": "widgets/-N1In6hkn1KcwYXyKwpU"
+  },
+  {
+    "filePath": "widgets/-N1InQO3WdghRaBZ0Ydc/widget.json",
+    "savePath": "widgets/-N1InQO3WdghRaBZ0Ydc"
+  },
+  {
+    "filePath": "widgets/-N1InQO3WdghRaBZ0Ydc/template.html",
+    "savePath": "widgets/-N1InQO3WdghRaBZ0Ydc/template"
+  },
+  {
+    "filePath": "widgets/-N1IoEKCq9Ppu0YYDu43/widget.json",
+    "savePath": "widgets/-N1IoEKCq9Ppu0YYDu43"
+  },
+  {
+    "filePath": "widgets/-N1IoEKCq9Ppu0YYDu43/template.html",
+    "savePath": "widgets/-N1IoEKCq9Ppu0YYDu43/template"
+  },
+  {
+    "filePath": "widgets/-N1IpK7lC7RIuzgJa1v_/widget.json",
+    "savePath": "widgets/-N1IpK7lC7RIuzgJa1v_"
+  },
+  {
+    "filePath": "widgets/-N1IpK7lC7RIuzgJa1v_/template.html",
+    "savePath": "widgets/-N1IpK7lC7RIuzgJa1v_/template"
+  },
+  {
+    "filePath": "widgets/-N1IpXSQdojOjnVCezd3/widget.json",
+    "savePath": "widgets/-N1IpXSQdojOjnVCezd3"
+  },
+  {
+    "filePath": "widgets/-N1IpXSQdojOjnVCezd3/template.html",
+    "savePath": "widgets/-N1IpXSQdojOjnVCezd3/template"
+  },
+  {
+    "filePath": "widgets/-N2hJuXe8OuHEhTaYjv_/widget.json",
+    "savePath": "widgets/-N2hJuXe8OuHEhTaYjv_"
+  },
+  {
+    "filePath": "widgets/-N2hJuXe8OuHEhTaYjv_/template.html",
+    "savePath": "widgets/-N2hJuXe8OuHEhTaYjv_/template"
+  },
+  {
+    "filePath": "widgets/-N2lHTAf6XHgsGYtjxxF/widget.json",
+    "savePath": "widgets/-N2lHTAf6XHgsGYtjxxF"
+  },
+  {
+    "filePath": "widgets/-N2lHTAf6XHgsGYtjxxF/detailTemplate.html",
+    "savePath": "widgets/-N2lHTAf6XHgsGYtjxxF/detailTemplate"
+  },
+  {
+    "filePath": "widgets/-N2lHTAf6XHgsGYtjxxF/template.html",
+    "savePath": "widgets/-N2lHTAf6XHgsGYtjxxF/template"
+  },
+  {
+    "filePath": "widgets/-N2pCFxlb04P4guMWTo1/widget.json",
+    "savePath": "widgets/-N2pCFxlb04P4guMWTo1"
+  },
+  {
+    "filePath": "widgets/-N2pCFxlb04P4guMWTo1/template.html",
+    "savePath": "widgets/-N2pCFxlb04P4guMWTo1/template"
+  },
+  {
+    "filePath": "widgets/-N3z7ZTOBfIy6OGrF0sP/widget.json",
+    "savePath": "widgets/-N3z7ZTOBfIy6OGrF0sP"
+  },
+  {
+    "filePath": "widgets/-N3z7ZTOBfIy6OGrF0sP/template.html",
+    "savePath": "widgets/-N3z7ZTOBfIy6OGrF0sP/template"
+  },
+  {
+    "filePath": "widgetsComputed/CharityPortal_SetFilter.js",
+    "savePath": "widgetsComputed/CharityPortal_SetFilter"
+  },
+  {
+    "filePath": "widgetsComputed/CharityPortal_SpecificCharityAverageDonation.js",
+    "savePath": "widgetsComputed/CharityPortal_SpecificCharityAverageDonation"
+  },
+  {
+    "filePath": "widgetsComputed/CharityPortal_SpecificCharityCarbonSequestered.js",
+    "savePath": "widgetsComputed/CharityPortal_SpecificCharityCarbonSequestered"
+  },
+  {
+    "filePath": "widgetsComputed/CharityPortal_SpecificCharityTotalDonations.js",
+    "savePath": "widgetsComputed/CharityPortal_SpecificCharityTotalDonations"
+  },
+  {
+    "filePath": "widgetsComputed/CharityPortal_SpecificCharityTotalDonors.js",
+    "savePath": "widgetsComputed/CharityPortal_SpecificCharityTotalDonors"
+  },
+  {
+    "filePath": "widgetsComputed/CharityPortal_SpecificCharityTotalTreesPlanted.js",
+    "savePath": "widgetsComputed/CharityPortal_SpecificCharityTotalTreesPlanted"
+  },
+  {
+    "filePath": "widgetsComputed/DevTools_ChangeCurrentCharityProfile.js",
+    "savePath": "widgetsComputed/DevTools_ChangeCurrentCharityProfile"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_CheckRampActive.js",
+    "savePath": "widgetsComputed/DonorPortal_CheckRampActive"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_CloseConnectWalletModal.js",
+    "savePath": "widgetsComputed/DonorPortal_CloseConnectWalletModal"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_CompleteProfile.js",
+    "savePath": "widgetsComputed/DonorPortal_CompleteProfile"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_ConnectWallet.js",
+    "savePath": "widgetsComputed/DonorPortal_ConnectWallet"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_CreateDonationRow.js",
+    "savePath": "widgetsComputed/DonorPortal_CreateDonationRow"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_CreateWallet.js",
+    "savePath": "widgetsComputed/DonorPortal_CreateWallet"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_DisableRamp.js",
+    "savePath": "widgetsComputed/DonorPortal_DisableRamp"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_DisconnectWallet.js",
+    "savePath": "widgetsComputed/DonorPortal_DisconnectWallet"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_DisplayETHBalance.js",
+    "savePath": "widgetsComputed/DonorPortal_DisplayETHBalance"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_DisplayUSDCBalance.js",
+    "savePath": "widgetsComputed/DonorPortal_DisplayUSDCBalance"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_DisplayUSDTBalance.js",
+    "savePath": "widgetsComputed/DonorPortal_DisplayUSDTBalance"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_Donate.js",
+    "savePath": "widgetsComputed/DonorPortal_Donate"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_GetAllDonationRows.js",
+    "savePath": "widgetsComputed/DonorPortal_GetAllDonationRows"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_GetAllPublicCharityProjects.js",
+    "savePath": "widgetsComputed/DonorPortal_GetAllPublicCharityProjects"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_GetApprovedCharities.js",
+    "savePath": "widgetsComputed/DonorPortal_GetApprovedCharities"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_GetApprovedCharityProjects.js",
+    "savePath": "widgetsComputed/DonorPortal_GetApprovedCharityProjects"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_GetCurrencies.js",
+    "savePath": "widgetsComputed/DonorPortal_GetCurrencies"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_GetCurrentUser.js",
+    "savePath": "widgetsComputed/DonorPortal_GetCurrentUser"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_GetCurrentUserComparisonCurrency.js",
+    "savePath": "widgetsComputed/DonorPortal_GetCurrentUserComparisonCurrency"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_GetCurrentUserDonationRows.js",
+    "savePath": "widgetsComputed/DonorPortal_GetCurrentUserDonationRows"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_GetCurrentUserDonationsCount.js",
+    "savePath": "widgetsComputed/DonorPortal_GetCurrentUserDonationsCount"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_GetCurrentUserJoinedDate.js",
+    "savePath": "widgetsComputed/DonorPortal_GetCurrentUserJoinedDate"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_GetCurrentUserNames.js",
+    "savePath": "widgetsComputed/DonorPortal_GetCurrentUserNames"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_GetCurrentUserProfileComplete.js",
+    "savePath": "widgetsComputed/DonorPortal_GetCurrentUserProfileComplete"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_GetCurrentUserProfileLocation.js",
+    "savePath": "widgetsComputed/DonorPortal_GetCurrentUserProfileLocation"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_GetCurrentUserProfilePicture.js",
+    "savePath": "widgetsComputed/DonorPortal_GetCurrentUserProfilePicture"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_GetCurrentUserRowKey.js",
+    "savePath": "widgetsComputed/DonorPortal_GetCurrentUserRowKey"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_GetCurrentUserTotalCarbonSequestration.js",
+    "savePath": "widgetsComputed/DonorPortal_GetCurrentUserTotalCarbonSequestration"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_GetCurrentUserTotalDonationsAmount.js",
+    "savePath": "widgetsComputed/DonorPortal_GetCurrentUserTotalDonationsAmount"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_GetCurrentUserTotalDonationsProjectsLocations.js",
+    "savePath": "widgetsComputed/DonorPortal_GetCurrentUserTotalDonationsProjectsLocations"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_GetCurrentUserTotalTreesPlanted.js",
+    "savePath": "widgetsComputed/DonorPortal_GetCurrentUserTotalTreesPlanted"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_GetCurrentUserWalletAddress.js",
+    "savePath": "widgetsComputed/DonorPortal_GetCurrentUserWalletAddress"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_GetCurrentUserWalletBalance.js",
+    "savePath": "widgetsComputed/DonorPortal_GetCurrentUserWalletBalance"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_GetCurrentUserWalletProvider.js",
+    "savePath": "widgetsComputed/DonorPortal_GetCurrentUserWalletProvider"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_GetDateTime.js",
+    "savePath": "widgetsComputed/DonorPortal_GetDateTime"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_GetLocations.js",
+    "savePath": "widgetsComputed/DonorPortal_GetLocations"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_GetPaymentMethods.js",
+    "savePath": "widgetsComputed/DonorPortal_GetPaymentMethods"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_GetProjectDonationRows.js",
+    "savePath": "widgetsComputed/DonorPortal_GetProjectDonationRows"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_GetProjectTotalTreesPlanted.js",
+    "savePath": "widgetsComputed/DonorPortal_GetProjectTotalTreesPlanted"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_GetSpecificCharity.js",
+    "savePath": "widgetsComputed/DonorPortal_GetSpecificCharity"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_GetSpecificDonation.js",
+    "savePath": "widgetsComputed/DonorPortal_GetSpecificDonation"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_GetSpecificProject.js",
+    "savePath": "widgetsComputed/DonorPortal_GetSpecificProject"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_GetWalletBalance.js",
+    "savePath": "widgetsComputed/DonorPortal_GetWalletBalance"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_HideTorusButton.js",
+    "savePath": "widgetsComputed/DonorPortal_HideTorusButton"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_LoadRamp.js",
+    "savePath": "widgetsComputed/DonorPortal_LoadRamp"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_RedirectToDonatePage.js",
+    "savePath": "widgetsComputed/DonorPortal_RedirectToDonatePage"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_SearchAllProjects.js",
+    "savePath": "widgetsComputed/DonorPortal_SearchAllProjects"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_SelectedCharityAndProject.js",
+    "savePath": "widgetsComputed/DonorPortal_SelectedCharityAndProject"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_SelectedDonation.js",
+    "savePath": "widgetsComputed/DonorPortal_SelectedDonation"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_TopUpWallet.js",
+    "savePath": "widgetsComputed/DonorPortal_TopUpWallet"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_TriggerNFTModal.js",
+    "savePath": "widgetsComputed/DonorPortal_TriggerNFTModal"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_TriggerProjectModal.js",
+    "savePath": "widgetsComputed/DonorPortal_TriggerProjectModal"
+  },
+  {
+    "filePath": "widgetsComputed/Global_GetJSONfromSmartContract.js",
+    "savePath": "widgetsComputed/Global_GetJSONfromSmartContract"
+  },
+  {
+    "filePath": "widgetsComputed/Global_GetUserRoles.js",
+    "savePath": "widgetsComputed/Global_GetUserRoles"
+  },
+  {
+    "filePath": "widgetsComputed/Global_ScrollToElement.js",
+    "savePath": "widgetsComputed/Global_ScrollToElement"
+  },
+  {
+    "filePath": "widgetsData/dataGrid/capturedDonationData.json",
+    "savePath": "widgetsData/dataGrid/capturedDonationData",
+    "conversion": "dataGrid"
+  },
+  {
+    "filePath": "widgetsData/dataGrid/charities.json",
+    "savePath": "widgetsData/dataGrid/charities",
+    "conversion": "dataGrid"
+  },
+  {
+    "filePath": "widgetsData/dataGrid/charityCategory.json",
+    "savePath": "widgetsData/dataGrid/charityCategory",
+    "conversion": "dataGrid"
+  },
+  {
+    "filePath": "widgetsData/dataGrid/charityProjects.json",
+    "savePath": "widgetsData/dataGrid/charityProjects",
+    "conversion": "dataGrid"
+  },
+  {
+    "filePath": "widgetsData/dataGrid/coreSettings.json",
+    "savePath": "widgetsData/dataGrid/coreSettings",
+    "conversion": "dataGrid"
+  },
+  {
+    "filePath": "widgetsData/dataGrid/currencies.json",
+    "savePath": "widgetsData/dataGrid/currencies",
+    "conversion": "dataGrid"
+  },
+  {
+    "filePath": "widgetsData/dataGrid/extensions.json",
+    "savePath": "widgetsData/dataGrid/extensions",
+    "conversion": "dataGrid"
+  },
+  {
+    "filePath": "widgetsData/dataGrid/keyImpactAreas.json",
+    "savePath": "widgetsData/dataGrid/keyImpactAreas",
+    "conversion": "dataGrid"
+  },
+  {
+    "filePath": "widgetsData/dataGrid/locations.json",
+    "savePath": "widgetsData/dataGrid/locations",
+    "conversion": "dataGrid"
+  },
+  {
+    "filePath": "widgetsData/dataGrid/nFTTypes.json",
+    "savePath": "widgetsData/dataGrid/nFTTypes",
+    "conversion": "dataGrid"
+  },
+  {
+    "filePath": "widgetsData/dataGrid/organisationTypes.json",
+    "savePath": "widgetsData/dataGrid/organisationTypes",
+    "conversion": "dataGrid"
+  },
+  {
+    "filePath": "widgetsData/dataGrid/paymentMethod.json",
+    "savePath": "widgetsData/dataGrid/paymentMethod",
+    "conversion": "dataGrid"
+  },
+  {
+    "filePath": "widgetsData/dataGrid/roles.json",
+    "savePath": "widgetsData/dataGrid/roles",
+    "conversion": "dataGrid"
+  },
+  {
+    "filePath": "widgetsData/dataGrid/stateProvince.json",
+    "savePath": "widgetsData/dataGrid/stateProvince",
+    "conversion": "dataGrid"
+  },
+  {
+    "filePath": "widgetsData/dataGrid/treeInformation.json",
+    "savePath": "widgetsData/dataGrid/treeInformation",
+    "conversion": "dataGrid"
+  },
+  {
+    "filePath": "widgetsData/dataGrid/users.json",
+    "savePath": "widgetsData/dataGrid/users",
+    "conversion": "dataGrid"
+  },
+  {
+    "filePath": "widgetsData/dataGrid/workflowFunctions.json",
+    "savePath": "widgetsData/dataGrid/workflowFunctions",
+    "conversion": "dataGrid"
+  },
+  {
+    "filePath": "widgetsData/dataGrid/workflows.json",
+    "savePath": "widgetsData/dataGrid/workflows",
+    "conversion": "dataGrid"
+  },
+  {
+    "filePath": "widgetsData/tChart/-MvZhcSw4bnHC6FLS06r.json",
+    "savePath": "widgetsData/tChart/-MvZhcSw4bnHC6FLS06r"
+  },
+  {
+    "filePath": "widgetsData/tChart/-MvZsdlXAnEtX7jG9Z4V.json",
+    "savePath": "widgetsData/tChart/-MvZsdlXAnEtX7jG9Z4V"
+  },
+  {
+    "filePath": "widgetsData/tChart/-MylF70utqTmu5zOhccE.json",
+    "savePath": "widgetsData/tChart/-MylF70utqTmu5zOhccE"
+  },
+  {
+    "filePath": "widgetsData/tChart/-MyrTC6FN0NtU5OiWaIk.json",
+    "savePath": "widgetsData/tChart/-MyrTC6FN0NtU5OiWaIk"
+  },
+  {
+    "filePath": "workflow/scriptTasks/DonorPortal_ProfileCompletion/Send Confirmation Email (node1650454838370).js",
+    "savePath": "workflow/-N05ktsmJ1-FlKZtHjLi",
+    "isWorkflowScriptTask": true,
+    "workflowId": "-N05ktsmJ1-FlKZtHjLi",
+    "workflowFile": "workflow/DonorPortal_ProfileCompletion (-N05ktsmJ1-FlKZtHjLi).json",
+    "nodeId": "node1650454838370"
+  },
+  {
+    "filePath": "workflow/scriptTasks/DonorPortal_ProfileCompletion/Script Task (node1654280848680).js",
+    "savePath": "workflow/-N05ktsmJ1-FlKZtHjLi",
+    "isWorkflowScriptTask": true,
+    "workflowId": "-N05ktsmJ1-FlKZtHjLi",
+    "workflowFile": "workflow/DonorPortal_ProfileCompletion (-N05ktsmJ1-FlKZtHjLi).json",
+    "nodeId": "node1654280848680"
+  },
+  {
+    "filePath": "workflow/DonorPortal_ProfileCompletion (-N05ktsmJ1-FlKZtHjLi).json",
+    "savePath": "workflow/-N05ktsmJ1-FlKZtHjLi",
+    "conversion": "workflow"
+  },
+  {
+    "filePath": "workflow/scriptTasks/DonorPortal_DonationConfirmation/Send Donation Confirmation (node1651074907986).js",
+    "savePath": "workflow/-N06gd4TLRQ8JzUPY059",
+    "isWorkflowScriptTask": true,
+    "workflowId": "-N06gd4TLRQ8JzUPY059",
+    "workflowFile": "workflow/DonorPortal_DonationConfirmation (-N06gd4TLRQ8JzUPY059).json",
+    "nodeId": "node1651074907986"
+  },
+  {
+    "filePath": "workflow/DonorPortal_DonationConfirmation (-N06gd4TLRQ8JzUPY059).json",
+    "savePath": "workflow/-N06gd4TLRQ8JzUPY059",
+    "conversion": "workflow"
+  }
+]

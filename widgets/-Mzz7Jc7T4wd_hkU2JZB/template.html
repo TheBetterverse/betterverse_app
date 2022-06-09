@@ -1,0 +1,11 @@
+<div class="ProjectImageContainer">
+  <img v-if="row.projectImage" :src="row.projectImage.url" style="max-width: 200px;" loading="lazy" />
+</div>
+
+<h3 v-if="row.projectName">{{row.projectName}}</h2>
+
+  <h3 v-if="row.charity">{{row.$charity$display}}</h3>
+
+  <br>
+  <!--DonorPortal_RedirectToDonatePage();-->
+  <b-button @click="DonorPortal_SelectedCharityAndProject(row.$charity.rowKey, row.$charity.charityName, row.rowKey, row.projectName); DonorPortal_TriggerProjectModal('display'); ">Donate</b-button>

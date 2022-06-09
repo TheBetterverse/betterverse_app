@@ -1,0 +1,21 @@
+{
+  "autoHeight": true,
+  "classes": "",
+  "dependency": "dataGrid/charityCategory",
+  "gsOptions": {
+    "h": 9,
+    "w": 24,
+    "x": 0,
+    "y": 75
+  },
+  "layout": "b-card",
+  "overflow": "height: auto",
+  "props": {
+    "gridId": "charityCategory"
+  },
+  "styles": "",
+  "subtab": "-Mx_3SXgBk5SECkRduDE",
+  "tab": "-Mx_2_VCOc__FGnUdqrq",
+  "title": "",
+  "type": "DataGrid"
+}
