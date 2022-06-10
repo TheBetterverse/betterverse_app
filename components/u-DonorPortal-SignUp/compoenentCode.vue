@@ -238,7 +238,7 @@ module.exports = {
       isInputtingEmail: false,
       isInputtingPassword: false,
       emailErrors: [],
-      passwordErrors: [],
+      passwordErrors: []
     }
   },
 
@@ -250,18 +250,27 @@ module.exports = {
   methods: {
     /* Events */
 
-    onSubmit(e) {
-      if (e.submitter.name === "continue-email-button") {
-        this.signUpEmail(e)
-      }
-      else if (e.submitter.name === "sign-up-google") {
-        this.signUpGoogle(e)
-      }
-      else if (e.submitter.name === "sign-up-facebook") {
-        this.signUpFacebook(e)
-      }
-      else if (e.submitter.name === "sign-up-discord") {
-        this.signUpDiscord(e)
+    async onSubmit(e) {
+      switch(e.submitter.name) {
+        case "continue-email-button": {
+          await this.signUpEmail(e)
+          break
+        }
+        
+        case "sign-up-google": {
+          await this.signUpEmail(e)
+          break
+        }
+
+        case "sign-up-facebook": {
+          await this.signUpFacebook(e)
+          break
+        }
+
+        case "sign-up-discord": {
+          await this.signUpDiscord(e)
+          break
+        }
       }
     },
 
@@ -334,7 +343,7 @@ module.exports = {
 
       if (!inputsAreValid) return
 
-      $setGlobalModel('signUpProcess', true)
+      // $setGlobalModel('signUpProcess', true)
 
       // $anonUserToPermanent('emailAndPassword', {
       //   email: this.email,
@@ -364,11 +373,11 @@ module.exports = {
         })
     },
 
-    signUpFacebook(e) {
+    async signUpFacebook(e) {
       throw "Sign up with facebook is not implemented"
     },
 
-    signUpDiscord(e) {
+    async signUpDiscord(e) {
       throw "Sign up with discord is not implemented"
     },
 
