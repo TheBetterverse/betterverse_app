@@ -45,7 +45,7 @@
           <input
             v-model="email"
             :disabled="$getGlobalModel('signUpProcess')"
-            @input="onInput"
+            @input="onEmailInput"
 
             type="text"
             id="email-input"
@@ -89,7 +89,7 @@
             v-model="password"
             :type="inputType"
             :disabled="$getGlobalModel('signUpProcess')"
-            @input="onInput"
+            @input="onPasswordInput"
           />
 
           <span @click="togglePasswordVisibility">
@@ -103,6 +103,7 @@
             <icon-checkmark
               :shown="isInputtingPassword"
               :isvalid="passwordIsValid"
+              :disabled="$getGlobalModel('signUpProcess')"
             />
           </span>
         </div>
@@ -191,6 +192,7 @@ async function emailIsRightFormat(subject) {
 }
 
 async function emailDontExist(subject) {
+  /* needs implementation */
   return true
 }
 
@@ -230,7 +232,6 @@ module.exports = {
     return {
       password: '',
       email: '',
-      confirmPass: '',
       inputType: 'password',
       emailIsValid: false,
       passwordIsValid: false,
@@ -238,16 +239,16 @@ module.exports = {
       isInputtingPassword: false,
       emailErrors: [],
       passwordErrors: [],
-      confirmPassErrors: []
     }
   },
 
   mounted() {
-    this.onInput = debounceInput(this.onInput)
+    this.onEmailInput = debounceInput(this.onEmailInput)
+    this.onPasswordInput = debounceInput(this.onPasswordInput)
   },
 
   methods: {
-    /* On events */
+    /* Events */
 
     onSubmit(e) {
       if (e.submitter.name === "continue-email-button") {
@@ -264,49 +265,45 @@ module.exports = {
       }
     },
 
-    async onInput(e) {
-      /* Email validation */
-      if (e.target.name === "email-input") {
-        if (this.email === '') {
-          this.isInputtingEmail = false
-          this.clearErrors(this.emailErrors)
-          return
-        }
-
-        this.isInputtingEmail = true
-        let {passed, errors} = await validateInput(this.email, emailValidators)
-
-        if (!passed) {
-          this.emailIsValid = false
-          this.displayErrors(this.emailErrors, errors)
-          return
-        }
-
-        this.emailIsValid = true
+    async onEmailInput() {
+      if (this.email === '') {
+        this.isInputtingEmail = false
         this.clearErrors(this.emailErrors)
+        return
       }
 
-      /* Password validation */
-      else if (e.target.name === "password-input") {
-        if (this.password === '') {
-          this.isInputtingPassword = false
-          this.clearErrors(this.passwordErrors)
-          return
-        }
+      this.isInputtingEmail = true
+      let {passed, errors} = await validateInput(this.email, emailValidators)
 
-        this.isInputtingPassword = true
-        let {passed, errors} = await validateInput(this.password, passwordValidators)
+      this.clearErrors(this.emailErrors)
 
-        if (!passed) {
-          this.passwordIsValid = false
-          this.displayErrors(this.passwordErrors, errors)
-          return
-        }
+      if (!passed) {
+        this.emailIsValid = false
+        this.displayErrors(this.emailErrors, errors)
+        return
+      }
 
-        this.passwordIsValid = true
+      this.emailIsValid = true
+    },
+
+    async onPasswordInput() {
+      if (this.password === '') {
+        this.isInputtingPassword = false
         this.clearErrors(this.passwordErrors)
+        return
       }
 
+      this.isInputtingPassword = true
+      let {passed, errors} = await validateInput(this.password, passwordValidators)
+
+      if (!passed) {
+        this.passwordIsValid = false
+        this.displayErrors(this.passwordErrors, errors)
+        return
+      }
+
+      this.passwordIsValid = true
+      this.clearErrors(this.passwordErrors)
     },
 
 
@@ -323,38 +320,34 @@ module.exports = {
 
       let inputsAreValid = isEmailValid && isPasswordValid
 
-      console.log(`email is valid: ${isEmailValid}\npassword is valid: ${isPasswordValid}`)
-
-      if (!inputsAreValid) {
-        if (!isEmailValid) {
-          this.emailIsValid = false
-          this.isInputtingEmail = true
-          this.displayErrors(this.emailErrors, emailErrors)
-        }
-
-        if (!isPasswordValid) {
-          this.passwordIsValid = false
-          this.isInputtingPassword = true
-          this.displayErrors(this.passwordErrors, passwordErrors)
-        }
-
-        return
+      if (!isEmailValid) {
+        this.emailIsValid = false
+        this.isInputtingEmail = true
+        this.displayErrors(this.emailErrors, emailErrors)
       }
+
+      if (!isPasswordValid) {
+        this.passwordIsValid = false
+        this.isInputtingPassword = true
+        this.displayErrors(this.passwordErrors, passwordErrors)
+      }
+
+      if (!inputsAreValid) return
 
       $setGlobalModel('signUpProcess', true)
 
-      $anonUserToPermanent('emailAndPassword', {
-        email: this.email,
-        password: this.password,
-      })
-      .then(() => {
-          $setCurrentTab('-Mx_5FLL2jlxjXYUMdIL')
-          $setGlobalModel('signUpProcess', false)
-      })
-      .catch(err => {
-          $setGlobalModel('signUpProcess', false)
-          console.error(err)
-      })
+      // $anonUserToPermanent('emailAndPassword', {
+      //   email: this.email,
+      //   password: this.password,
+      // })
+      //   .then(() => {
+      //       $setCurrentTab('-Mx_5FLL2jlxjXYUMdIL')
+      //       $setGlobalModel('signUpProcess', false)
+      //   })
+      //   .catch(err => {
+      //       $setGlobalModel('signUpProcess', false)
+      //       console.error(err)
+      //   })
     },
 
     async signUpGoogle(e) {
