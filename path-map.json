@@ -92,6 +92,14 @@
     "savePath": "components/-N492Ah-TzWgeb3nr7yX/code"
   },
   {
+    "filePath": "components/u-Components-Input/index.json",
+    "savePath": "components/-N4DJRFJPpGwUJU_yby6"
+  },
+  {
+    "filePath": "components/u-Components-Input/compoenentCode.vue",
+    "savePath": "components/-N4DJRFJPpGwUJU_yby6/code"
+  },
+  {
     "filePath": "customCode/css/Login/Register.css",
     "savePath": "customCode/css/-MvU35ut2ARCdHp1hjEF/code",
     "customCodeName": "Login/Register",
@@ -989,10 +997,6 @@
   {
     "filePath": "widgets/-N2pCFxlb04P4guMWTo1/widget.json",
     "savePath": "widgets/-N2pCFxlb04P4guMWTo1"
-  },
-  {
-    "filePath": "widgets/-N4A2Gj9KNRM4KCIUNQc/widget.json",
-    "savePath": "widgets/-N4A2Gj9KNRM4KCIUNQc"
   },
   {
     "filePath": "widgetsComputed/CharityPortal_SetFilter.js",
