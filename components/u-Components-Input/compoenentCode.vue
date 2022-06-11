@@ -22,8 +22,17 @@
       </span>
 
       <span>
-        <icon-checkmark class="icon" :shown="active" :isvalid="isvalid" />
+        <icon-checkmark
+          class="icon"
+          :shown="active"
+          :isvalid="errors.length === 0"
+        />
       </span>
+    </div>
+    <div v-if="active" class="error-div">
+      <small v-for="message in errors" class="error-message"
+        >{{ message }}<br
+      /></small>
     </div>
   </div>
 </template>
@@ -47,33 +56,45 @@ module.exports = {
       type: String,
       default: ''
     },
+
     type: {
       type: String,
       default: 'text'
     },
+
     name: {
       type: String,
       default: 'bv-input'
     },
+
     label: {
       type: String,
       default: ''
     },
+
     placeholder: {
       type: String,
       default: 'Input'
     },
+
     autocomplete: {
       type: String,
       default: 'no'
     },
+
     disabled: {
       type: Boolean,
       default: false
     },
-    isvalid: {
+
+    active: {
       type: Boolean,
-      default: true
+      default: false
+    },
+
+    errors: {
+      type: [String],
+      default: []
     }
   },
 
@@ -85,14 +106,24 @@ module.exports = {
   },
 
   created() {
-    this.handleInput = debounceInput(this.handleInput)
+    this.debouncedInput = debounceInput(this.debouncedInput)
   },
 
   methods: {
+    /* Events */
+
     async handleInput(e) {
-      this.$emit('input', this.value)
-      if (this.value === '') this.active = false
-      else this.active = true
+      await this.$emit('input', this.value)
+      await this.debouncedInput(e)
+      await this.throttledInput(e)
+    },
+
+    async debouncedInput(e) {
+      await this.$emit('debounced-input', this.value)
+    },
+
+    async throttledInput(e) {
+      await this.$emit('throttled-input', this.value)
     },
 
     /* View controllers */
@@ -139,6 +170,19 @@ label {
 .icon {
   height: 20px;
   width: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-div {
+  padding: 6px 0;
+  padding-bottom: 12px;
+}
+
+.error-message {
+  color: #e15564;
 }
 
 ::placeholder,

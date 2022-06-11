@@ -1251,6 +1251,10 @@
     "savePath": "widgetsComputed/Utilities_DebounceInput"
   },
   {
+    "filePath": "widgetsComputed/Utilities_Validate.js",
+    "savePath": "widgetsComputed/Utilities_Validate"
+  },
+  {
     "filePath": "widgetsData/dataGrid/capturedDonationData.json",
     "savePath": "widgetsData/dataGrid/capturedDonationData",
     "conversion": "dataGrid"

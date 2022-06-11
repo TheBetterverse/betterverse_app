@@ -37,17 +37,12 @@
         placeholder="Type e-mail address"
         v-model="email"
         :disabled="$getGlobalModel('signUpProcess')"
-        :isvalid="emailErrors.length === 0"
-        @input="handleInput"
+        :active="showEmailErrors"
+        :errors="emailErrors"
+        @debounced-input="handleInput"
       >
         <icon-mail />
       </bv-input>
-
-      <div class="error-div">
-        <small v-for="message in emailErrors" class="error-message"
-          >{{ message }}<br
-        /></small>
-      </div>
 
       <!-- Password Input -->
       <bv-input
@@ -57,17 +52,12 @@
         placeholder="Type password"
         v-model="password"
         :disabled="$getGlobalModel('signUpProcess')"
-        :isvalid="passwordErrors.length === 0"
-        @input="handleInput"
+        :errors="passwordErrors"
+        :active="showPasswordErrors"
+        @debounced-input="handleInput"
       >
         <icon-lock />
       </bv-input>
-
-      <div class="error-div">
-        <small v-for="message in passwordErrors" class="error-message"
-          >{{ message }}<br
-        /></small>
-      </div>
 
       <!-- Continue button -->
       <div class="button-wrapper d-flex justify-content-end">
@@ -88,6 +78,7 @@
 
       <hr />
 
+      <!-- Socials -->
       <div class="my-2">Or continue with</div>
       <div class="socials d-inline-flex w-100">
         <button-signup
@@ -112,6 +103,7 @@
         </button-signup>
       </div>
 
+      <!-- Footer for large displays -->
       <div class="mt-6 d-none d-lg-block">
         <small>Already have an account? <a href="#">Log in</a></small>
       </div>
@@ -120,13 +112,24 @@
 </template>
 
 <script>
-/* Validators */
+async function validate(subject, validators) {
+  let errors = []
 
-const emailRegex =
-  /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/
+  await validators.forEach(async validator => {
+    console.log(validator)
+    let [error, test] = Object.entries(validator)[0]
+    let result = await test(subject)
+
+    if (!result) errors.push(error)
+  })
+
+  return errors
+}
 
 async function emailIsRightFormat(subject) {
-  return emailRegex.test(subject)
+  return /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/.test(
+    subject
+  )
 }
 
 async function emailDontExist(subject) {
@@ -158,10 +161,14 @@ const passwordValidators = [
 // ---
 
 module.exports = {
+  created() {},
+
   data() {
     return {
       email: '',
       password: '',
+      showEmailErrors: false,
+      showPasswordErrors: false,
       emailErrors: [],
       passwordErrors: []
     }
@@ -171,16 +178,13 @@ module.exports = {
     /* Events */
 
     async handleInput(e) {
-      if (this.email === '') this.emailErrors = []
-      else
-        this.emailErrors = await this.validateInput(this.email, emailValidators)
+      await this.validateForm()
 
-      if (this.password === '') this.passwordErrors = []
-      else
-        this.passwordErrors = await this.validateInput(
-          this.password,
-          passwordValidators
-        )
+      if (this.email === '') this.showEmailErrors = false
+      else this.showEmailErrors = true
+
+      if (this.password === '') this.showPasswordErrors = false
+      else this.showPasswordErrors = true
     },
 
     async handleSubmit(e) {
@@ -188,21 +192,28 @@ module.exports = {
 
       switch (target) {
         case 'continue-email-button':
-          this.signUpEmail(e)
+          await this.signUpEmail(e)
+          break
+        case 'sign-up-google':
+          await this.signUpGoogle(e)
+          break
+        case 'sign-up-facebook':
+          await this.signUpFacebook(e)
+          break
+        case 'sign-up-discord':
+          await this.signUpDiscord(e)
+          break
       }
     },
 
     /* Sign Up Methods */
 
     async signUpEmail(e) {
-      this.emailErrors = await this.validateInput(this.email, emailValidators)
-      this.passwordErrors = await this.validateInput(
-        this.password,
-        passwordValidators
-      )
+      await this.validateForm()
 
       if (!this.inputsAreValid) {
-        console.error('INVALID INPUTS')
+        this.showEmailErrors = true
+        this.showPasswordErrors = true
         return
       }
     },
@@ -229,19 +240,9 @@ module.exports = {
       throw 'Sign up with discord is not implemented'
     },
 
-    /* Validate */
-
-    async validateInput(subject, validators) {
-      let errors = []
-
-      await validators.forEach(async validator => {
-        let [error, test] = Object.entries(validator)[0]
-        let result = await test(subject)
-
-        if (!result) errors.push(error)
-      })
-
-      return errors
+    async validateForm() {
+      this.emailErrors = await validate(this.email, emailValidators)
+      this.passwordErrors = await validate(this.password, passwordValidators)
     }
   },
 
@@ -263,10 +264,6 @@ module.exports = {
 </script>
 
 <style>
-.socials > button {
-  margin-right: 10px;
-}
-
 .container,
 .row,
 .col {
@@ -274,13 +271,8 @@ module.exports = {
   margin: 0;
 }
 
-.error-div {
-  padding: 6px 0;
-  padding-bottom: 12px;
-}
-
-.error-message {
-  color: #e15564;
+.socials > button {
+  margin-right: 10px;
 }
 
 #status-bar-clearance {
