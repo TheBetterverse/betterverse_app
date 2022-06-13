@@ -8,7 +8,7 @@
 
       <b-row class="mt-1 mb-5">
         <b-col class="d-flex align-items-center">
-          <icon-betterverse class="md-logo" />
+          <icon-betterverse width="32" heigth="32" />
         </b-col>
 
         <b-col class="text-right d-flex justify-content-end">
@@ -21,7 +21,7 @@
 
     <!-- Main Header -->
     <div class="my-2">Create Account</div>
-    <div class="my-3 mb-4">
+    <div class="my-3">
       <slot>
         <h1>Welcome to the <b>Betterverse</b></h1>
         <h2>
@@ -31,31 +31,33 @@
     </div>
 
     <form @submit.prevent="handleSubmit">
-      <!-- Email Input -->
-      <bv-input
-        label="Continue with email"
-        name="email-input"
-        type="text"
-        v-model="email"
-        placeholder="Type e-mail address"
-        :validators="emailValidators"
-        :disabled="$getGlobalModel('signUpProcess')"
-      >
-        <icon-mail />
-      </bv-input>
+      <div class="my-3">
+        <!-- Email Input -->
+        <bv-input
+          label="Continue with email"
+          name="email-input"
+          type="text"
+          v-model="form.email"
+          placeholder="Type e-mail address"
+          :validators="validators.email"
+          :disabled="$getGlobalModel('signUpProcess')"
+        >
+          <icon-mail />
+        </bv-input>
 
-      <!-- Password Input -->
-      <bv-input
-        label="Password"
-        name="password-input"
-        type="password"
-        placeholder="Type password"
-        v-model="password"
-        :validators="passwordValidators"
-        :disabled="$getGlobalModel('signUpProcess')"
-      >
-        <icon-lock />
-      </bv-input>
+        <!-- Password Input -->
+        <bv-input
+          label="Password"
+          name="password-input"
+          type="password"
+          placeholder="Type password"
+          v-model="form.password"
+          :validators="validators.password"
+          :disabled="$getGlobalModel('signUpProcess')"
+        >
+          <icon-lock />
+        </bv-input>
+      </div>
 
       <!-- Continue button -->
       <div
@@ -65,21 +67,11 @@
           <small>Forgot password?<br /><a href="#">Let's reset it!</a></small>
         </div>
 
-        <div>
-          <b-spinner v-if="$getGlobalModel('signUpProcess')" small></b-spinner>
-
-          <button
-            v-else
-            class="continue-email-button"
-            name="continue-email-button"
-            :disabled="$getGlobalModel('signUpProcess')"
-          >
-            <span> Continue with email </span>
-            <span id="continue-email-arrow">
-              <icon-leftarrow />
-            </span>
-          </button>
-        </div>
+        <button-continue
+          name="continue-email-button"
+          :disabled="$getGlobalModel('signUpProcess')"
+          >Continue with email</button-continue
+        >
       </div>
 
       <hr />
@@ -118,10 +110,11 @@
 </template>
 
 <script>
+const emailRegex =
+  /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/
+
 async function emailIsRightFormat(subject) {
-  return /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/.test(
-    subject
-  )
+  return emailRegex.test(subject)
 }
 
 async function emailNotRegistered(subject) {
@@ -138,15 +131,19 @@ function notEmptyString(subject) {
 module.exports = {
   data() {
     return {
-      email: {},
-      password: {},
-      emailValidators: {
-        "Field can't be empty": notEmptyString,
-        'Email format is invalid': emailIsRightFormat,
-        'Email is not registered': emailNotRegistered
+      form: {
+        email: {},
+        password: {}
       },
-      passwordValidators: {
-        "Field can't be empty": notEmptyString
+      validators: {
+        email: {
+          "Field can't be empty": notEmptyString,
+          'Email format is invalid': emailIsRightFormat,
+          'Email is not registered': emailNotRegistered
+        },
+        password: {
+          "Field can't be empty": notEmptyString
+        }
       }
     }
   },
@@ -159,52 +156,34 @@ module.exports = {
 
       switch (target) {
         case 'continue-email-button':
-          await this.signUpEmail(e)
+          await this.signInEmail(e)
           break
         case 'sign-up-google':
-          await this.signUpGoogle(e)
+          await this.signInGoogle(e)
           break
         case 'sign-up-facebook':
-          await this.signUpFacebook(e)
+          await this.signInFaceBook(e)
           break
         case 'sign-up-discord':
-          await this.signUpDiscord(e)
+          await this.signInDiscord(e)
           break
       }
     },
 
-    /* Sign Up Methods */
+    /* Sign In Methods */
 
-    async signUpEmail(e) {
-      let emailIsValid = this.email.valid
-      let passwordIsValid = this.password.valid
-      let inputsAreValid = emailIsValid && passwordIsValid
+    async signInEmail(e) {
+      this.showErrors()
 
-      if (!emailIsValid) {
-        this.email.active = true
-      }
-
-      if (!passwordIsValid) {
-        this.password.active = true
-      }
-
-      if (!inputsAreValid) {
-        console.log('> INPUTS ARE INVALID')
-        if (this.email.errors) console.log(...this.email.errors)
-        if (this.password.errors) console.log(...this.password.errors)
-
-        console.log('email', this.email)
-        console.log('password', this.password)
+      if (!this.inputsAreValid) {
+        console.error('> INPUTS ARE INVALID')
         return
       }
 
       console.log('> INPUTS ARE VALID')
-
-      console.log('email', this.email)
-      console.log('password', this.password)
     },
 
-    async signUpGoogle(e) {
+    async signInGoogle(e) {
       $setGlobalModel('signUpProcess', true)
 
       $anonUserToPermanent('google')
@@ -218,22 +197,41 @@ module.exports = {
         })
     },
 
-    async signUpFacebook(e) {
-      throw 'Sign up with facebook is not implemented'
+    async signInFaceBook(e) {
+      throw 'Sign in with facebook is not implemented'
     },
 
-    async signUpDiscord(e) {
-      throw 'Sign up with discord is not implemented'
+    async signInDiscord(e) {
+      throw 'Sign in with discord is not implemented'
+    },
+
+    /* View controller */
+
+    async showErrors() {
+      Object.values(this.form).forEach(field => (field.active = true))
+    }
+  },
+
+  computed: {
+    inputsAreValid() {
+      return Object.values(this.form).every(field => field.valid)
+    },
+
+    formContent() {
+      return Object.entries(this.form).reduce((prev, curr) => {
+        prev[curr[0]] = curr[1].content
+        return prev
+      }, {})
     }
   },
 
   components: {
-    BvInput: $getCustomComponent('u-Components-Input'),
     IconLock: $getCustomComponent('u-Icons-Lock'),
     IconMail: $getCustomComponent('u-Icons-Mail'),
-    IconLeftarrow: $getCustomComponent('u-Icons-Leftarrow'),
     IconBetterverse: $getCustomComponent('u-Icons-Betterverse'),
-    ButtonSignup: $getCustomComponent('u-Button-SignUp')
+    ButtonSignup: $getCustomComponent('u-Buttons-Pill'),
+    ButtonContinue: $getCustomComponent('u-Buttons-LeftArrow'),
+    BvInput: $getCustomComponent('u-Components-Input')
   }
 }
 </script>
@@ -246,29 +244,11 @@ module.exports = {
   margin: 0;
 }
 
-.socials > button {
+div.socials > button {
   margin-right: 10px;
 }
 
-.status-bar-clearance {
+div.status-bar-clearance {
   height: 44px;
-}
-
-.md-logo {
-  height: 32px;
-  width: 32px;
-}
-
-.continue-email-button {
-  color: white;
-  background: black;
-  height: 32px;
-  padding: 6px 8px 6px 12px;
-  gap: 4px;
-  border: 1px solid #000000;
-  border-radius: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 </style>

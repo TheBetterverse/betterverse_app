@@ -1,8 +1,8 @@
 <template>
   <div class="bv-input-wrapper">
-    <label class="bv-input-label" v-if="label !== ''" :for="name">{{
-      label
-    }}</label>
+    <label class="bv-input-label" v-if="label !== ''" :for="name">
+      {{ label }}
+    </label>
 
     <div class="bv-input-main">
       <span class="bv-input-icon" v-if="$slots.default">
@@ -10,7 +10,7 @@
       </span>
 
       <input
-        class="bv-input-input"
+        class="bv-input"
         :name="name"
         :placeholder="placeholder"
         :autocomplete="autocomplete"
@@ -22,9 +22,8 @@
         <icon-eye class="bv-input-icon" :shown="currentType !== 'password'" />
       </span>
 
-      <span>
+      <span class="bv-input-icon">
         <icon-checkmark
-          class="bv-input-icon"
           :shown="modelValue.active"
           :isvalid="modelValue.valid"
         />
@@ -36,8 +35,9 @@
         v-if="modelValue.active"
         v-for="message in modelValue.errors"
         class="bv-input-error-message"
-        >{{ message }}<br
-      /></small>
+      >
+        {{ message }} <br />
+      </small>
     </div>
   </div>
 </template>
@@ -134,7 +134,7 @@ module.exports = {
     }
   },
 
-  created() {
+  async created() {
     this.modelValue = {
       content: '',
       valid: false,
@@ -144,6 +144,9 @@ module.exports = {
 
     this.debouncedInput = debounceInput(this.debouncedInput)
     this.throttledInput = throttleInput(this.throttledInput)
+
+    await this.validate()
+    this.$emit('input', this.modelValue)
   },
 
   data() {
@@ -163,7 +166,7 @@ module.exports = {
       if (content === '') await this.update('active', false)
       else await this.update('active', true)
 
-      await this.validate(content, this.validators)
+      await this.validate()
       await this.$emit('debounced-input', content)
     },
 
@@ -176,12 +179,11 @@ module.exports = {
       await this.$emit('input', this.modelValue)
     },
 
-    async validate(subject, validators) {
+    async validate() {
       let errors = []
 
-      Object.entries(validators).forEach(async validator => {
-        let [error, test] = validator
-        let result = await test(subject)
+      Object.entries(this.validators).forEach(async ([error, test]) => {
+        let result = await test(this.modelValue.content)
 
         if (!result) errors.push(error)
       })
@@ -204,11 +206,7 @@ module.exports = {
 </script>
 
 <style>
-.bv-input-wrapper {
-  padding: 8px 0;
-}
-
-.bv-input-main {
+div.bv-input-main {
   height: 32px;
   border-bottom: 1px solid black;
 
@@ -217,11 +215,13 @@ module.exports = {
   justify-content: center;
 }
 
-.bv-input-label {
+label.bv-input-label {
+  padding: 0;
+  margin: 0;
   font-size: 12px;
 }
 
-.bv-input-input {
+input.bv-input {
   width: 100%;
   text-indent: 5px;
   border: none;
@@ -229,7 +229,7 @@ module.exports = {
   background: none;
 }
 
-.bv-input-icon {
+span.bv-input-icon {
   height: 20px;
   width: 20px;
 
@@ -238,12 +238,12 @@ module.exports = {
   justify-content: center;
 }
 
-.bv-input-errors {
+div.bv-input-errors {
   padding: 6px 0;
   padding-bottom: 12px;
 }
 
-.bv-input-error-message {
+small.bv-input-error-message {
   color: #e15564;
 }
 

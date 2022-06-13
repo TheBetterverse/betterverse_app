@@ -60,11 +60,11 @@
     "savePath": "components/-N47HfqN3fMqHpnd967q/code"
   },
   {
-    "filePath": "components/u-DonorPortal-SignUp/index.json",
+    "filePath": "components/u-DonorPortal-Register/index.json",
     "savePath": "components/-N47KJAgCjpSOJm394gH"
   },
   {
-    "filePath": "components/u-DonorPortal-SignUp/compoenentCode.vue",
+    "filePath": "components/u-DonorPortal-Register/compoenentCode.vue",
     "savePath": "components/-N47KJAgCjpSOJm394gH/code"
   },
   {
@@ -76,11 +76,11 @@
     "savePath": "components/-N47bicaStfBdRF8SawF/code"
   },
   {
-    "filePath": "components/u-Button-SignUp/index.json",
+    "filePath": "components/u-Buttons-Pill/index.json",
     "savePath": "components/-N492Ah-TzWgeb3nr7yX"
   },
   {
-    "filePath": "components/u-Button-SignUp/compoenentCode.vue",
+    "filePath": "components/u-Buttons-Pill/compoenentCode.vue",
     "savePath": "components/-N492Ah-TzWgeb3nr7yX/code"
   },
   {
@@ -100,19 +100,19 @@
     "savePath": "components/-N4IRB8Fv-XnMBZ4fqZx/code"
   },
   {
-    "filePath": "components/u-DonorPortal-PersonalInfo/index.json",
+    "filePath": "components/u-DonorPortal-Register-PersonalInfo/index.json",
     "savePath": "components/-N4PyVbAyhC60GfoHWzO"
   },
   {
-    "filePath": "components/u-DonorPortal-PersonalInfo/compoenentCode.vue",
+    "filePath": "components/u-DonorPortal-Register-PersonalInfo/compoenentCode.vue",
     "savePath": "components/-N4PyVbAyhC60GfoHWzO/code"
   },
   {
-    "filePath": "components/u-Components-ImageSelector/index.json",
+    "filePath": "components/u-Components-ProfilePicture/index.json",
     "savePath": "components/-N4Q2VOM4lA_-xtI28ry"
   },
   {
-    "filePath": "components/u-Components-ImageSelector/compoenentCode.vue",
+    "filePath": "components/u-Components-ProfilePicture/compoenentCode.vue",
     "savePath": "components/-N4Q2VOM4lA_-xtI28ry/code"
   },
   {
@@ -124,20 +124,36 @@
     "savePath": "components/-N4Q3XGR06BtxFbi99Kh/code"
   },
   {
-    "filePath": "components/u-Icons-ImageSelectorPlaceHolder/index.json",
+    "filePath": "components/u-Icons-NoProfilePicture/index.json",
     "savePath": "components/-N4Q47_mGgpLIU_ZSTjs"
   },
   {
-    "filePath": "components/u-Icons-ImageSelectorPlaceHolder/compoenentCode.vue",
+    "filePath": "components/u-Icons-NoProfilePicture/compoenentCode.vue",
     "savePath": "components/-N4Q47_mGgpLIU_ZSTjs/code"
   },
   {
-    "filePath": "components/u-Icons-ContinueButton/index.json",
+    "filePath": "components/u-Buttons-LeftArrow/index.json",
     "savePath": "components/-N4QFNZZxg_n6Yr6Msfb"
   },
   {
-    "filePath": "components/u-Icons-ContinueButton/compoenentCode.vue",
+    "filePath": "components/u-Buttons-LeftArrow/compoenentCode.vue",
     "savePath": "components/-N4QFNZZxg_n6Yr6Msfb/code"
+  },
+  {
+    "filePath": "components/u-Icons-Plus/index.json",
+    "savePath": "components/-N4TAJkqQ1eij0lhc1RD"
+  },
+  {
+    "filePath": "components/u-Icons-Plus/compoenentCode.vue",
+    "savePath": "components/-N4TAJkqQ1eij0lhc1RD/code"
+  },
+  {
+    "filePath": "components/u-Components-DropDown/index.json",
+    "savePath": "components/-N4TFZTfP-Tn5DzD98bO"
+  },
+  {
+    "filePath": "components/u-Components-DropDown/compoenentCode.vue",
+    "savePath": "components/-N4TFZTfP-Tn5DzD98bO/code"
   },
   {
     "filePath": "customCode/css/[OFF]Login/Register.css",
@@ -260,21 +276,19 @@
     "customCodeName": "Betterverse_Tangle"
   },
   {
-    "filePath": "customCode/css/[OFF] DonorPortal_Register/SignIn.css",
+    "filePath": "customCode/css/[OFF]DonorPortal_Register/SignIn.css",
     "savePath": "customCode/css/-N2WWMi8UTbLp7b6igYC/code",
-    "customCodeName": "[OFF] DonorPortal_Register/SignIn",
+    "customCodeName": "[OFF]DonorPortal_Register/SignIn",
     "customCodeScope": {
       "-N-46yNIuPyCZOyD9XoT": true
     }
   },
   {
-    "filePath": "customCode/css/DonorPortal_ProfileSetup.css",
+    "filePath": "customCode/css/[OFF]DonorPortal_ProfileSetup.css",
     "savePath": "customCode/css/-N2WeNRjoeXfe8c_1W1Z/code",
-    "customCodeName": "DonorPortal_ProfileSetup",
+    "customCodeName": "[OFF]DonorPortal_ProfileSetup",
     "customCodeScope": {
-      "-Mx_5FLL2jlxjXYUMdIL": {
-        "-MysZOod447ZdKXNCTey": true
-      }
+      "-N48uIJZrqSslpcm1w51": true
     }
   },
   {
@@ -428,12 +442,22 @@
     }
   },
   {
-    "filePath": "customCode/html/DonorPortal_PersonalInfo.html",
+    "filePath": "customCode/html/DonorPortal_Register_PersonalInfo.html",
     "savePath": "customCode/html/-N4PzC_a2_iFB2JXNY-C/code",
-    "customCodeName": "DonorPortal_PersonalInfo",
+    "customCodeName": "DonorPortal_Register_PersonalInfo",
     "customCodeScope": {
       "-Mx_5FLL2jlxjXYUMdIL": {
         "-MysZOod447ZdKXNCTey": true
+      }
+    }
+  },
+  {
+    "filePath": "customCode/html/DonorPortal_Register_Wallet.html",
+    "savePath": "customCode/html/-N4UK-orGT0m1T6E-0ru/code",
+    "customCodeName": "DonorPortal_Register_Wallet",
+    "customCodeScope": {
+      "-Mx_5FLL2jlxjXYUMdIL": {
+        "-N4UIKK5MmraPqo_BhCH": true
       }
     }
   },
@@ -659,6 +683,10 @@
   {
     "filePath": "subPages/-Mx_5FLL2jlxjXYUMdIL/-N4IRMyIAw-t4q0VNr0C.json",
     "savePath": "subTabs/-Mx_5FLL2jlxjXYUMdIL/-N4IRMyIAw-t4q0VNr0C"
+  },
+  {
+    "filePath": "subPages/-Mx_5FLL2jlxjXYUMdIL/-N4UIKK5MmraPqo_BhCH.json",
+    "savePath": "subTabs/-Mx_5FLL2jlxjXYUMdIL/-N4UIKK5MmraPqo_BhCH"
   },
   {
     "filePath": "pages/-Mx_2_VCOc__FGnUdqrq.json",
@@ -1067,10 +1095,6 @@
   {
     "filePath": "widgets/-N2pCFxlb04P4guMWTo1/widget.json",
     "savePath": "widgets/-N2pCFxlb04P4guMWTo1"
-  },
-  {
-    "filePath": "widgets/DonorPortal_PersonalInfo/widget.json",
-    "savePath": "widgets/-N4Q1J7WpJuJofiBQKFr"
   },
   {
     "filePath": "widgetsComputed/CharityPortal_SetFilter.js",

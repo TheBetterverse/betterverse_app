@@ -5,7 +5,17 @@ module.exports = {
   props: {
     color: {
       type: String,
-      default: "black"
+      default: 'black'
+    },
+
+    width: {
+      type: String,
+      default: '45'
+    },
+
+    height: {
+      type: String,
+      default: '45'
     }
   }
 }
@@ -14,8 +24,8 @@ module.exports = {
 <template>
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="45"
-    height="45"
+    :width="width"
+    :height="height"
     viewBox="0 0 32 32"
     fill="none"
   >

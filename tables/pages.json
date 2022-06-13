@@ -47,7 +47,9 @@
   },
   "-MysZOt-tWtRMe3nR7_r": {
     "_id": 20,
-    "name": "Profile Setup",
+    "lastEditDate": 1655161050094,
+    "lastEditedBy": "6GieEffPXOfpK6l8l1BruNR4JU62",
+    "name": "Register/Personal Info",
     "parent": "-Mx_5FOhVhD_RuYdqiRJ",
     "rowKey": "-MysZOt-tWtRMe3nR7_r",
     "tabKey": "-MysZOod447ZdKXNCTey"
@@ -112,5 +114,12 @@
     "parent": "-Mx_5FOhVhD_RuYdqiRJ",
     "rowKey": "-N4IRN7sHrbT7HGlH0xh",
     "tabKey": "-N4IRMyIAw-t4q0VNr0C"
+  },
+  "-N4UIKP2xtZLY9YjDovf": {
+    "_id": 30,
+    "name": "Register/Wallet",
+    "parent": "-Mx_5FOhVhD_RuYdqiRJ",
+    "rowKey": "-N4UIKP2xtZLY9YjDovf",
+    "tabKey": "-N4UIKK5MmraPqo_BhCH"
   }
 }

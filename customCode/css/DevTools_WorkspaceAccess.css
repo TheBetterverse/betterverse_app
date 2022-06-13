@@ -1,19 +1,23 @@
-.developer-tool{
-    position:fixed;
-    right: 20px;
-    bottom: 20px;
-    background-color: #ECEAE3;
-    padding: 15px;
-    z-index: 2000;
-    border-radius: 100%;
-    border:1px solid black;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+.developer-tool {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background-color: #ECEAE3;
+  padding: 20px;
+  z-index: 9999;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .developer-tool:hover{
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .developer-tool i{
-    color: black;
+  color: black;
+}
+
+#__BVID__293 {
+  display: none !important;
+  visibility: hidden !important;
 }
