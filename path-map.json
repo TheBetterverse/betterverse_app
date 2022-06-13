@@ -20,14 +20,6 @@
     "savePath": "components/-N0ZzaKUwnQK3TzHXqJT/code"
   },
   {
-    "filePath": "components/u-SignUpFormTest/index.json",
-    "savePath": "components/-N3phmWQsC1oRuqB0HUi"
-  },
-  {
-    "filePath": "components/u-SignUpFormTest/compoenentCode.vue",
-    "savePath": "components/-N3phmWQsC1oRuqB0HUi/code"
-  },
-  {
     "filePath": "components/u-Icons-Checkmark/index.json",
     "savePath": "components/-N47H3yh9WSaVtiQ3ZK4"
   },
@@ -100,11 +92,59 @@
     "savePath": "components/-N4DJRFJPpGwUJU_yby6/code"
   },
   {
-    "filePath": "customCode/css/Login/Register.css",
+    "filePath": "components/u-DonorPortal-SignIn/index.json",
+    "savePath": "components/-N4IRB8Fv-XnMBZ4fqZx"
+  },
+  {
+    "filePath": "components/u-DonorPortal-SignIn/compoenentCode.vue",
+    "savePath": "components/-N4IRB8Fv-XnMBZ4fqZx/code"
+  },
+  {
+    "filePath": "components/u-DonorPortal-PersonalInfo/index.json",
+    "savePath": "components/-N4PyVbAyhC60GfoHWzO"
+  },
+  {
+    "filePath": "components/u-DonorPortal-PersonalInfo/compoenentCode.vue",
+    "savePath": "components/-N4PyVbAyhC60GfoHWzO/code"
+  },
+  {
+    "filePath": "components/u-Components-ImageSelector/index.json",
+    "savePath": "components/-N4Q2VOM4lA_-xtI28ry"
+  },
+  {
+    "filePath": "components/u-Components-ImageSelector/compoenentCode.vue",
+    "savePath": "components/-N4Q2VOM4lA_-xtI28ry/code"
+  },
+  {
+    "filePath": "components/u-Icons-Camera/index.json",
+    "savePath": "components/-N4Q3XGR06BtxFbi99Kh"
+  },
+  {
+    "filePath": "components/u-Icons-Camera/compoenentCode.vue",
+    "savePath": "components/-N4Q3XGR06BtxFbi99Kh/code"
+  },
+  {
+    "filePath": "components/u-Icons-ImageSelectorPlaceHolder/index.json",
+    "savePath": "components/-N4Q47_mGgpLIU_ZSTjs"
+  },
+  {
+    "filePath": "components/u-Icons-ImageSelectorPlaceHolder/compoenentCode.vue",
+    "savePath": "components/-N4Q47_mGgpLIU_ZSTjs/code"
+  },
+  {
+    "filePath": "components/u-Icons-ContinueButton/index.json",
+    "savePath": "components/-N4QFNZZxg_n6Yr6Msfb"
+  },
+  {
+    "filePath": "components/u-Icons-ContinueButton/compoenentCode.vue",
+    "savePath": "components/-N4QFNZZxg_n6Yr6Msfb/code"
+  },
+  {
+    "filePath": "customCode/css/[OFF]Login/Register.css",
     "savePath": "customCode/css/-MvU35ut2ARCdHp1hjEF/code",
-    "customCodeName": "Login/Register",
+    "customCodeName": "[OFF]Login/Register",
     "customCodeScope": {
-      "login": true
+      "-N48uIJZrqSslpcm1w51": true
     }
   },
   {
@@ -285,11 +325,11 @@
     }
   },
   {
-    "filePath": "customCode/html/Login/Register.html",
+    "filePath": "customCode/html/[OFF]Login/Register.html",
     "savePath": "customCode/html/-Mys7Xh9ZEhpjpDl8wCN/code",
-    "customCodeName": "Login/Register",
+    "customCodeName": "[OFF]Login/Register",
     "customCodeScope": {
-      "login": true
+      "-N48uIJZrqSslpcm1w51": true
     }
   },
   {
@@ -323,21 +363,19 @@
     }
   },
   {
-    "filePath": "customCode/html/DonorPortal_Register/SignIn.html",
+    "filePath": "customCode/html/[OFF]DonorPortal_Register/SignIn.html",
     "savePath": "customCode/html/-N2W12j9j57em58vNrK2/code",
-    "customCodeName": "DonorPortal_Register/SignIn",
+    "customCodeName": "[OFF]DonorPortal_Register/SignIn",
     "customCodeScope": {
       "-N48uIJZrqSslpcm1w51": true
     }
   },
   {
-    "filePath": "customCode/html/DonorPortal_ProfileSetup.html",
+    "filePath": "customCode/html/[OFF]DonorPortal_ProfileSetup.html",
     "savePath": "customCode/html/-N2WdNX8nNGA0ItdXcZ2/code",
-    "customCodeName": "DonorPortal_ProfileSetup",
+    "customCodeName": "[OFF]DonorPortal_ProfileSetup",
     "customCodeScope": {
-      "-Mx_5FLL2jlxjXYUMdIL": {
-        "-MysZOod447ZdKXNCTey": true
-      }
+      "-N48uIJZrqSslpcm1w51": true
     }
   },
   {
@@ -376,6 +414,26 @@
     "customCodeScope": {
       "-Mx_5FLL2jlxjXYUMdIL": {
         "-N0ZsOs2dAbF9PTr_Hz0": true
+      }
+    }
+  },
+  {
+    "filePath": "customCode/html/DonorPortal_SignIn.html",
+    "savePath": "customCode/html/-N4IRFAAwAvbLlBUZbHB/code",
+    "customCodeName": "DonorPortal_SignIn",
+    "customCodeScope": {
+      "-Mx_5FLL2jlxjXYUMdIL": {
+        "-N4IRMyIAw-t4q0VNr0C": true
+      }
+    }
+  },
+  {
+    "filePath": "customCode/html/DonorPortal_PersonalInfo.html",
+    "savePath": "customCode/html/-N4PzC_a2_iFB2JXNY-C/code",
+    "customCodeName": "DonorPortal_PersonalInfo",
+    "customCodeScope": {
+      "-Mx_5FLL2jlxjXYUMdIL": {
+        "-MysZOod447ZdKXNCTey": true
       }
     }
   },
@@ -453,6 +511,14 @@
     "filePath": "customCode/js/Include_BNCringe_Fonts.js",
     "savePath": "customCode/js/-N3z7pKpaA2cgd-wlVwS/code",
     "customCodeName": "Include_BNCringe_Fonts"
+  },
+  {
+    "filePath": "customCode/js/DonorPortal_TestJs.js",
+    "savePath": "customCode/js/-N4NWtb9SeL_EPPxl8TY/code",
+    "customCodeName": "DonorPortal_TestJs",
+    "customCodeScope": {
+      "-N48uIJZrqSslpcm1w51": true
+    }
   },
   {
     "filePath": "tables/capturedDonationData.json",
@@ -589,6 +655,10 @@
   {
     "filePath": "subPages/-Mx_5FLL2jlxjXYUMdIL/-N0ZsOs2dAbF9PTr_Hz0.json",
     "savePath": "subTabs/-Mx_5FLL2jlxjXYUMdIL/-N0ZsOs2dAbF9PTr_Hz0"
+  },
+  {
+    "filePath": "subPages/-Mx_5FLL2jlxjXYUMdIL/-N4IRMyIAw-t4q0VNr0C.json",
+    "savePath": "subTabs/-Mx_5FLL2jlxjXYUMdIL/-N4IRMyIAw-t4q0VNr0C"
   },
   {
     "filePath": "pages/-Mx_2_VCOc__FGnUdqrq.json",
@@ -999,6 +1069,10 @@
     "savePath": "widgets/-N2pCFxlb04P4guMWTo1"
   },
   {
+    "filePath": "widgets/DonorPortal_PersonalInfo/widget.json",
+    "savePath": "widgets/-N4Q1J7WpJuJofiBQKFr"
+  },
+  {
     "filePath": "widgetsComputed/CharityPortal_SetFilter.js",
     "savePath": "widgetsComputed/CharityPortal_SetFilter"
   },
@@ -1021,6 +1095,10 @@
   {
     "filePath": "widgetsComputed/CharityPortal_SpecificCharityTotalTreesPlanted.js",
     "savePath": "widgetsComputed/CharityPortal_SpecificCharityTotalTreesPlanted"
+  },
+  {
+    "filePath": "widgetsComputed/ComputedTest.js",
+    "savePath": "widgetsComputed/ComputedTest"
   },
   {
     "filePath": "widgetsComputed/DevTools_ChangeCurrentCharityProfile.js",
@@ -1245,14 +1323,6 @@
   {
     "filePath": "widgetsComputed/Global_ScrollToElement.js",
     "savePath": "widgetsComputed/Global_ScrollToElement"
-  },
-  {
-    "filePath": "widgetsComputed/Utilities_DebounceInput.js",
-    "savePath": "widgetsComputed/Utilities_DebounceInput"
-  },
-  {
-    "filePath": "widgetsComputed/Utilities_Validate.js",
-    "savePath": "widgetsComputed/Utilities_Validate"
   },
   {
     "filePath": "widgetsData/dataGrid/capturedDonationData.json",

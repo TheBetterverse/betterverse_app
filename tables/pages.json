@@ -87,9 +87,9 @@
   },
   "-N0ZsOwL5rf07pIoh1O9": {
     "_id": 26,
-    "lastEditDate": 1651081318152,
-    "lastEditedBy": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
-    "name": "Log In/Register",
+    "lastEditDate": 1655089336029,
+    "lastEditedBy": "6GieEffPXOfpK6l8l1BruNR4JU62",
+    "name": "Register",
     "parent": "-Mx_5FOhVhD_RuYdqiRJ",
     "rowKey": "-N0ZsOwL5rf07pIoh1O9",
     "tabKey": "-N0ZsOs2dAbF9PTr_Hz0"
@@ -105,5 +105,12 @@
     "name": "Disabled",
     "rowKey": "-N48uIOP-_AYKfjUtBtx",
     "tabKey": "-N48uIJZrqSslpcm1w51"
+  },
+  "-N4IRN7sHrbT7HGlH0xh": {
+    "_id": 29,
+    "name": "Sign In",
+    "parent": "-Mx_5FOhVhD_RuYdqiRJ",
+    "rowKey": "-N4IRN7sHrbT7HGlH0xh",
+    "tabKey": "-N4IRMyIAw-t4q0VNr0C"
   }
 }

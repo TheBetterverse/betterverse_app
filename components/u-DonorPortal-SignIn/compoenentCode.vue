@@ -1,4 +1,4 @@
-<!-- Donor Portal Sign Up Form -->
+<!-- Donor Portal Sign In Form -->
 
 <template>
   <div class="w-100">
@@ -6,13 +6,15 @@
     <b-container class="d-block d-lg-none w-100">
       <b-row class="status-bar-clearance"></b-row>
 
-      <b-row class="mt-1 mb-5 d-flex">
+      <b-row class="mt-1 mb-5">
         <b-col class="d-flex align-items-center">
           <icon-betterverse class="md-logo" />
         </b-col>
 
         <b-col class="text-right d-flex justify-content-end">
-          <small>Have an account?<br /><a href="#">Log in</a></small>
+          <small
+            >Don't have an account?<br /><a href="#">Create account</a></small
+          >
         </b-col>
       </b-row>
     </b-container>
@@ -34,8 +36,8 @@
         label="Continue with email"
         name="email-input"
         type="text"
-        placeholder="Type e-mail address"
         v-model="email"
+        placeholder="Type e-mail address"
         :validators="emailValidators"
         :disabled="$getGlobalModel('signUpProcess')"
       >
@@ -56,20 +58,28 @@
       </bv-input>
 
       <!-- Continue button -->
-      <div class="button-wrapper d-flex justify-content-end">
-        <b-spinner v-if="$getGlobalModel('signUpProcess')" small></b-spinner>
+      <div
+        class="button-wrapper d-flex align-items-center justify-content-between"
+      >
+        <div class="d-flex justify-content-center">
+          <small>Forgot password?<br /><a href="#">Let's reset it!</a></small>
+        </div>
 
-        <button
-          v-else
-          class="continue-email-button"
-          name="continue-email-button"
-          :disabled="$getGlobalModel('signUpProcess')"
-        >
-          <span> Continue with email </span>
-          <span id="continue-email-arrow">
-            <icon-leftarrow />
-          </span>
-        </button>
+        <div>
+          <b-spinner v-if="$getGlobalModel('signUpProcess')" small></b-spinner>
+
+          <button
+            v-else
+            class="continue-email-button"
+            name="continue-email-button"
+            :disabled="$getGlobalModel('signUpProcess')"
+          >
+            <span> Continue with email </span>
+            <span id="continue-email-arrow">
+              <icon-leftarrow />
+            </span>
+          </button>
+        </div>
       </div>
 
       <hr />
@@ -101,7 +111,7 @@
 
       <!-- Footer for large displays -->
       <div class="mt-6 d-none d-lg-block">
-        <small>Already have an account? <a href="#">Log in</a></small>
+        <small>Don't have an account? <a href="#">Create account</a></small>
       </div>
     </form>
   </div>
@@ -114,15 +124,9 @@ async function emailIsRightFormat(subject) {
   )
 }
 
-async function emailDontExist(subject) {
+async function emailNotRegistered(subject) {
   /* needs implementation */
   return true
-}
-
-function hasMinLength(length) {
-  return async function (subject) {
-    return subject.length >= length
-  }
 }
 
 function notEmptyString(subject) {
@@ -138,18 +142,18 @@ module.exports = {
       password: {},
       emailValidators: {
         "Field can't be empty": notEmptyString,
-        'Email is already registered': emailDontExist,
-        'Email format is invalid': emailIsRightFormat
+        'Email format is invalid': emailIsRightFormat,
+        'Email is not registered': emailNotRegistered
       },
       passwordValidators: {
-        "Field can't be empty": notEmptyString,
-        'Password should have at least 8 digits': hasMinLength(8)
+        "Field can't be empty": notEmptyString
       }
     }
   },
 
   methods: {
     /* Events */
+
     async handleSubmit(e) {
       let target = e.submitter.name
 
@@ -188,10 +192,16 @@ module.exports = {
         console.log('> INPUTS ARE INVALID')
         if (this.email.errors) console.log(...this.email.errors)
         if (this.password.errors) console.log(...this.password.errors)
+
+        console.log('email', this.email)
+        console.log('password', this.password)
         return
       }
 
       console.log('> INPUTS ARE VALID')
+
+      console.log('email', this.email)
+      console.log('password', this.password)
     },
 
     async signUpGoogle(e) {

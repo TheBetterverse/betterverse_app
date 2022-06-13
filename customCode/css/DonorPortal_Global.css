@@ -41,13 +41,19 @@ p {
 }
 
 small {
+  line-height: 16px !important;
   font-size: 12px !important;
   font-weight: 500 !important;
 }
 
+a small {
+  font-weight: 700 !important;
+  line-height: 16px !important;
+}
+
 a {
   color: black !important;
-  font-weight: 700 !important;        
+  font-weight: 700 !important;
   text-decoration: underline !important;
 }
 
