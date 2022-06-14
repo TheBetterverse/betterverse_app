@@ -70,26 +70,20 @@
 
       <!-- Socials -->
       <div class="my-2">Or continue with</div>
-      <div class="socials d-inline-flex w-100">
-        <button-signup
-          name="sign-up-google"
-          icon="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png"
-        >
-          Google
+      <div class="d-flex justify-content-lg-between w-100">
+        <button-signup name="sign-up-google" class="mr-2 mr-lg-0">
+          <template v-slot:icon> <icon-google></icon-google> </template>
+          <template> Google </template>
         </button-signup>
 
-        <button-signup
-          name="sign-up-facebook"
-          icon="https://cdn-icons-png.flaticon.com/512/145/145802.png"
-        >
-          Facebook
+        <button-signup name="sign-up-facebook" class="mr-2 mr-lg-0">
+          <template v-slot:icon> <icon-facebook></icon-facebook> </template>
+          <template> Facebook </template>
         </button-signup>
 
-        <button-signup
-          name="sign-up-discord"
-          icon="https://camo.githubusercontent.com/323fb0ba057ee8c0b4fdd6e89e35967cb30cfcfd/68747470733a2f2f7669676e657474652e77696b69612e6e6f636f6f6b69652e6e65742f7468652d6d696e6572732d686176656e2d70726f6a6563742f696d616765732f642f64642f446973636f72642e706e672f7265766973696f6e2f6c61746573743f63623d3230313730333038303333353436"
-        >
-          Discord
+        <button-signup name="sign-up-discord" class="mr-2 mr-lg-0">
+          <template v-slot:icon> <icon-discord></icon-discord> </template>
+          <template> Discord </template>
         </button-signup>
       </div>
 
@@ -225,6 +219,9 @@ module.exports = {
   components: {
     IconLock: $getCustomComponent('u-Icons-Lock'),
     IconMail: $getCustomComponent('u-Icons-Mail'),
+    IconGoogle: $getCustomComponent('u-Icons-Google'),
+    IconFacebook: $getCustomComponent('u-Icons-Facebook'),
+    IconDiscord: $getCustomComponent('u-Icons-Discord'),
     IconBetterverse: $getCustomComponent('u-Icons-Betterverse'),
     ButtonSignup: $getCustomComponent('u-Buttons-Pill'),
     ButtonContinue: $getCustomComponent('u-Buttons-LeftArrow'),
@@ -239,10 +236,6 @@ module.exports = {
 .col {
   padding: 0;
   margin: 0;
-}
-
-div.socials > button {
-  margin-right: 10px;
 }
 
 div.status-bar-clearance {

@@ -1,9 +1,10 @@
 * {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
-.dashboard__content, .dashboard {
+.dashboard__content,
+.dashboard {
   margin: 0;
   padding: 0 !important;
 }
@@ -30,7 +31,14 @@ h2 {
   font-weight: 400;
   font-size: 20px;
   line-height: 28px;
-  color: black !important;  
+  color: black !important;
+}
+
+h3 {
+  font-family: 'Documan';
+  font-style: normal;
+  font-weight: 500;
+  color: black !important;
 }
 
 p {
@@ -59,4 +67,12 @@ a {
 
 a:visited {
   color: black !important;
-} 
+}
+
+input {
+  font-weight: 500;
+}
+
+button {
+  font-weight: 500;
+}

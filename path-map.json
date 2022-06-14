@@ -156,6 +156,78 @@
     "savePath": "components/-N4TFZTfP-Tn5DzD98bO/code"
   },
   {
+    "filePath": "components/u-DonorPortal-Register-Wallet/index.json",
+    "savePath": "components/-N4UP7ioAmt-nMcSamAG"
+  },
+  {
+    "filePath": "components/u-DonorPortal-Register-Wallet/compoenentCode.vue",
+    "savePath": "components/-N4UP7ioAmt-nMcSamAG/code"
+  },
+  {
+    "filePath": "components/u-Icons-Google/index.json",
+    "savePath": "components/-N4UZEcy2eoe-VD5vArr"
+  },
+  {
+    "filePath": "components/u-Icons-Google/compoenentCode.vue",
+    "savePath": "components/-N4UZEcy2eoe-VD5vArr/code"
+  },
+  {
+    "filePath": "components/u-Icons-Facebook/index.json",
+    "savePath": "components/-N4UZHWnr00s9jAu7VLk"
+  },
+  {
+    "filePath": "components/u-Icons-Facebook/compoenentCode.vue",
+    "savePath": "components/-N4UZHWnr00s9jAu7VLk/code"
+  },
+  {
+    "filePath": "components/u-Icons-Discord/index.json",
+    "savePath": "components/-N4UZel8vjwtUifvvreg"
+  },
+  {
+    "filePath": "components/u-Icons-Discord/compoenentCode.vue",
+    "savePath": "components/-N4UZel8vjwtUifvvreg/code"
+  },
+  {
+    "filePath": "components/u-Icons-Metamask/index.json",
+    "savePath": "components/-N4UZi6svZ6h86xpbU7C"
+  },
+  {
+    "filePath": "components/u-Icons-Metamask/compoenentCode.vue",
+    "savePath": "components/-N4UZi6svZ6h86xpbU7C/code"
+  },
+  {
+    "filePath": "components/u-Icons-Torus/index.json",
+    "savePath": "components/-N4UZketiwPPGCe8NPFI"
+  },
+  {
+    "filePath": "components/u-Icons-Torus/compoenentCode.vue",
+    "savePath": "components/-N4UZketiwPPGCe8NPFI/code"
+  },
+  {
+    "filePath": "components/u-Icons-Coinbase/index.json",
+    "savePath": "components/-N4UZpOb2dUCycWWWmjF"
+  },
+  {
+    "filePath": "components/u-Icons-Coinbase/compoenentCode.vue",
+    "savePath": "components/-N4UZpOb2dUCycWWWmjF/code"
+  },
+  {
+    "filePath": "components/u-Icons-USDC/index.json",
+    "savePath": "components/-N4Us4zbh33W9-6sd0Sm"
+  },
+  {
+    "filePath": "components/u-Icons-USDC/compoenentCode.vue",
+    "savePath": "components/-N4Us4zbh33W9-6sd0Sm/code"
+  },
+  {
+    "filePath": "components/u-DonorPortal-ResetPassword/index.json",
+    "savePath": "components/-N4VGFLwpCfqtqFUMi_U"
+  },
+  {
+    "filePath": "components/u-DonorPortal-ResetPassword/compoenentCode.vue",
+    "savePath": "components/-N4VGFLwpCfqtqFUMi_U/code"
+  },
+  {
     "filePath": "customCode/css/[OFF]Login/Register.css",
     "savePath": "customCode/css/-MvU35ut2ARCdHp1hjEF/code",
     "customCodeName": "[OFF]Login/Register",
@@ -462,6 +534,16 @@
     }
   },
   {
+    "filePath": "customCode/html/DonorPortal_ResetPassword.html",
+    "savePath": "customCode/html/-N4VG9fOoe3wM8W6xXoo/code",
+    "customCodeName": "DonorPortal_ResetPassword",
+    "customCodeScope": {
+      "-Mx_5FLL2jlxjXYUMdIL": {
+        "-N4VFuzr8bX0uZHwmhkA": true
+      }
+    }
+  },
+  {
     "filePath": "customCode/js/Redirect.js",
     "savePath": "customCode/js/-MyhbtSo5FHi08VoZP5b/code",
     "customCodeName": "Redirect",
@@ -687,6 +769,10 @@
   {
     "filePath": "subPages/-Mx_5FLL2jlxjXYUMdIL/-N4UIKK5MmraPqo_BhCH.json",
     "savePath": "subTabs/-Mx_5FLL2jlxjXYUMdIL/-N4UIKK5MmraPqo_BhCH"
+  },
+  {
+    "filePath": "subPages/-Mx_5FLL2jlxjXYUMdIL/-N4VFuzr8bX0uZHwmhkA.json",
+    "savePath": "subTabs/-Mx_5FLL2jlxjXYUMdIL/-N4VFuzr8bX0uZHwmhkA"
   },
   {
     "filePath": "pages/-Mx_2_VCOc__FGnUdqrq.json",

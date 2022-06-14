@@ -121,5 +121,12 @@
     "parent": "-Mx_5FOhVhD_RuYdqiRJ",
     "rowKey": "-N4UIKP2xtZLY9YjDovf",
     "tabKey": "-N4UIKK5MmraPqo_BhCH"
+  },
+  "-N4VFv3e_fQD19Uj2HX6": {
+    "_id": 31,
+    "name": "Reset Password",
+    "parent": "-Mx_5FOhVhD_RuYdqiRJ",
+    "rowKey": "-N4VFv3e_fQD19Uj2HX6",
+    "tabKey": "-N4VFuzr8bX0uZHwmhkA"
   }
 }

@@ -18,11 +18,15 @@
         @input="onInput($event.target.value)"
       />
 
-      <span v-if="type === 'password'" @click="togglePasswordVisibility">
-        <icon-eye class="bv-input-icon" :shown="currentType !== 'password'" />
+      <span
+        v-if="type === 'password'"
+        class="bv-input-icon"
+        @click="togglePasswordVisibility"
+      >
+        <icon-eye :shown="currentType !== 'password'" />
       </span>
 
-      <span class="bv-input-icon">
+      <span v-if="modelValue.active" class="bv-input-icon ml-1">
         <icon-checkmark
           :shown="modelValue.active"
           :isvalid="modelValue.valid"
@@ -98,6 +102,7 @@ module.exports = {
         errors: []
       }
     },
+
     type: {
       type: String,
       default: 'text'
