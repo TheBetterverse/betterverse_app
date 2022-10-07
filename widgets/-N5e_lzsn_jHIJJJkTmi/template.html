@@ -1,0 +1,17 @@
+<!--{{DonorPortal_GetJSON(row.json)}}-->
+<!--{{row.json}}-->
+<div class="row">
+  <div class="col-lg-12 col-sm-12 column"><video autoplay="" loop="" style="width: 50%;">
+      <source src="https://drive.google.com/uc?export=download&amp;id=1Mt2cvrXHr4rgACDTHiGBGMIMDpXBHLkO" type="video/mp4">
+    </video>
+    <h3> Tree Name Here #1</h3><span v-if="row.$initialDonationRow">
+      ${{row.$initialDonationRow.donationAmount}}
+      donated to {{row.$initialDonationRow.$charity$display}}
+      to plant {{row.$initialDonationRow.numberOfTreesPlanted}} trees
+      in {{row.$initialDonationRow.$charityProject.displayLocation}}
+    </span>
+    <b-button @click="DonorPortal_SelectedDonation(row.rowKey, row.$initialDonationRow.rowKey); DonorPortal_TriggerNFTModal('display');">
+      View Donation
+    </b-button>
+  </div>
+</div>

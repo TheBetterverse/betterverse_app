@@ -1,12 +1,6 @@
-return function(){
+/* DonorPortal_GetCurrentUserProfileComplete.js */
 
-    let currentUser = this.DonorPortal_GetCurrentUser()
-    let currentUserProfileComplete = currentUser.profileComplete
-
-    if (currentUserProfileComplete == true){
-        return true
-    }
-    else{
-        return false
-    }
+return function () {
+  let currentUser = this.DonorPortal_GetCurrentUser()
+  return currentUser.profileComplete
 }

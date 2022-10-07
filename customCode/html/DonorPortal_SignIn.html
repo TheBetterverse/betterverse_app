@@ -1,34 +1,69 @@
-<!-- DonorPortal_Register.html -->
+<!-- DonorPortal_SignIn.html -->
 
 <div class="row no-gutters">
 
   <!-- For large display size -->
-  <b-container class="d-none d-lg-block col-7 vh-100 overflow-hidden">
+  <b-container class="d-none d-lg-block col-7 vh-100 overflow-hidden bv__signin__leftside"
+    style="border-right: 1px solid white;">
     <!-- Top left logo -->
-    <div id="betterverse-lg-logo" class="d-none d-lg-block">
-      <u-Icons-Betterverse color="white" />
+    <div id="betterverse-lg-logo" class="d-none d-lg-block"
+      onclick="window.open('https://www.betterverse.app')" style="cursor: pointer">
+      <u-Icons-Betterverse-R/>
     </div>
 
     <!-- Leftside image -->
     <img
-      src="https://uploads-ssl.webflow.com/62554ccc10f0e2be91a8c9fc/625588041fd50e823f154e46_img-hero-landscape.jpg" />
+      src="https://firebasestorage.googleapis.com/v0/b/tangle-157402.appspot.com/o/-N3z8rEgVVtApDNoNjXV%2F6806fe30-39c6-11ed-8a38-4141e3ff606f_datagrid_profile_img.png?alt=media&token=a81e6828-cc4a-454a-be9b-6c7545e19697" />
   </b-container>
 
+
+  <header class="d-flex d-lg-none w-100 align-items-center justify-content-center" style="margin-top: 44px;">
+    <b-row class="mt-1 mb-5 bv__signin__header bv__globals__px">
+      <b-col class="d-flex align-items-center">
+        <u-Icons-Betterverse width="32" heigth="32" />
+      </b-col>
+      <b-col class="text-right d-flex justify-content-end">
+        <small>Don't have an account?<br /><a href="#" @click.prevent="DonorPortal_RedirectToSignUp()">Create
+            account</a></small>
+      </b-col>
+    </b-row>
+  </header>
 
   <!-- Main form area -->
-  <b-container class="col-12 col-lg-5 d-flex align-items-center justify-content-center">
-    <div class="form-area">
-      <u-DonorPortal-SignIn>
-        <h1>Welcome back to the <b>Betterverse</b></h1>
-        <h2>Here you can edit the header text inside the form</h2>
+  <div class="col-12 col-lg-5 w-100 d-flex align-items-center justify-content-center">
+    <div class="form-area bv__globals__px">
+      <u-DonorPortal-SignIn :DonorPortal_RedirectToSignUp="DonorPortal_RedirectToSignUp"
+        :DonorPortal_RedirectToResetPassword="DonorPortal_RedirectToResetPassword">
+        <h1>Welcome back <br> to <b>Betterverse</b></h1>
+        <p class="mt-3">We missed you while you were away.</p>
       </u-DonorPortal-SignIn>
+
+      <footer id="bv__signin__footer" class="d-none d-lg-block">
+        <small>Don't have an account?
+          <a href="#" @click.prevent="DonorPortal_RedirectToSignUp()">Create account</a></small>
+      </footer>
+
     </div>
-  </b-container>
+
+  </div>
 
 </div>
 
 
-<style>
+<style scoped>
+  .widgetTemplateWrapper {
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .row .no-gutters {
+    height: 100vh !important;
+  }
+
+  .status-bar-clearance {
+    height: 44px !important;
+  }
+
   #betterverse-lg-logo {
     position: absolute;
     z-index: 10;
@@ -36,9 +71,75 @@
     left: 30px;
   }
 
+  .bv__signin__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    min-width: 200px;
+    width: 100%;
+    max-width: 420px;
+  }
+
   .form-area {
     min-width: 200px;
-    width: 90%;
-    max-width: 380px;
+    width: 100%;
+    max-width: 420px;
   }
+
+  .bv__signin__leftside {
+    border-right-color: none;
+    border-right-width: 0;
+    border-right-style: none;
+  }
+
+  .bv__signin__leftside>img {
+    object-fit: cover;
+    vertical-align: center;
+    height: 100%;
+    width: 100%;
+  }
+
+
+  @media screen and (min-width: 768px) {
+
+    #bv__signin__footer {
+      position: absolute;
+      bottom: 24px;
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .bv__signin__leftside {
+      border-right-color: rgba(80, 80, 80, 0);
+      border-right-width: 1px;
+      border-right-style: solid;
+    }
+
+    .form-area {
+      max-width: 80%;
+    }
+  }
+
+  @media screen and (min-width: 992px) {
+    .form-area {
+      max-width: 70%;
+    }
+  }
+
+  @media screen and (min-width: 1800px) {
+    .form-area {
+      max-width: 60%;
+    }
+  }
+
+  @media screen and (min-width: 2200px) {
+    .form-area {
+      max-width: 50%;
+    }
+  }
+
 </style>

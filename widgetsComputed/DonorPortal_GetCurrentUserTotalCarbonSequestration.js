@@ -1,13 +1,9 @@
-return function(){
+/* DonorPortal_GetCurrentUserTotalCarbonSequestration.js */
 
-    let currentUser = fbUser.uid
-    let myDonationRows = $getGrid('capturedDonationData').filter(row => row.user == currentUser) 
-    let myCarbonSequestrationSum = 0
+return function () {
+  let currentUser = fbUser.uid
 
-    for(let i = 0; i < myDonationRows.length; i++){
-        myCarbonSequestrationSum = +myCarbonSequestrationSum + +myDonationRows[i].yearlyCarbonSequestration
-    }
-
-    return myCarbonSequestrationSum.toLocaleString()
-
+  return $getGrid('capturedDonationData')
+    .filter(row => row.user == currentUser)
+    .reduce((total, curr) => total + curr.yearlyCarbonSequestration, 0)
 }

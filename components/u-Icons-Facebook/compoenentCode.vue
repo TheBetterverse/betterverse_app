@@ -1,9 +1,11 @@
 <template>
-  <img
-    :height="height"
-    :width="width"
-    src="https://cdn-icons-png.flaticon.com/512/145/145802.png"
-  />
+  <span class="d-flex align-items-center justify-content-center">
+    <img
+      :height="height"
+      :width="width"
+      src="https://cdn-icons-png.flaticon.com/512/145/145802.png"
+    />
+  </span>
 </template>
 
 <script>

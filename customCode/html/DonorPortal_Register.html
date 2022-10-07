@@ -1,34 +1,47 @@
 <!-- DonorPortal_Register.html -->
 
-<div class="row no-gutters">
+<div class="row no-gutters" style="justify-self: center;">
 
   <!-- For large display size -->
-  <b-container class="d-none d-lg-block col-7 vh-100 overflow-hidden">
+  <b-container class="d-none d-lg-block col-7 vh-100 overflow-hidden bv__register__leftside"
+    style="border-right: 1px solid white;">
     <!-- Top left logo -->
-    <div id="betterverse-lg-logo" class="d-none d-lg-block">
-      <u-Icons-Betterverse color="white" />
+    <div id="betterverse-lg-logo" class="d-none d-lg-block"
+      onclick="window.open('https://www.betterverse.app')" style="cursor: pointer">
+      <u-Icons-Betterverse-R/>
     </div>
 
     <!-- Leftside image -->
     <img
-      src="https://uploads-ssl.webflow.com/62554ccc10f0e2be91a8c9fc/625588041fd50e823f154e46_img-hero-landscape.jpg" />
+      src="https://firebasestorage.googleapis.com/v0/b/tangle-157402.appspot.com/o/-N3z8rEgVVtApDNoNjXV%2F6806fe30-39c6-11ed-8a38-4141e3ff606f_datagrid_profile_img.png?alt=media&token=a81e6828-cc4a-454a-be9b-6c7545e19697" />
   </b-container>
-
 
   <!-- Main form area -->
   <b-container class="col-12 col-lg-5 d-flex align-items-center justify-content-center">
-    <div class="form-area">
-      <u-DonorPortal-Register>
-        <h1>Welcome to the <b>Betterverse</b></h1>
-        <h2>Here you can edit the header text inside the form</h2>
+    <div class="form-area bv__globals__px">
+      <u-DonorPortal-Register :DonorPortal_RedirectToSignIn="DonorPortal_RedirectToSignIn">
+        <h1>Welcome to <b>Betterverse</b></h1>
+        <p class="mt-2">Join the world’s first charitable metaverse. Together we can change the way we donate for the
+          better.</p>
       </u-DonorPortal-Register>
+
+      <footer id="bv__signin__login" class="d-none d-lg-block">
+        <small>Already have an account?
+          <a href="#" @click.prevent="DonorPortal_RedirectToSignIn()">Log In</a></small>
+      </footer>
+
     </div>
   </b-container>
 
 </div>
 
 
-<style>
+<style scoped>
+  .widgetTemplateWrapper {
+    justify-content: center;
+    overflow: hidden;
+  }
+
   #betterverse-lg-logo {
     position: absolute;
     z-index: 10;
@@ -38,7 +51,64 @@
 
   .form-area {
     min-width: 200px;
-    width: 90%;
-    max-width: 380px;
+    width: 100%;
+    max-width: 420px;
   }
+
+  .bv__register__leftside {
+    border-image: none;
+    border-right-color: none;
+    border-right-width: 0;
+    border-right-style: none;
+  }
+
+  .bv__register__leftside>img {
+    object-fit: cover;
+    vertical-align: center;
+    height: 100%;
+    width: 100%;
+  }
+
+  @media screen and (min-width: 768px) {
+
+    #bv__signin__login {
+      position: absolute;
+      bottom: 24px;
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+    }
+
+    .bv__register__leftside {
+      border-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3)) 1;
+      border-right-width: 1px;
+      border-right-style: solid;
+    }
+
+    .form-area {
+      max-width: 80%;
+    }
+  }
+
+  @media screen and (min-width: 992px) {
+    .form-area {
+      max-width: 70%;
+    }
+  }
+
+  @media screen and (min-width: 1800px) {
+    .form-area {
+      max-width: 60%;
+    }
+  }
+
+  @media screen and (min-width: 2200px) {
+    .form-area {
+      max-width: 50%;
+    }
+  }
+
 </style>

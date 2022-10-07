@@ -1,16 +1,16 @@
 <template>
-  <div class="bv-input-wrapper">
-    <label class="bv-input-label" v-if="label !== ''" :for="name">
+  <div class="bv__input">
+    <label class="bv__input__label" v-if="label !== ''" :for="name">
       {{ label }}
     </label>
 
-    <div class="bv-input-main">
-      <span class="bv-input-icon" v-if="$slots.default">
+    <div class="bv__input__main">
+      <span class="bv__input__icon" v-if="$slots.default">
         <slot></slot>
       </span>
 
       <input
-        class="bv-input"
+        class="bv__input__input"
         :name="name"
         :placeholder="placeholder"
         :autocomplete="autocomplete"
@@ -18,27 +18,32 @@
         @input="onInput($event.target.value)"
       />
 
-      <span
-        v-if="type === 'password'"
-        class="bv-input-icon"
-        @click="togglePasswordVisibility"
-      >
-        <icon-eye :shown="currentType !== 'password'" />
-      </span>
+      <span class="bv__input__righticons">
+        <span
+          v-if="type === 'password'"
+          class="bv__input__icon"
+          @click="togglePasswordVisibility"
+        >
+          <icon-eye :shown="currentType !== 'password'" />
+        </span>
 
-      <span v-if="modelValue.active" class="bv-input-icon ml-1">
-        <icon-checkmark
-          :shown="modelValue.active"
-          :isvalid="modelValue.valid"
-        />
+        <span
+          v-if="modelValue.active"
+          class="bv__input__icon bv__input__checkmark ml-1"
+        >
+          <icon-checkmark
+            :shown="modelValue.active"
+            :isvalid="modelValue.valid"
+          />
+        </span>
       </span>
     </div>
 
-    <div class="bv-input-errors">
+    <div class="bv__input__errors">
       <small
         v-if="modelValue.active"
         v-for="message in modelValue.errors"
-        class="bv-input-error-message"
+        class="bv__input__error"
       >
         {{ message }} <br />
       </small>
@@ -95,11 +100,15 @@ module.exports = {
   props: {
     modelValue: {
       type: Object,
-      default: {
-        content: '',
-        valid: false,
-        active: false,
-        errors: []
+      default(raw) {
+        return {
+          content: '',
+          valid: false,
+          active: false,
+          required: false,
+          errors: [],
+          ...raw
+        }
       }
     },
 
@@ -110,7 +119,7 @@ module.exports = {
 
     name: {
       type: String,
-      default: 'bv-input'
+      default: undefined
     },
 
     label: {
@@ -125,10 +134,15 @@ module.exports = {
 
     autocomplete: {
       type: String,
-      default: 'no'
+      default: 'off'
     },
 
     disabled: {
+      type: Boolean,
+      default: false
+    },
+
+    required: {
       type: Boolean,
       default: false
     },
@@ -140,13 +154,7 @@ module.exports = {
   },
 
   async created() {
-    this.modelValue = {
-      content: '',
-      valid: false,
-      active: false,
-      errors: []
-    }
-
+    this.modelValue.required = this.required
     this.debouncedInput = debounceInput(this.debouncedInput)
     this.throttledInput = throttleInput(this.throttledInput)
 
@@ -185,13 +193,19 @@ module.exports = {
     },
 
     async validate() {
+      let content = this.modelValue.content
+
       let errors = []
 
-      Object.entries(this.validators).forEach(async ([error, test]) => {
-        let result = await test(this.modelValue.content)
-
+      await Object.entries(this.validators).forEach(async ([error, test]) => {
+        let result = await test(content)
         if (!result) errors.push(error)
       })
+
+      if (content === '' && !this.required && errors.length === 0) {
+        await this.update('valid', true)
+        return
+      }
 
       await this.update('errors', errors)
       await this.update('valid', errors.length === 0)
@@ -211,30 +225,36 @@ module.exports = {
 </script>
 
 <style>
-div.bv-input-main {
+.bv__input {
+  width: 100%;
+}
+
+div.bv__input__main {
   height: 32px;
   border-bottom: 1px solid black;
 
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  gap: 0.25rem;
 }
 
-label.bv-input-label {
+label.bv__input__label {
   padding: 0;
   margin: 0;
   font-size: 12px;
 }
 
-input.bv-input {
+input.bv__input__input {
   width: 100%;
-  text-indent: 5px;
+  text-indent: 0;
   border: none;
+  border-radius: 0;
   outline: none;
   background: none;
 }
 
-span.bv-input-icon {
+.bv__input__icon {
   height: 20px;
   width: 20px;
 
@@ -243,31 +263,18 @@ span.bv-input-icon {
   justify-content: center;
 }
 
-div.bv-input-errors {
+.bv__input__righticons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.bv__input__errors {
   padding: 6px 0;
   padding-bottom: 12px;
 }
 
-small.bv-input-error-message {
+small.bv__input__error {
   color: #e15564;
-}
-
-::placeholder,
-::-webkit-input-placeholder,
-:-ms-input-placeholder {
-  color: #000000;
-  opacity: 0.5;
-}
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover,
-textarea:-webkit-autofill:focus,
-select:-webkit-autofill,
-select:-webkit-autofill:hover,
-select:-webkit-autofill:focus {
-  transition: background-color 9999s ease-in-out 9999s;
 }
 </style>

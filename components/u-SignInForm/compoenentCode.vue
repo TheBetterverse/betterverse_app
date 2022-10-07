@@ -32,22 +32,22 @@
         />
       </a>
     </b-form-group>
-
   </b-form>
 </template>
+
 <script>
 module.exports = {
   data() {
     return {
       email: null,
       password: null,
-      passwordConfirm: null,
+      passwordConfirm: null
     }
   },
   methods: {
     signIn() {
       const errMsg = []
-      if (!this.email) errMsg.push('E-mail is required')
+      if (!this.email) errMsg.push('Email is required')
       if (!this.password) errMsg.push('Password is required')
       if (errMsg.length) {
         alert(errMsg.join('\n'))
@@ -56,25 +56,29 @@ module.exports = {
       $setGlobalModel('signInProcess', true)
       $anonUserSignIn('emailAndPassword', {
         email: this.email,
-        password: this.password,
-      }).then(() => {
-        $setCurrentTab('-Mx_5FLL2jlxjXYUMdIL')
-        $setGlobalModel('signInProcess', false)
-      }).catch(err => {
-        $setGlobalModel('signInProcess', false)
-        alert(err.message)
+        password: this.password
       })
+        .then(() => {
+          $setCurrentTab('-Mx_5FLL2jlxjXYUMdIL')
+          $setGlobalModel('signInProcess', false)
+        })
+        .catch(err => {
+          $setGlobalModel('signInProcess', false)
+          alert(err.message)
+        })
     },
     signInWithGoogle() {
       $setGlobalModel('signInProcess', true)
-      $anonUserSignIn('google').then(() => {
-        $setCurrentTab('-Mx_5FLL2jlxjXYUMdIL')
-        $setGlobalModel('signInProcess', false)
-      }).catch(err => {
-        $setGlobalModel('signInProcess', false)
-        alert(err.message)
-      })
-    },
-  },
+      $anonUserSignIn('google')
+        .then(() => {
+          $setCurrentTab('-Mx_5FLL2jlxjXYUMdIL')
+          $setGlobalModel('signInProcess', false)
+        })
+        .catch(err => {
+          $setGlobalModel('signInProcess', false)
+          alert(err.message)
+        })
+    }
+  }
 }
 </script>

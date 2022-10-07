@@ -1,7 +1,12 @@
-return function(){
+/* DonorPortal_GetSpecificDonation.js */
 
-    donationRow = $dataGrid('capturedDonationData')[$getUser('Donation_SelectedDonation')]
+let memoize = {}
 
-    return donationRow
-    
+return function () {
+  let donation = $getUser('Donation_SelectedDonation')
+
+  if (!(donation in memoize))
+    memoize[donation] = $dataGrid('capturedDonationData')[donation]
+
+  return memoize[donation]
 }

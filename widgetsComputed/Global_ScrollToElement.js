@@ -1,7 +1,9 @@
-return function(id){
+/* Global_ScrollToElement.js */
 
-    var elmnt = document.getElementById(id);
-    elmnt.scrollIntoView({ behavior: 'smooth' });
-
-    return null
+return function (id) {
+  document
+    .getElementById(id)
+    .scrollIntoView({ behavior: 'smooth', inline: 'end' })
+  // document.getElementById(id).scrollIntoView()
+  return null
 }

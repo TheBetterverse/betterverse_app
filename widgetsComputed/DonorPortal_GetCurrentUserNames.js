@@ -1,54 +1,56 @@
-return function(nameChoice){
+/* DonorPortal_GetCurrentUserNames.js */
 
-    let currentUser = this.DonorPortal_GetCurrentUser()
-    
-    let firstName = currentUser.firstName
-    let lastName = currentUser.lastName
-    let username = currentUser.username
-    let fullName = firstName + " " + lastName
+return function (nameChoice) {
+  if (nameChoice === undefined) nameChoice = 'username'
+  else nameChoice = nameChoice.toLowerCase()
 
-    if(nameChoice == "first"){
-        if(firstName != null){
-            return firstName
-        }   
+  let { firstName, lastName, username } = this.DonorPortal_GetCurrentUser()
 
-        if(firstName == null){
-            return username
-        }   
-    }
+  switch (nameChoice) {
+    case 'first':
+      if (firstName === null) return username
+      return firstName
 
-    else if(nameChoice == "last"){
-        if(lastName != null){
-            return lastName
-        }   
+    case 'last':
+      if (lastName === null) return username
+      return lastName
 
-        if(lastName == null){
-            return username
-        } 
-    }
+    case 'full':
+      if (firstName === null && lastName === null) {
+        return username
+      }
+      else if (firstName === null || lastName === null) {
+        return username
+      }
+      else if (firstName != null && lastName != null){
+        return `${firstName} ${lastName}`
+      }
+    case 'username':
+      return username
 
-    else if(nameChoice == "full"){
-        if(fullName != null){
-            return fullName
-        }   
+    default:
+      return null
+  }
+}
 
-        if(fullName == null){
-            return username
-        } 
-    }
+// suggestion
+// - returns an Object with all the names, making it more inline with the function name (GetUserNames)
+// - it's kinda hard in javascript to know if you must pass "first", "FIRST", "First", "firstname", "FirstName", for example.
+//   and kinda cumbersome to switch all of these cases.
+//   I lowercased the nameChoice var so it can match "first", "First" and "FIRST". but anyways, I think it's better to have separate functions.
+// - eg:
+//    - GetCurrentUser_FirstName
+//    - GetCurrentUser_LastName
+//    - GetCurrentUser_FullName
+//    - GetCurrentUser_Username
 
-    else if(nameChoice == "username"){
-        if(username != null){
-            return username
-        }   
+function getUserNames() {
+  let { firstName, lastName, username } = this.DonorPortal_GetCurrentUser()
 
-        if(username == null){
-            return null
-        } 
-    }
-
-    else{
-        return null
-    }
-
+  return {
+    firstName,
+    lastName,
+    fullName: `${firstName} ${lastName}`,
+    username
+  }
 }

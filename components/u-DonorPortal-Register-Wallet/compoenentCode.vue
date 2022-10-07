@@ -2,103 +2,77 @@
 
 <template>
   <div class="w-100">
-    <!-- Header for small displays -->
-    <b-container class="d-block d-lg-none w-100">
+    <!-- For small displays -->
+    <header class="d-block d-lg-none w-100">
       <b-row class="status-bar-clearance"></b-row>
 
-      <b-row class="mt-1 mb-5 d-flex">
+      <b-row class="mt-1 mb-1 d-flex">
         <b-col class="d-flex align-items-center md-logo">
           <icon-betterverse width="32" heigth="32" />
         </b-col>
-
-        <b-col class="text-right d-flex justify-content-end">
-          <small>Have an account?<br /><a href="#">Log in</a></small>
-        </b-col>
       </b-row>
-    </b-container>
+    </header>
 
-    <!-- Main Header -->
-    <div class="my-2">Create Account > Personal Info <b>> Wallet</b></div>
-    <div class="my-3 mb-4">
-      <slot>
-        <h1>A few things about <b>yourself</b></h1>
-        <p>
-          Here will say something about this and how it must be extraordinay.
-        </p>
-      </slot>
-    </div>
+    <section name="title" class="mb-5">
+      <b-container>
+        <b-row class="my-3">
+          <p>Create Account > Personal Info <b>> Wallet</b></p>
+        </b-row>
+        <b-row>
+          <slot>
+            <h1>Want to set up your <b>wallet?</b></h1>
+            <p>
+              You'll need a wallet and some USDC to start donating. Haven’t got
+              one yet? No worries, you can create one and get donating in no
+              time.
+            </p>
+          </slot>
+        </b-row>
+      </b-container>
+    </section>
 
-    <!-- Form -->
-    <form @submit.prevent="handleSubmit">
-      <div v-if="walletIsConnected">
-        <small>Wallet connected</small>
-        <div class="py-2 d-flex justify-content-lg-between">
-          <button-pill name="sign-up-google" class="w-100" checkmark>
-            <template v-slot:icon> <icon-torus></icon-torus> </template>
-            <template> 0x6dA...fNa </template>
-          </button-pill>
-        </div>
-
-        <div class="py-2 d-flex align-items-center justify-content-between">
-          <div>
-            <div>
-              <small><b>Balance</b></small>
-            </div>
-            <div class="d-flex align-items-center">
-              <h3>
-                70,536.00
-                <icon-usdc></icon-usdc>
-              </h3>
-            </div>
-          </div>
-
-          <div>
-            <button-pill id="top-up-button">Top up wallet</button-pill>
-          </div>
-        </div>
-
-        <div class="py-3 d-flex align-items-center justify-content-between">
-          <div class="d-flex">
-            <small>
-              You're all set!<br />
-              Go explore!
-            </small>
-          </div>
-
-          <div>
-            <button-continue>Let's go!</button-continue>
-          </div>
-        </div>
-      </div>
-
-      <div v-else>
+    <form @submit.prevent="$emit('submit', $event)">
+      <section name="form-inputs">
         <small>Connect existing wallet</small>
-        <div class="d-flex justify-content-between w-100 mt-2 mb-3">
-          <button-pill name="sign-up-google">
-            <template v-slot:icon> <icon-metamask></icon-metamask> </template>
-            <template> Metamask </template>
-          </button-pill>
+        <div
+          id="bv__registerwallet__connectwallet"
+          class="d-flex justify-content-between w-100 mt-2 mb-4"
+        >
+          <bv-button name="connect-metamask" type="submit">
+            <template v-slot:left-icon>
+              <icon-metamask />
+            </template>
+            <template> <p>Metamask</p> </template>
+          </bv-button>
 
-          <button-pill name="sign-up-facebook">
-            <template v-slot:icon> <icon-torus></icon-torus> </template>
-            <template> Torus </template>
-          </button-pill>
+          <bv-button name="connect-torus" type="submit">
+            <template v-slot:left-icon> <icon-torus /> </template>
+            <template> <p>Torus</p> </template>
+          </bv-button>
 
-          <button-pill name="sign-up-discord">
-            <template v-slot:icon> <icon-coinbase></icon-coinbase> </template>
-            <template> Coinbase </template>
-          </button-pill>
+          <bv-button name="connect-coinbase" type="submit">
+            <template v-slot:left-icon>
+              <icon-coinbase />
+            </template>
+            <template> <p>Coinbase</p> </template>
+          </bv-button>
         </div>
 
         <small>Or create wallet with</small>
-        <div class="d-flex justify-content-lg-between w-100 py-2">
-          <button-pill name="sign-up-google" class="w-100">
-            <template v-slot:icon> <icon-torus></icon-torus> </template>
-            <template> Torus </template>
-          </button-pill>
+     
+          <bv-button
+            name="connect-slide"
+            type="submit"
+            id="bv__register__connectslide"
+          >
+            <template #left-icon> <icon-slide /> </template>
+            <template> <p>Slide</p> </template>
+          </bv-button>
         </div>
 
-        <div class="d-flex justify-content-between w-100 py-5">
+        <hr class="mt-5 mb-3" />
+
+        <div class="w-100 my-4 d-flex justify-content-between">
           <div class="d-flex align-items-center">
             <small>
               This step is optional!<br />
@@ -106,34 +80,111 @@
             </small>
           </div>
           <div>
-            <button-continue>Skip step</button-continue>
+            <bv-button
+              @click="DonorPortal_CompleteProfile"
+              secondary
+              name="skip-step"
+              type="submit"
+            >
+              <template #default> <p>Skip step</p> 
+              </template>
+              <template #right-icon>
+                <div id="bv__right__arrow">
+                  <icon-rightarrow />
+                </div>
+                <div id="bv__spinner" class="spinner-border spinner-border-sm" role="status" style="display: none;"></div>
+              </template>
+
+            </bv-button>
           </div>
         </div>
-      </div>
+      </section>
     </form>
   </div>
 </template>
 
 <script>
 module.exports = {
+  props: ['DonorPortal_CompleteProfile'],
+  data() {
+    return {
+      wallet: {
+        provider: undefined,
+        address: undefined,
+        balance: 0
+      }
+    }
+  },
+
   methods: {
-    async handleSubmit(e) {}
+    async handleSubmit(e) {
+      let target = e.submitter.name
+
+      switch (target) {
+        case 'connect-metamask':
+          this.wallet.provider = 'metamask'
+          this.wallet.address = '1GAAr5LWGWpujJug7uKhwoQSzns1gcXpyS' // 0x6da...fNa
+          this.wallet.balance = 7053642
+          throw 'metamask not implemented'
+          break
+
+        case 'connect-torus':
+          this.wallet.provider = 'torus'
+          this.wallet.address = '1GAAr5LWGWpujJug7uKhwoQSzns1gcXpyS' // 0x6da...fNa
+          this.wallet.balance = 7053642
+          throw 'torus not implemented'
+          break
+
+        case 'connect-coinbase':
+          this.wallet.provider = 'coinbase'
+          this.wallet.address = '1GAAr5LWGWpujJug7uKhwoQSzns1gcXpyS' // 0x6da...fNa
+          this.wallet.balance = 7053642
+          throw 'coinbase not implemented'
+          break
+
+        case 'create-torus':
+          this.wallet.provider = 'torus'
+          this.wallet.address = '1GAAr5LWGWpujJug7uKhwoQSzns1gcXpyS' // 0x6da...fNa
+          this.wallet.balance = 7053642
+          throw 'create torus wallet not implemented'
+          break
+
+        case 'skip-step':
+          break
+      }
+    }
   },
 
   computed: {
     walletIsConnected() {
-      return true
+      return this.wallet.address !== undefined
+    },
+
+    formattedAddress() {
+      let address = this.wallet.address
+
+      if (!address.startsWith('0x')) address = `0x${address}`
+
+      return `${address.slice(0, 5)}...${address.slice(address.length - 3)}`
+    },
+
+    formattedBalance() {
+      let balance = this.wallet.balance / 100
+      return balance.toLocaleString('en')
     }
   },
 
   components: {
-    IconBetterverse: $getCustomComponent('u-Icons-Betterverse'),
     IconMetamask: $getCustomComponent('u-Icons-Metamask'),
     IconTorus: $getCustomComponent('u-Icons-Torus'),
     IconCoinbase: $getCustomComponent('u-Icons-Coinbase'),
     IconUsdc: $getCustomComponent('u-Icons-USDC'),
-    ButtonContinue: $getCustomComponent('u-Buttons-LeftArrow'),
-    ButtonPill: $getCustomComponent('u-Buttons-Pill')
+    IconPlus: $getCustomComponent('u-Icons-Plus'),
+    IconRightarrow: $getCustomComponent('u-Icons-ArrowRight'),
+    IconCheckmark: $getCustomComponent('u-Icons-Checkmark'),
+    IconBetterverse: $getCustomComponent('u-Icons-Betterverse'),
+    IconSlide: $getCustomComponent('u-Icons-Slide'),
+    BvButton: $getCustomComponent('u-Components-Button')
   }
 }
 </script>
@@ -150,11 +201,25 @@ div.status-bar-clearance {
   height: 44px;
 }
 
-button.bv-pillbutton {
-  padding: 6px 16px !important;
+button[name='create-torus'] {
+  width: 100% !important;
 }
 
-div.bv-pillbutton-slot {
-  display: flex !important;
+section[name='form-input'] > hr,
+section[name='wallet-info'] > hr {
+  background: #000000;
+  opacity: 0.1;
+}
+
+#bv__registerwallet__connectwallet {
+  gap: 15px;
+}
+
+#bv__registerwallet__connectwallet > button {
+  width: 100%;
+}
+
+#bv__register__connectslide {
+  width: 100%;
 }
 </style>

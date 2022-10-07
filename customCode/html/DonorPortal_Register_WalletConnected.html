@@ -1,0 +1,207 @@
+<!-- DonorPortal_Register_WalletConnected.html -->
+
+<div class="row no-gutters w-100">
+
+  <!-- For large display size -->
+  <b-container class="d-none d-lg-block col-7 vh-100 overflow-hidden bv__register__leftside">
+    <!-- Top left logo -->
+    <div id="betterverse-lg-logo" class="d-none d-lg-block"
+      onclick="window.open('https://www.betterverse.app')" style="cursor: pointer">
+      <u-Icons-Betterverse-R/>
+    </div>
+
+    <!-- Leftside image -->
+    <img
+      src="https://firebasestorage.googleapis.com/v0/b/tangle-157402.appspot.com/o/-N3z8rEgVVtApDNoNjXV%2F6806fe30-39c6-11ed-8a38-4141e3ff606f_datagrid_profile_img.png?alt=media&token=a81e6828-cc4a-454a-be9b-6c7545e19697" />
+  </b-container>
+
+
+  <!-- Main form area -->
+  <b-container class="col-12 col-lg-5 d-flex align-items-center justify-content-center bv__globals__px">
+    <div class="form-area bv__globals__px">
+      <div class="form-area-header">
+
+        <div class="status-bar-clearance"></div>
+
+        <!-- For small displays -->
+        <div class="d-flex d-lg-none w-100">
+          <u-Icons-Betterverse width="32" heigth="32" />
+        </div>
+
+        <div>
+          <p>Create Account > Personal Info <b>> Wallet</b></p>
+        </div>
+
+        <h1>Want to set up your <b>wallet?</b></h1>
+
+        <p>
+          You'll need a wallet and some USDC to start donating. Haven’t got one yet? No worries, you can create one and
+          get donating in no time.
+        </p>
+      </div>
+
+      <div class="form-area-main">
+        <div class="form-area-wallet">
+          <p> Wallet connected </p>
+
+          <u-Components-WalletDisplay :wallet="DonorPortal_GetCurrentUserWalletInformation()" address checkmark />
+        </div>
+
+        <div class="form-area-balance">
+          <div>
+            <small><b>Balance</b></small>
+
+            <p style="display: flex; gap: 0.25rem; align-items: center">
+              <u-get-Async :data="DonorPortal_DisplayUSDCBalance()" />
+              <u-Icons-USDC />
+            </p>
+          </div>
+
+          <u-Components-Button @click="DonorPortal_LoadRamp('overlay')">
+            <p>Top up wallet</p>
+            <template #right-icon>
+              <u-Icons-Buy />
+            </template>
+          </u-Components-Button>
+        </div>
+      </div>
+
+
+
+      <div class="w-100">
+        <hr />
+        <div class="form-area-footer">
+          <p>
+            You're all set!
+            Go explore!
+          </p>
+
+          <u-Components-Button @click="DonorPortal_CompleteProfile()" secondary>
+            <p>Let's go!</p>
+            <template #right-icon>
+              <div id="bv__right__arrow">
+                <u-Icons-ArrowRight />
+              </div>
+              <div id="bv__spinner" class="spinner-border spinner-border-sm" role="status" style="display: none;"></div>
+          </u-Components-Button>
+        </div>
+      </div>
+  </b-container>
+
+</div>
+
+
+<style>
+  div.status-bar-clearance {
+    height: 33px;
+  }
+
+  #betterverse-lg-logo {
+    position: absolute;
+    z-index: 10;
+    top: 24px;
+    left: 30px;
+  }
+
+  .form-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+
+    gap: 30px;
+
+    min-width: 200px;
+    max-width: 420px;
+  }
+
+  .form-area-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 15px;
+  }
+
+  .form-area-main {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+  }
+
+  .form-area-wallet {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    width: 100%;
+  }
+
+  .bv__button__walletconnected,
+  .bv__button__loading {
+    width: 100% !important;
+  }
+
+  .form-area-balance {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+  }
+
+  .form-area-footer {
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+  }
+
+  .bv__register__leftside {
+    border-image: none;
+    border-right-color: none;
+    border-right-width: 0;
+    border-right-style: none;
+  }
+
+  .bv__register__leftside>img {
+    object-fit: cover;
+    vertical-align: center;
+    height: 100%;
+    width: 100%;
+  }
+
+  @media screen and (min-width: 768px) {
+    .bv__register__leftside {
+      border-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3)) 1;
+      border-right-width: 1px;
+      border-right-style: solid;
+    }
+
+    .form-area {
+      max-width: 80%;
+    }
+  }
+
+  @media screen and (min-width: 992px) {
+    .form-area {
+      max-width: 70%;
+    }
+  }
+
+  @media screen and (min-width: 1800px) {
+    .form-area {
+      max-width: 60%;
+    }
+  }
+
+  @media screen and (min-width: 2200px) {
+    .form-area {
+      max-width: 50%;
+    }
+  }
+
+</style>

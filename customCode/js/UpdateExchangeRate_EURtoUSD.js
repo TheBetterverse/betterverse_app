@@ -9,7 +9,9 @@
 
     request.onload = function() {
       var response = request.response;
-      $setGlobalModel('exchangeEURtoUSD', response.result);
+      if (request.result != null){
+        $setGlobalModel('exchangeEURtoUSD', response.result);
+      }
     }
 
     //Exchange Rates Variables

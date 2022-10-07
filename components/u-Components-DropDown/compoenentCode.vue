@@ -1,6 +1,13 @@
+<!-- u-Components-DropDown -->
+
 <template>
-  <div>
-    <label class="bv-dropdown-label" v-if="label !== ''" :for="name">
+  <div class="bv__selectdropdown">
+    <label
+      class="bv-dropdown-label"
+      :class="{ disabled }"
+      v-if="label !== ''"
+      :for="name"
+    >
       {{ label }}
     </label>
 
@@ -45,10 +52,6 @@
 </template>
 
 <script>
-const required = {
-  'Field is required': subject => subject !== ''
-}
-
 module.exports = {
   props: {
     modelValue: {
@@ -57,6 +60,7 @@ module.exports = {
         content: '',
         valid: false,
         active: false,
+        required: false,
         errors: []
       }
     },
@@ -102,14 +106,9 @@ module.exports = {
       content: '',
       valid: false,
       active: false,
+      required: this.required,
       errors: []
     }
-
-    if (this.required)
-      this.validators = {
-        ...required,
-        ...this.validators
-      }
 
     await this.validate()
     this.$emit('input', this.modelValue)
@@ -127,10 +126,14 @@ module.exports = {
     },
 
     async validate() {
+      if (!this.required) {
+        await this.update('valid', true)
+        return
+      }
+
       let errors = []
 
-      Object.entries(this.validators).forEach(async validator => {
-        let [error, test] = validator
+      Object.entries(this.validators).forEach(async ([error, test]) => {
         let result = await test(this.modelValue.content)
 
         if (!result) errors.push(error)
@@ -144,6 +147,9 @@ module.exports = {
 </script>
 
 <style>
+.bv__selectdropdown {
+  width: 100%;
+}
 div.bv-dropdown-main {
   height: 32px;
   border-bottom: 1px solid black;
@@ -157,6 +163,7 @@ label.bv-dropdown-label {
   padding: 0;
   margin: 0;
   font-size: 12px;
+  color: black !important;
 }
 
 select.bv-dropdown-select {
@@ -164,6 +171,7 @@ select.bv-dropdown-select {
   border: none;
   outline: none;
   background: #eceae3;
+  color: black !important;
 }
 
 div.bv-dropdown-errors {
@@ -186,5 +194,13 @@ select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
   transition: background-color 9999s ease-in-out 9999s;
+}
+
+div.bv-dropdown-main.disabled {
+  border-bottom: 1px solid #767571;
+}
+
+label.bv-dropdown-label.disabled {
+  color: #767571;
 }
 </style>

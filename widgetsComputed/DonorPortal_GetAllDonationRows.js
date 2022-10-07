@@ -1,8 +1,5 @@
-return function  () {
+/* DonorPortal_GetAllDonationRows.js */
 
-    let donationRows = []
-    donationRows = $getGrid('capturedDonationData') 
-
-    return donationRows
-    
+return function () {
+  return $getGrid('capturedDonationData')
 }

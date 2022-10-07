@@ -1,106 +1,111 @@
-<!-- Donor Portal Sign In Form -->
-
 <template>
-  <div class="w-100">
-    <!-- Header for small displays -->
-    <b-container class="d-block d-lg-none w-100">
-      <b-row class="status-bar-clearance"></b-row>
+  <main class="w-100">
+    <!-- For small displays -->
 
-      <b-row class="mt-1 mb-5">
-        <b-col class="d-flex align-items-center">
-          <icon-betterverse width="32" heigth="32" />
-        </b-col>
-
-        <b-col class="text-right d-flex justify-content-end">
-          <small
-            >Don't have an account?<br /><a href="#">Create account</a></small
-          >
-        </b-col>
-      </b-row>
-    </b-container>
-
-    <!-- Main Header -->
-    <div class="my-2">Log in</div>
-    <div class="my-3">
-      <slot>
-        <h1>Welcome to the <b>Betterverse</b></h1>
-        <h2>
-          Here will say something about this and how it must be extraordinay.
-        </h2>
-      </slot>
-    </div>
-
+    <section name="title" class="mb-4">
+      <b-container>
+        <b-row class="mb-3">
+          <p>Log in</p>
+        </b-row>
+        <b-row>
+          <slot>
+            <h1>Welcome back to <b>Betterverse</b></h1>
+            <p>We missed you while you were away.</p>
+          </slot>
+        </b-row>
+      </b-container>
+    </section>
     <form @submit.prevent="handleSubmit">
-      <div class="my-3">
-        <!-- Email Input -->
-        <bv-input
-          label="Continue with email"
-          name="email-input"
-          type="text"
-          v-model="form.email"
-          placeholder="Type e-mail address"
-          :validators="validators.email"
-          :disabled="$getGlobalModel('signUpProcess')"
-        >
-          <icon-mail />
-        </bv-input>
-
-        <!-- Password Input -->
-        <bv-input
-          label="Password"
-          name="password-input"
-          type="password"
-          placeholder="Type password"
-          v-model="form.password"
-          :validators="validators.password"
-          :disabled="$getGlobalModel('signUpProcess')"
-        >
-          <icon-lock />
-        </bv-input>
-      </div>
-
-      <!-- Continue button -->
-      <div
-        class="button-wrapper d-flex align-items-center justify-content-between"
-      >
-        <div class="d-flex justify-content-center">
-          <small>Forgot password?<br /><a href="#">Let's reset it!</a></small>
+      <section name="form-inputs">
+        <div class="my-3">
+          <bv-input
+            label="Continue with email"
+            name="email-input"
+            type="text"
+            v-model="form.email"
+            placeholder="Type e-mail address"
+            :validators="validators.email"
+            :disabled="$getGlobalModel('signUpProcess')"
+          >
+            <icon-mail />
+          </bv-input>
+          <bv-input
+            label="Password"
+            name="password-input"
+            type="password"
+            placeholder="Type password"
+            v-model="form.password"
+            :validators="validators.password"
+            :disabled="$getGlobalModel('signUpProcess')"
+          >
+            <icon-lock />
+          </bv-input>
         </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <p style="line-height: 16px">
+              <small> Forgot passowrd? </small>
+            </p>
 
-        <button-continue
-          name="continue-email-button"
-          :disabled="$getGlobalModel('signUpProcess')"
-          >Continue with email</button-continue
-        >
-      </div>
-
+            <p style="line-height: 16px">
+              <small>
+                <b
+                  ><u
+                    ><a href="#" @click="DonorPortal_RedirectToResetPassword"
+                      >Let's reset it!</a
+                    ></u
+                  ></b
+                >
+              </small>
+            </p>
+          </div>
+          <bv-button
+            secondary
+            name="continue-email-button"
+            :disabled="$getGlobalModel('signUpProcess')"
+          >
+            <template #default>
+              <p v-if="form.email.content">Continue with email</p>
+            </template>
+            <template #right-icon>
+              <icon-rightarrow v-if="spinnerActive == false" color="white"></icon-rightarrow>
+              <div v-if="spinnerActive == true" class="spinner-border spinner-border-sm" role="status"></div>
+            </template>
+          </bv-button>
+        </div>
+      </section>
       <hr />
-
-      <!-- Socials -->
-      <div class="my-2">Or continue with</div>
-      <div class="d-flex justify-content-lg-between w-100">
-        <button-signup name="sign-up-google" class="mr-2 mr-lg-0">
-          <template v-slot:icon> <icon-google></icon-google> </template>
-          <template> Google </template>
-        </button-signup>
-
-        <button-signup name="sign-up-facebook" class="mr-2 mr-lg-0">
-          <template v-slot:icon> <icon-facebook></icon-facebook> </template>
-          <template> Facebook </template>
-        </button-signup>
-
-        <button-signup name="sign-up-discord" class="mr-2 mr-lg-0">
-          <template v-slot:icon> <icon-discord></icon-discord> </template>
-          <template> Discord </template>
-        </button-signup>
-      </div>
-
-      <!-- Footer for large displays -->
-      <div class="mt-6 d-none d-lg-block">
-        <small>Don't have an account? <a href="#">Create account</a></small>
-      </div>
+      <section name="socials">
+        <div class="my-2">Or continue with</div>
+        <div id="bv__register__socialsbuttons" class="w-100">
+          <bv-button responsive name="sign-up-google" class="mr-2 mr-lg-0">
+            <template #left-icon>
+              <icon-google v-if="googleSignIn == false"></icon-google>
+              <div
+                class="spinner-border"
+                v-if="googleSignIn == true"
+                style="width: 1rem; height: 1rem"
+                role="status"
+              ></div>
+            </template>
+            <template> <p>Google</p> </template>
+          </bv-button>
+          <bv-button responsive name="sign-up-facebook" class="mr-2 mr-lg-0">
+            <template #left-icon>
+              <icon-facebook></icon-facebook>
+            </template>
+            <template> <p>Facebook</p> </template>
+          </bv-button>
+          <bv-button responsive name="sign-up-unstoppable" class="mr-2 mr-lg-0">
+            <template #left-icon>
+              <icon-discord></icon-discord>
+            </template>
+            <template><p>Unstoppable</p> </template>
+          </bv-button>
+        </div>
+      </section>
     </form>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -112,42 +117,52 @@ async function emailIsRightFormat(subject) {
 }
 
 async function emailNotRegistered(subject) {
-  /* needs implementation */
-  return true
+  const users = await $getGrid('users')
+
+  for (i = 0; i < users.length; i++) {
+    if (users[i].$user$display == subject) {
+      return true
+    }
+  }
+  return false
 }
 
 function notEmptyString(subject) {
   return subject !== ''
 }
 
-// ---
-
 module.exports = {
+  props: [
+    'DonorPortal_RedirectToSignUp',
+    'DonorPortal_RedirectToResetPassword'
+  ],
   data() {
     return {
+      spinnerActive: false,
+      googleSignIn: false,
+      facebookSignIn: false,
+      unstoppableSignIn: false,
+      validCombo: false,
       form: {
         email: {},
         password: {}
       },
       validators: {
         email: {
-          "Field can't be empty": notEmptyString,
+          "Email can't be empty": notEmptyString,
           'Email format is invalid': emailIsRightFormat,
-          'Email is not registered': emailNotRegistered
+          //'Email not registered!': emailNotRegistered
         },
         password: {
-          "Field can't be empty": notEmptyString
+          "Password can't be empty": notEmptyString
         }
       }
     }
   },
 
   methods: {
-    /* Events */
-
     async handleSubmit(e) {
       let target = e.submitter.name
-
       switch (target) {
         case 'continue-email-button':
           await this.signInEmail(e)
@@ -158,36 +173,42 @@ module.exports = {
         case 'sign-up-facebook':
           await this.signInFaceBook(e)
           break
-        case 'sign-up-discord':
-          await this.signInDiscord(e)
+        case 'sign-up-unstoppable':
+          await this.signInUnstoppable(e)
           break
       }
     },
 
-    /* Sign In Methods */
-
     async signInEmail(e) {
       this.showErrors()
 
-      if (!this.inputsAreValid) {
-        console.error('> INPUTS ARE INVALID')
-        return
-      }
+      if (!this.inputsAreValid) return
 
-      console.log('> INPUTS ARE VALID')
+      this.spinnerActive = true
+      await new Promise(r => setTimeout(r, 2000));
+
+      await $anonUserSignIn('emailAndPassword', {
+        email: this.form.email.content,
+        password: this.form.password.content
+      })
+        .then(() => {
+          $setCurrentTab('-Mx_5FLL2jlxjXYUMdIL')
+        })
+        .catch(err => {
+          alert(err.message)
+        })
+
+      //$setCurrentTab('-Mx_5FLL2jlxjXYUMdIL')
     },
 
     async signInGoogle(e) {
-      $setGlobalModel('signUpProcess', true)
-
-      $anonUserToPermanent('google')
+      await $anonUserSignIn('google')
         .then(() => {
           $setCurrentTab('-Mx_5FLL2jlxjXYUMdIL')
-          $setGlobalModel('signUpProcess', false)
         })
         .catch(err => {
-          $setGlobalModel('signUpProcess', false)
-          console.error(err)
+          alert(err.message)
+          spinnerActive == false
         })
     },
 
@@ -195,14 +216,23 @@ module.exports = {
       throw 'Sign in with facebook is not implemented'
     },
 
-    async signInDiscord(e) {
-      throw 'Sign in with discord is not implemented'
+    async signInUnstoppable(e) {
+      await $anonUserSignIn('unstoppableDomains')
+        .then(() => {
+          $setCurrentTab('-Mx_5FLL2jlxjXYUMdIL')
+        })
+        .catch(err => {
+          alert(err.message)
+          spinnerActive == false
+        })
     },
-
-    /* View controller */
 
     async showErrors() {
       Object.values(this.form).forEach(field => (field.active = true))
+    },
+
+    redirectToSignUp() {
+      this.DonorPortal_RedirectToSignUp()
     }
   },
 
@@ -210,7 +240,6 @@ module.exports = {
     inputsAreValid() {
       return Object.values(this.form).every(field => field.valid)
     },
-
     formContent() {
       return Object.entries(this.form).reduce((prev, curr) => {
         prev[curr[0]] = curr[1].content
@@ -224,15 +253,14 @@ module.exports = {
     IconMail: $getCustomComponent('u-Icons-Mail'),
     IconGoogle: $getCustomComponent('u-Icons-Google'),
     IconFacebook: $getCustomComponent('u-Icons-Facebook'),
-    IconDiscord: $getCustomComponent('u-Icons-Discord'),
+    IconDiscord: $getCustomComponent('u-Icons-UnstoppableDomains'),
+    IconRightarrow: $getCustomComponent('u-Icons-ArrowRight'),
     IconBetterverse: $getCustomComponent('u-Icons-Betterverse'),
-    ButtonSignup: $getCustomComponent('u-Buttons-Pill'),
-    ButtonContinue: $getCustomComponent('u-Buttons-LeftArrow'),
+    BvButton: $getCustomComponent('u-Components-Button'),
     BvInput: $getCustomComponent('u-Components-Input')
   }
 }
 </script>
-
 <style>
 .container,
 .row,
@@ -240,12 +268,17 @@ module.exports = {
   padding: 0;
   margin: 0;
 }
-
 div.socials > button {
   margin-right: 10px;
 }
 
-div.status-bar-clearance {
-  height: 44px;
+#bv__register__socialsbuttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+#bv__register__socialsbuttons > button {
+  width: 100%;
 }
 </style>

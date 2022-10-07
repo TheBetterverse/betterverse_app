@@ -1,19 +1,9 @@
-return function(){
+/* DonorPortal_GetCurrentUserTotalTreesPlanted.js */
 
-    let currentUser = fbUser.uid
-    let myDonationRows = $getGrid('capturedDonationData').filter(row => row.user == currentUser) 
-    let totalTrees = 0
+return function () {
+  let currentUser = fbUser.uid
 
-    for(let i = 0; i < myDonationRows.length; i++){
-        totalTrees = +totalTrees + +myDonationRows[i].numberOfTreesPlanted
-    }
-
-    if(totalTrees > 0){
-        return totalTrees.toLocaleString()
-    }
-
-    else{
-        return 0
-    }
-
+  return $getGrid('capturedDonationData')
+    .filter(row => row.user == currentUser)
+    .reduce((total, curr) => total + curr.numberOfTreesPlanted, 0)
 }

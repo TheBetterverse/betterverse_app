@@ -1,1 +1,4 @@
-return await this.DonorPortal_GetCurrentUserWalletBalance(this.DonorPortal_GetCurrentUserWalletAddress(), 'ETH')
+return await DonorPortal_GetCurrentUserWalletBalance(
+  DonorPortal_GetCurrentUserWalletAddress(),
+  'ETH'
+)

@@ -1,73 +1,353 @@
-<!-- Existing User -->
-<div v-if="DonorPortal_GetCurrentUserProfileComplete() == true" class="navbar-container">
-    <div class="navbar-top">
-        <div class="navbar logoContainer">
-            <img class="logo" src="https://uploads-ssl.webflow.com/613e414d36aa8cb1b070c82f/6150c11fa58d4be8cbbbe1a6_betterverse-logomark-black.svg">
-        </div>
-
-        <div class="navbar right">
-            <a class="navbar-menu-item" @click="$setCurrentSubTab('-MyvUthgoLrT0z0HdIX9', '-Mx_5FLL2jlxjXYUMdIL')">
-                Dashboard
-            </a>
-        </div>
-        <div class="navbar right">
-            <a class="navbar-menu-item" @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ', '-Mx_5FLL2jlxjXYUMdIL')">
-                Resources
-            </a>
-        </div>
-        <div class="navbar right">
-            <a class="navbar-menu-item" @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ', '-Mx_5FLL2jlxjXYUMdIL')">
-                View Projects
-            </a>
-        </div>
-
-
-        <div class="navbar right">
-            <a class="navbar-menu-item wallet-container">
-                <div v-if="DonorPortal_GetCurrentUserWalletAddress() != null" class="wallet-connected">({{DonorPortal_GetCurrentUserWalletProvider()}}) {{DonorPortal_DisplayUSDCBalance}} USDC </div>
-                <div v-if="DonorPortal_GetCurrentUserWalletAddress() == null" class="wallet-not-connected" v-b-modal.connectWalletModal>Connect Wallet</div>
-            </a>
-        </div>
-
-        <div class="navbar right">
-            <a class="navbar-menu-item" @click="$setCurrentSubTab('-MyvhrGOZpHXGi82DJ4i', '-Mx_5FLL2jlxjXYUMdIL')">
-                <img v-if="DonorPortal_GetCurrentUserProfilePicture() != false" class="profile-image" :src="DonorPortal_GetCurrentUserProfilePicture()" style="max-width: 50px;"/>
-                <i v-if="DonorPortal_GetCurrentUserProfilePicture() == false" class="fas fa-user fa-2x profile-image"></i>
-            </a>
-        </div>
-
+<!-- DonorPortal_Navbar.html -->
+<nav id="bv__navbar" class="bv__globals__px">
+  <div id="bv__navbar__left">
+    <div class="d-lg-none">
+      <u-Icons-Betterverse height="32px" width="32px" onclick="window.open('https:\/\/www.betterverse.app')">
+      </u-Icons-Betterverse>
     </div>
-</div>
 
-<!-- Anonymous User -->
-<div v-if="DonorPortal_GetCurrentUserProfileComplete() == false" class="navbar-container">
-    <div class="navbar-top">
-        <div class="navbar left">
-            <img class="logo" src="https://uploads-ssl.webflow.com/613e414d36aa8cb1b070c82f/6150c11fa58d4be8cbbbe1a6_betterverse-logomark-black.svg">
-        </div>
-        <div class="navbar center">
-        </div>
-        <div class="navbar right">
-            <a class="navbar-menu-item" @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ', '-Mx_5FLL2jlxjXYUMdIL')">
-                Donate
-            </a>
-        </div>
-        <div v-if="!fbUser.email" class="navbar right">
-            <a class="navbar-menu-item" @click="$setCurrentSubTab('-N0ZsOs2dAbF9PTr_Hz0', '-Mx_5FLL2jlxjXYUMdIL')">
-                Sign In/Register
-            </a>
-        </div>
-
-        <div v-if="fbUser.email" class="navbar right">
-            <a class="navbar-menu-item" @click="$setCurrentSubTab('-MysZOod447ZdKXNCTey', '-Mx_5FLL2jlxjXYUMdIL'); $setUser('profileSetUpStep', 1);">
-                My Profile
-            </a>
-        </div>
-
-        <div v-if="Global_GetUserRoles && Global_GetUserRoles.includes('Admin')" class="navbar right">
-            <a class="navbar-menu-item" @click="$setCurrentTab('-MxoSCGlYuOM5c6lkU0_')">
-                Admin
-            </a>
-        </div>
+    <div class="d-lg-grid">
+      <button onclick="window.open('https:\/\/www.betterverse.app')" style="background: none">
+        <u-Icons-Betterverse></u-Icons-Betterverse>
+      </button>
     </div>
-</div>
+
+    <div id="bv__navbar__leftmenu">
+      <u-Components-Button tertiary @click="DonorPortal_RedirectToDashboard()"
+        :highlight="currentSubTab === '-MyvUthgoLrT0z0HdIX9'">
+        <p>Dashboard</p>
+
+        <template #left-icon>
+          <u-Icons-Dashboard />
+        </template>
+      </u-Components-Button>
+
+      <u-Components-NavbarDropDown>
+        <u-Components-Button tertiary>
+          <template #left-icon>
+            <u-Icons-Resources />
+          </template>
+
+          <p>Resources</p>
+
+          <template #right-icon>
+            <u-Icons-Chevron />
+          </template>
+        </u-Components-Button>
+
+        <template #dropdown>
+          <span>
+            <a href="https://www.betterverse.app/#about">
+              <u-Icons-About/>
+              <p>About</p>
+            </a>
+          </span>
+
+          <span>
+            <a href="https://www.betterverse.app/team">
+            <u-Icons-Team/>
+            <p>Team</p>
+            </a>
+          </span>
+
+          <span>
+            <a href="https://www.betterverse.app/#metaverse">
+            <u-Icons-Metaverse/>
+            <p>Metaverse</p>
+            </a>
+          </span>
+
+          <span>
+            <a href="https://www.betterverse.app/roadmap">
+            <u-Icons-Roadmap/>
+            <p>Roadmap</p>
+            </a>
+          </span>
+
+          <span>
+            <a href="https://www.betteverse.app/team/#contact">
+            <u-Icons-Contact/>
+            <p>Contact</p>
+            </a>
+          </span>
+        </template>
+      </u-Components-NavbarDropDown>
+    </div>
+  </div>
+
+  <div id="bv__navbar__right" v-if="DonorPortal_GetCurrentUserProfileComplete() == true">
+    <u-Components-Button secondary class="d-none d-lg-flex"
+      @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ', '-Mx_5FLL2jlxjXYUMdIL')">
+      <template #default>
+        <p>View projects</p>
+      </template>
+
+      <template #right-icon>
+        <u-Icons-Heart color="white"></u-Icons-Heart>
+      </template>
+    </u-Components-Button>
+
+    <div v-if="DonorPortal_GetCurrentUserProfileComplete() == true">
+      <div id="bv__navbar__walletconnect" v-if="DonorPortal_GetCurrentUserWalletAddress() === null">
+        <form @submit.prevent="DonorPortal_ConnectWallet">
+          <u-Components-NavbarDropDown class="bv__navbar__connectwalletdropdown">
+            <u-Components-WalletDisplay @DonorPortal_TriggerWalletPopup="DonorPortal_TriggerWalletPopup"
+              :wallet="DonorPortal_GetCurrentUserWalletInformation()" />
+
+            <template #dropdown>
+              <button type="submit" name="connect-metamask">
+                <u-Icons-Metamask />
+                <p>Metamask</p>
+              </button>
+
+              <button type="submit" name="connect-torus">
+                <u-Icons-Torus />
+                <p>Torus</p>
+              </button>
+
+              <button type="submit" name="connect-coinbase">
+                <u-Icons-Coinbase />
+                <p>Coinbase</p>
+              </button>
+
+              <button type="submit" name="connect-torus">
+                <u-Icons-Plus outline />
+                <p>Create wallet</p>
+              </button>
+            </template>
+          </u-Components-NavbarDropDown>
+        </form>
+      </div>
+
+      <div id="bv__navbar__walletconnected" v-else>
+        <u-Components-WalletDisplay :wallet="DonorPortal_GetCurrentUserWalletInformation()"
+          @DonorPortal_TriggerWalletPopup="DonorPortal_TriggerWalletPopup" />
+      </div>
+    </div>
+
+    <u-Components-NavbarDropDown id="bv__navbar__profilepicture"
+      v-if="DonorPortal_GetCurrentUserProfileComplete() == true">
+      <a style="cursor: pointer;" @click="$setCurrentSubTab('-MyvhrGOZpHXGi82DJ4i', '-Mx_5FLL2jlxjXYUMdIL');">
+        <u-Components-ProfilePicture height="32px" width="32px" :src="DonorPortal_GetCurrentUserProfilePicture()"
+          @click="$setCurrentSubTab('-MyvhrGOZpHXGi82DJ4i', '-Mx_5FLL2jlxjXYUMdIL')" />
+      </a>
+
+      <template #dropdown>
+        <span @click="$setCurrentSubTab('-MyvhrGOZpHXGi82DJ4i', '-Mx_5FLL2jlxjXYUMdIL');">
+          <u-Icons-SettingsCog />
+          <p>Settings</p>
+        </span>
+
+        <span @click="$signOut({
+            redirect: '/dashboard/-N3z8rEgVVtApDNoNjXV?tab=-Mx_5FLL2jlxjXYUMdIL&subtab=-N4IRMyIAw-t4q0VNr0C'
+            });">
+          <u-Icons-Logout />
+          <p>Logout</p>
+        </span>
+      </template>
+    </u-Components-NavbarDropDown>
+  </div>
+
+  <div id="bv__mobile__navbar" class="d-lg-none">
+    <ul>
+      <li>
+        <div class="iconwrapper">
+          <u-Icons-Dashboard />
+        </div>
+        <a href="#" @click="DonorPortal_RedirectToDashboard()">Dashboard</a>
+      </li>
+      <li>
+        <div class="iconwrapper">
+          <u-Icons-About/>
+        </div>
+        <a href="https://www.betterverse.app/#about">About</a>
+      </li>
+      <li>
+        <div class="iconwrapper">
+          <u-Icons-Team/>
+        </div>
+        <a href="https://www.betterverse.app/team">Team</a>
+      </li>
+      <li>
+        <div class="iconwrapper">
+          <u-Icons-Metaverse/>
+        </div>
+        <a href="https://www.betterverse.app/#metaverse">Metaverse</a>
+      </li>
+      <li>
+        <div class="iconwrapper">
+          <u-Icons-Roadmap/>
+        </div>
+        <a href="https://www.betterverse.app/roadmap">Roadmap</a>
+      </li>
+      <li>
+        <div class="iconwrapper">
+          <u-Icons-Contact/>
+        </div>
+        <a href="https://www.betteverse.app/team/#contact">Contact</a>
+      </li>
+    </ul>
+    <div id="bv__mobile__navbar__clickblock" @click="DonorPortal_TriggerMobileNav()"></div>
+  </div>
+</nav>
+
+<style>
+  #bv__mobile__navbar {
+    width: 100%;
+    position: absolute;
+    top: 66px;
+    display: block;
+    transition: all .5s;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  #bv__mobile__navbar.display {
+    display: block;
+    opacity: 1;
+    top: 66px;
+    pointer-events: auto;
+  }
+
+
+  #bv__mobile__navbar ul {
+    height: auto;
+    background: #efede7;
+    z-index: 100 !important;
+    position: relative;
+    margin-bottom: 0;
+  }
+
+  #bv__mobile__navbar li {
+    display: block;
+    height: 70px;
+    line-height: 35px;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  #bv__mobile__navbar li .iconwrapper {
+    margin-left: 5%;
+  }
+
+  #bv__mobile__navbar li a {
+    text-decoration: none;
+    margin-left: 2%;
+    font-family: 'Documan';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: black !important;
+  }
+
+
+  #bv__mobile__navbar li a:hover {
+    font-weight: bold;
+  }
+
+
+  #bv__navbar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    gap: 0 1rem;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 67px;
+    background: #efede7;
+
+  }
+
+  #bv__navbar__left {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    align-items: center;
+    justify-content: center;
+    gap: 0 2rem;
+
+  }
+
+  #bv__navbar__leftmenu {
+    display: none;
+    grid-template-columns: repeat(2, max-content);
+  }
+
+  #bv__navbar__leftmenu a {
+    text-decoration: none;
+  }
+
+  #bv__navbar__leftmenu a:hover {
+    color: black;
+  }
+
+  #bv__navbar__leftmenu p {
+    display: inline;
+  }
+
+  #bv__navbar__right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 18px;
+  }
+
+
+  #bv__navbar__profilepicture.bv__dropdown {
+    justify-content: flex-end;
+  }
+
+  .bv__navbar__connectwalletdropdown>.bv__dropdown__dropdown>.bv__dropdown__dropdownitems>button {
+    appearance: none;
+    width: 100%;
+  }
+
+  #close__icon {
+    display: none;
+  }
+
+  #close__icon.display {
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  #compass__icon {
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  #compass__icon.hide {
+    display: none;
+  }
+
+
+  #bv__mobile__navbar__clickblock {
+    background-color: transparent;
+    height: 80vh;
+  }
+
+  @media screen and (min-width: 992px) {
+    #bv__navbar {
+      height: 92px;
+    }
+
+    #bv__mobile__navbar {
+      display: none;
+    }
+
+    #bv__navbar__leftmenu {
+      display: grid;
+      gap: 15px;
+    }
+  }
+
+</style>

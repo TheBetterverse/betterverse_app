@@ -1,10 +1,11 @@
 <template>
   <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="20"
-    height="20"
-    viewBox="0 2 20 20"
+    class="bv__icons__usdc"
+    :width="height"
+    :height="width"
+    viewBox="0 0 20 20"
     fill="none"
+    xmlns="http://www.w3.org/2000/svg"
   >
     <path
       d="M10 18C14.4336 18 18 14.4336 18 10C18 5.5664 14.4336 2 10 2C5.5664 2 2 5.5664 2 10C2 14.4336 5.5664 18 10 18Z"
@@ -21,3 +22,28 @@
     />
   </svg>
 </template>
+
+<script>
+module.exports = {
+  props: {
+    width: {
+      type: String,
+      default: '20px'
+    },
+    height: {
+      type: String,
+      default: '20px'
+    }
+  }
+}
+</script>
+
+<style>
+.bv__icons__usdc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+}
+</style>

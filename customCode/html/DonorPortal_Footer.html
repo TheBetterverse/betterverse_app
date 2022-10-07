@@ -1,0 +1,68 @@
+<!-- DonorPortal_Footer.html -->
+
+<template>
+  <!-- <footer id="bv__footer" class="w-100 bv__globals__px">
+    <p> Betterverse Ltd © 2022 </p>
+    <div id="bv__footerlinks">
+      <a href="http://betterverse.app/#Contact">
+        <p> Get in touch </p>
+      </a>
+
+      <a href="http://betterverse.app/legal">
+        <p> Privacy & Cookies </p>
+      </a>
+    </div>
+  </footer> -->
+</template>
+
+<style>
+  #bv__footer {
+    position: absolute;
+    bottom: 0px;
+    width: 50%;
+    height: 51px;
+    z-index: 100;
+
+    display: grid;
+    grid-template-columns: max-content max-content;
+    align-items: center;
+    justify-content: space-between;
+    scroll-snap-align: end;
+
+    color: #ECEAE3;
+    background-color: black;
+    gap: 1rem;
+  }
+
+  #bv__footerlinks {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: max-content max-content;
+
+  }
+
+  #bv__footerlinks>a {
+    color: #ECEAE3;
+  }
+
+  #bv__footer>p,
+  #bv__footerlinks>a>p {
+    font-size: 12px;
+  }
+
+  @media screen and (min-width: 576px) {
+
+    #bv__footer>p,
+    #bv__footerlinks>a>p {
+      font-size: 14px;
+    }
+  }
+
+  @media screen and (min-width: 992px) {
+    #bv__footer {
+      justify-content: flex-start;
+    }
+
+  }
+
+</style>

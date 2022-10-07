@@ -1,12 +1,13 @@
 {
-  "displayColumn": "tokenID",
-  "filterBuilder": "{\"condition\":\"AND\",\"rules\":[{\"key\":\"charities\",\"operator\":\"=\",\"value\":null,\"name\":\"Charity\",\"expression\":false,\"hidden\":false},{\"key\":\"charityProject\",\"operator\":\"=\",\"value\":null,\"name\":\"Charity Project\",\"expression\":false,\"hidden\":false},{\"key\":\"donationDate\",\"operator\":\"date\",\"value\":null,\"name\":\"donationDate\",\"expression\":false,\"hidden\":false}]}",
+  "displayColumn": "donationAmount",
+  "filterBuilder": "{\"condition\":\"AND\",\"rules\":[{\"key\":\"charityProject\",\"operator\":\"=\",\"value\":null,\"name\":\"Charity Project\",\"expression\":false,\"hidden\":false},{\"key\":\"donationDate\",\"operator\":\"date\",\"value\":null,\"name\":\"donationDate\",\"expression\":false,\"hidden\":false},{\"key\":\"user\",\"operator\":\"=\",\"value\":null,\"name\":\"user\",\"expression\":false,\"hidden\":false},{\"key\":\"charity\",\"operator\":\"=\",\"value\":null,\"name\":\"charity\",\"expression\":false,\"hidden\":false},{\"key\":\"donationDate\",\"operator\":\"date\",\"value\":{\"type\":\"between\"},\"name\":\"donationDate\",\"expression\":false,\"hidden\":false}]}",
   "isReactive": true,
   "meta": {
     "charity": {
       "displayName": "charity",
+      "invisible": false,
       "lookUpTable": "charities",
-      "order": 0,
+      "order": 1,
       "type": "lookup"
     },
     "charityProject": {
@@ -14,13 +15,13 @@
       "displayName": "Charity Project",
       "invisible": false,
       "lookUpTable": "charityProjects",
-      "order": 1,
+      "order": 2,
       "type": "lookup"
     },
     "createdDate": {
       "displayName": "Created Date",
       "invisible": true,
-      "order": 2,
+      "order": 13,
       "type": "date"
     },
     "currency": {
@@ -33,87 +34,69 @@
     },
     "donationAmount": {
       "displayName": "donationAmount",
-      "order": 4,
+      "invisible": false,
+      "order": 0,
+      "type": "number"
+    },
+    "donationAmountEUR": {
+      "displayName": "donationAmountEUR",
+      "invisible": false,
+      "order": 12,
+      "type": "number"
+    },
+    "donationAmountGBP": {
+      "displayName": "donationAmountGBP",
+      "invisible": false,
+      "order": 11,
       "type": "number"
     },
     "donationDate": {
       "displayName": "donationDate",
       "invisible": true,
-      "order": 5,
+      "order": 14,
       "type": "date"
     },
     "donationLocation": {
       "displayName": "donationLocation",
       "invisible": false,
       "lookUpTable": "locations",
-      "order": 6,
+      "order": 4,
       "type": "lookup"
     },
     "donations": {
       "displayName": "donations",
       "invisible": true,
-      "order": 7,
+      "order": 15,
       "type": "string"
-    },
-    "externalDonation": {
-      "displayName": "externalDonation",
-      "invisible": true,
-      "order": 8,
-      "type": "checkbox"
     },
     "gas": {
       "displayName": "gas",
       "invisible": false,
-      "order": 9,
+      "order": 5,
       "type": "number"
-    },
-    "jsonLink": {
-      "displayName": "jsonLink",
-      "invisible": false,
-      "order": 10,
-      "type": "string"
     },
     "lastEditDate": {
       "displayName": "Last edit date",
       "invisible": true,
-      "order": 11,
+      "order": 16,
       "type": "date"
     },
     "lastEditedBy": {
       "displayName": "Last edited by",
       "invisible": true,
-      "order": 12,
+      "order": 17,
       "type": "user"
     },
     "layout": {
       "displayName": "Layout",
       "invisible": true,
-      "order": 13,
+      "order": 18,
       "type": "select"
     },
     "nextEvents": {
       "displayName": "Next Events",
       "invisible": true,
-      "order": 14,
-      "type": "string"
-    },
-    "nftName": {
-      "displayName": "nftName",
-      "invisible": false,
-      "order": 15,
-      "type": "string"
-    },
-    "nftType": {
-      "displayName": "nftType",
-      "invisible": true,
-      "lookUpTable": "nFTTypes",
-      "order": 16,
-      "type": "lookup"
-    },
-    "numberOfTrades": {
-      "displayName": "numberOfTrades",
-      "invisible": true,
-      "order": 17,
+      "order": 19,
       "type": "string"
     },
     "numberOfTreesPlanted": {
@@ -121,14 +104,14 @@
       "displayName": "numberOfTreesPlanted",
       "invisible": false,
       "onChange": "/*var carbonSequestration = rowData.$charityProject.yearlyCO2Sequestration\r\n\r\n//console.log(carbonSequestration)\r\n\r\nvar treesPlanted = rowData.numberOfTreesPlanted\r\nvar totalCarbonSequestration = (carbonSequestration*treesPlanted)\r\n\r\n    $setDataGridVal('capturedDonationData', rowData.rowKey + '.yearlyCarbonSequestration', totalCarbonSequestration)\r\n    //console.log(totalCarbonSequestration)\r\n\r\n/*if (treesPlanted != 0){\r\n\r\n}*/",
-      "order": 18,
+      "order": 6,
       "type": "number"
     },
     "paymentMethod": {
       "displayName": "paymentMethod",
       "invisible": false,
       "lookUpTable": "paymentMethod",
-      "order": 19,
+      "order": 7,
       "type": "lookup"
     },
     "state": {
@@ -137,37 +120,24 @@
       "order": 20,
       "type": "string"
     },
-    "tokenID": {
-      "Width": "169px",
-      "displayName": "tokenID",
-      "invisible": false,
-      "order": 21,
-      "type": "string"
-    },
-    "tradeValue": {
-      "displayName": "tradeValue",
-      "invisible": true,
-      "onChange": "var recentTradeValue = rowData.tradeValue\r\n\r\n//10% Royalties\r\nvar charityRoyalties = (rowData.tradeValue * 0.1)\r\n\r\nconsole.log(charityRoyalties)\r\n\r\nvar treePrice = rowData.$treeSpecies.pricePerTree\r\nvar numberOfTreesPlanted = rowData.numberOfTreesPlanted\r\nvar updatedTreesPlanted = 0\r\nvar additionalTreesPlanted = Math.floor(charityRoyalties/treePrice)\r\n\r\nupdatedTreesPlanted = numberOfTreesPlanted + additionalTreesPlanted\r\n\r\nconsole.log(updatedTreesPlanted)\r\n\r\nif (rowData.numberOfTreesPlanted != updatedTreesPlanted){\r\n    $setDataGridVal('capturedDonationData', rowData.rowKey + '.numberOfTreesPlanted', updatedTreesPlanted)\r\n}\r\n",
-      "order": 22,
-      "type": "number"
-    },
     "user": {
       "displayName": "user",
       "invisible": false,
-      "order": 23,
+      "order": 8,
       "type": "user"
     },
     "walletAddress": {
+      "Width": "368px",
       "displayName": "walletAddress",
       "invisible": false,
-      "order": 24,
+      "order": 9,
       "type": "string"
     },
     "yearlyCarbonSequestration": {
       "Width": "348px",
       "displayName": "yearlyCarbonSequestration (KG)",
       "invisible": false,
-      "order": 25,
+      "order": 10,
       "type": "number"
     }
   },
@@ -175,7 +145,7 @@
     "sections": [
       {
         "name": "section_428507",
-        "label": "",
+        "label": "Donor",
         "clientKey": "section_428507",
         "order": 0,
         "rows": [
@@ -185,10 +155,10 @@
             "order": 0,
             "controls": [
               {
-                "type": "text",
-                "name": "control_2cf3ffa0-c487-11ec-9489-0fd67347c429",
-                "fieldName": "control_2cf3ffa0-c487-11ec-9489-0fd67347c429",
-                "label": "nftName",
+                "type": "user",
+                "name": "control_8a90b0c0-ac42-11ec-90ef-ed2c12ab9a48",
+                "fieldName": "control_8a90b0c0-ac42-11ec-90ef-ed2c12ab9a48",
+                "label": "User",
                 "order": 0,
                 "defaultValue": "",
                 "value": "",
@@ -224,95 +194,7 @@
                 "customValidationErrorMessage": "",
                 "mask": "",
                 "lookupOpenInModalDisabled": false,
-                "editorMode": "javascript",
-                "propName": "nftName",
-                "gridId": "capturedDonationData"
-              },
-              {
-                "type": "text",
-                "name": "control_9ba479e0-c6c4-11ec-a747-83181b77599b",
-                "fieldName": "control_9ba479e0-c6c4-11ec-a747-83181b77599b",
-                "label": "jsonLink",
-                "order": 0,
-                "defaultValue": "",
-                "value": "",
-                "className": "col-md-12",
-                "readonly": false,
-                "readonlyCondition": "",
-                "placeholder": "",
-                "required": false,
-                "requiredCondition": "",
-                "isMultiLine": false,
-                "isInteger": false,
-                "decimalPlace": 0,
-                "isTodayValue": false,
-                "isTodayValueCreated": true,
-                "dateFormat": "mm/dd/yy hh:mm p",
-                "isCurrentUser": false,
-                "isCurrentUserOwner": true,
-                "isNowTimeValue": false,
-                "timeFormat": "HH:mm",
-                "isMultiple": false,
-                "isAjax": false,
-                "dataOptions": [],
-                "ajaxDataUrl": "",
-                "isChecked": false,
-                "vif": "",
-                "customCode": "",
-                "invisible": false,
-                "invisibleCondition": "",
-                "invisibleInDataGrid": false,
-                "invisibleLabel": false,
-                "enableCustomValidation": false,
-                "customValidationRule": "",
-                "customValidationErrorMessage": "",
-                "mask": "",
-                "lookupOpenInModalDisabled": false,
-                "editorMode": "javascript",
-                "propName": "jsonLink",
-                "gridId": "capturedDonationData"
-              },
-              {
-                "type": "text",
-                "name": "control_d2e8c980-8a54-11ec-8107-61ebfa59040b",
-                "fieldName": "control_d2e8c980-8a54-11ec-8107-61ebfa59040b",
-                "label": "tokenID",
-                "order": 0,
-                "defaultValue": "",
-                "value": "",
-                "className": "col-md-12",
-                "readonly": false,
-                "readonlyCondition": "",
-                "placeholder": "",
-                "required": false,
-                "requiredCondition": "",
-                "isMultiLine": false,
-                "isInteger": false,
-                "decimalPlace": 0,
-                "isTodayValue": false,
-                "isTodayValueCreated": true,
-                "dateFormat": "mm/dd/yy hh:mm p",
-                "isCurrentUser": false,
-                "isCurrentUserOwner": true,
-                "isNowTimeValue": false,
-                "timeFormat": "HH:mm",
-                "isMultiple": false,
-                "isAjax": false,
-                "dataOptions": [],
-                "ajaxDataUrl": "",
-                "isChecked": false,
-                "vif": "",
-                "customCode": "",
-                "invisible": false,
-                "invisibleCondition": "",
-                "invisibleInDataGrid": false,
-                "invisibleLabel": false,
-                "enableCustomValidation": false,
-                "customValidationRule": "",
-                "customValidationErrorMessage": "",
-                "mask": "",
-                "lookupOpenInModalDisabled": false,
-                "propName": "tokenID",
+                "propName": "user",
                 "gridId": "capturedDonationData"
               },
               {
@@ -348,7 +230,7 @@
                 "customCode": "",
                 "invisible": false,
                 "invisibleCondition": "",
-                "invisibleInDataGrid": false,
+                "invisibleInDataGrid": true,
                 "invisibleLabel": false,
                 "enableCustomValidation": false,
                 "customValidationRule": "",
@@ -358,6 +240,70 @@
                 "propName": "walletAddress",
                 "gridId": "capturedDonationData"
               },
+              {
+                "type": "lookup",
+                "name": "control_37033450-7f79-11ec-a192-332e1d9f04b7",
+                "fieldName": "control_37033450-7f79-11ec-a192-332e1d9f04b7",
+                "label": "Donation Location",
+                "order": 0,
+                "defaultValue": "",
+                "value": "",
+                "className": "col-md-12",
+                "readonly": false,
+                "readonlyCondition": "",
+                "placeholder": "",
+                "required": false,
+                "requiredCondition": "",
+                "isMultiLine": false,
+                "isInteger": false,
+                "decimalPlace": 0,
+                "isTodayValue": false,
+                "isTodayValueCreated": true,
+                "dateFormat": "mm/dd/yy hh:mm p",
+                "isCurrentUser": false,
+                "isCurrentUserOwner": true,
+                "isNowTimeValue": false,
+                "timeFormat": "HH:mm",
+                "isMultiple": false,
+                "isAjax": false,
+                "dataOptions": [],
+                "ajaxDataUrl": "",
+                "isChecked": false,
+                "vif": "",
+                "customCode": "",
+                "invisible": false,
+                "invisibleCondition": "",
+                "invisibleInDataGrid": true,
+                "invisibleLabel": false,
+                "enableCustomValidation": false,
+                "customValidationRule": "",
+                "customValidationErrorMessage": "",
+                "mask": "",
+                "lookupOpenInModalDisabled": false,
+                "propName": "donationLocation",
+                "ableToAddLookUpVal": false,
+                "gridId": "capturedDonationData"
+              }
+            ]
+          }
+        ],
+        "labelPosition": "top",
+        "isDynamic": false,
+        "minInstance": 1,
+        "maxInstance": 0,
+        "instances": []
+      },
+      {
+        "name": "section_824331",
+        "label": "Donation Details",
+        "clientKey": "section_824331",
+        "order": 0,
+        "rows": [
+          {
+            "name": "section_824331_row_690816",
+            "label": "",
+            "order": 0,
+            "controls": [
               {
                 "type": "lookup",
                 "name": "control_1b1e70d0-e0f2-11ec-a078-1b5f3fb2dd3d",
@@ -400,94 +346,7 @@
                 "lookupOpenInModalDisabled": false,
                 "editorMode": "javascript",
                 "propName": "charity",
-                "ableToAddLookUpVal": true,
-                "gridId": "capturedDonationData"
-              },
-              {
-                "type": "number",
-                "name": "control_ad3893f0-dccf-11ec-991f-fbf4150f3d7b",
-                "fieldName": "control_ad3893f0-dccf-11ec-991f-fbf4150f3d7b",
-                "label": "Donation Amount ($)",
-                "order": 0,
-                "defaultValue": "",
-                "value": "",
-                "className": "col-md-12",
-                "readonly": false,
-                "readonlyCondition": "",
-                "placeholder": "",
-                "required": false,
-                "requiredCondition": "",
-                "isMultiLine": false,
-                "isInteger": false,
-                "decimalPlace": 0,
-                "isTodayValue": false,
-                "isTodayValueCreated": true,
-                "dateFormat": "mm/dd/yy hh:mm p",
-                "isCurrentUser": false,
-                "isCurrentUserOwner": true,
-                "isNowTimeValue": false,
-                "timeFormat": "HH:mm",
-                "isMultiple": false,
-                "isAjax": false,
-                "dataOptions": [],
-                "ajaxDataUrl": "",
-                "isChecked": false,
-                "vif": "",
-                "customCode": "",
-                "invisible": false,
-                "invisibleCondition": "",
-                "invisibleInDataGrid": false,
-                "invisibleLabel": false,
-                "enableCustomValidation": false,
-                "customValidationRule": "",
-                "customValidationErrorMessage": "",
-                "mask": "",
-                "lookupOpenInModalDisabled": false,
-                "editorMode": "javascript",
-                "propName": "donationAmount",
-                "gridId": "capturedDonationData"
-              },
-              {
-                "type": "user",
-                "name": "control_8a90b0c0-ac42-11ec-90ef-ed2c12ab9a48",
-                "fieldName": "control_8a90b0c0-ac42-11ec-90ef-ed2c12ab9a48",
-                "label": "user",
-                "order": 0,
-                "defaultValue": "",
-                "value": "",
-                "className": "col-md-12",
-                "readonly": false,
-                "readonlyCondition": "",
-                "placeholder": "",
-                "required": false,
-                "requiredCondition": "",
-                "isMultiLine": false,
-                "isInteger": false,
-                "decimalPlace": 0,
-                "isTodayValue": false,
-                "isTodayValueCreated": true,
-                "dateFormat": "mm/dd/yy hh:mm p",
-                "isCurrentUser": false,
-                "isCurrentUserOwner": true,
-                "isNowTimeValue": false,
-                "timeFormat": "HH:mm",
-                "isMultiple": false,
-                "isAjax": false,
-                "dataOptions": [],
-                "ajaxDataUrl": "",
-                "isChecked": false,
-                "vif": "",
-                "customCode": "",
-                "invisible": false,
-                "invisibleCondition": "",
-                "invisibleInDataGrid": false,
-                "invisibleLabel": false,
-                "enableCustomValidation": false,
-                "customValidationRule": "",
-                "customValidationErrorMessage": "",
-                "mask": "",
-                "lookupOpenInModalDisabled": false,
-                "propName": "user",
+                "ableToAddLookUpVal": false,
                 "gridId": "capturedDonationData"
               },
               {
@@ -531,224 +390,7 @@
                 "mask": "",
                 "lookupOpenInModalDisabled": false,
                 "propName": "charityProject",
-                "ableToAddLookUpVal": true,
-                "gridId": "capturedDonationData"
-              },
-              {
-                "type": "text",
-                "name": "control_c35c0110-8a56-11ec-8107-61ebfa59040b",
-                "fieldName": "control_c35c0110-8a56-11ec-8107-61ebfa59040b",
-                "label": "Number Of Trades",
-                "order": 0,
-                "defaultValue": "",
-                "value": "",
-                "className": "col-md-12",
-                "readonly": false,
-                "readonlyCondition": "",
-                "placeholder": "",
-                "required": false,
-                "requiredCondition": "",
-                "isMultiLine": false,
-                "isInteger": false,
-                "decimalPlace": 0,
-                "isTodayValue": false,
-                "isTodayValueCreated": true,
-                "dateFormat": "mm/dd/yy hh:mm p",
-                "isCurrentUser": false,
-                "isCurrentUserOwner": true,
-                "isNowTimeValue": false,
-                "timeFormat": "HH:mm",
-                "isMultiple": false,
-                "isAjax": false,
-                "dataOptions": [],
-                "ajaxDataUrl": "",
-                "isChecked": false,
-                "vif": "",
-                "customCode": "",
-                "invisible": false,
-                "invisibleCondition": "",
-                "invisibleInDataGrid": true,
-                "invisibleLabel": false,
-                "enableCustomValidation": false,
-                "customValidationRule": "",
-                "customValidationErrorMessage": "",
-                "mask": "",
-                "lookupOpenInModalDisabled": false,
-                "propName": "numberOfTrades",
-                "gridId": "capturedDonationData"
-              },
-              {
-                "type": "number",
-                "name": "control_381d6b50-8a58-11ec-8107-61ebfa59040b",
-                "fieldName": "control_381d6b50-8a58-11ec-8107-61ebfa59040b",
-                "label": "Trade Value",
-                "order": 0,
-                "defaultValue": "",
-                "value": "",
-                "className": "col-md-12",
-                "readonly": false,
-                "readonlyCondition": "",
-                "placeholder": "",
-                "required": false,
-                "requiredCondition": "",
-                "isMultiLine": false,
-                "isInteger": false,
-                "decimalPlace": 0,
-                "isTodayValue": false,
-                "isTodayValueCreated": true,
-                "dateFormat": "mm/dd/yy hh:mm p",
-                "isCurrentUser": false,
-                "isCurrentUserOwner": true,
-                "isNowTimeValue": false,
-                "timeFormat": "HH:mm",
-                "isMultiple": false,
-                "isAjax": false,
-                "dataOptions": [],
-                "ajaxDataUrl": "",
-                "isChecked": false,
-                "vif": "",
-                "customCode": "",
-                "invisible": false,
-                "invisibleCondition": "",
-                "invisibleInDataGrid": true,
-                "invisibleLabel": false,
-                "enableCustomValidation": false,
-                "customValidationRule": "",
-                "customValidationErrorMessage": "",
-                "mask": "",
-                "lookupOpenInModalDisabled": false,
-                "propName": "tradeValue",
-                "gridId": "capturedDonationData"
-              },
-              {
-                "type": "number",
-                "name": "control_8ebac290-7f78-11ec-a192-332e1d9f04b7",
-                "fieldName": "control_8ebac290-7f78-11ec-a192-332e1d9f04b7",
-                "label": "Number Of Trees Planted",
-                "order": 0,
-                "defaultValue": "",
-                "value": "",
-                "className": "col-md-12",
-                "readonly": false,
-                "readonlyCondition": "",
-                "placeholder": "",
-                "required": false,
-                "requiredCondition": "",
-                "isMultiLine": false,
-                "isInteger": false,
-                "decimalPlace": "0",
-                "isTodayValue": false,
-                "isTodayValueCreated": true,
-                "dateFormat": "mm/dd/yy hh:mm p",
-                "isCurrentUser": false,
-                "isCurrentUserOwner": true,
-                "isNowTimeValue": false,
-                "timeFormat": "HH:mm",
-                "isMultiple": false,
-                "isAjax": false,
-                "dataOptions": [],
-                "ajaxDataUrl": "",
-                "isChecked": false,
-                "vif": "",
-                "customCode": "",
-                "invisible": false,
-                "invisibleCondition": "",
-                "invisibleInDataGrid": false,
-                "invisibleLabel": false,
-                "enableCustomValidation": false,
-                "customValidationRule": "",
-                "customValidationErrorMessage": "",
-                "mask": "",
-                "lookupOpenInModalDisabled": false,
-                "propName": "numberOfTreesPlanted",
-                "gridId": "capturedDonationData"
-              },
-              {
-                "type": "lookup",
-                "name": "control_a89ce3a0-7f78-11ec-a192-332e1d9f04b7",
-                "fieldName": "control_a89ce3a0-7f78-11ec-a192-332e1d9f04b7",
-                "label": "NFT Type",
-                "order": 0,
-                "defaultValue": "-MuQjIZEkIAleUNWPzhb",
-                "value": "",
-                "className": "col-md-12",
-                "readonly": false,
-                "readonlyCondition": "",
-                "placeholder": "",
-                "required": false,
-                "requiredCondition": "",
-                "isMultiLine": false,
-                "isInteger": false,
-                "decimalPlace": 0,
-                "isTodayValue": false,
-                "isTodayValueCreated": true,
-                "dateFormat": "mm/dd/yy hh:mm p",
-                "isCurrentUser": false,
-                "isCurrentUserOwner": true,
-                "isNowTimeValue": false,
-                "timeFormat": "HH:mm",
-                "isMultiple": false,
-                "isAjax": false,
-                "dataOptions": [],
-                "ajaxDataUrl": "",
-                "isChecked": false,
-                "vif": "",
-                "customCode": "",
-                "invisible": false,
-                "invisibleCondition": "",
-                "invisibleInDataGrid": true,
-                "invisibleLabel": false,
-                "enableCustomValidation": false,
-                "customValidationRule": "",
-                "customValidationErrorMessage": "",
-                "mask": "",
-                "lookupOpenInModalDisabled": false,
-                "propName": "nftType",
                 "ableToAddLookUpVal": false,
-                "gridId": "capturedDonationData"
-              },
-              {
-                "type": "lookup",
-                "name": "control_37033450-7f79-11ec-a192-332e1d9f04b7",
-                "fieldName": "control_37033450-7f79-11ec-a192-332e1d9f04b7",
-                "label": "Donation Location",
-                "order": 0,
-                "defaultValue": "",
-                "value": "",
-                "className": "col-md-12",
-                "readonly": false,
-                "readonlyCondition": "",
-                "placeholder": "",
-                "required": false,
-                "requiredCondition": "",
-                "isMultiLine": false,
-                "isInteger": false,
-                "decimalPlace": 0,
-                "isTodayValue": false,
-                "isTodayValueCreated": true,
-                "dateFormat": "mm/dd/yy hh:mm p",
-                "isCurrentUser": false,
-                "isCurrentUserOwner": true,
-                "isNowTimeValue": false,
-                "timeFormat": "HH:mm",
-                "isMultiple": false,
-                "isAjax": false,
-                "dataOptions": [],
-                "ajaxDataUrl": "",
-                "isChecked": false,
-                "vif": "",
-                "customCode": "",
-                "invisible": false,
-                "invisibleCondition": "",
-                "invisibleInDataGrid": false,
-                "invisibleLabel": false,
-                "enableCustomValidation": false,
-                "customValidationRule": "",
-                "customValidationErrorMessage": "",
-                "mask": "",
-                "lookupOpenInModalDisabled": false,
-                "propName": "donationLocation",
-                "ableToAddLookUpVal": true,
                 "gridId": "capturedDonationData"
               },
               {
@@ -841,13 +483,13 @@
               },
               {
                 "type": "number",
-                "name": "control_b6e6eeb0-7f7d-11ec-a192-332e1d9f04b7",
-                "fieldName": "control_b6e6eeb0-7f7d-11ec-a192-332e1d9f04b7",
-                "label": "Gas",
+                "name": "control_ad3893f0-dccf-11ec-991f-fbf4150f3d7b",
+                "fieldName": "control_ad3893f0-dccf-11ec-991f-fbf4150f3d7b",
+                "label": "Donation Amount ($)",
                 "order": 0,
                 "defaultValue": "",
                 "value": "",
-                "className": "col-md-12",
+                "className": "col-md-4",
                 "readonly": false,
                 "readonlyCondition": "",
                 "placeholder": "",
@@ -879,7 +521,96 @@
                 "customValidationErrorMessage": "",
                 "mask": "",
                 "lookupOpenInModalDisabled": false,
-                "propName": "gas",
+                "editorMode": "javascript",
+                "propName": "donationAmount",
+                "gridId": "capturedDonationData"
+              },
+              {
+                "type": "number",
+                "name": "control_c6437920-1a2b-11ed-bddb-b9a8712b00dc",
+                "fieldName": "control_c6437920-1a2b-11ed-bddb-b9a8712b00dc",
+                "label": "Donation Amount GBP",
+                "order": 0,
+                "defaultValue": "",
+                "value": "",
+                "className": "col-md-4",
+                "readonly": false,
+                "readonlyCondition": "",
+                "placeholder": "",
+                "required": false,
+                "requiredCondition": "",
+                "isMultiLine": false,
+                "isInteger": false,
+                "decimalPlace": 0,
+                "isTodayValue": false,
+                "isTodayValueCreated": true,
+                "dateFormat": "mm/dd/yy hh:mm p",
+                "isCurrentUser": false,
+                "isCurrentUserOwner": true,
+                "isNowTimeValue": false,
+                "timeFormat": "HH:mm",
+                "isMultiple": false,
+                "isAjax": false,
+                "dataOptions": [],
+                "ajaxDataUrl": "",
+                "isChecked": false,
+                "vif": "",
+                "customCode": "",
+                "invisible": false,
+                "invisibleCondition": "",
+                "invisibleInDataGrid": true,
+                "invisibleLabel": false,
+                "enableCustomValidation": false,
+                "customValidationRule": "",
+                "customValidationErrorMessage": "",
+                "mask": "",
+                "lookupOpenInModalDisabled": false,
+                "editorMode": "javascript",
+                "propName": "donationAmountGBP",
+                "gridId": "capturedDonationData"
+              },
+              {
+                "type": "number",
+                "name": "control_f4840e00-1be1-11ed-b053-7ffd2452556f",
+                "fieldName": "control_f4840e00-1be1-11ed-b053-7ffd2452556f",
+                "label": "Donation Amount EUR",
+                "order": 0,
+                "defaultValue": "",
+                "value": "",
+                "className": "col-md-4",
+                "readonly": false,
+                "readonlyCondition": "",
+                "placeholder": "",
+                "required": false,
+                "requiredCondition": "",
+                "isMultiLine": false,
+                "isInteger": false,
+                "decimalPlace": 0,
+                "isTodayValue": false,
+                "isTodayValueCreated": true,
+                "dateFormat": "mm/dd/yy hh:mm p",
+                "isCurrentUser": false,
+                "isCurrentUserOwner": true,
+                "isNowTimeValue": false,
+                "timeFormat": "HH:mm",
+                "isMultiple": false,
+                "isAjax": false,
+                "dataOptions": [],
+                "ajaxDataUrl": "",
+                "isChecked": false,
+                "vif": "",
+                "customCode": "",
+                "invisible": false,
+                "invisibleCondition": "",
+                "invisibleInDataGrid": true,
+                "invisibleLabel": false,
+                "enableCustomValidation": false,
+                "customValidationRule": "",
+                "customValidationErrorMessage": "",
+                "mask": "",
+                "lookupOpenInModalDisabled": false,
+                "editorMode": "javascript",
+                "propName": "donationAmountEUR",
                 "gridId": "capturedDonationData"
               },
               {
@@ -928,9 +659,9 @@
               },
               {
                 "type": "number",
-                "name": "control_28782f60-a465-11ec-9880-f5f3e5329ea8",
-                "fieldName": "control_28782f60-a465-11ec-9880-f5f3e5329ea8",
-                "label": "yearlyCarbonSequestration (KG)",
+                "name": "control_b6e6eeb0-7f7d-11ec-a192-332e1d9f04b7",
+                "fieldName": "control_b6e6eeb0-7f7d-11ec-a192-332e1d9f04b7",
+                "label": "Gas",
                 "order": 0,
                 "defaultValue": "",
                 "value": "",
@@ -966,14 +697,35 @@
                 "customValidationErrorMessage": "",
                 "mask": "",
                 "lookupOpenInModalDisabled": false,
-                "propName": "yearlyCarbonSequestration",
+                "propName": "gas",
                 "gridId": "capturedDonationData"
-              },
+              }
+            ]
+          }
+        ],
+        "labelPosition": "top",
+        "isDynamic": false,
+        "minInstance": 1,
+        "maxInstance": 0,
+        "instances": [],
+        "vif": ""
+      },
+      {
+        "name": "section_324033",
+        "label": "Impact Data",
+        "clientKey": "section_324033",
+        "order": 0,
+        "rows": [
+          {
+            "name": "section_324033_row_705376",
+            "label": "",
+            "order": 0,
+            "controls": [
               {
-                "type": "checkbox",
-                "name": "control_c7386dc0-8a9f-11ec-b98c-ebfd6998410f",
-                "fieldName": "control_c7386dc0-8a9f-11ec-b98c-ebfd6998410f",
-                "label": "External Donation",
+                "type": "number",
+                "name": "control_28782f60-a465-11ec-9880-f5f3e5329ea8",
+                "fieldName": "control_28782f60-a465-11ec-9880-f5f3e5329ea8",
+                "label": "Yearly Carbon Sequestration (KG)",
                 "order": 0,
                 "defaultValue": "",
                 "value": "",
@@ -1009,7 +761,50 @@
                 "customValidationErrorMessage": "",
                 "mask": "",
                 "lookupOpenInModalDisabled": false,
-                "propName": "externalDonation",
+                "propName": "yearlyCarbonSequestration",
+                "gridId": "capturedDonationData"
+              },
+              {
+                "type": "number",
+                "name": "control_8ebac290-7f78-11ec-a192-332e1d9f04b7",
+                "fieldName": "control_8ebac290-7f78-11ec-a192-332e1d9f04b7",
+                "label": "Number Of Trees Planted",
+                "order": 0,
+                "defaultValue": "",
+                "value": "",
+                "className": "col-md-12",
+                "readonly": false,
+                "readonlyCondition": "",
+                "placeholder": "",
+                "required": false,
+                "requiredCondition": "",
+                "isMultiLine": false,
+                "isInteger": false,
+                "decimalPlace": "0",
+                "isTodayValue": false,
+                "isTodayValueCreated": true,
+                "dateFormat": "mm/dd/yy hh:mm p",
+                "isCurrentUser": false,
+                "isCurrentUserOwner": true,
+                "isNowTimeValue": false,
+                "timeFormat": "HH:mm",
+                "isMultiple": false,
+                "isAjax": false,
+                "dataOptions": [],
+                "ajaxDataUrl": "",
+                "isChecked": false,
+                "vif": "",
+                "customCode": "",
+                "invisible": false,
+                "invisibleCondition": "",
+                "invisibleInDataGrid": true,
+                "invisibleLabel": false,
+                "enableCustomValidation": false,
+                "customValidationRule": "",
+                "customValidationErrorMessage": "",
+                "mask": "",
+                "lookupOpenInModalDisabled": false,
+                "propName": "numberOfTreesPlanted",
                 "gridId": "capturedDonationData"
               }
             ]
@@ -1019,7 +814,8 @@
         "isDynamic": false,
         "minInstance": 1,
         "maxInstance": 0,
-        "instances": []
+        "instances": [],
+        "vif": ""
       },
       {
         "cleintKey": "hidden_section_5e241680-7f74-11ec-a192-332e1d9f04b7",
@@ -1336,12 +1132,198 @@
       }
     ],
     "layout": "collapse",
-    "_uniqueId": 0.3047392225580361
+    "_uniqueId": 0.9565508996141097
   },
   "source": "capturedDonationData",
   "storageType": "dashboard",
   "title": "Captured Donation Data",
   "views": {
+    "charityReport": {
+      "filterBuilder": "{\"condition\":\"AND\",\"rules\":[{\"key\":\"charity\",\"operator\":\"=\",\"value\":null,\"name\":\"Charity\",\"expression\":false,\"hidden\":false},{\"key\":\"charityProject\",\"operator\":\"=\",\"value\":null,\"name\":\"Charity Project\",\"expression\":false,\"hidden\":false},{\"key\":\"donationDate\",\"operator\":\"date\",\"value\":{\"type\":\"between\"},\"name\":\"Donation Date\",\"expression\":false,\"hidden\":false}]}",
+      "meta": {
+        "charity": {
+          "invisible": false,
+          "order": 1
+        },
+        "charityProject": {
+          "invisible": false,
+          "order": 2
+        },
+        "createdDate": {
+          "invisible": true,
+          "order": 13
+        },
+        "currency": {
+          "invisible": false,
+          "order": 3
+        },
+        "donationAmount": {
+          "invisible": false,
+          "order": 0
+        },
+        "donationAmountEUR": {
+          "invisible": true,
+          "order": 12
+        },
+        "donationAmountGBP": {
+          "invisible": true,
+          "order": 11
+        },
+        "donationDate": {
+          "invisible": true,
+          "order": 14
+        },
+        "donationLocation": {
+          "invisible": false,
+          "order": 5
+        },
+        "donations": {
+          "invisible": true,
+          "order": 15
+        },
+        "gas": {
+          "invisible": false,
+          "order": 6
+        },
+        "lastEditDate": {
+          "invisible": true,
+          "order": 16
+        },
+        "lastEditedBy": {
+          "invisible": true,
+          "order": 17
+        },
+        "layout": {
+          "invisible": true,
+          "order": 18
+        },
+        "nextEvents": {
+          "invisible": true,
+          "order": 19
+        },
+        "numberOfTreesPlanted": {
+          "invisible": false,
+          "order": 8
+        },
+        "paymentMethod": {
+          "invisible": false,
+          "order": 4
+        },
+        "state": {
+          "invisible": true,
+          "order": 20
+        },
+        "user": {
+          "invisible": false,
+          "order": 7
+        },
+        "walletAddress": {
+          "invisible": true,
+          "order": 10
+        },
+        "yearlyCarbonSequestration": {
+          "invisible": false,
+          "order": 9
+        }
+      },
+      "roles": [
+        "-MxdX61sYZHilC1ZZoNg"
+      ],
+      "title": "Charity Report"
+    },
+    "donationReconciliation": {
+      "filterBuilder": "{\"condition\":\"AND\",\"rules\":[{\"key\":\"charity\",\"operator\":\"=\",\"value\":null,\"name\":\"Charity\",\"expression\":false,\"hidden\":false},{\"key\":\"charityProject\",\"operator\":\"=\",\"value\":null,\"name\":\"Charity Project\",\"expression\":false,\"hidden\":false},{\"key\":\"donationDate\",\"operator\":\"date\",\"value\":{\"type\":\"between\"},\"name\":\"Donation Date\",\"expression\":false,\"hidden\":false}]}",
+      "meta": {
+        "charity": {
+          "invisible": false,
+          "order": 1
+        },
+        "charityProject": {
+          "invisible": false,
+          "order": 2
+        },
+        "createdDate": {
+          "invisible": true,
+          "order": 13
+        },
+        "currency": {
+          "invisible": false,
+          "order": 3
+        },
+        "donationAmount": {
+          "invisible": false,
+          "order": 0
+        },
+        "donationAmountEUR": {
+          "invisible": true,
+          "order": 12
+        },
+        "donationAmountGBP": {
+          "invisible": true,
+          "order": 11
+        },
+        "donationDate": {
+          "invisible": true,
+          "order": 14
+        },
+        "donationLocation": {
+          "invisible": false,
+          "order": 5
+        },
+        "donations": {
+          "invisible": true,
+          "order": 15
+        },
+        "gas": {
+          "invisible": false,
+          "order": 6
+        },
+        "lastEditDate": {
+          "invisible": true,
+          "order": 16
+        },
+        "lastEditedBy": {
+          "invisible": true,
+          "order": 17
+        },
+        "layout": {
+          "invisible": true,
+          "order": 18
+        },
+        "nextEvents": {
+          "invisible": true,
+          "order": 19
+        },
+        "numberOfTreesPlanted": {
+          "invisible": false,
+          "order": 8
+        },
+        "paymentMethod": {
+          "invisible": false,
+          "order": 4
+        },
+        "state": {
+          "invisible": true,
+          "order": 20
+        },
+        "user": {
+          "invisible": false,
+          "order": 7
+        },
+        "walletAddress": {
+          "invisible": true,
+          "order": 10
+        },
+        "yearlyCarbonSequestration": {
+          "invisible": false,
+          "order": 9
+        }
+      },
+      "roles": [
+        "-MxdX61sYZHilC1ZZoNg"
+      ],
+      "title": "Donation Reconciliation"
+    },
     "emptyRows": {
       "filterBuilder": "{\"condition\":\"AND\",\"rules\":[{\"key\":\"charities\",\"operator\":\"=\",\"value\":null,\"name\":\"Charity\",\"expression\":false,\"hidden\":false},{\"key\":\"charityProject\",\"operator\":\"=\",\"value\":null,\"name\":\"Charity Project\",\"expression\":false,\"hidden\":false},{\"key\":\"donationDate\",\"operator\":\"date\",\"value\":null,\"name\":\"donationDate\",\"expression\":false,\"hidden\":false},{\"key\":\"initialDonationAmount\",\"operator\":\"null\",\"value\":null,\"name\":\"initialDonationAmount\",\"expression\":false,\"hidden\":false}]}",
       "meta": {
@@ -1363,6 +1345,12 @@
         "donationAmount": {
           "order": 4
         },
+        "donationAmountEUR": {
+          "order": 20
+        },
+        "donationAmountGBP": {
+          "order": 19
+        },
         "donationDate": {
           "invisible": true,
           "order": 5
@@ -1375,73 +1363,47 @@
           "invisible": true,
           "order": 7
         },
-        "externalDonation": {
-          "invisible": true,
-          "order": 8
-        },
         "gas": {
           "invisible": false,
-          "order": 9
-        },
-        "jsonLink": {
-          "order": 10
+          "order": 8
         },
         "lastEditDate": {
           "invisible": true,
-          "order": 11
+          "order": 9
         },
         "lastEditedBy": {
           "invisible": true,
-          "order": 12
+          "order": 10
         },
         "layout": {
           "invisible": true,
-          "order": 13
+          "order": 11
         },
         "nextEvents": {
           "invisible": true,
-          "order": 14
-        },
-        "nftName": {
-          "order": 15
-        },
-        "nftType": {
-          "invisible": true,
-          "order": 16
-        },
-        "numberOfTrades": {
-          "invisible": true,
-          "order": 17
+          "order": 12
         },
         "numberOfTreesPlanted": {
           "invisible": false,
-          "order": 18
+          "order": 13
         },
         "paymentMethod": {
           "invisible": false,
-          "order": 19
+          "order": 14
         },
         "state": {
           "invisible": true,
-          "order": 20
-        },
-        "tokenID": {
-          "invisible": false,
-          "order": 21
-        },
-        "tradeValue": {
-          "invisible": true,
-          "order": 22
+          "order": 15
         },
         "user": {
-          "order": 23
+          "order": 16
         },
         "walletAddress": {
           "invisible": false,
-          "order": 24
+          "order": 17
         },
         "yearlyCarbonSequestration": {
-          "order": 25
+          "order": 18
         }
       },
       "roles": [
@@ -1462,99 +1424,79 @@
         },
         "createdDate": {
           "invisible": true,
-          "order": 2
+          "order": 13
         },
         "currency": {
           "invisible": false,
-          "order": 3
+          "order": 2
         },
         "donationAmount": {
           "invisible": false,
-          "order": 4
+          "order": 3
+        },
+        "donationAmountEUR": {
+          "invisible": false,
+          "order": 12
+        },
+        "donationAmountGBP": {
+          "invisible": false,
+          "order": 11
         },
         "donationDate": {
           "invisible": true,
-          "order": 5
+          "order": 14
         },
         "donationLocation": {
           "invisible": false,
-          "order": 6
+          "order": 4
         },
         "donations": {
           "invisible": true,
-          "order": 7
-        },
-        "externalDonation": {
-          "invisible": true,
-          "order": 8
+          "order": 15
         },
         "gas": {
           "invisible": false,
-          "order": 9
-        },
-        "jsonLink": {
-          "invisible": false,
-          "order": 10
+          "order": 5
         },
         "lastEditDate": {
           "invisible": true,
-          "order": 11
+          "order": 16
         },
         "lastEditedBy": {
           "invisible": true,
-          "order": 12
+          "order": 17
         },
         "layout": {
           "invisible": true,
-          "order": 13
+          "order": 18
         },
         "nextEvents": {
           "invisible": true,
-          "order": 14
-        },
-        "nftName": {
-          "invisible": false,
-          "order": 15
-        },
-        "nftType": {
-          "invisible": true,
-          "order": 16
-        },
-        "numberOfTrades": {
-          "invisible": true,
-          "order": 17
+          "order": 19
         },
         "numberOfTreesPlanted": {
           "invisible": false,
-          "order": 18
+          "order": 6
         },
         "paymentMethod": {
           "invisible": false,
-          "order": 19
+          "order": 7
         },
         "state": {
           "invisible": true,
           "order": 20
         },
-        "tokenID": {
-          "invisible": false,
-          "order": 21
-        },
-        "tradeValue": {
-          "invisible": true,
-          "order": 22
-        },
         "user": {
           "invisible": false,
-          "order": 23
+          "order": 8
         },
         "walletAddress": {
           "invisible": false,
-          "order": 24
+          "order": 9
         },
         "yearlyCarbonSequestration": {
           "invisible": false,
-          "order": 25
+          "order": 10
         }
       },
       "roles": [

@@ -1,10 +1,11 @@
-return function(charityRowKey, charityName, projectRowKey, projectName){
+/* DonorPortal_SelectedCharityAndProject.js */
 
-    $setUser('Donation_SelectedCharity', charityRowKey)
-    $setUser('Donation_SelectedCharityName', charityName)
+return async function (charityRowKey, charityName, projectRowKey, projectName, projectImage) {
 
-    $setUser('Donation_SelectedProject', projectRowKey)
-    $setUser('Donation_SelectedProjectName', projectName)
-
-    return null
+    await $setUser('Donation_SelectedCharity', charityRowKey)
+    await $setUser('Donation_SelectedCharityName', charityName)
+    await $setUser('Donation_SelectedProject', projectRowKey)
+    await $setUser('Donation_SelectedProjectName', projectName)
+    //$setUser('SelectedProject_Image', projectImage)
+ 
 }

@@ -1,30 +1,36 @@
+<!-- u-Components-ProfilePicture -->
+
 <template>
-  <div>
-    <div class="bv-image-selector-container">
-      <div class="bv-profile-picture-wrapper">
-        <!-- <img
-          class="bv-profile-picture"
-          src="https://i.ibb.co/nCMsC9H/hendrix-square.jpg"
-        /> -->
-        <icon-no-profile-picture />
+  <div class="bv__profilepicture">
+    <div
+      class="bv__profilepicture__pp bv__globals__skeleton"
+      :style="{ height, width }"
+    >
+      <div v-if="modelValue.content || src">
+        <img
+          class="bv__profilepicture__img"
+          :src="modelValue.dataUrl || src"
+          :style="{ height, width }"
+        />
       </div>
-      <div v-if="editable" class="bv-image-selector-overlay-icon">
-        <label
-          class="bv-input-label"
-          for="bv-image-input"
-          style="cursor: pointer"
-        >
-          <input
-            class="d-none"
-            type="file"
-            accept="image/x-png, image/jpeg"
-            id="bv-image-input"
-            name="bv-image-input"
-            @input="console.log($event)"
-          />
-          <icon-camera />
-        </label>
+
+      <div v-else>
+        <u-Icons-EmptyProfilePicture width="auto;" height="auto;" />
       </div>
+    </div>
+
+    <div v-if="editable" class="bv__profilepicture__selectimageicon">
+      <label class="bv-input-label" :for="id">
+        <input
+          class="d-none"
+          type="file"
+          accept="image/x-png, image/jpeg"
+          :name="name"
+          :id="id"
+          @change="handleChange"
+        />
+        <icon-camera />
+      </label>
     </div>
   </div>
 </template>
@@ -32,39 +38,108 @@
 <script>
 module.exports = {
   props: {
+    name: 'bv-image-input',
+
+    modelValue: {
+      type: Object,
+      default: () => {
+        return {
+          content: undefined,
+          dataUrl: undefined,
+          valid: true
+        }
+      }
+    },
+
     editable: {
       type: Boolean,
       default: false
+    },
+
+    src: {
+      type: String,
+      default: ''
+    },
+
+    height: {
+      type: String,
+      default: '80px'
+    },
+
+    width: {
+      type: String,
+      default: '80px'
+    },
+
+    id: {
+      type: String,
+      default: 'bv-image-input'
     }
+  },
+
+  methods: {
+    handleChange($event) {
+      this.modelValue.valid = true
+      this.modelValue.content = $event.target.files[0]
+
+      let reader = new FileReader()
+
+      reader.onload = e => {
+        this.modelValue.dataUrl = e.target.result
+        this.$emit('input', this.modelValue)
+      }
+
+      reader.readAsDataURL(this.modelValue.content)
+    }
+  },
+
+  async created() {
+    this.$emit('input', this.modelValue)
   },
 
   components: {
     IconCamera: $getCustomComponent('u-Icons-Camera'),
-    IconNoProfilePicture: $getCustomComponent('u-Icons-NoProfilePicture')
+    uIconsEmptyprofilepicture: $getCustomComponent(
+      'u-Icons-EmptyProfilePicture'
+    )
   }
 }
 </script>
 
 <style>
-div.bv-profile-picture-wrapper {
-  overflow: hidden;
-  height: 80px;
-  width: 80px;
+.bv__profilepicture {
+  position: relative;
+}
+
+.bv__profilepicture__pp {
   border: 1px solid black;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.bv__profilepicture__img {
+  object-fit: cover;
+  vertical-align: middle;
+}
+
+.bv__profilepicture__selectimageicon {
+  position: absolute;
+  bottom: -3px;
+  left: 52px;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 32px;
+  width: 32px;
+
+  background: black;
   border-radius: 50%;
 }
 
-img.bv-profile-picture {
-  height: 80px;
-  width: 80px;
-  object-fit: cover;
-}
-
-div.bv-image-selector-overlay-icon {
-  position: relative;
-  top: -30px;
-  left: 50px;
-  margin-bottom: -30px;
-  z-index: 9;
+.bv-input-label:hover {
+  cursor: pointer;
 }
 </style>
