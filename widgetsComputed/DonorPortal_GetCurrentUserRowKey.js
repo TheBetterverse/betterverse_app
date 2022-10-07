@@ -1,7 +1,7 @@
-return function(){
+/* DonorPortal_GetCurrentUserRowKey.js */
 
-    let currentUser = this.DonorPortal_GetCurrentUser()
-    let currentUserRowKey = currentUser.rowKey
+return function () {
+  let currentUser = this.DonorPortal_GetCurrentUser()
 
-    return currentUserRowKey
+  return currentUser.rowKey
 }

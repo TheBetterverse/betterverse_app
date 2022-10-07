@@ -3,27 +3,29 @@ return function(walletProvider){
     //Wallet Variable
     var wallet = null
 
-    if(walletProvider == "Torus"){
+    if(walletProvider == "Slide"){
         // wallet = 'TorusWalletAddressHere'
 
         (async () => {
-            const torus = new Torus()
-            await torus.init({
-            buildEnv: "production", // default: production
-            enableLogging: true, // default: false
-            network: {
-                host: "matic", // default: mainnet
-                chainId: 137, // default: 1
-                networkName: "Polygon Mainnet" // default: Main Ethereum Network
-            },
-            // showTorusButton: false // default: true
-            });
-            await torus.login(); // await torus.ethereum.enable()
-            const web3 = new Web3(torus.provider);
-            wallet = (await web3.eth.getAccounts())[0]
-            //     const web3 = new Web3(torus.provider)
-            //     const balance = await web3.eth.getBalance(wallet)
-            $setDataGridVal('users', currentUserRowKey + '.walletAddress', wallet)
+            console.log({ keys: Object.keys(window) });
+            console.log({ Slide });
+            const slide = new Slide.SDK()
+            await slide.init();
+
+            const wallet = await slide.request({ method: "eth_requestAccounts" });
+
+            const web3 = new Web3(slide);
+
+            //$setDataGridVal('users', currentUserRowKey + '.walletAddress', wallet)
+            //$setDataGridVal('users', currentUserRowKey + '.walletProvider', 'slide')
+
+            //If user is on the register page and connected wallet successful, redirect to topup page
+            if (
+            currentSubTab == '-N4UIKK5MmraPqo_BhCH' &&
+            currentUserRow.walletAddress != null
+            ) {
+            $setCurrentSubTab('-N6OJKPA76EZPTjdgEMp', '-Mx_5FLL2jlxjXYUMdIL')
+            }
         })()
 
     }

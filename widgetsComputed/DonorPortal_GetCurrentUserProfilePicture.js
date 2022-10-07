@@ -1,12 +1,10 @@
-return function(){
+/* DonorPortal_GetCurrentUserProfilePicture.js */
 
-    let currentUser = this.DonorPortal_GetCurrentUser()
-    let currentUserProfileImage = currentUser.profileImage
+return function () {
+  let { profileImage } = this.DonorPortal_GetCurrentUser()
 
-    if (currentUserProfileImage != null){
-        return currentUserProfileImage.url
-    }
-    else{
-        return false
-    }
+  if (profileImage === null)
+    return null
+
+  return profileImage.url
 }

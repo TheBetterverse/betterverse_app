@@ -1,0 +1,94 @@
+{
+  "data": {
+    "metaData": {
+      "id": "-NC5hWhayZEOxx2Z4nqO",
+      "statusField": ""
+    },
+    "nodes": [
+      {
+        "id": "node1663338855568",
+        "x": 204.09,
+        "y": 343.37,
+        "width": 191,
+        "height": 64,
+        "attachment": {},
+        "name": "start-event",
+        "clazz": "startEvent",
+        "label": "Start Event",
+        "icon": {
+          "name": "flag",
+          "color": "hsl(154, 64%, 49%)"
+        }
+      },
+      {
+        "id": "node1663338857752",
+        "x": 553.24,
+        "y": 332.24,
+        "width": 190,
+        "height": 65,
+        "attachment": {},
+        "name": "script-task",
+        "clazz": "scriptTask",
+        "label": "Shorten URL",
+        "icon": {
+          "name": "terminal",
+          "color": "hsl(218, 54%, 20%)"
+        }
+      },
+      {
+        "id": "node1663339168613",
+        "x": 967.57,
+        "y": 343.11,
+        "width": 191,
+        "height": 64,
+        "attachment": {},
+        "name": "end-event",
+        "clazz": "endEvent",
+        "label": "End Event",
+        "icon": {
+          "name": "stop-circle",
+          "color": "hsl(348, 91%, 59%)"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "source": "node1663338855568-right",
+        "target": "node1663338857752",
+        "endSocket": "left",
+        "id": "line-1663338861590",
+        "label": "Start Event",
+        "targetLabel": "Script Task",
+        "type": {
+          "startPlug": "behind",
+          "color": "#5e73e4",
+          "size": 2,
+          "path": "grid",
+          "dash": null
+        }
+      },
+      {
+        "source": "node1663338857752-right",
+        "target": "node1663339168613",
+        "endSocket": "left",
+        "id": "line-1663339170386",
+        "label": "Shorten Donation URL",
+        "targetLabel": "End Event",
+        "type": {
+          "startPlug": "behind",
+          "color": "#5e73e4",
+          "size": 2,
+          "path": "grid",
+          "dash": null
+        }
+      }
+    ],
+    "transform": {
+      "x": -206.62874111328898,
+      "y": -124.54426080479732,
+      "scale": 1.0248699850951328
+    }
+  },
+  "name": "DonorPortal_ShortenURL",
+  "scheduled": false
+}

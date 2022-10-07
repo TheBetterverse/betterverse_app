@@ -9,7 +9,9 @@
 
     request.onload = function() {
       var response = request.response;
-      $setGlobalModel('exchangeGBPtoUSD', response.result);
+      if (request.result != null){
+        $setGlobalModel('exchangeGBPtoUSD', response.result);
+      }
     }
 
     //Exchange Rates Variables

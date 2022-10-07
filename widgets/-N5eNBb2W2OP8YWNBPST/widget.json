@@ -1,0 +1,17 @@
+{
+  "dependency": "dataGrid/rowCreationErrorLogs",
+  "gsOptions": {
+    "h": 4,
+    "w": 24,
+    "x": 0,
+    "y": 0
+  },
+  "layout": "b-card",
+  "overflow": "height: auto",
+  "props": {
+    "gridId": "rowCreationErrorLogs"
+  },
+  "subtab": "-N5eN7PKzTP781Ngkv7d",
+  "tab": "-Mx_2_VCOc__FGnUdqrq",
+  "type": "DataGrid"
+}

@@ -1,17 +1,8 @@
-return function(trigger){
+/* DonorPortal_TriggerNFTModal.js */
 
-    if (trigger == "display"){
-        var element = document.getElementById("nft-modal");
-        element.style.display = "block";
-    }
+return function (trigger) {
+  var element = document.getElementById('bv__nftmodal')
 
-    else if (trigger == "hide"){
-        var element = document.getElementById("nft-modal");
-        element.style.display = "none";
-    }
-
-    else{
-        return null
-    }
-
+  if (trigger == 'display') element.style.display = 'block'
+  else if (trigger == 'hide') element.style.display = 'none'
 }

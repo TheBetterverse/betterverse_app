@@ -1,0 +1,147 @@
+<!-- DonorPortal_GenerateNFT.html -->
+
+<template>
+    <div style="width: 100%;">
+        <div id="bv__generatenft__header" class="bv__globals__px">
+            <u-Icons-Betterverse height="32px" width="32px" class="d-block d-lg-none"></u-Icons-Betterverse>
+            <u-Icons-Betterverse class="d-none d-lg-flex"></u-Icons-Betterverse>
+        </div>
+
+        <div id="bv__generatenft__body">
+            <div id="bv__generatenft__image" class="bv__globals__px">
+                <p>img here</p>
+            </div>
+
+            <div id="bv__generatenft__title" class="bv__globals__px">
+                <p>
+                    Thank you for your <b>donation</b>!
+                </p>
+
+                <p>
+                    We're preparing your <b>NFT</b>!
+                </p>
+            </div>
+
+            <div id="bv__generatenft__subtitle" class="bv__globals__px">
+                <p>
+                    Your <b> {{ DonorPortal_GetDonationAmount() }} USDC </b> donation to <b> {{ DonorPortal_GetSpecificProject()['$displayName'] }} </b> generated {{$getUser('Donation_NFTCount')}} 
+                    <span v-if="$getUser('Donation_NFTCount') > 1"> NFTs. <br></span>
+                    <span v-if="$getUser('Donation_NFTCount') == 1" > NFT. <br></span> 
+                    They will show on your dashboard when they're ready.
+                </p>
+            </div>
+
+            <div class="bv__globals__px">
+                <u-Components-Button secondary @click="DonorPortal_RedirectToDashboard()">
+                    <p>Back to dashboard</p>
+                    <template #right-icon>
+                        <u-Icons-Dashboard color="white" />
+                    </template>
+                </u-Components-Button>
+            </div>
+        </div>
+
+    </div>
+
+</template>
+
+<style>
+#bv__generatenft__header {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding-top: 18px;
+    padding-bottom: 10px;
+}
+
+#bv__generatenft__image {
+    padding-top: 35px;
+    padding-bottom: 15px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+}
+
+#bv__generatenft__image > * > img {
+    height: 240px;
+    width: 240px;
+    border-radius: 50%;
+}
+
+#bv__generatenft__title {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+#bv__generatenft__title > p {
+    font-family: 'BN Cringe Sans';
+    font-size: 45px;
+    line-height: 48px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+#bv__generatenft__subtitle {
+    padding-bottom: 30px;
+}
+
+#bv__generatenft__subtitle > p {
+    font-size: 17px;
+    line-height: 28px;
+}
+
+
+#bv__generatenft__subtitle > p > br {
+    display: none;
+}
+
+
+@media screen and (min-width: 992px) {
+    #bv__generatenft__body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 80vh;
+    }
+
+    #bv__generatenft__header {
+        padding-top: 24px;
+        padding-bottom: 24px;
+    }
+
+    #bv__generatenft__image {
+        padding-top: 0;
+        justify-content: center;
+        width: 100%;
+    }
+
+    #bv__generatenft__image > * {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    #bv__generatenft__image > * > img {
+        height: 314px;
+        width: 314px;
+        justify-content: center;
+    }
+
+    #bv__generatenft__title {
+        width: 100%;
+        text-align: center;
+    }
+
+    #bv__generatenft__subtitle {
+        text-align: center;
+    }
+
+    #bv__generatenft__subtitle > p > br {
+        display: block;
+    }
+
+}
+
+</style>

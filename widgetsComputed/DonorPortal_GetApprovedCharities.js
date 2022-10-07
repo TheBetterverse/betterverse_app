@@ -1,10 +1,5 @@
-return function  () {
+/* DonorPortal_GetApprovedCharities.js */
 
-//.filter(row => row.charityAccess.$display == "Public")
-
-    let rows = []
-
-    rows = $getGrid('charities') 
-
-    return rows
+return function () {
+  return $getGrid('charities')
 }

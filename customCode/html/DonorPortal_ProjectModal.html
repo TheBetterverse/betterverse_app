@@ -1,78 +1,1201 @@
-<div id="project-modal" class="project-modal">
-    <div class="row no-gutters">
-
-        <div class="col-md-6 no-gutters">
-            <div class="leftside">
-                <center>
-                    <img class="project-image" v-if="DonorPortal_GetSpecificProject().projectImage" :src="DonorPortal_GetSpecificProject().projectImage.url"/>
-                </center>
-            </div>
-        </div>
-
-        <div class="col-md-6 no-gutters">
-            <div class="rightside">
-                <div class="modal-close-container">
-                    <b-button @click="DonorPortal_TriggerProjectModal('hide')">x</b-button>
-                </div>
-
-                <div class="project-information-container">
-                    <div v-if="DonorPortal_GetSpecificProject().projectName">
-                        <h1>{{DonorPortal_GetSpecificProject().projectName}}</h1>
-                    </div>
-
-                    <div v-if="DonorPortal_GetSpecificProject().charity">
-                        <h2>{{DonorPortal_GetSpecificProject().$charity$display}}</h2>
-                    </div>
-
-                    <div>
-                        <h2>Trees Planted: {{DonorPortal_GetProjectTotalTreesPlanted()}} </h2>
-                    </div>
-
-                    <div v-if="DonorPortal_GetSpecificProject().overview">
-                        <h3>Project Overview:</h3>
-                        <p>{{DonorPortal_GetSpecificProject().overview}}</p>
-                    </div>
-
-                    <div v-if="DonorPortal_GetSpecificProject().ecologicalBenefits">
-                        <h3>Ecological Benefits:</h3>
-                        <p>{{DonorPortal_GetSpecificProject().ecologicalBenefits}}</p>
-                    </div>
-
-                    <div v-if="DonorPortal_GetSpecificProject().communityBenefits">
-                        <h3>Community Benefits:</h3>
-                        <p>{{DonorPortal_GetSpecificProject().communityBenefits}}</p>
-                    </div>
-
-                    <h3>Location(s):</h3>
-                    <div v-for="item in DonorPortal_GetSpecificProject().$locations$display">
-                      <b-badge style="margin: 10px;">
-                        {{item}}
-                      </b-badge>
-                    </div>
-
-
-                    <h3>State/Province:</h3>
-                    <div v-for="item in DonorPortal_GetSpecificProject().$stateProvince$display">
-                      <b-badge style="margin: 10px;">
-                        {{item}}
-                      </b-badge>
-                    </div>
-
-
-                    <h3 v-if="DonorPortal_GetSpecificProject().noEndDate == false">End Date:
-                    <p>{{DonorPortal_GetSpecificProject().$endDate$display}}</p>
-                    </h3>
-
-                    <h3>Key Impact Areas:</h3>
-                    <div v-for="item in DonorPortal_GetSpecificProject().$keyImpactAreas$display">
-                      <b-badge style="margin: 10px;">
-                        {{item}}
-                      </b-badge>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
+<!-- DonorPortal_ProjectModal.html -->
+<template>
+  <div id="bv__projectmodal" class="w-100" v-if="DonorPortal_GetSpecificProject()">
+    <div id="bv__projectmodal__logolg" class="d-none d-lg-flex bv__globals__px">
+      <u-Icons-Betterverse />
     </div>
-</div>
+
+    <nav id="bv__projectmodal__navbar" class="bv__globals__px">
+      <div class="d-lg-none">
+        <u-Icons-Betterverse height="32px" width="32px" />
+      </div>
+      <div style="display: flex; gap: 1rem;">
+        <u-Components-WalletDisplay v-if="DonorPortal_GetCurrentUserWalletAddress() != null && DonorPortal_GetCurrentUserProfileComplete() == true" :wallet="DonorPortal_GetCurrentUserWalletInformation()" class="d-none d-lg-block"
+          />
+        <button style="background: #efede7; border-radius: 100%;" @click="DonorPortal_TriggerProjectModal('hide')">
+          <u-Icons-Close></u-Icons-Close>       
+        </button>
+      </div>
+    </nav>
+
+    <div id="bv__projectmodal__leftside">
+
+      <div id="bv__projectmodal__leftsideimage" class="bv__globals__skeleton">
+        <img :src="DonorPortal_GetSpecificProject().projectImage.url" />
+
+        <!--div v-if="DonorPortal_GetAdditionalProjectImages()" id="bv__projectmodal__leftsideimagegallery">
+            <img v-for="image in DonorPortal_GetAdditionalProjectImages()" :src="image" @click="DonorPortal_ProjectImageSelector(image)">
+        </div-->
+
+      </div>
+
+      <div id="bv__projectmodal__leftsideimage__rightborder"></div>
+      <div id="bv__projectmodal__leftsideimage__bottomborder"></div>
+
+    </div>
+
+    <div id="bv__projectmodal__rightside">
+
+      <div id="bv__projectmodal__overview" class="bv__globals__px">
+
+        <div class="bv__projectmodal__charity">
+          <img :src="DonorPortal_GetSpecificProject().$charity.charityLogo.url" />
+          <h2 class="bv__projectmodal__charityname">
+            {{ DonorPortal_GetSpecificProject().$charity$display }}
+          </h2>
+        </div>
+
+        <div id="bv__projectmodal__maincontent">
+          <h3>{{ DonorPortal_GetSpecificProject().$cause$display }} in {{
+            DonorPortal_GetSpecificProject().displayLocation }}
+          </h3>
+          <h1 style="font-weight: 500">
+            {{ DonorPortal_GetSpecificProject().projectName }}
+          </h1>
+          <p>
+            {{ DonorPortal_GetSpecificProject().overview.slice(0, 128) }}
+          </p>
+
+          <div id="bv__projectmodal__maincontentinfo">
+            <div class="bv__projectmodal__maincontentinfocards">
+              <p>Price/Tree</p>
+              <h3 style="display: flex; gap: 0.5rem;">
+                <u-Icons-USDC width="1.75rem" height="1.75rem" class="d-none d-lg-flex" />
+                <u-Icons-USDC class="d-lg-none" />
+                {{ DonorPortal_GetSpecificProject().pricePerTree.toFixed(2) }}
+              </h3>
+            </div>
+
+            <div class="bv__projectmodal__maincontentinfocards">
+              <p>Trees planted</p>
+              <h3>
+                {{ DonorPortal_GetProjectTotalTreesPlanted() }}
+              </h3>
+            </div>
+
+            <div v-if="!DonorPortal_GetSpecificProject().noEndDate" class="bv__projectmodal__maincontentinfocards">
+              <p>Project end</p>
+              <h3>
+                {{ DonorPortal_DisplayProjectEndDate(DonorPortal_GetSpecificProject().endDate) }}
+              </h3>
+            </div>
+          </div>
+        </div>
+
+        <div id="bv__projectmodal__bottomnav">
+          <div>
+            <u-Components-Button secondary
+              @click="DonorPortal_DonateToSelectedCharity(DonorPortal_GetSpecificProject())">
+              <p style="color: #ECEAE3">Donate</p>
+              <template #right-icon>
+                <u-Icons-Heart color="#ECEAE3" />
+              </template>
+            </u-Components-Button>
+          </div>
+
+          <div id="bv__projectmodal__bottomnav__nav">
+            <button @click="DonorPortal_NavigateProjects('left', DonorPortal_GetSpecificProject().rowKey)">
+              <u-Icons-ArrowLeft color="black"></u-Icons-ArrowLeft>
+            </button>
+            <button @click="DonorPortal_NavigateProjects('right', DonorPortal_GetSpecificProject().rowKey)">
+              <u-Icons-ArrowRight color="black" />
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="bv__projectmodal__info" class="bv__globals__px">
+
+        <div id="bv__projectmodal__infoimpact">
+          <div>
+
+            <p style="margin-bottom: 6px;">
+              About the project
+            </p>
+            <h2 style="margin-bottom: 8px;">
+              Something will say here
+            </h2>
+
+          </div>
+
+          <p style="margin-bottom: 6px;">
+            {{ DonorPortal_GetSpecificProject().ecologicalBenefits }}
+          </p>
+
+          <div id="bv__projectmodal__infoimpacttags">
+
+            <div class="bv__projectmodal__impacttag"
+              v-for="item in DonorPortal_GetSpecificProject().$keyImpactAreas$display">
+              <p>
+                {{ item }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div id="bv__projectmodal__infoheader">
+          <div
+            style="display: flex; flex-direction: column; align-items: start; justify-content: space-between; height: 100%;">
+            <p>
+              Charity
+            </p>
+            <h2>
+              {{ DonorPortal_GetSpecificProject().$charity$display}}
+            </h2>
+          </div>
+          <div id="bv__projectmodal__infoheadercharitylogo">
+            <img :src="DonorPortal_GetSpecificProject().$charity.charityLogo.url" />
+          </div>
+        </div>
+
+        <hr />
+
+        <div id="bv__projectmodal__charityinfo">
+          <div id="bv__projectmodal__charityinfoheader">
+            <div id="bv__projectmodal__additionalpictures">
+              <div class="bv__projectmodal__additionalpicture0">
+                <img :src="DonorPortal_GetSpecificProject().$charity.image1.url" />
+              </div>
+              <div class="bv__projectmodal__additionalpicture1">
+                <img :src="DonorPortal_GetSpecificProject().$charity.image2.url" />
+              </div>
+              <div class="bv__projectmodal__additionalpicture2">
+                <img :src="DonorPortal_GetSpecificProject().$charity.image3.url" />
+              </div>
+              <div class="bv__projectmodal__additionalpicture3">
+                <img :src="DonorPortal_GetSpecificProject().$charity.image4.url" />
+              </div>
+            </div>
+
+            <div id="bv__projectmodal__charitydescription">
+              <div v-if="DonorPortal_GetSpecificProject().$charity.$organisationType">
+                <p><b>Organisation Type</b></p>
+                <p>{{ DonorPortal_GetSpecificProject().$charity.$organisationType$display }}</p>
+              </div>
+              <div v-if="DonorPortal_GetSpecificProject().$charity.founded">
+                <p><b>Founded</b></p>
+                <p>{{ DonorPortal_ConvertDateToYear(DonorPortal_GetSpecificProject().$charity.founded) }}</p>
+              </div>
+              <div v-if="DonorPortal_GetSpecificProject().$charity.ceo">
+                <p><b>CEO</b></p>
+                <p>{{DonorPortal_GetSpecificProject().$charity.ceo}}</p>
+              </div>
+              <div v-if="DonorPortal_GetSpecificProject().$charity.headquartersLocation">
+                <p><b>Headquarters</b></p>
+                <p>{{DonorPortal_GetSpecificProject().$charity.headquartersLocation}}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bv__projectmodal__charitytext"
+            v-if="DonorPortal_GetSpecificProject().$charity.charityDescription">
+            <p>{{DonorPortal_GetSpecificProject().$charity.charityDescription}}</p>
+          </div>
+
+
+          <div class="bv__projectmodal__charityinfolinks">
+            <u-Components-Button v-if="DonorPortal_GetSpecificProject().$charity.websiteURL"
+              @click="DonorPortal_OpenCharityLinks(DonorPortal_GetSpecificProject().$charity, 'website')">
+              <p>Website</p>
+              <template #right-icon>
+                <u-Icons-Website />
+              </template>
+            </u-Components-Button>
+            <u-Components-Button v-if="DonorPortal_GetSpecificProject().$charity.twitterURL"
+              @click="DonorPortal_OpenCharityLinks(DonorPortal_GetSpecificProject().$charity, 'twitter')">
+              <p>Twitter</p>
+              <template #right-icon>
+                <u-Icons-Twitter-Blue/>
+              </template>
+            </u-Components-Button>
+            <u-Components-Button v-if="DonorPortal_GetSpecificProject().$charity.discordURL"
+              @click="DonorPortal_OpenCharityLinks(DonorPortal_GetSpecificProject().$charity, 'discord')">
+              <p>Discord</p>
+              <template #right-icon>
+                <u-Icons-Discord />
+              </template>
+            </u-Components-Button>
+          </div>
+        </div>
+
+
+
+        <div id="bv__projectmodal__infoattributes">
+
+          <p style="margin-bottom: 6px;">
+            How it works
+          </p>
+
+          <h2>
+            Generate your NFT
+          </h2>
+
+          <hr />
+
+          <ol class="bv__projectmodal__ol">
+            <li>
+              Pick your project, set the amount you'd like to give and make your donation.
+            </li>
+            <li>
+              Create your one of a kind, procedurally generated NFT tree.
+            </li>
+            <li>
+              Track the real-world impace of your donation and watch your virtual tree grow.
+            </li>
+          </ol>
+        </div>
+
+        <div id="bv__projectmodal__share">
+          <div class="bv__projectmodal__infocard bv__projectmodal__sharecard" style="background: black">
+            <div>
+              <h2 style="color: #ECEAE3">
+                Donate
+              </h2>
+              <p style="color: #ECEAE3">Ready to support this project?</p>
+            </div>
+            <u-Components-Button style="border: 1px solid #ECEAE3"
+              @click="DonorPortal_DonateToSelectedCharity(DonorPortal_GetSpecificProject())">
+              <template #right-icon>
+                <u-Icons-Heart color="#ECEAE3" />
+              </template>
+              <template #default>
+                <p style="color: #ECEAE3">
+                  Donate
+                </p>
+              </template>
+            </u-Components-Button>
+          </div>
+
+          <div class="bv__projectmodal__infocard bv__projectmodal__sharecard">
+            <div>
+              <h2>
+                Share
+              </h2>
+              <p>Share your impact with friends and inspire your community.</p>
+              <b-spinner id="bv__nftmodal__sharecard__spinner" small style="display: none;"></b-spinner>
+            </div>
+            <div id="bv__projectmodal__infocardsocials">
+              <u-Components-Button
+                @click="DonorPortal_GenerateSharableProjectURL(DonorPortal_GetSpecificProject().rowKey, 'twitter')">
+                <template #left-icon>
+                  <u-Icons-Twitter-Blue/>
+                </template>
+              </u-Components-Button>
+
+              <u-Components-Button
+                @click="DonorPortal_GenerateSharableProjectURL(DonorPortal_GetSpecificProject().rowKey, 'facebook')">
+                <template #left-icon>
+                  <u-Icons-Facebook />
+                </template>
+              </u-Components-Button>
+
+              <u-Components-Button
+                @click="DonorPortal_GenerateSharableProjectURL(DonorPortal_GetSpecificProject().rowKey, 'telegram')">
+                <template #left-icon>
+                  <u-Icons-Telegram />
+                </template>
+              </u-Components-Button>
+
+              <u-Components-Button
+                @click="DonorPortal_GenerateSharableProjectURL(DonorPortal_GetSpecificProject().rowKey, 'whatsapp')">
+                <template #left-icon>
+                  <u-Icons-WhatsApp />
+                </template>
+              </u-Components-Button>
+
+              <u-Components-Button
+                @click="DonorPortal_GenerateSharableProjectURL(DonorPortal_GetSpecificProject().rowKey, 'linkedin')">
+                <template #left-icon>
+                  <u-Icons-Linkedin />
+                </template>
+              </u-Components-Button>
+
+              <u-Components-Button
+                @click="DonorPortal_GenerateSharableProjectURL(DonorPortal_GetSpecificProject().rowKey, 'copy')">
+                <template #left-icon>
+                  <u-Icons-Copy />
+                </template>
+              </u-Components-Button>
+            </div>
+          </div>
+        </div>
+
+
+        <div id="bv__projectmodal__otherprojects" v-if="DonorPortal_GetCurrentUserNFTsCount() > 1">
+          <div class=" d-flex align-items-center justify-content-between">
+            <h2>
+              Other projects
+            </h2>
+
+            <div id="bv__projectmodal__otherprojectsnav">
+              <button
+                @click="document.getElementById('bv__projectmodal__otherprojectscarrousel').scrollBy({left: -250, behavior: 'smooth'})">
+                <u-Icons-ArrowLeft color="black"></u-Icons-ArrowLeft>
+              </button>
+              <button
+                @click="document.getElementById('bv__projectmodal__otherprojectscarrousel').scrollBy({left: 250, behavior: 'smooth'})">
+                <u-Icons-ArrowRight color="black" />
+              </button>
+            </div>
+          </div>
+
+          <hr />
+
+          <div id="bv__projectmodal__otherprojectscarrousel">
+            <u-Components-ProjectCard v-for="(project, key) in DonorPortal_GetAllPublicCharityProjects()"
+              v-if="DonorPortal_GetSpecificProject().rowKey != project.rowKey" :key="key" :project="project"
+              @view="DonorPortal_ViewSelectedCharity($event); $('#bv__projectmodal').scrollTop(0);"
+              @donate="DonorPortal_DonateToSelectedCharity($event); $('#bv__projectmodal').scrollTop(0);" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</template>
+
+<style>
+  #bv__projectmodal {
+    position: fixed;
+    z-index: 200;
+
+    display: none;
+    overflow: auto;
+
+    width: 100vw;
+    height: 100%;
+
+    padding: 0;
+    margin: 0;
+
+    background-color: #ECEAE3;
+  }
+
+  #bv__projectmodal__logolg {
+    position: fixed;
+    z-index: 250;
+    height: 86px;
+    align-items: center;
+    top: 3px;
+
+  }
+
+
+  #bv__projectmodal__navbar {
+    position: absolute;
+    top: 0;
+    z-index: 250;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 67px;
+
+    background: none;
+  }
+
+  #bv__projectmodal__navbar button:hover{
+    opacity: 80%; 
+  }
+
+  #bv__projectmodal__bottomnav__nav button:hover{
+    opacity: 80%; 
+  }
+
+  #bv__projectmodal__otherprojectsnav button:hover{
+    opacity: 80%; 
+  }
+
+  #bv__projectmodal__navbarlogo {
+    height: 32px;
+    width: 32px;
+  }
+
+
+  #bv__projectmodal__leftside {
+    position: relative;
+    /* margin-top: 80px; */
+    width: 100%;
+    height: 50vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    background: #ccc;
+  }
+
+  #bv__projectmodal__leftsideimage {
+    background: #eceae3;
+
+    flex-shrink: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-right: none;
+    border-bottom: 1px solid white;
+  }
+
+  #bv__projectmodal__leftsideimage>img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  #bv__projectmodal__rightside {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  #bv__projectmodal__overview {
+    height: 60vh;
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    background: #efede7;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    border-bottom: 1px solid white;
+
+    scroll-snap-align: start;
+  }
+
+  .bv__projectmodal__charity {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .bv__projectmodal__charity>img {
+    max-height: 3rem;
+  }
+
+  .bv__projectmodal__charitytitle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+
+  #bv__projectmodal__maincontent {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 1rem;
+  }
+
+  #bv__projectmodal__maincontent>h1 {
+    font-family: 'BN Cringe Sans';
+    font-weight: 500;
+    font-size: 45px;
+    line-height: 50px;
+  }
+
+  #bv__projectmodal__maincontent>h3 {
+    font-family: 'BN Cringe Sans';
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 32px;
+  }
+
+  #bv__projectmodal__maincontent>p {
+    font-size: 14px;
+  }
+
+  #bv__projectmodal__maincontentinfo {
+    padding-top: 10px;
+    display: grid;
+    grid-template-columns: max-content max-content max-content;
+    gap: 20px;
+  }
+
+  .bv__projectmodal__maincontentinfocards {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  .bv__projectmodal__maincontentinfocards>h3 {
+    display: flex;
+    gap: 0;
+    font-family: 'BN Cringe Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  #bv__projectmodal__bottomnav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  #bv__projectmodal__bottomnav>div {
+    display: flex;
+    gap: 10px;
+  }
+
+
+  #bv__projectmodal__info {
+    height: 100%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 10px;
+  }
+
+  #bv__projectmodal__infoheader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  #bv__projectmodal__infoheadercharitylogo {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #bv__projectmodal__infoheadercharitylogo>img {
+    max-height: 50px;
+  }
+
+  #bv__projectmodal__infocards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(164px, 1fr));
+    gap: 20px;
+  }
+
+  .bv__projectmodal__infocard {
+    height: 164px;
+    width: 100%;
+
+    padding: 12px 16px 16px 16px;
+
+    border: 1px solid #d3d2cb;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .bv__projectmodal__infocardheader {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #bv__projectmodal__infoimpact {
+    margin: 30px 0;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  #bv__projectmodal__infoimpacttags {
+    margin: 15px 0;
+
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+  }
+
+  .bv__projectmodal__impacttag {
+    height: 32px;
+    padding: 6px 12px;
+    background: #e0ded8;
+    border: 1px solid black;
+    border-radius: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #bv__projectmodal__infoattributes {
+    margin: 60px 0;
+  }
+
+  .bv__projectmodal__ol {
+    list-style: none;
+    counter-reset: item;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 10px;
+  }
+
+  .bv__projectmodal__ol>li {
+    counter-increment: item;
+    font-size: 14px;
+  }
+
+  .bv__projectmodal__ol>li::before {
+    margin-right: 0.25rem;
+    content: counter(item);
+    background: black;
+    color: #ECEAE3;
+    border-radius: 100%;
+    width: 1.2rem;
+    height: 1.2rem;
+    font-size: 12px;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+  #bv__projectmodal__share {
+
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 60px;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+
+    scroll-margin-top: 30px;
+  }
+
+  .bv__projectmodal__sharecard {
+    width: 100%;
+  }
+
+  #bv__projectmodal__infocardsocials {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+  }
+
+
+  #bv__projectmodal__actions {
+    width: 100%;
+    margin: 60px 0;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+
+    scroll-margin-top: 0;
+  }
+
+  .bv__projectmodal__actioncard {
+    padding: 16px;
+
+    width: 100%;
+
+    border: 1px solid black;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 25px;
+  }
+
+  .bv__projectmodal__actioncard.disabled {
+    border: 1px solid #d3d2cb
+  }
+
+  .bv__projectmodal__statustext {
+    background: #e0ded8;
+    padding: 2px 10px;
+
+    border: 1px solid black;
+    border-radius: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center
+  }
+
+
+  #bv__projectmodal__otherprojects {
+    margin-top: 60px;
+    padding-bottom: 40px;
+    scroll-margin-top: 30px;
+  }
+
+  #bv__projectmodal__otherprojectsnav {
+    display: flex;
+    gap: 10px;
+  }
+
+  #bv__projectmodal__otherprojectscarrousel {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    gap: 30px;
+    overflow-x: scroll;
+
+    padding-top: 10px !important;
+
+    width: 100%;
+    padding: 0;
+
+    scroll-snap-type: x mandatory;
+  }
+
+  .bv__projectmodal__card {
+    height: fit-content;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+  }
+
+  .bv__projectmodal__image {
+    height: 45%;
+    max-height: 180px;
+  }
+
+  .bv__projectmodal__image>img {
+    height: 100%;
+    max-height: 180px;
+    width: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom: 1px solid white;
+  }
+
+  .bv__projectmodal__description {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+
+    height: 55%;
+    padding: 1.25rem;
+    width: 100%;
+  }
+
+  .bv__projectmodal__title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .bv__projectmodal__charity {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+  }
+
+  .bv__projectmodal__charity>img {
+    max-height: 1.25rem;
+  }
+
+  .bv__projectmodal__otherinfo {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    gap: 25px;
+  }
+
+  .bv__projectmodal__otherinfocard>p:last-child {
+    font-family: 'BN Cringe Sans';
+    font-style: normal;
+    font-weight: 500 !important;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .bv__projectmodal__actions {
+    display: flex;
+    gap: 10px;
+  }
+
+  .bv__projectmodal__actions>.bv__projectmodal__actionsview:hover,
+  .bv__projectmodal__actions>.bv__projectmodal__actionsview:focus {
+    border: 1px solid white;
+    background: black;
+    color: white;
+  }
+
+  .bv__projectmodal__actions>.bv__projectmodal__actionsview:hover .bv__projectmodal__actionsviewicon>svg>* {
+    stroke: white;
+  }
+
+
+  #bv__projectmodal__otherprojectscarrousel::-webkit-scrollbar,
+  #bv__projectmodal__otherprojectscarrousel::-webkit-scrollbar-track,
+  #bv__projectmodal__otherprojectscarrousel::-webkit-scrollbar-thumb {
+    display: none;
+    visibility: hidden;
+  }
+
+  #bv__projectmodal__footer {
+    height: 30px;
+  }
+
+
+  #bv__projectmodal__info>hr {
+    border: 1px solid #000000;
+    opacity: 0.05;
+  }
+
+
+  .bv__projectmodal__impacttag p {
+    font-weight: 700;
+  }
+
+  #bv__projectmodal__charityinfoheader {
+    display: block;
+  }
+
+  #bv__projectmodal__additionalpictures {
+    display: grid;
+    gap: 5px;
+    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, minmax(1fr, 180px));
+  }
+
+  #bv__projectmodal__additionalpictures>* {
+    border-radius: 5px;
+  }
+
+  #bv__projectmodal__additionalpictures>*>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+
+  .bv__projectmodal__additionalpicture0 {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+  }
+
+  .bv__projectmodal__additionalpicture1 {
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+  }
+
+  .bv__projectmodal__additionalpicture2 {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+  }
+
+  .bv__projectmodal__additionalpicture3 {
+    grid-column: 3 / 3;
+    grid-row: 2 / 3;
+  }
+
+  #bv__projectmodal__charityinfo {
+    padding-top: 10px;
+    display: grid;
+    grid-template-rows: repeat(3, max-content);
+    gap: 2rem;
+  }
+
+  .bv__projectmodal__charityinfolinks {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(3, max-content);
+  }
+
+  #bv__projectmodal__charitydescription {
+    display: none;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  #bv__projectmodal__charitydescription>div>p {
+    font-size: 16px;
+  }
+
+  .bv__projectmodal__charitytext {
+    display: block;
+    width: 100%;
+  }
+
+  #bv__projectmodal__bottomnav__nav>button,
+  #bv__projectmodal__otherprojectsnav>button {
+    background: none;
+    border: 1px solid black;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center
+  }
+
+  /* #bv__projectmodal__footer {
+    position: relative;
+  } */
+
+  @media screen and (min-width: 576px) {
+    /* #bv__projectmodal__footer {
+      position: relative;
+    } */
+
+    #bv__projectmodal__charitydescription {
+      display: flex;
+    }
+
+    #bv__projectmodal__charityinfoheader {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 60px;
+    }
+
+    #bv__projectmodal__charitydescription {
+      display: flex;
+    }
+
+    #bv__projectmodal__additionalpictures {
+      height: 100%;
+    }
+
+    .bv__projectmodal__charitytext {
+      width: 60%;
+    }
+
+    .bv__projectmodal__charitytext>p {
+      font-family: 'Documan';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 28px;
+    }
+
+  }
+
+  @media screen and (min-width: 992px) {
+
+    #bv__projectmodal__navbar {
+      padding: 24px 30px 24px 48px !important;
+      justify-content: flex-end;
+      height: 92px;
+    }
+
+    #bv__projectmodal__leftside {
+      margin-top: 0;
+      position: fixed;
+      width: 50%;
+      height: 100vh;
+    }
+
+    #bv__projectmodal__leftsideimage {
+      border-bottom: none;
+    }
+
+    #bv__projectmodal__leftsideimage__bottomborder {
+      position: fixed;
+      bottom: 0;
+      height: 1px;
+      width: calc(50% - 2px);
+      backdrop-filter: blur(4px);
+      background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3))
+    }
+
+    #bv__projectmodal__leftsideimage__rightborder {
+      position: fixed;
+      right: 50%;
+      height: 100%;
+      width: 1px;
+      background-image: linear-gradient(to bottom, rgba(244, 244, 244, 1), rgba(225, 225, 225, 1));
+    }
+
+    #bv__projectmodal__rightside {
+      height: 100vh;
+      margin-left: 50%;
+    }
+
+    #bv__projectmodal__overview {
+      height: 100vh;
+    }
+
+    #bv__projectmodal__maincontentinfo {
+      display: flex;
+      gap: 30px;
+      justify-content: start;
+      align-items: center;
+    }
+
+    #bv__projectmodal__maincontent>p {
+      font-family: 'Documan';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 28px;
+      color: black;
+    }
+
+
+    #bv__projectmodal__maincontent>h1 {
+      font-family: 'BN Cringe Sans';
+      font-weight: 700 !important;
+      font-size: 64px;
+      line-height: 72px;
+    }
+
+    #bv__projectmodal__maincontent>h3 {
+      font-weight: 400;
+      font-size: 30px;
+      line-height: 32px;
+    }
+
+    .bv__projectmodal__maincontentinfocards>h3 {
+      font-weight: 400;
+      font-size: 30px;
+      line-height: 32px;
+    }
+
+    #bv__projectmodal__charityinfoheader {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 60px;
+    }
+
+    #bv__projectmodal__charitydescription {
+      display: flex;
+    }
+
+    #bv__projectmodal__additionalpictures {
+      height: 100%;
+    }
+
+    .bv__projectmodal__charitytext {
+      width: 60%;
+    }
+
+    .bv__projectmodal__charitytitle {
+      font-family: 'BN Cringe Sans';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 30px;
+      line-height: 32px;
+    }
+
+    #bv__projectmodal__additionalpictures {
+      width: 100%;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 150px);
+    }
+
+    #bv__projectmodal__infoimpact>p {
+      font-family: 'Documan';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 28px;
+    }
+
+    .bv__projectmodal__ol>li {
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 28px;
+    }
+  }
+
+
+
+  @media screen and (min-width: 10px) and (max-width: 780px) {
+    #bv__projectmodal__leftsideimagegallery>img {
+      border-radius: 5px !important;
+      width: 45px;
+      height: 45px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #bv__projectmodal__leftsideimagegallery {
+      position: sticky;
+      bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+      gap: 20px;
+      overflow-x: scroll;
+      width: 100%;
+      scroll-snap-type: x mandatory;
+      margin-left: 28px;
+    }
+
+  }
+
+  @media screen and (min-width: 780px) and (max-width: 1450px) {
+    #bv__projectmodal__leftsideimagegallery {
+      position: sticky;
+      bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+      gap: 20px;
+      overflow-x: scroll;
+      width: 100%;
+      scroll-snap-type: x mandatory;
+      margin-left: 28px;
+    }
+
+    #bv__projectmodal__leftsideimagegallery>img {
+      border-radius: 5px !important;
+      width: 62px;
+      height: 62px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
+
+
+
+  @media screen and (min-width: 1450px) {
+    #bv__projectmodal__leftsideimagegallery {
+      position: sticky;
+      bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: nowrap;
+      gap: 20px;
+      overflow-x: scroll;
+      width: 100%;
+      scroll-snap-type: x mandatory;
+    }
+
+    #bv__projectmodal__leftsideimagegallery>img {
+      border-radius: 5px !important;
+      width: 62px;
+      height: 62px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+  }
+
+</style>

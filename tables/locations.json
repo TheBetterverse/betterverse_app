@@ -1568,37 +1568,5 @@
     "nextEvents": "",
     "rowKey": "-McPSU3IPzjUs_Hqa92Y",
     "state": ""
-  },
-  "-MvOMnp8BDcd8SOyugfF": {
-    "_id": 202,
-    "createdDate": 1644324403972,
-    "lastEditDate": 1644324408233,
-    "lastEditedBy": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
-    "name": "South America",
-    "rowKey": "-MvOMnp8BDcd8SOyugfF"
-  },
-  "-MvOOjRtLY2IH2nfgV10": {
-    "_id": 203,
-    "createdDate": 1644324910324,
-    "lastEditDate": 1644324920084,
-    "lastEditedBy": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
-    "name": "North America",
-    "rowKey": "-MvOOjRtLY2IH2nfgV10"
-  },
-  "-MxJyRIYXJSrrJWH3LWX": {
-    "_id": 204,
-    "createdDate": 1646398127169,
-    "lastEditDate": 1646398134767,
-    "lastEditedBy": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
-    "name": "Latin America",
-    "rowKey": "-MxJyRIYXJSrrJWH3LWX"
-  },
-  "-MxJyUSTNHdXNB1WKS2M": {
-    "_id": 205,
-    "createdDate": 1646398140092,
-    "lastEditDate": 1646398143389,
-    "lastEditedBy": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
-    "name": "Africa",
-    "rowKey": "-MxJyUSTNHdXNB1WKS2M"
   }
 }

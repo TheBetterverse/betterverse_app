@@ -1,10 +1,5 @@
-return function  (charityRowKey) {
+/* DonorPortal_GetApprovedCharityProjects.js */
 
-    let rows = []
-
-    rows = $getGrid('charityProjects').filter(row => row.charity == charityRowKey) 
-    //console.log(charityRowKey)
-
-    //console.log(rows)
-    return rows
+return function (charityRowKey) {
+  return $getGrid('charityProjects').filter(row => row.charity == charityRowKey)
 }

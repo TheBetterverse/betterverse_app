@@ -10,7 +10,7 @@
         "x": 564.29,
         "y": 437.59,
         "width": 190,
-        "height": 64,
+        "height": 65,
         "attachment": {
           "color": "#ffffff"
         },
@@ -24,13 +24,11 @@
       },
       {
         "id": "node1650454838370",
-        "x": 908.57,
-        "y": 416.16,
-        "width": 190,
-        "height": 108,
-        "attachment": {
-          "script": "const { userId } = context.webhookdata\nconst email = await getUserEmailByUID(userId)\n\nconst msg = {\n\n  to: email,\n\n  from: 'noreply@betterverse.app',\n\n  subject: 'Welcome to Betterverse!',\n\n  text: 'welcome to betterverse text.....',\n\n}\n\nsgMail.send(msg).catch(err => {\n\n  console.log(err)\n\n})\n\n"
-        },
+        "x": 907.28,
+        "y": 414.87,
+        "width": 200,
+        "height": 109,
+        "attachment": {},
         "name": "script-task",
         "clazz": "scriptTask",
         "label": "Send Confirmation Email",
@@ -43,7 +41,7 @@
         "id": "node1650456027757",
         "x": 1251.43,
         "y": 438.14,
-        "width": 190,
+        "width": 191,
         "height": 65,
         "attachment": {
           "color": "#ffffff"
@@ -54,23 +52,6 @@
         "icon": {
           "name": "stop-circle",
           "color": "hsl(348, 91%, 59%)"
-        }
-      },
-      {
-        "id": "node1654280848680",
-        "x": 487.5800813079112,
-        "y": 433.7561856850939,
-        "width": 190,
-        "height": 64,
-        "attachment": {
-          "script": ""
-        },
-        "name": "script-task",
-        "clazz": "scriptTask",
-        "label": "Script Task",
-        "icon": {
-          "name": "terminal",
-          "color": "hsl(218, 54%, 20%)"
         }
       }
     ],
@@ -107,9 +88,9 @@
       }
     ],
     "transform": {
-      "x": -711.8979548204996,
-      "y": -362.63617309879186,
-      "scale": 1.373964817020912
+      "x": -40.86876196783477,
+      "y": -143.14711607378558,
+      "scale": 0.7755673200194132
     }
   },
   "name": "DonorPortal_ProfileCompletion",

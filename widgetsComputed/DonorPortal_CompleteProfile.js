@@ -1,27 +1,32 @@
 return async () => {
 
-  //Get users table
+  document.getElementById("bv__right__arrow").style.display = "none";
+  document.getElementById("bv__spinner").style.display = "block";
+
+  await new Promise(r => setTimeout(r, 2000));
+
   const users = $getGrid('users')
-
-  //Get current date
   const now = this.DonorPortal_GetDateTime()
-
-  //Get current user details
   let currentUserUID = fbUser.uid
-  
-  //Get current user row
   let currentUser = _.find(users, { user: fbUser.uid })
   let currentUserRowKey = currentUser.rowKey
 
-  //Profile Complete Value
-  $setDataGridVal('users', currentUserRowKey + '.profileComplete', true)
+  await $setDataGridVal('users', currentUserRowKey + '.profileComplete', true)
   $setDataGridVal('users', currentUserRowKey + '.dateJoined', now)
+  let paramUserRow = ($dataGrid('users')[currentUserRowKey])
+  let paramc = JSON.stringify(paramUserRow)
 
-  $setUser('profileSetUpStep', 'complete')
+  $setUser('ProfileSetUpStage', 'complete')
 
-  //Call Send Confirmation Email Workflow
-  await this.callWf({ workflow: '-N05ktsmJ1-FlKZtHjLi' })
+  //Email confirmation
+  this.callWf({
+    workflow: '-N05ktsmJ1-FlKZtHjLi',
+    payload: {
+        val1: paramc,
+    },
+  })
 
   //Redirect User to Dashboard
-  $setCurrentSubTab('-MyvUthgoLrT0z0HdIX9', '-Mx_5FLL2jlxjXYUMdIL')
+  $setCurrentTab('-Mx_5FLL2jlxjXYUMdIL')
+  
 }

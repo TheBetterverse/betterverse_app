@@ -1,18 +1,16 @@
-return function(){
+/* DonorPortal_GetCurrentUserJoinedDate.js */
 
-    let currentUser = this.DonorPortal_GetCurrentUser()
-    let currentUserJoinedDate = currentUser.dateJoined
+const options = {
+  month: 'long',
+  year: 'numeric'
+}
 
-    const dateObject = new Date(currentUserJoinedDate)
+return function () {
+  let dateJoined = this.DonorPortal_GetCurrentUser().dateJoined
 
-    //Change date filter here!
-    let joined = dateObject.toString("MMM dd");
+  if (dateJoined === null) return ''
 
-    if (currentUserJoinedDate != null){
-        return joined
-    }
-    
-    else{
-        return null
-    }
+  let formatted = new Date(dateJoined).toLocaleDateString('en-us', options)
+
+  return formatted
 }

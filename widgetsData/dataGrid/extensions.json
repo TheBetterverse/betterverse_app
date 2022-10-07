@@ -16,11 +16,11 @@
       "type": "date"
     },
     "files": {
-      "Width": "821px",
+      "Width": "875px",
       "displayName": "Files",
       "inherited": true,
       "invisible": false,
-      "order": 3,
+      "order": 4,
       "type": "files"
     },
     "includeCode": {
@@ -28,7 +28,7 @@
       "displayName": "Include Code",
       "inherited": true,
       "invisible": false,
-      "order": 2,
+      "order": 3,
       "type": "multiline_text"
     },
     "lastEditDate": {
@@ -48,7 +48,7 @@
     "layout": {
       "displayName": "Layout",
       "inherited": true,
-      "invisible": false,
+      "invisible": true,
       "order": 5,
       "type": "select"
     },
@@ -86,7 +86,7 @@
       "displayName": "Urls",
       "inherited": true,
       "invisible": false,
-      "order": 4,
+      "order": 2,
       "type": "multiline_text"
     }
   },

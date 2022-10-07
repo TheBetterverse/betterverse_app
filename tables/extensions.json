@@ -15,9 +15,9 @@
     "_id": 2,
     "active": true,
     "createdDate": 1648810795651,
-    "includeCode": "if (!$('#Web3').length) {\n  $('body').append('<script src=\"https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.36/dist/web3.min.js\"></script>')\n}",
-    "lastEditDate": 1651065041103,
-    "lastEditedBy": "gnioIMbCuJRqaZktbmYN9DSkAmA2",
+    "includeCode": "if (!$('#Web3').length) {\n  $('body').append('<script src=\"https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.36/dist/web3.min.js\"></script>')\n}\n",
+    "lastEditDate": 1662025175160,
+    "lastEditedBy": "mmuHsfG5ZMOWW4N2CXY43aspVvv1",
     "name": "Web3.js",
     "owner": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
     "rowKey": "-MzZm18-lbvB37ldr6C0",
@@ -120,8 +120,8 @@
     "_id": 8,
     "active": true,
     "includeCode": "if (!$('#Web3Modal').length) { $('body').append('<script id=\"Web3Modal\" type=\"text/javascript\" src=\"https://unpkg.com/web3modal\"></script>') }",
-    "lastEditDate": 1650588370192,
-    "lastEditedBy": "gnioIMbCuJRqaZktbmYN9DSkAmA2",
+    "lastEditDate": 1664625595342,
+    "lastEditedBy": "mmuHsfG5ZMOWW4N2CXY43aspVvv1",
     "name": "Web3Modal",
     "rowKey": "-N01FSRDSw7QmbGiaOcx"
   },
@@ -178,5 +178,35 @@
     "name": "BNCringe Fonts",
     "owner": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
     "rowKey": "-N3xRbJi4hwoJ2KCJWh6"
+  },
+  "-NAFotn24jSN4KNJ-xEU": {
+    "_id": 13,
+    "createdDate": 1661360905887,
+    "lastEditDate": 1661360905888,
+    "lastEditedBy": "mmuHsfG5ZMOWW4N2CXY43aspVvv1",
+    "owner": "mmuHsfG5ZMOWW4N2CXY43aspVvv1",
+    "rowKey": "-NAFotn24jSN4KNJ-xEU"
+  },
+  "-NBIVUrIcok_rc9X0pIe": {
+    "_id": 14,
+    "createdDate": 1662479631105,
+    "lastEditDate": 1662479679235,
+    "lastEditedBy": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
+    "name": "Copy",
+    "owner": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
+    "rowKey": "-NBIVUrIcok_rc9X0pIe",
+    "urls": "https://wzrd.in/standalone/copy-to-clipboard@latest"
+  },
+  "-NCzU_lAQUjUmWhc9vcG": {
+    "_id": 19,
+    "active": true,
+    "createdDate": 1664291331121,
+    "includeCode": "if (!$('#Slide').length) { $('body').append('<script id=\"Slide\" type=\"text/javascript\" src=\"https://unpkg.com/@slide-web3/sdk@0.4.3/dist/slide.js\"></script>') }",
+    "lastEditDate": 1664829308170,
+    "lastEditedBy": "qUgJwdXlwsNFpj5LI0t55bbb9Oz1",
+    "name": "SlideSDK",
+    "owner": "qUgJwdXlwsNFpj5LI0t55bbb9Oz1",
+    "rowKey": "-NCzU_lAQUjUmWhc9vcG",
+    "urls": ""
   }
 }
