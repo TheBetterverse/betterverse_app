@@ -30,10 +30,13 @@
     <template v-if="state === STATES.WALLET_CONNECTED">
       <div class="bv__walletdisplay__inner bv__walletdisplay__walletconnected">
         <span>
-          <u-Icons-Metamask v-if="provider && provider === 'metamask'" />
-          <u-Icons-Torus v-if="provider && provider === 'torus'" />
-          <u-Icons-Coinbase v-if="provider && provider === 'coinbase'" />
-          <u-Icons-Wallet></u-Icons-Wallet>
+          <u-Icons-Metamask v-if="provider === 'metamask'"></u-Icons-Metamask>
+          <u-Icons-Torus v-else-if="provider === 'torus'"></u-Icons-Torus>
+          <u-Icons-Coinbase
+            v-else-if="provider === 'coinbase'"
+          ></u-Icons-Coinbase>
+          <u-Icons-Slide v-else-if="provider === 'slide'"></u-Icons-Slide>
+          <u-Icons-Wallet v-else></u-Icons-Wallet>
         </span>
 
         <span v-if="address" class="bv__walletdisplay__address">
@@ -91,6 +94,7 @@ module.exports = {
     uIconsMetamask: $getCustomComponent('u-Icons-Metamask'),
     uIconsTorus: $getCustomComponent('u-Icons-Torus'),
     uIconsCoinbase: $getCustomComponent('u-Icons-Coinbase'),
+    uIconsSlide: $getCustomComponent('u-Icons-Slide'),
     uIconsCheckmark: $getCustomComponent('u-Icons-Checkmark')
   },
 

@@ -10,7 +10,7 @@
         "x": 204.09,
         "y": 343.37,
         "width": 190,
-        "height": 65,
+        "height": 64,
         "attachment": {},
         "name": "start-event",
         "clazz": "startEvent",
@@ -22,11 +22,13 @@
       },
       {
         "id": "node1663338857752",
-        "x": 554.22,
-        "y": 332.24,
+        "x": 564,
+        "y": 368.92,
         "width": 200,
-        "height": 108,
-        "attachment": {},
+        "height": 109,
+        "attachment": {
+          "color": "#fb6341"
+        },
         "name": "script-task",
         "clazz": "scriptTask",
         "label": "Create Rows and Send Email Confirmation",
@@ -39,7 +41,7 @@
         "id": "node1663338859700",
         "x": 936.31,
         "y": 343.9,
-        "width": 190,
+        "width": 191,
         "height": 65,
         "attachment": {},
         "name": "decision",
@@ -84,11 +86,12 @@
       }
     ],
     "transform": {
-      "x": 286.3495035233133,
-      "y": 150.68370884114628,
-      "scale": 0.42246020140378704
+      "x": -109.68842005211823,
+      "y": -186.86811127661065,
+      "scale": 0.9492628201243491
     }
   },
   "name": "DonorPortal_Donation",
+  "rootEndpoint": "/donation",
   "scheduled": false
 }

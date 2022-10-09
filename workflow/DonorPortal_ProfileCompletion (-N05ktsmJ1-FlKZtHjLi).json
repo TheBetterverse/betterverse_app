@@ -10,7 +10,7 @@
         "x": 564.29,
         "y": 437.59,
         "width": 190,
-        "height": 64,
+        "height": 65,
         "attachment": {
           "color": "#ffffff"
         },
@@ -26,7 +26,7 @@
         "id": "node1650454838370",
         "x": 907.28,
         "y": 414.87,
-        "width": 190,
+        "width": 200,
         "height": 109,
         "attachment": {},
         "name": "script-task",
@@ -41,7 +41,7 @@
         "id": "node1650456027757",
         "x": 1251.43,
         "y": 438.14,
-        "width": 190,
+        "width": 191,
         "height": 65,
         "attachment": {
           "color": "#ffffff"

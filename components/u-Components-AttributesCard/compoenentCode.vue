@@ -67,8 +67,9 @@ module.exports = {
     await this.getAttributes()
   },
 
+  //Recursive Call - Data Leak
   async updated() {
-    await this.getAttributes()
+    //await this.getAttributes()
   }
 }
 </script>

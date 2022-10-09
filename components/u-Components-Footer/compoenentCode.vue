@@ -24,13 +24,19 @@
         <p>Follow Us</p>
         <div class="bv__footer__followlinks">
           <p>
-            <a href="https://discord.com/invite/BxRfSBgB9n"><u-Icons-Discord></u-Icons-Discord>Discord</a>
+            <a href="https://discord.com/invite/BxRfSBgB9n"
+              ><u-Icons-Discord></u-Icons-Discord>Discord</a
+            >
           </p>
           <p>
-            <a href="https://twitter.com/betterverse_app"><u-Icons-Twitter></u-Icons-Twitter>Twitter</a>
+            <a href="https://twitter.com/betterverse_app"
+              ><u-Icons-Twitter></u-Icons-Twitter>Twitter</a
+            >
           </p>
           <p>
-            <a href="https://www.instagram.com/betterverse.app/"><u-Icons-Instagram></u-Icons-Instagram>Instagram</a>
+            <a href="https://www.instagram.com/betterverse.app/"
+              ><u-Icons-Instagram></u-Icons-Instagram>Instagram</a
+            >
           </p>
         </div>
       </div>
@@ -38,7 +44,9 @@
       <div class="bv__footer__linklist" style="grid-area: donate">
         <p>Donate</p>
         <div>
-          <p><a @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ')">Projects</a></p>
+          <p>
+            <a @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ')">Projects</a>
+          </p>
         </div>
       </div>
 
@@ -47,7 +55,11 @@
         <div>
           <p><a href="https://www.betterverse.app/legal">Cookies</a></p>
           <p><a href="https://www.betterverse.app/legal">Privacy</a></p>
-          <p><a href="https://www.betterverse.app/legal/#terms-of-use">Terms of use</a></p>
+          <p>
+            <a href="https://www.betterverse.app/legal/#terms-of-use"
+              >Terms of use</a
+            >
+          </p>
         </div>
       </div>
 
@@ -93,7 +105,7 @@ module.exports = {
   position: static;
   width: 100%;
   min-height: 55vh;
-  z-index: 50;
+  z-index: 100;
   bottom: 0;
 
   display: grid;

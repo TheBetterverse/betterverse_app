@@ -1,8 +1,18 @@
 /* DonorPortal_ConnectWallet.js */
 
+/*This throws for some reason but does work */
 var currentUserRowKey = this.DonorPortal_GetCurrentUserRowKey()
 var currentUserRow = this.DonorPortal_GetCurrentUser()
 var currentSubTab = this.currentSubTab
+
+/*
+console.log("Got data ------->")
+console.log(currentUserRowKey)
+console.log(currentUserRow)
+console.log(currentSubTab)
+console.log("Completed get data <--------")
+*/
+
 
 return function (event) {
 
@@ -35,7 +45,7 @@ return function (event) {
           )
           if (
             currentSubTab == '-N4UIKK5MmraPqo_BhCH' &&
-            currentUserRow.walletAddress != null
+            wallet != null
           ) {
             $setCurrentSubTab('-N6OJKPA76EZPTjdgEMp', '-Mx_5FLL2jlxjXYUMdIL')
           }
@@ -56,9 +66,10 @@ return function (event) {
             currentUserRowKey + '.walletProvider',
             'metamask'
           )
-          if (
+
+              if (
             currentSubTab == '-N4UIKK5MmraPqo_BhCH' &&
-            currentUserRow.walletAddress != null
+            wallet != null
           ) {
             $setCurrentSubTab('-N6OJKPA76EZPTjdgEMp', '-Mx_5FLL2jlxjXYUMdIL')
           }
@@ -105,7 +116,7 @@ return function (event) {
       //If user is on the register page and connected wallet successful, redirect to topup page
       if (
         currentSubTab == '-N4UIKK5MmraPqo_BhCH' &&
-        currentUserRow.walletAddress != null
+        wallet != null
       ) {
         $setCurrentSubTab('-N6OJKPA76EZPTjdgEMp', '-Mx_5FLL2jlxjXYUMdIL')
       }
@@ -139,9 +150,10 @@ return function (event) {
             currentUserRowKey + '.walletProvider',
             'coinbase'
           )
-          if (
+
+              if (
             currentSubTab == '-N4UIKK5MmraPqo_BhCH' &&
-            currentUserRow.walletAddress != null
+            wallet != null
           ) {
             $setCurrentSubTab('-N6OJKPA76EZPTjdgEMp', '-Mx_5FLL2jlxjXYUMdIL')
           }
@@ -164,7 +176,7 @@ return function (event) {
           )
           if (
             currentSubTab == '-N4UIKK5MmraPqo_BhCH' &&
-            currentUserRow.walletAddress != null
+            wallet != null
           ) {
             $setCurrentSubTab('-N6OJKPA76EZPTjdgEMp', '-Mx_5FLL2jlxjXYUMdIL')
           }
@@ -193,15 +205,15 @@ return function (event) {
       const slide = new Slide.SDK()
       await slide.init();
 
-      const wallet = await slide.request({ method: "eth_requestAcccounts " })
+      const wallet = await slide.request({ method: "eth_requestAccounts" })
 
-      $setDataGridVal('users', currentUserRowKey + '.walletAddress', wallet)
+      $setDataGridVal('users', currentUserRowKey + '.walletAddress', wallet[0])
       $setDataGridVal('users', currentUserRowKey + '.walletProvider', 'slide')
 
       //If user is on the register page and connected wallet successful, redirect to topup page
       if (
         currentSubTab == '-N4UIKK5MmraPqo_BhCH' &&
-        currentUserRow.walletAddress != null
+        wallet != null
       ) {
         $setCurrentSubTab('-N6OJKPA76EZPTjdgEMp', '-Mx_5FLL2jlxjXYUMdIL')
       }

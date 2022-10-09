@@ -1,6 +1,984 @@
-const { userId } = context.webhookdata
+const {userId} = context.webhookdata
 const email = await getUserEmailByUID(userId)
 context.data = email
+
+$log('Installing web3 packages')
+
+//await manager.install('cross-fetch')
+//await manager.install("web3")
+
+//const Web3 = manager.require("web3")
+
+//console.log(Web3)
+
+//return
+
+//var Web3 = require('web3');
+
+//const Web3 = require("web3");
+
+
+$log('Loaded web3 packages')
+
+const web3 = new Web3(new Web3.providers.HttpProvider('https://polygon-mumbai.g.alchemy.com/v2/dRrclX6ikOV1fZHA5fHhaORKzPB6MoEj'));
+
+$log('Configured web3 lfg')
+
+//Tree contract ABI
+const treeContractData = {
+    TreeContractAddress: '0xA1b4B161f2Dcf373B8C040151D8926cc8165f499',
+    TreeContractABI: [
+        {
+            "inputs": [],
+            "stateMutability": "nonpayable",
+            "type": "constructor"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "owner",
+                    "type": "address"
+                },
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "approved",
+                    "type": "address"
+                },
+                {
+                    "indexed": true,
+                    "internalType": "uint256",
+                    "name": "tokenId",
+                    "type": "uint256"
+                }
+            ],
+            "name": "Approval",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "owner",
+                    "type": "address"
+                },
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "operator",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "bool",
+                    "name": "approved",
+                    "type": "bool"
+                }
+            ],
+            "name": "ApprovalForAll",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "previousOwner",
+                    "type": "address"
+                },
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "newOwner",
+                    "type": "address"
+                }
+            ],
+            "name": "OwnershipTransferred",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "from",
+                    "type": "address"
+                },
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "to",
+                    "type": "address"
+                },
+                {
+                    "indexed": true,
+                    "internalType": "uint256",
+                    "name": "tokenId",
+                    "type": "uint256"
+                }
+            ],
+            "name": "Transfer",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "uint256",
+                    "name": "token",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "bags",
+                    "type": "uint256"
+                }
+            ],
+            "name": "fertiliserAdded",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "uint256",
+                    "name": "token",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "user",
+                    "type": "address"
+                }
+            ],
+            "name": "minted",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "uint256",
+                    "name": "tokenId",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint8",
+                    "name": "rarityCat",
+                    "type": "uint8"
+                }
+            ],
+            "name": "randomReturned",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "account",
+                    "type": "address"
+                },
+                {
+                    "indexed": true,
+                    "internalType": "bool",
+                    "name": "role",
+                    "type": "bool"
+                }
+            ],
+            "name": "roleChanged",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "uint256",
+                    "name": "token",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "newValue",
+                    "type": "uint256"
+                }
+            ],
+            "name": "valueAdded",
+            "type": "event"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "name": "_batchCID",
+            "outputs": [
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "batchID",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256[]",
+                    "name": "jsonId",
+                    "type": "uint256[]"
+                }
+            ],
+            "name": "addTree",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "_amount",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "_tokenId",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint16",
+                    "name": "_causeId",
+                    "type": "uint16"
+                }
+            ],
+            "name": "addValue",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint8",
+                    "name": "count",
+                    "type": "uint8"
+                },
+                {
+                    "internalType": "address[]",
+                    "name": "user",
+                    "type": "address[]"
+                },
+                {
+                    "internalType": "uint16",
+                    "name": "cause",
+                    "type": "uint16"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "value",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint8[]",
+                    "name": "rarity",
+                    "type": "uint8[]"
+                }
+            ],
+            "name": "adminMint",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "to",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "tokenId",
+                    "type": "uint256"
+                }
+            ],
+            "name": "approve",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "owner",
+                    "type": "address"
+                }
+            ],
+            "name": "balanceOf",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "name": "batchCat",
+            "outputs": [
+                {
+                    "internalType": "uint8",
+                    "name": "",
+                    "type": "uint8"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "_tokenId",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint8",
+                    "name": "_reqGrowth",
+                    "type": "uint8"
+                }
+            ],
+            "name": "burn",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "bool",
+                    "name": "role",
+                    "type": "bool"
+                },
+                {
+                    "internalType": "address",
+                    "name": "account",
+                    "type": "address"
+                }
+            ],
+            "name": "changeRoles",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "checkAdminTrees",
+            "outputs": [
+                {
+                    "internalType": "uint256[]",
+                    "name": "",
+                    "type": "uint256[]"
+                },
+                {
+                    "internalType": "uint256[]",
+                    "name": "",
+                    "type": "uint256[]"
+                },
+                {
+                    "internalType": "uint256[]",
+                    "name": "",
+                    "type": "uint256[]"
+                },
+                {
+                    "internalType": "uint256[]",
+                    "name": "",
+                    "type": "uint256[]"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "_tokenId",
+                    "type": "uint256"
+                }
+            ],
+            "name": "dataReturn",
+            "outputs": [
+                {
+                    "internalType": "uint16",
+                    "name": "",
+                    "type": "uint16"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint8",
+                    "name": "",
+                    "type": "uint8"
+                },
+                {
+                    "internalType": "uint8",
+                    "name": "",
+                    "type": "uint8"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "_amount",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "_tokenId",
+                    "type": "uint256"
+                }
+            ],
+            "name": "fertilise",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "tokenId",
+                    "type": "uint256"
+                }
+            ],
+            "name": "getApproved",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "owner",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "operator",
+                    "type": "address"
+                }
+            ],
+            "name": "isApprovedForAll",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint8",
+                    "name": "_numberToMint",
+                    "type": "uint8"
+                },
+                {
+                    "internalType": "uint16",
+                    "name": "_cause",
+                    "type": "uint16"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "_treeValue",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "address",
+                    "name": "_user",
+                    "type": "address"
+                }
+            ],
+            "name": "mint",
+            "outputs": [
+                {
+                    "internalType": "uint256[]",
+                    "name": "",
+                    "type": "uint256[]"
+                }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "minter",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "name",
+            "outputs": [
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "owner",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "tokenId",
+                    "type": "uint256"
+                }
+            ],
+            "name": "ownerOf",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "pollinator",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "renounceOwnership",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "from",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "to",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "tokenId",
+                    "type": "uint256"
+                }
+            ],
+            "name": "safeTransferFrom",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "from",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "to",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "tokenId",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "bytes",
+                    "name": "data",
+                    "type": "bytes"
+                }
+            ],
+            "name": "safeTransferFrom",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "operator",
+                    "type": "address"
+                },
+                {
+                    "internalType": "bool",
+                    "name": "approved",
+                    "type": "bool"
+                }
+            ],
+            "name": "setApprovalForAll",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "string",
+                    "name": "_newBatchCID",
+                    "type": "string"
+                },
+                {
+                    "internalType": "uint8",
+                    "name": "rarityCat",
+                    "type": "uint8"
+                }
+            ],
+            "name": "setBatchCID",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "tokenId",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint8",
+                    "name": "rarity",
+                    "type": "uint8"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "random",
+                    "type": "uint256"
+                }
+            ],
+            "name": "setTree",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "bytes4",
+                    "name": "interfaceId",
+                    "type": "bytes4"
+                }
+            ],
+            "name": "supportsInterface",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "symbol",
+            "outputs": [
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "index",
+                    "type": "uint256"
+                }
+            ],
+            "name": "tokenByIndex",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "name": "tokenInfo",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "treeID",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint16",
+                    "name": "causeID",
+                    "type": "uint16"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "treeValue",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "planted",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "fertiliser",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "bool",
+                    "name": "burned",
+                    "type": "bool"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "owner",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "index",
+                    "type": "uint256"
+                }
+            ],
+            "name": "tokenOfOwnerByIndex",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "_tokenId",
+                    "type": "uint256"
+                }
+            ],
+            "name": "tokenURI",
+            "outputs": [
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "totalSupply",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "from",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "to",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "tokenId",
+                    "type": "uint256"
+                }
+            ],
+            "name": "transferFrom",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "newOwner",
+                    "type": "address"
+                }
+            ],
+            "name": "transferOwnership",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "treesInStorage",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "vrf",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        }
+    ]
+}
 
 const tokenID = await context.webhookdata.payload.tokenID
 const wallet = await context.webhookdata.payload.wallet
@@ -20,179 +998,163 @@ const date = await context.webhookdata.payload.date
 const nftCount = await context.webhookdata.payload.nftCount
 const json = await context.webhookdata.payload.json
 const nftType = await context.webhookdata.payload.nftType
+const charityName = await context.webhookdata.payload.charityName
+var nftRows = []
 
-var emailTemplate = 
-                       `
-                       
-                       <div>
-  <table width="100%" border="0" cellspacing="0" cellpadding="0"
-    style="background: #EFEDE7; height: 500px;"
-    >
-      <tr height="100px;">
-          <td align="center">
-                  <img src="https://uploads-ssl.webflow.com/62554ccc10f0e2be91a8c9fc/633c46678133f7deb08265bc_betterverse-logo.png" 
-                  style="height: 50px;"/>
-      </tr>
 
-      <tr height="300px;">
-          <td align="center">
-            <div style=" text-align: left; font-family: 'Courier New', monospace; height: 100%; font-size: 14px; position: relative; background-color: #ECEAE3; line-height: 21px; border-bottom: 1px solid #E3E1DB; border-top: 1px solid #E3E1DB; vertical-align:middle; ">
-                <div style="margin: auto; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 50%;">
-                  <h3 style="color: black;">Contratulations!</h3>
-                  <p>
-                  <div style="color: black;"> Your account has been successfully created. </div>
-                  <br>
-                  <div style="color: black;"> You’re all set to make your first donation and mint your NFT tree. </div>
-                  </p>
-                  <button style="border-radius: 20px; padding: 0px 15px; gap: 10px; width: 87px; height: 28px; background: #000000;">
-                    <a href="https://give.betterverse.app" target="_blank" style="color: #ECEAE3; text-decoration: none;">
+var emailTemplate =
+    `
+<div>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background: #EFEDE7; height: 500px;">
+    <tr height="100px;">
+      <td align="center">
+        <img src="https://uploads-ssl.webflow.com/62554ccc10f0e2be91a8c9fc/633c46678133f7deb08265bc_betterverse-logo.png" style="height: 50px;" />
+    </tr>
+    <tr height="300px;">
+      <td align="center">
+        <div style="font-family: 'Courier New', monospace; height: 100%; width: 100%; font-size: 14px; position: relative; background-color: #ECEAE3; line-height: 21px; border-bottom: 1px solid #E3E1DB; border-top: 1px solid #E3E1DB; vertical-align:middle; ">
+          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 330px;">
+            <h3 style="color: black;">Account set-up complete!</h3>
+                <p>
+                <div style="color: black;"> Thanks for creating an account with us. </div>
+                <br>
+                <div style="color: black;"> You’re all set to make your first donation and mint your NFT tree. </div>
+                </p>
+                <button style="border-radius: 20px; padding: 0px 15px; gap: 10px; width: 87px; height: 28px; background: #000000;">
+                  <a href="https://give.betterverse.app" target="_blank" style="color: #ECEAE3; text-decoration: none;">
                     <b style="font-family: 'Courier New', monospace; ">Donate</b>
-                    </a>
-                  </button>
-                </div>
-            </div>
-      </tr>
-
-      <tr height="100px;">
-          <div style="text-align: center;  font-size: 10px; font-family: 'Courier New', monospace;">
-            <div style="font-size: 10px;">
-              <p>
-              <div style="color: black;"> Brought to you with ❤️ from the Betterverse team. <br> © 2022 Betterverse Ltd, all rights reserved. </div>
-              <br>
-              <div>
-                <b style="color: black;">
-                  <a href="https://www.betteverse.app/team/#contact" target="_blank" style="color: black;">Contact Us</a> 
-                  • 
-                  <a href="https://www.betterverse.app/legal" target="_blank" style="color: black;">Terms of Use</a>
-                  • 
-                  <a href="https://www.betterverse.app/legal" target="_blank" style="color: black;">Privacy Policy</a>
-                </b>
-              </div>
-              </p>
-            </div>
+                  </a>
+                </button>
           </div>
-      </tr>
+        </div>
+    </tr>
+    <tr height="100px;">
+      <div style="text-align: center;  font-size: 10px; font-family: 'Courier New', monospace;">
+        <div style="font-size: 10px;">
+          <p>
+          <div style="color: black;"> Brought to you with ❤️ from the Betterverse team. <br> © 2022 Betterverse Ltd, all rights reserved. </div>
+          <br>
+          <div>
+            <b style="color: black;">
+              <a href="https://www.betteverse.app/team/#contact" target="_blank" style="color: black;">Contact Us</a> • <a href="https://www.betterverse.app/legal" target="_blank" style="color: black;">Terms of Use</a> • <a href="https://www.betterverse.app/legal" target="_blank" style="color: black;">Privacy Policy</a>
+            </b>
+          </div>
+          </p>
+        </div>
+      </div>
+    </tr>
   </table>
 </div>
-
-
-
-
-
-
-
-
 `
 
 var name = user.username
-if(user.firstName){
+if (user.firstName) {
     name = user.firstName
-}
-else{
+} else {
     name = user.username
 }
 
-if (nftCount == 1){
+
+if (tokenID.length == 1) {
 
     //Create donation row
     let newDonationRow = await $addRow('capturedDonationData', {
-                                            tokenID: tokenID,
-                                            walletAddress: wallet,
-                                            user: user.user,
-                                            charity: charity, 
-                                            charityProject: cause.rowKey,
-                                            paymentMethod: paymentMethod,
-                                            currency: currency,
-                                            donationLocation: location,
-                                            donationAmount: donationAmount,
-                                            gas: gas,
-                                            donationDate: date,
-                                            numberOfTreesPlanted: numberOfTrees,
-                                            yearlyCarbonSequestration: carbonSequestration,
-                                            donationAmountGBP: donationAmountGBP,
-                                            donationAmountEUR: donationAmountEUR
+        tokenID: tokenID[0],
+        walletAddress: wallet,
+        user: user.user,
+        charity: charity,
+        charityProject: cause.rowKey,
+        paymentMethod: paymentMethod,
+        currency: currency,
+        donationLocation: location,
+        donationAmount: donationAmount,
+        gas: gas,
+        donationDate: date,
+        numberOfTreesPlanted: numberOfTrees,
+        yearlyCarbonSequestration: carbonSequestration,
+        donationAmountGBP: donationAmountGBP,
+        donationAmountEUR: donationAmountEUR
     })
 
     //Create NFT row
-    let newNFTRow = await $addRow('nFTs',  {
-                                            tokenID: tokenID,
-                                            walletAddress: wallet,
-                                            owner: user.user,
-                                            initialDonationRow: newDonationRow,
-                                            json: json,
-                                            nftType: nftType
+    let newNFTRow = await $addRow('nFTs', {
+        tokenID: tokenID[0],
+        walletAddress: wallet,
+        owner: user.user,
+        initialDonationRow: newDonationRow,
+        json: json[0],
+        nftType: nftType
     })
-
-
-
-    //Prepare email Confirmation
-    var msg = {
-        to: email,
-        from: 'noreply@betterverse.app',
-        subject: 'Donation Confirmation - Betterverse',
-        //text: 'Hi!',
-        html: emailTemplate          
-    }
-
-}
-
-else if(nftCount >= 2 && nftCount <= 10){
+    nftRows.push(newNFTRow)
+} else if (tokenID.length >= 2 && tokenID.length <= 10) {
 
     var newDonationRows = []
 
-    for(let i = 0; i < nftCount; i++){
-        let newDonationRow = await $addRow('capturedDonationData',  {
-                                            tokenID: tokenID,
-                                            walletAddress: wallet,
-                                            user: user.user,
-                                            charity: charity, 
-                                            charityProject: cause.rowKey,
-                                            paymentMethod: paymentMethod,
-                                            currency: currency,
-                                            donationLocation: location,
-                                            donationAmount: donationAmount,
-                                            gas: gas,
-                                            donationDate: date,
-                                            numberOfTreesPlanted: numberOfTrees,
-                                            yearlyCarbonSequestration: carbonSequestration,
-                                            donationAmountGBP: donationAmountGBP,
-                                            donationAmountEUR: donationAmountEUR
+    for (let i = 0; i < tokenID.length; i++) {
+        $log("Writing donation entry for " + tokenID[i])
+        let newDonationRow = await $addRow('capturedDonationData', {
+            tokenID: tokenID[i],
+            walletAddress: wallet,
+            user: user.user,
+            charity: charity,
+            charityProject: cause.rowKey,
+            paymentMethod: paymentMethod,
+            currency: currency,
+            donationLocation: location,
+            donationAmount: donationAmount,
+            gas: gas,
+            donationDate: date,
+            numberOfTreesPlanted: numberOfTrees,
+            yearlyCarbonSequestration: carbonSequestration,
+            donationAmountGBP: donationAmountGBP,
+            donationAmountEUR: donationAmountEUR
         })
-        newDonationRows[i] = newDonationRow
-    }
-
-    for(let i = 0; i < nftCount; i++){
-        let newNFTRow = await $addRow('nFTs',  {
-                                            tokenID: tokenID,
-                                            walletAddress: wallet,
-                                            owner: user.user,
-                                            initialDonationRow: newDonationRows[i],
-                                            json: json,
-                                            nftType: nftType
+        $log("Writing NFT entry for " + tokenID[i])
+        let newNFTRow = await $addRow('nFTs', {
+            tokenID: tokenID[i],
+            walletAddress: wallet,
+            owner: user.user,
+            initialDonationRow: newDonationRow,
+            json: json[i],
+            nftType: nftType
         })
-    }
+        nftRows.push(newNFTRow)
 
-    //Prepare email confirmation
-    var msg = {
-        to: email,
-        from: 'noreply@betterverse.app',
-        subject: 'Donation Confirmation - Betterverse',
-        //text: 'Hi,!',
-        html: emailTemplate
-        //html: 'Thanks for your donations ' + name + ', <br/>' + nftCount + '<br/> <br/> <br/> <a href="donate.betterverse.app">Login</a>'          
     }
-
 }
+const TreeContract = new web3.eth.Contract(treeContractData.TreeContractABI, treeContractData.TreeContractAddress);
+
+for (let i = 0; i < nftRows.length; i++) {
+    var calledJson = await TreeContract.methods.tokenURI(tokenID).call()
+    while (calledJson === nftRows[i].json) {
+        calledJson = await TreeContract.methods.tokenURI(tokenID).call()
+        await new Promise(r => setTimeout(r, 3000))
+        $log(`Old json: ${nftRows[i].json} current json is ${json}`)
+        $log('Continuing to poll')
+    }
+    $log('Updated json lfg')
+    createLog(callDash, '', json, 'nFTs', nftRows[i].rowKey, 'json')
+}
+
+
+var msg = {
+    to: email,
+    from: 'noreply@betterverse.app',
+    subject: 'Betterverse | Donation Confirmation',
+    //text: 'Hi,!',
+    html: emailTemplate
+}
+
 
 //Send email
 const result = await new Promise((resolve) => {
-  sendEmail(msg).then(() => {
-    resolve(true)
-  }).catch(err => {
-    console.log(err)
-    resolve(false)
-  })
+    sendEmail(msg).then(() => {
+        resolve(true)
+    }).catch(err => {
+        console.log(err)
+        resolve(false)
+    })
 })
 
-context.data = { result, msg }
+context.data = {result, msg}
 

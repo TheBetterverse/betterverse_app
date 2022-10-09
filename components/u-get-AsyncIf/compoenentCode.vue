@@ -12,14 +12,10 @@ module.exports = {
 
   async created() {
     this.result = await this.asyncif
-    console.log('creating')
-    console.log(this.result)
   },
 
   async updated() {
     this.result = await this.asyncif
-    console.log('updating')
-    console.log(this.result)
   },
 
   data() {

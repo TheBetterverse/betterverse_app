@@ -115,7 +115,8 @@ return async function(){
                                         date: date,
                                         nftCount: nftCount,
                                         json: json,
-                                        nftType: nftType
+                                        nftType: nftType,
+                                        charityName: charityRow.charityName
                                     },
                                 })
 
@@ -157,7 +158,8 @@ return async function(){
                                         date: date,
                                         nftCount: nftCount,
                                         json: json,
-                                        nftType: nftType
+                                        nftType: nftType,
+                                        charityName: charityRow.charityName
                                     },
                                 })
                                 return null

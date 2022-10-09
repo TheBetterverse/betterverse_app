@@ -100,7 +100,7 @@
             <template #left-icon>
               <icon-discord></icon-discord>
             </template>
-            <template><p>Unstoppable</p> </template>
+            <template><p>UD</p> </template>
           </bv-button>
         </div>
       </section>

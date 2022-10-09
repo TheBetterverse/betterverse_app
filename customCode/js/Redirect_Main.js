@@ -13,8 +13,6 @@
   
   var currentProfileStage = $getUser('ProfileSetUpStage')
 
-
-
   /*--REDIRECT NEW ANON REGULAR USER TO SIGN/REGISTER --*/
   if (
     currentUser.role == '-MxdXEQ8xH5jcFGkUYP7' &&

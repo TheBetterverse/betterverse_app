@@ -207,7 +207,6 @@ module.exports = {
       })
     },
     reset() {
-      console.log(this.form.password)
       this.$parent.callWf({
         workflow: '-N9b4lSJzR5UT35a_Odh',
         payload: {

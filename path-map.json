@@ -1673,6 +1673,10 @@
     "savePath": "widgetsComputed/DonorPortal_DonateToSelectedCharity"
   },
   {
+    "filePath": "widgetsComputed/DonorPortal_DonateTransactionTEST.js",
+    "savePath": "widgetsComputed/DonorPortal_DonateTransactionTEST"
+  },
+  {
     "filePath": "widgetsComputed/DonorPortal_DonationAmountValidation.js",
     "savePath": "widgetsComputed/DonorPortal_DonationAmountValidation"
   },
