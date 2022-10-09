@@ -1,0 +1,212 @@
+{
+  "-MzV14kH1eXDvaa8Zm2D": {
+    "_id": 1,
+    "active": true,
+    "createdDate": 1648731117042,
+    "includeCode": "if (true) {\n  $('body').append('<script id=\"Ramp\" src=\"https://cdn.jsdelivr.net/npm/@ramp-network/ramp-instant-sdk@2.5.0/dist/ramp-instant-sdk.umd.js\" integrity=\"sha256-YOWvxewL6tQoz1eAnLtjDvIX2Vhg6uzFsRvjmcAsom0=\" crossorigin=\"anonymous\"></script>')\n}",
+    "lastEditDate": 1651199308288,
+    "lastEditedBy": "gnioIMbCuJRqaZktbmYN9DSkAmA2",
+    "name": "Ramp",
+    "owner": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
+    "rowKey": "-MzV14kH1eXDvaa8Zm2D",
+    "urls": ""
+  },
+  "-MzZm18-lbvB37ldr6C0": {
+    "_id": 2,
+    "active": true,
+    "createdDate": 1648810795651,
+    "includeCode": "if (!$('#Web3').length) {\n  $('body').append('<script src=\"https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.36/dist/web3.min.js\"></script>')\n}\n",
+    "lastEditDate": 1662025175160,
+    "lastEditedBy": "mmuHsfG5ZMOWW4N2CXY43aspVvv1",
+    "name": "Web3.js",
+    "owner": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
+    "rowKey": "-MzZm18-lbvB37ldr6C0",
+    "urls": ""
+  },
+  "-MzZm2MmwEcbIyDzYJ9p": {
+    "_id": 3,
+    "active": true,
+    "createdDate": 1648810800693,
+    "includeCode": "if (!$('#Torus').length) {\n$('body').append('<script id=\"Torus\" src=\"https://cdn.jsdelivr.net/npm/@toruslabs/torus-embed\"></script>')\n}",
+    "lastEditDate": 1650545198654,
+    "lastEditedBy": "xuTSVRW20mS00HV0ANw51A2ts862",
+    "name": "Torus",
+    "owner": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
+    "rowKey": "-MzZm2MmwEcbIyDzYJ9p",
+    "urls": ""
+  },
+  "-MzZqjGwDoSnXCCVGzUW": {
+    "_id": 5,
+    "active": true,
+    "createdDate": 1648812029119,
+    "includeCode": "if (!$('#CoinbaseWalletSDK').length) { $('body').append('<script id=\"CoinbaseWalletSDK\" type=\"module\"> import CoinbaseWalletSDK from \"https://cdn.skypack.dev/walletlink\"; </script>') }",
+    "lastEditDate": 1650870068174,
+    "lastEditedBy": "xuTSVRW20mS00HV0ANw51A2ts862",
+    "name": "Coinbase Wallet",
+    "owner": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
+    "rowKey": "-MzZqjGwDoSnXCCVGzUW"
+  },
+  "-N-ba4bEadmSDm6DLv4X": {
+    "_id": 6,
+    "active": true,
+    "createdDate": 1649931738657,
+    "files": [
+      {
+        "id": "ca37da60-bbdc-11ec-bad1-9571bd3ac110_Documan-Bold.otf",
+        "name": "Documan-Bold.otf"
+      },
+      {
+        "id": "cba3c670-bbdc-11ec-bad1-9571bd3ac110_Documan-Medium.otf",
+        "name": "Documan-Medium.otf"
+      },
+      {
+        "id": "ccfc78a0-bbdc-11ec-bad1-9571bd3ac110_Documan-Regular.otf",
+        "name": "Documan-Regular.otf"
+      },
+      {
+        "id": "d6e00e90-bbdc-11ec-bad1-9571bd3ac110_Documan-Bold.ttf",
+        "name": "Documan-Bold.ttf"
+      },
+      {
+        "id": "d83abc90-bbdc-11ec-bad1-9571bd3ac110_Documan-Medium.ttf",
+        "name": "Documan-Medium.ttf"
+      },
+      {
+        "id": "d97c8b60-bbdc-11ec-bad1-9571bd3ac110_Documan-Regular.ttf",
+        "name": "Documan-Regular.ttf"
+      },
+      {
+        "id": "e25bd0b0-bbdc-11ec-bad1-9571bd3ac110_Documan-Bold.woff",
+        "name": "Documan-Bold.woff"
+      },
+      {
+        "id": "e2db60f0-bbdc-11ec-bad1-9571bd3ac110_Documan-Bold.woff2",
+        "name": "Documan-Bold.woff2"
+      },
+      {
+        "id": "e35d1410-bbdc-11ec-bad1-9571bd3ac110_Documan-Medium.woff",
+        "name": "Documan-Medium.woff"
+      },
+      {
+        "id": "e3f27640-bbdc-11ec-bad1-9571bd3ac110_Documan-Medium.woff2",
+        "name": "Documan-Medium.woff2"
+      },
+      {
+        "id": "e47cb4e0-bbdc-11ec-bad1-9571bd3ac110_Documan-Regular.woff",
+        "name": "Documan-Regular.woff"
+      },
+      {
+        "id": "e5130170-bbdc-11ec-bad1-9571bd3ac110_Documan-Regular.woff2",
+        "name": "Documan-Regular.woff2"
+      }
+    ],
+    "includeCode": "",
+    "lastEditDate": 1650558456053,
+    "lastEditedBy": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
+    "name": "Documan Fonts",
+    "owner": "xuTSVRW20mS00HV0ANw51A2ts862",
+    "rowKey": "-N-ba4bEadmSDm6DLv4X"
+  },
+  "-N00zrrljmqMkj6kumUH": {
+    "_id": 7,
+    "active": true,
+    "includeCode": "$('body').append('<script id=\"WalletConnectWeb3Provider\" type=\"text/javascript\" src=\"https://unpkg.com/@walletconnect/web3-provider\"></script>')",
+    "lastEditDate": 1650595906599,
+    "lastEditedBy": "gnioIMbCuJRqaZktbmYN9DSkAmA2",
+    "name": "WalletConnectWeb3Provider",
+    "rowKey": "-N00zrrljmqMkj6kumUH"
+  },
+  "-N01FSRDSw7QmbGiaOcx": {
+    "_id": 8,
+    "active": true,
+    "includeCode": "if (!$('#Web3Modal').length) { $('body').append('<script id=\"Web3Modal\" type=\"text/javascript\" src=\"https://unpkg.com/web3modal\"></script>') }",
+    "lastEditDate": 1664625595342,
+    "lastEditedBy": "mmuHsfG5ZMOWW4N2CXY43aspVvv1",
+    "name": "Web3Modal",
+    "rowKey": "-N01FSRDSw7QmbGiaOcx"
+  },
+  "-N0BykXaBQsnEBuKx3D4": {
+    "_id": 9,
+    "active": true,
+    "createdDate": 1650558960008,
+    "includeCode": "if (true) { $('body').append('<script src=\"https://cdn.ethers.io/lib/ethers-5.2.umd.min.js\" type=\"application/javascript\"></script>') }",
+    "lastEditDate": 1651494499686,
+    "lastEditedBy": "gnioIMbCuJRqaZktbmYN9DSkAmA2",
+    "name": "ethers",
+    "owner": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
+    "rowKey": "-N0BykXaBQsnEBuKx3D4"
+  },
+  "-N2glUnZBtm1pJzdyQnN": {
+    "_id": 10,
+    "active": true,
+    "createdDate": 1653239840183,
+    "lastEditDate": 1653239852929,
+    "lastEditedBy": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
+    "name": "Icons",
+    "owner": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
+    "rowKey": "-N2glUnZBtm1pJzdyQnN",
+    "urls": "https://unpkg.com/css.gg/icons/all.css"
+  },
+  "-N3xRbJi4hwoJ2KCJWh6": {
+    "_id": 12,
+    "active": true,
+    "createdDate": 1654593320317,
+    "files": [
+      {
+        "id": "a3629660-e642-11ec-945c-57ef8de2abfb_BNCringeSans-Black.otf",
+        "name": "BNCringeSans-Black.otf"
+      },
+      {
+        "id": "a4a1f430-e642-11ec-945c-57ef8de2abfb_BNCringeSans-Regular.otf",
+        "name": "BNCringeSans-Regular.otf"
+      },
+      {
+        "id": "a5b3b250-e642-11ec-945c-57ef8de2abfb_BNCringeSans-Medium.otf",
+        "name": "BNCringeSans-Medium.otf"
+      },
+      {
+        "id": "a6c7ba60-e642-11ec-945c-57ef8de2abfb_BNCringeSans-Light.otf",
+        "name": "BNCringeSans-Light.otf"
+      },
+      {
+        "id": "a7d22580-e642-11ec-945c-57ef8de2abfb_BNCringeSans-Bold.otf",
+        "name": "BNCringeSans-Bold.otf"
+      }
+    ],
+    "lastEditDate": 1654621741960,
+    "lastEditedBy": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
+    "name": "BNCringe Fonts",
+    "owner": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
+    "rowKey": "-N3xRbJi4hwoJ2KCJWh6"
+  },
+  "-NAFotn24jSN4KNJ-xEU": {
+    "_id": 13,
+    "createdDate": 1661360905887,
+    "lastEditDate": 1661360905888,
+    "lastEditedBy": "mmuHsfG5ZMOWW4N2CXY43aspVvv1",
+    "owner": "mmuHsfG5ZMOWW4N2CXY43aspVvv1",
+    "rowKey": "-NAFotn24jSN4KNJ-xEU"
+  },
+  "-NBIVUrIcok_rc9X0pIe": {
+    "_id": 14,
+    "createdDate": 1662479631105,
+    "lastEditDate": 1662479679235,
+    "lastEditedBy": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
+    "name": "Copy",
+    "owner": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
+    "rowKey": "-NBIVUrIcok_rc9X0pIe",
+    "urls": "https://wzrd.in/standalone/copy-to-clipboard@latest"
+  },
+  "-NCzU_lAQUjUmWhc9vcG": {
+    "_id": 19,
+    "active": true,
+    "createdDate": 1664291331121,
+    "includeCode": "if (!$('#Slide').length) { $('body').append('<script id=\"Slide\" type=\"text/javascript\" src=\"https://unpkg.com/@slide-web3/sdk@0.4.3/dist/slide.js\"></script>') }",
+    "lastEditDate": 1664829308170,
+    "lastEditedBy": "qUgJwdXlwsNFpj5LI0t55bbb9Oz1",
+    "name": "SlideSDK",
+    "owner": "qUgJwdXlwsNFpj5LI0t55bbb9Oz1",
+    "rowKey": "-NCzU_lAQUjUmWhc9vcG",
+    "urls": ""
+  }
+}

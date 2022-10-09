@@ -1,0 +1,58 @@
+{
+  "-MuQu9uxENIiGSt2oHH0": {
+    "_id": 1,
+    "currencies": "-MuQtWatE3u9pumnMFcD,-MuQtWatE3u9pumnMFcE",
+    "lastEditDate": 1644486248356,
+    "lastEditedBy": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
+    "method": "Apple Pay",
+    "rowKey": "-MuQu9uxENIiGSt2oHH0"
+  },
+  "-MuQuO4tz--9IBQ49iFu": {
+    "_id": 2,
+    "currencies": "-MuQtWatE3u9pumnMFcD,-MuQtWatE3u9pumnMFcE",
+    "lastEditDate": 1644486262333,
+    "lastEditedBy": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
+    "method": "Google Pay",
+    "rowKey": "-MuQuO4tz--9IBQ49iFu"
+  },
+  "-MuQuPW_foq_NyKdSWuN": {
+    "_id": 3,
+    "currencies": "-MuQtWatE3u9pumnMFcD,-MuQtWatE3u9pumnMFcE",
+    "lastEditDate": 1644486269968,
+    "lastEditedBy": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
+    "method": "Easy Bank Transfer",
+    "rowKey": "-MuQuPW_foq_NyKdSWuN"
+  },
+  "-MuQuRyZSnY2IheAOi4q": {
+    "_id": 4,
+    "currencies": "-MuQtWatE3u9pumnMFcD,-MuQtWatE3u9pumnMFcE",
+    "lastEditDate": 1644486275298,
+    "lastEditedBy": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
+    "method": "Manual Bank Transfer",
+    "rowKey": "-MuQuRyZSnY2IheAOi4q"
+  },
+  "-MuQuVH87F8gXBf94pvz": {
+    "_id": 5,
+    "currencies": "-MuQtWatE3u9pumnMFcD,-MuQtWatE3u9pumnMFcE",
+    "lastEditDate": 1644486280584,
+    "lastEditedBy": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
+    "method": "Card",
+    "rowKey": "-MuQuVH87F8gXBf94pvz"
+  },
+  "-MuQuWZa7yq5p0hHNGTf": {
+    "_id": 6,
+    "currencies": "-MuQtWatE3u9pumnMFcD,-MuQtWatE3u9pumnMFcE",
+    "lastEditDate": 1644486286376,
+    "lastEditedBy": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
+    "method": "Paypal",
+    "rowKey": "-MuQuWZa7yq5p0hHNGTf"
+  },
+  "-MuQuXTPrcNddIlCbmAL": {
+    "_id": 7,
+    "currencies": "-MvOQw7iMhJRyDGEO_4I,-MvOSbx1QKOeHNJWW7pQ,-MvOSfCD0cdVlHu9Redw,-MvOSeDXWU4_ATBtkgt5",
+    "lastEditDate": 1644486220204,
+    "lastEditedBy": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
+    "method": "Crypto Transaction",
+    "rowKey": "-MuQuXTPrcNddIlCbmAL"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "-N9X6NsdrdiTwC_UKs56": {
+    "_id": 1,
+    "createdDate": 1660577221799,
+    "currency": "USD",
+    "lastEditDate": 1660577224643,
+    "lastEditedBy": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
+    "owner": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
+    "rowKey": "-N9X6NsdrdiTwC_UKs56"
+  },
+  "-N9X6ObsmZQitCsRkpOX": {
+    "_id": 2,
+    "createdDate": 1660577224824,
+    "currency": "GBP",
+    "lastEditDate": 1660577227170,
+    "lastEditedBy": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
+    "owner": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
+    "rowKey": "-N9X6ObsmZQitCsRkpOX"
+  },
+  "-N9X6PRqGZZKcSwC5zVw": {
+    "_id": 3,
+    "createdDate": 1660577228212,
+    "currency": "EUR",
+    "lastEditDate": 1660577230893,
+    "lastEditedBy": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
+    "owner": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
+    "rowKey": "-N9X6PRqGZZKcSwC5zVw"
+  }
+}
