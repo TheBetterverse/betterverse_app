@@ -2,30 +2,14 @@ const {userId} = context.webhookdata
 const email = await getUserEmailByUID(userId)
 context.data = email
 
-$log('Installing web3 packages')
-
-//await manager.install('cross-fetch')
-//await manager.install("web3")
-
-//const Web3 = manager.require("web3")
-
-//console.log(Web3)
-
-//return
-
-//var Web3 = require('web3');
-
+//$log('Installing web3 packages')
 //const Web3 = require("web3");
-
-
-$log('Loaded web3 packages')
-
-const web3 = new Web3(new Web3.providers.HttpProvider('https://polygon-mumbai.g.alchemy.com/v2/dRrclX6ikOV1fZHA5fHhaORKzPB6MoEj'));
-
-$log('Configured web3 lfg')
+//$log('Loaded web3 packages')
+//const web3 = new Web3(new Web3.providers.HttpProvider('https://polygon-mumbai.g.alchemy.com/v2/dRrclX6ikOV1fZHA5fHhaORKzPB6MoEj'));
+//$log('Configured web3 lfg')
 
 //Tree contract ABI
-const treeContractData = {
+/*const treeContractData = {
     TreeContractAddress: '0xA1b4B161f2Dcf373B8C040151D8926cc8165f499',
     TreeContractABI: [
         {
@@ -978,7 +962,7 @@ const treeContractData = {
             "type": "function"
         }
     ]
-}
+}*/
 
 const tokenID = await context.webhookdata.payload.tokenID
 const wallet = await context.webhookdata.payload.wallet
@@ -1003,7 +987,7 @@ var nftRows = []
 
 
 var emailTemplate =
-    `
+`
 <div>
   <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background: #EFEDE7; height: 500px;">
     <tr height="100px;">
@@ -1012,17 +996,15 @@ var emailTemplate =
     </tr>
     <tr height="300px;">
       <td align="center">
-        <div style="font-family: 'Courier New', monospace; height: 100%; width: 100%; font-size: 14px; position: relative; background-color: #ECEAE3; line-height: 21px; border-bottom: 1px solid #E3E1DB; border-top: 1px solid #E3E1DB; vertical-align:middle; ">
-          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 330px;">
-            <h3 style="color: black;">Account set-up complete!</h3>
+        <div style="font-family: 'Courier New', monospace; height: 100%; font-size: 14px; position: relative; background-color: #ECEAE3; line-height: 21px; border-bottom: 1px solid #E3E1DB; border-top: 1px solid #E3E1DB; vertical-align:middle; ">
+          <div style="margin: auto; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 50%; margin-top: 100px;">
+            <h3 style="color: black;">Your donation to <u>${charityName}</u> has planted <u>${numberOfTrees} trees</u>.</h3>
                 <p>
-                <div style="color: black;"> Thanks for creating an account with us. </div>
-                <br>
-                <div style="color: black;"> You’re all set to make your first donation and mint your NFT tree. </div>
+                <div style="color: black;"> Your virtual tree is being generated. </div>
                 </p>
-                <button style="border-radius: 20px; padding: 0px 15px; gap: 10px; width: 87px; height: 28px; background: #000000;">
+                <button style="border-radius: 20px; padding: 0px 15px; gap: 10px; width: 110px; height: 28px; background: #000000;">
                   <a href="https://give.betterverse.app" target="_blank" style="color: #ECEAE3; text-decoration: none;">
-                    <b style="font-family: 'Courier New', monospace; ">Donate</b>
+                    <b style="font-family: 'Courier New', monospace; ">Dashboard</b>
                   </a>
                 </button>
           </div>
@@ -1054,9 +1036,10 @@ if (user.firstName) {
     name = user.username
 }
 
+$log('TokenID length: ' + tokenID.length)
 
 if (tokenID.length == 1) {
-
+    $log('Creating single nft and donation row')
     //Create donation row
     let newDonationRow = await $addRow('capturedDonationData', {
         tokenID: tokenID[0],
@@ -1085,7 +1068,9 @@ if (tokenID.length == 1) {
         json: json[0],
         nftType: nftType
     })
+    
     nftRows.push(newNFTRow)
+    
 } else if (tokenID.length >= 2 && tokenID.length <= 10) {
 
     var newDonationRows = []
@@ -1122,6 +1107,8 @@ if (tokenID.length == 1) {
 
     }
 }
+
+/*
 const TreeContract = new web3.eth.Contract(treeContractData.TreeContractABI, treeContractData.TreeContractAddress);
 
 for (let i = 0; i < nftRows.length; i++) {
@@ -1135,7 +1122,7 @@ for (let i = 0; i < nftRows.length; i++) {
     $log('Updated json lfg')
     createLog(callDash, '', json, 'nFTs', nftRows[i].rowKey, 'json')
 }
-
+*/
 
 var msg = {
     to: email,

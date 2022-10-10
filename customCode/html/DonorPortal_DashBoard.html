@@ -101,11 +101,21 @@
           <h2 style="font-weight: 400">
             You have {{ DonorPortal_GetCurrentUserNFTsCount() }}
             NFT{{ DonorPortal_GetCurrentUserNFTsCount() > 1 ? 's' : '' }}
+            <div id="bv__nftrefresh" style="float: right;     display:inline-block">
+              <div id="bv__nftrefresh__text" style="display: inline-block;">
+                <p id="bv__nftrefresh__textinfo" style="display: inline-block; display: none;">Checking...</p>
+                <div id="bv__nftrefresh__button" style="cursor: pointer; display: inline-block;"
+                  @click="DonorPortal_GetLatestNFT()">
+                  <u-Icons-Refresh></u-Icons-Refresh>
+              </div>
+              </div>         
+          </div>
           </h2>
+
         </div>
       </div>
 
-      <div class="bv__dashboard__carrousel" v-if="DonorPortal_GetCurrentUserNFTs() != null">
+      <div id="bv__dashboard__carrousel" class="bv__dashboard__carrousel" v-if="DonorPortal_GetCurrentUserNFTs() != null">
         <div v-for="(row, key) in DonorPortal_GetCurrentUserNFTs()" :key="key">
           <u-Components-TreeCard
             @view="DonorPortal_SelectedDonation(row.json, row.$initialDonationRow.rowKey, row.rowKey); DonorPortal_TriggerNFTModal('display');"
@@ -210,6 +220,28 @@
   .bv__tooltip {
     justify-content: flex-end !important;
   }
+
+  #bv__nftrefresh__elispsis:after{
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: bottom;
+    -webkit-animation: ellipsis steps(4,end) 900ms infinite;      
+    animation: ellipsis steps(4,end) 900ms infinite;
+    content: "\2026"; /* ascii code for the ellipsis character */
+    width: 0px;
+  }
+
+  @keyframes ellipsis {
+  to {
+    width: 1.25em;    
+  }
+}
+
+@-webkit-keyframes ellipsis {
+  to {
+    width: 1.25em;    
+  }
+}
 
   .bv__dashboard__currentnfts {
     margin-top: 45px;

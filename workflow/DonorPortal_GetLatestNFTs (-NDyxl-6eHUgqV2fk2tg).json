@@ -1,19 +1,17 @@
 {
   "data": {
     "metaData": {
-      "id": "-N05ktsmJ1-FlKZtHjLi",
-      "statusField": null
+      "id": "-NDyxl-6eHUgqV2fk2tg",
+      "statusField": ""
     },
     "nodes": [
       {
-        "id": "node1650454711508",
-        "x": 564.29,
-        "y": 437.59,
+        "id": "node1665356215380",
+        "x": 144.29,
+        "y": 241.43,
         "width": 190,
-        "height": 65,
-        "attachment": {
-          "color": "#ffffff"
-        },
+        "height": 64,
+        "attachment": {},
         "name": "start-event",
         "clazz": "startEvent",
         "label": "Start Event",
@@ -23,29 +21,27 @@
         }
       },
       {
-        "id": "node1650454838370",
-        "x": 907.28,
-        "y": 414.87,
+        "id": "node1665356221273",
+        "x": 561.4285714285716,
+        "y": 240.00000000000003,
         "width": 190,
-        "height": 109,
+        "height": 65,
         "attachment": {},
         "name": "script-task",
         "clazz": "scriptTask",
-        "label": "Send Confirmation Email",
+        "label": "Update NFTs",
         "icon": {
           "name": "terminal",
           "color": "hsl(218, 54%, 20%)"
         }
       },
       {
-        "id": "node1650456027757",
-        "x": 1251.43,
-        "y": 438.14,
+        "id": "node1665356235913",
+        "x": 1091.43,
+        "y": 240,
         "width": 190,
         "height": 65,
-        "attachment": {
-          "color": "#ffffff"
-        },
+        "attachment": {},
         "name": "end-event",
         "clazz": "endEvent",
         "label": "End Event",
@@ -57,12 +53,12 @@
     ],
     "edges": [
       {
-        "source": "node1650454838370-right",
-        "target": "node1650456027757",
+        "source": "node1665356215380-right",
+        "target": "node1665356221273",
         "endSocket": "left",
-        "id": "line-1650457554071",
-        "label": "Send Confirmation Email",
-        "targetLabel": "End Event",
+        "id": "line-1665356240728",
+        "label": "Start Event",
+        "targetLabel": "Script Task",
         "type": {
           "startPlug": "behind",
           "color": "#5e73e4",
@@ -72,12 +68,12 @@
         }
       },
       {
-        "source": "node1650454711508-right",
-        "target": "node1650454838370",
+        "source": "node1665356221273-right",
+        "target": "node1665356235913",
         "endSocket": "left",
-        "id": "line-1650457948510",
-        "label": "Start Event",
-        "targetLabel": "Send Confirmation Email",
+        "id": "line-1665356242325",
+        "label": "Script Task",
+        "targetLabel": "End Event",
         "type": {
           "startPlug": "behind",
           "color": "#5e73e4",
@@ -88,11 +84,10 @@
       }
     ],
     "transform": {
-      "x": -355.86876196783476,
-      "y": -107.14711607378558,
-      "scale": 0.7755673200194132
+      "x": 0,
+      "y": 0,
+      "scale": 0.7
     }
   },
-  "name": "DonorPortal_ProfileCompletion",
-  "scheduled": false
+  "name": "DonorPortal_GetLatestNFTs"
 }

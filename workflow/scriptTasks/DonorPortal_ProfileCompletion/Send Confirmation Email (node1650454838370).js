@@ -14,8 +14,8 @@ const emailTemplate =
     </tr>
     <tr height="300px;">
       <td align="center">
-        <div style="font-family: 'Courier New', monospace; height: 100%; font-size: 14px; position: relative; background-color: #ECEAE3; line-height: 21px; border-bottom: 1px solid #E3E1DB; border-top: 1px solid #E3E1DB; vertical-align:middle; ">
-          <div style="margin: auto; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 50%;">
+        <div style="font-family: 'Courier New', monospace; height: 100%; width: 100%; font-size: 14px; position: relative; background-color: #ECEAE3; line-height: 21px; border-bottom: 1px solid #E3E1DB; border-top: 1px solid #E3E1DB; vertical-align:middle; ">
+          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 330px;">
             <h3 style="color: black;">Account set-up complete!</h3>
                 <p>
                 <div style="color: black;"> Thanks for creating an account with us. </div>

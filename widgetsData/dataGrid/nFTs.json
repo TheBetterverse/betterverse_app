@@ -760,7 +760,7 @@
         },
         "createdDate": {
           "invisible": true,
-          "order": 5
+          "order": 7
         },
         "initialDonationRow": {
           "invisible": false,
@@ -772,33 +772,35 @@
         },
         "lastEditDate": {
           "invisible": true,
-          "order": 6
+          "order": 8
         },
         "lastEditedBy": {
           "invisible": true,
-          "order": 7
+          "order": 9
         },
         "layout": {
           "invisible": true,
-          "order": 8
+          "order": 10
         },
         "nextEvents": {
           "invisible": true,
-          "order": 9
+          "order": 11
         },
         "nftType": {
-          "order": 12
+          "invisible": false,
+          "order": 5
         },
         "owner": {
           "invisible": true,
-          "order": 10
+          "order": 12
         },
         "shareableLink": {
-          "order": 13
+          "invisible": false,
+          "order": 6
         },
         "state": {
           "invisible": true,
-          "order": 11
+          "order": 13
         },
         "tokenID": {
           "invisible": false,

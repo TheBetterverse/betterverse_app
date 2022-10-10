@@ -25,7 +25,9 @@
             id="bv__projects__sortsselect"
             @change="onSelectChange"
           >
+
             <option value="most-popular" selected>
+            
               <p>Most popular</p>
             </option>
             <option value="most-recent">
@@ -167,7 +169,11 @@ module.exports = {
     uIconsEye: $getCustomComponent('u-Icons-Eye'),
     uComponentsButton: $getCustomComponent('u-Components-Button'),
     uComponentsDropdown: $getCustomComponent('u-Components-NavbarDropDown'),
-    uComponentsProjectcard: $getCustomComponent('u-Components-ProjectCard')
+    uComponentsProjectcard: $getCustomComponent('u-Components-ProjectCard'),
+    uIconsPopular: $getCustomComponent('u-Icons-Popular'),
+    uIconsRecent: $getCustomComponent('u-Icons-Recent'),
+    uIconsHigh: $getCustomComponent('u-Icons-High-to-low'),
+    uIconsLow: $getCustomComponent('u-Icons-Low-to-high')
   },
 
   methods: {

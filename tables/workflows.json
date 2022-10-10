@@ -35,5 +35,11 @@
     "rowKey": "-NC_Xgc-ygK2y5hGsrp-",
     "scheduled": false,
     "workflowKey": "-NC_Xgc-ygK2y5hGsrp-"
+  },
+  "-NDyxl-6eHUgqV2fk2tg": {
+    "_id": 1,
+    "name": "DonorPortal_GetLatestNFTs",
+    "rowKey": "-NDyxl-6eHUgqV2fk2tg",
+    "workflowKey": "-NDyxl-6eHUgqV2fk2tg"
   }
 }

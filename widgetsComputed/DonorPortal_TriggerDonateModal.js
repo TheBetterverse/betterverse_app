@@ -7,7 +7,6 @@ return function (value) {
   } else {
     $setUser('DonorPortal_DonationAmount', '100')
     var element = document.getElementById('bv__donatemodal')
-    console.log(element)
     element.style.display = value
   }
 }

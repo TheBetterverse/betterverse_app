@@ -7,8 +7,8 @@
     "nodes": [
       {
         "id": "node1663338855568",
-        "x": 204.09,
-        "y": 343.37,
+        "x": 205.14,
+        "y": 354.8,
         "width": 190,
         "height": 64,
         "attachment": {},
@@ -22,9 +22,9 @@
       },
       {
         "id": "node1663338857752",
-        "x": 564,
-        "y": 368.92,
-        "width": 200,
+        "x": 569.27,
+        "y": 333.16,
+        "width": 201,
         "height": 109,
         "attachment": {
           "color": "#fb6341"
@@ -38,18 +38,18 @@
         }
       },
       {
-        "id": "node1663338859700",
-        "x": 936.31,
-        "y": 343.9,
+        "id": "node1665356230688",
+        "x": 908.7982771876976,
+        "y": 354.87337741007866,
         "width": 191,
-        "height": 65,
+        "height": 64,
         "attachment": {},
-        "name": "decision",
-        "clazz": "decision",
-        "label": "Decision",
+        "name": "end-event",
+        "clazz": "endEvent",
+        "label": "End Event",
         "icon": {
-          "name": "check-circle",
-          "color": "hsl(11, 96%, 62%)"
+          "name": "stop-circle",
+          "color": "hsl(348, 91%, 59%)"
         }
       }
     ],
@@ -71,11 +71,11 @@
       },
       {
         "source": "node1663338857752-right",
-        "target": "node1663338859700",
+        "target": "node1665356230688",
         "endSocket": "left",
-        "id": "line-1663338864804",
-        "label": "Script Task",
-        "targetLabel": "Decision",
+        "id": "line-1665356233313",
+        "label": "Create Rows and Send Email Confirmation",
+        "targetLabel": "End Event",
         "type": {
           "startPlug": "behind",
           "color": "#5e73e4",

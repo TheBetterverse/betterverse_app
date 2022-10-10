@@ -148,10 +148,10 @@ return async function (tokenID, wallet, user, charity, cause, paymentMethod, cur
                     })
                     // console.log('------here')
 
-                    console.log('NFT COUNT: ' + nftCount)
-                    console.log('CHARITY ID: ' + charityID)
-                    console.log('AMOUNT (WEI) ' + approveAmount)
-                    console.log('TOKEN: ' + TestBTRCAddress)
+                    //console.log('NFT COUNT: ' + nftCount)
+                    //console.log('CHARITY ID: ' + charityID)
+                    //console.log('AMOUNT (WEI) ' + approveAmount)
+                    //console.log('TOKEN: ' + TestBTRCAddress)
 
                     MinterContract.methods.mintTree(nftCount, charityID, approveAmount, TestBTRCAddress).send({ from: wallet }, async (err, txHash) => {
                       if (err) {
@@ -190,14 +190,13 @@ return async function (tokenID, wallet, user, charity, cause, paymentMethod, cur
                                   json: jsonArray[idx]
                                 })
                               })
-                              console.log(data, '==========DATA*******')
+                              //console.log(data, '==========DATA*******')
 
                               //Once donation is succesful create a row to store data
                               if (donationSuccess == true && nftMint == true) {
 
                                 if (nftCount == 1) {
 
-                                  console.log("YES")
                                   nftCount = 1
 
                                   const finalDonationAmount = await this.DonorPortal_DonationCut(amount)
@@ -207,7 +206,7 @@ return async function (tokenID, wallet, user, charity, cause, paymentMethod, cur
                                   const carbonSequestration = await this.DonorPortal_CalculateDonationCarbonSequestration(causeRow.yearlyCO2Sequestration, numberOfTrees)
 
                                   console.log('calling create row NFT and Donation row workflow')
-                                  this.callWf({
+                                  await this.callWf({
                                     workflow: '-NAA9tsNod6psXPRUZr0',
                                     payload: {
                                       tokenID: tokenID,
@@ -230,6 +229,8 @@ return async function (tokenID, wallet, user, charity, cause, paymentMethod, cur
                                     },
                                   })
 
+                                  return
+
                                 }
                                 else if (nftCount >= 2 && nftCount <= 10) {
 
@@ -245,7 +246,7 @@ return async function (tokenID, wallet, user, charity, cause, paymentMethod, cur
                                   const equalCarbonSequestration = await this.DonorPortal_CalculateDonationCarbonSequestration(causeRow.yearlyCO2Sequestration, equalNumberOfTrees)
 
                                   console.log('calling create multiple row NFT and Donation rows workflow')
-                                  this.callWf({
+                                  await this.callWf({
                                     workflow: '-NAA9tsNod6psXPRUZr0',
                                     payload: {
                                       tokenID: tokenID,
@@ -267,6 +268,8 @@ return async function (tokenID, wallet, user, charity, cause, paymentMethod, cur
                                       json: jsonArray
                                     },
                                   })
+
+                                  return
 
                                 }
                               }
