@@ -30,11 +30,7 @@ return async function () {
 
     else {
         nftCount = document.getElementById('bv__comps__nftcount').value
-        console.log(nftCount)
     }
-
-
-    console.log(nftCount)
 
     document.getElementById("bv__spinner").style.display = "block";
 
@@ -109,6 +105,7 @@ return async function () {
       //Check if selected cause/project is valid
       if (project.inactiveProject == true) {
         document.getElementById("bv__spinner").style.display = "none";
+        document.getElementById("bv__donate__buttontext").innerText = 'Donate and Generate NFT'
         alert("Error, inactive project selected. Please select an active project.")
       }
       else if (project.inactiveProject != true) {
@@ -121,10 +118,12 @@ return async function () {
           //Check if donation amount and nft count values are ♦valid♠
           if (amount < 10 || amount == null) {
             document.getElementById("bv__spinner").style.display = "none";
+            document.getElementById("bv__donate__buttontext").innerText = 'Donate and Generate NFT'
             alert("Invalid donation amount, the donation needs to be atleast $10")
           }
           else if (nftCountByDonationAmount < 10) {
             document.getElementById("bv__spinner").style.display = "none";
+            document.getElementById("bv__donate__buttontext").innerText = 'Donate and Generate NFT'
             alert("Invalid donation amount and NFT count combination. Each NFT has a minimum donation amount of $10")
           }
           else if (nftCountByDonationAmount => 10) {
@@ -132,21 +131,23 @@ return async function () {
             //If wallet is not connected, alert user
             if (wallet == null) {
               document.getElementById("bv__spinner").style.display = "none";
+              document.getElementById("bv__donate__buttontext").innerText = 'Donate and Generate NFT'
               alert("No wallet connected!");
             }
             //If wallet is connected
             else if (wallet != null) {
               //Task 3.1 trees.sol - treesInStorage() - Check if there are trees available to be minted
+              document.getElementById("bv__donate__buttontext").innerText = 'Checking trees'
               const availableTrees = await TreeContract.methods.treesInStorage().call({
                 from: wallet
               });
 
               console.log('available trees: ' + availableTrees)
-              console.log('Requested NFT;' + nftCount)
-
+              console.log('Requested NFT(s): ' + nftCount)
 
               if (parseInt(nftCount) > parseInt(availableTrees)) {
                 document.getElementById("bv__spinner").style.display = "none";
+                //document.getElementById("bv__donate__buttontext").innerText = 'Donate and Generate NFT'
                 alert("No trees available, try again later.")
               }
               else {
@@ -171,7 +172,8 @@ return async function () {
                     //Task 3.3 minter.sol - function mintTree - 0x4A35ef8931a6636AA1e97303D82b38E34A57aB7A
 
                     const approveAmount = Web3.utils.toWei(amount.toString(), 'ether')
-                    console.log(approveAmount)
+
+                    document.getElementById("bv__donate__buttontext").innerText = 'Requesting approval'
                     await TestBTRContract.methods.approve(MinterContractAddress, approveAmount).send({
                       from: wallet,
                     })
@@ -182,6 +184,7 @@ return async function () {
                     console.log('AMOUNT (WEI) ' + approveAmount)
                     console.log('TOKEN: ' + TestBTRCAddress)
 
+                    document.getElementById("bv__donate__buttontext").innerText = 'Requesting mint'
                     MinterContract.methods.mintTree(nftCount, charityID, approveAmount, TestBTRCAddress).send({ from: wallet }, async (err, txHash) => {
                       if (err) {
                         document.getElementById("bv__spinner").style.display = "none";
@@ -193,6 +196,7 @@ return async function () {
 
                         donationSuccess = true
                         nftMint = true
+                        document.getElementById("bv__donate__buttontext").innerText = 'Please wait'
 
                         //Task 3.4 Save NFT Data
                         let nftIDs = []
@@ -227,6 +231,8 @@ return async function () {
                               //Once donation is succesful create a row to store data
                               if (donationSuccess == true && nftMint == true) {
 
+                                document.getElementById("bv__donate__buttontext").innerText = 'Generating NFT'
+
                                 if (nftCount == 1){
 
                                     this.DonorPortal_RedirectToGeneration()
@@ -260,7 +266,6 @@ return async function () {
                                             charityName: charityRow.charityName
                                     }
                                     console.log("Writing entry to DB")
-                                    console.log(payload)
                                     await this.callWf({
                                         workflow: '-NAA9tsNod6psXPRUZr0',
                                         payload: payload,
@@ -313,6 +318,7 @@ return async function () {
                               }
                               else {
                                 document.getElementById("bv__spinner").style.display = "none";
+                                document.getElementById("bv__donate__buttontext").innerText = 'Donate and Generate NFT'
                                 alert("Error with transaction/mint. Please contact support@betterverse.app");
                               }
 
@@ -324,12 +330,14 @@ return async function () {
                   }
                   else{
                     document.getElementById("bv__spinner").style.display = "none";
+                    document.getElementById("bv__donate__buttontext").innerText = 'Donate and Generate NFT'
                     alert('Error')
                     console.warn(currencyContractAddress)
                     console.warn(token)
                   }
                 } catch (ex) {
                   document.getElementById("bv__spinner").style.display = "none";
+                  document.getElementById("bv__donate__buttontext").innerText = 'Donate and Generate NFT'
                   console.log('error occured on minting nft')
                   console.log('error msg:', ex)
                 }
@@ -338,17 +346,20 @@ return async function () {
           }
           else {
             document.getElementById("bv__spinner").style.display = "none";
+            document.getElementById("bv__donate__buttontext").innerText = 'Donate and Generate NFT'
             return null
           }
         }
         else {
           document.getElementById("bv__spinner").style.display = "none";
+          document.getElementById("bv__donate__buttontext").innerText = 'Donate and Generate NFT'
           alert("Invalid NFT count value");
           return null
         }
       }
       else {
         document.getElementById("bv__spinner").style.display = "none";
+        document.getElementById("bv__donate__buttontext").innerText = 'Donate and Generate NFT'
         console.log("Error obtaining cause/charity data")
         alert("Error, there is something wrong with obtaining the charity project data. Please contact support@betterverse.app.")
       }

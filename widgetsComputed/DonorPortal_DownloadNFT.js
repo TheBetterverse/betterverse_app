@@ -3,7 +3,7 @@ return function (nft) {
   fetch(nft)
       .then( res => { return res.json(); } )
       .then( data => { 
-        let resolvedURL = this.DonorPortal_ResolveNFTImageSRC(data.animation_url)
+        let resolvedURL = this.DonorPortal_ResolveNFTURL(data.animation_url)
         console.log(resolvedURL)
         fetch(resolvedURL).then(res => res.blob()).then(file => {
           let tempUrl = URL.createObjectURL(file);
@@ -16,6 +16,9 @@ return function (nft) {
         })
       
       } )
-      .catch( err => { console.error(err) } )
+      .catch( err => { 
+        console.error(err) 
+        alert('Error downloading NFT, please try again or contact support.')
+      } )
 
 }

@@ -2,14 +2,15 @@ const {userId} = context.webhookdata
 const email = await getUserEmailByUID(userId)
 context.data = email
 
-//$log('Installing web3 packages')
-//const Web3 = require("web3");
-//$log('Loaded web3 packages')
-//const web3 = new Web3(new Web3.providers.HttpProvider('https://polygon-mumbai.g.alchemy.com/v2/dRrclX6ikOV1fZHA5fHhaORKzPB6MoEj'));
-//$log('Configured web3 lfg')
+$log('Installing web3 packages')
+
+const Web3 = require("web3");
+$log('Loaded web3 packages')
+const web3 = new Web3(new Web3.providers.HttpProvider('https://polygon-mumbai.g.alchemy.com/v2/dRrclX6ikOV1fZHA5fHhaORKzPB6MoEj'));
+$log('Configured web3 lfg')
 
 //Tree contract ABI
-/*const treeContractData = {
+const treeContractData = {
     TreeContractAddress: '0xA1b4B161f2Dcf373B8C040151D8926cc8165f499',
     TreeContractABI: [
         {
@@ -962,7 +963,7 @@ context.data = email
             "type": "function"
         }
     ]
-}*/
+}
 
 const tokenID = await context.webhookdata.payload.tokenID
 const wallet = await context.webhookdata.payload.wallet
@@ -984,7 +985,7 @@ const json = await context.webhookdata.payload.json
 const nftType = await context.webhookdata.payload.nftType
 const charityName = await context.webhookdata.payload.charityName
 var nftRows = []
-
+var newDonationRows = []
 
 var emailTemplate =
 `
@@ -1073,8 +1074,6 @@ if (tokenID.length == 1) {
     
 } else if (tokenID.length >= 2 && tokenID.length <= 10) {
 
-    var newDonationRows = []
-
     for (let i = 0; i < tokenID.length; i++) {
         $log("Writing donation entry for " + tokenID[i])
         let newDonationRow = await $addRow('capturedDonationData', {
@@ -1108,21 +1107,29 @@ if (tokenID.length == 1) {
     }
 }
 
-/*
-const TreeContract = new web3.eth.Contract(treeContractData.TreeContractABI, treeContractData.TreeContractAddress);
+$log(nftRows)
 
-for (let i = 0; i < nftRows.length; i++) {
-    var calledJson = await TreeContract.methods.tokenURI(tokenID).call()
-    while (calledJson === nftRows[i].json) {
-        calledJson = await TreeContract.methods.tokenURI(tokenID).call()
-        await new Promise(r => setTimeout(r, 3000))
-        $log(`Old json: ${nftRows[i].json} current json is ${json}`)
-        $log('Continuing to poll')
+try{
+
+    const TreeContract = new web3.eth.Contract(treeContractData.TreeContractABI, treeContractData.TreeContractAddress);
+
+    for (let i = 0; i < nftRows.length; i++) {
+        var calledJson = await TreeContract.methods.tokenURI(tokenID).call()
+        while (calledJson === nftRows[i].json) {
+            calledJson = await TreeContract.methods.tokenURI(tokenID).call()
+            await new Promise(r => setTimeout(r, 5000))
+            $log(`Old json: ${nftRows[i].json} current json is ${json}`)
+            $log('Continuing to pull')
+        }
+        createLog(callDash, '', calledJson, 'nFTs', nftRows[i], 'json')
+        $log('Updated json LETS FUCKING GO!!!!')
     }
-    $log('Updated json lfg')
-    createLog(callDash, '', json, 'nFTs', nftRows[i].rowKey, 'json')
+
 }
-*/
+catch(err){
+    $log(err)
+}
+
 
 var msg = {
     to: email,
