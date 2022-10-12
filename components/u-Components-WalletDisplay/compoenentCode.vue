@@ -44,7 +44,7 @@
         </span>
 
         <span v-else class="bv__walletdisplay__balance">
-          <p>{{ balance }}</p>
+          <p>{{ balanceValue }}</p>
           <u-Icons-Usdc height="20px" width="20px" />
         </span>
 
@@ -67,8 +67,8 @@
 module.exports = {
   props: {
     wallet: {
-      type: Function,
-      default: async () => {}
+      type: Promise,
+      default: new Promise((resolve => resolve()))
     },
 
     address: {
@@ -120,7 +120,7 @@ module.exports = {
 
       this.wallet_address = result.address
       this.provider = result.provider
-      this.balance = result.balance
+      this.balanceValue = result.balance
     }
   },
 
@@ -128,7 +128,7 @@ module.exports = {
     return {
       wallet_address: null,
       provider: null,
-      balance: null,
+      balanceValue: this.balance,
       state: 0,
 
       STATES: {

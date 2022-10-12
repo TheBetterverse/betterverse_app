@@ -4,23 +4,11 @@ const MinterContractAddress = this.Contracts().MinterContractAddress
 const TreeContractABI = this.Contracts().TreeContractABI
 const MinterContractABI = this.Contracts().MinterContractABI
 const TestBTRCABI = this.Contracts().TestBTRCABI
+
 const getTokenURI = this.DonorPortal_GetTokenURI
 const walletProvider = this.DonorPortal_GetCurrentUserWalletProvider()
 
-//Get Donation modal data
-// const wallet = await this.DonorPortal_GetCurrentUserWalletAddress();
-// const user = await fbUser.uid
-// const charity = await $getUser('Donation_SelectedCharity')
-// const cause = await $getUser('Donation_SelectedProject')
-// const paymentMethod = '-MuQuXTPrcNddIlCbmAL'
-// const currency = '-MvOSbx1QKOeHNJWW7pQ'
-// const location = await this.DonorPortal_GetCurrentUserProfileLocation()
-// const amount = await this.DonorPortal_GetDonationAmountNumber()
-// const date = await this.DonorPortal_GetDateTime()
-// var nftCount = await this.DonorPortal_GetDonationNFTCount()
-
 return async function (tokenID, wallet, user, charity, cause, paymentMethod, currency, location, amount, gas, date, nftCount) {
-  console.log('here')
   if (!walletProvider) {
     alert('No wallet connected')
   } else {
@@ -70,7 +58,7 @@ return async function (tokenID, wallet, user, charity, cause, paymentMethod, cur
     const TreeContract = new web3.eth.Contract(TreeContractABI, TreeContractAddress, {
       from: wallet,
     });
- 
+    
     const MinterContract = new web3.eth.Contract(MinterContractABI, MinterContractAddress);
 
     const TestBTRContract = new web3.eth.Contract(TestBTRCABI, TestBTRCAddress, {
@@ -117,13 +105,12 @@ return async function (tokenID, wallet, user, charity, cause, paymentMethod, cur
             }
             //If wallet is connected
             else if (wallet != null) {
+
               //Task 3.1 trees.sol - treesInStorage() - Check if there are trees available to be minted
-              const availableTrees = await TreeContract.methods.treesInStorage().call({
-                from: wallet
-              });
+              const availableTrees = await TreeContract.methods.treesInStorage().call()
 
               if (nftCount > availableTrees) {
-                alert("No trees available, try again later.")
+                alert("Not enough trees available in smart contract.")
               }
               else {
                 var currencyCode = $dataGrid('currencies')[currency].code
@@ -146,12 +133,6 @@ return async function (tokenID, wallet, user, charity, cause, paymentMethod, cur
                     await TestBTRContract.methods.approve(MinterContractAddress, approveAmount).send({
                       from: wallet,
                     })
-                    // console.log('------here')
-
-                    //console.log('NFT COUNT: ' + nftCount)
-                    //console.log('CHARITY ID: ' + charityID)
-                    //console.log('AMOUNT (WEI) ' + approveAmount)
-                    //console.log('TOKEN: ' + TestBTRCAddress)
 
                     MinterContract.methods.mintTree(nftCount, charityID, approveAmount, TestBTRCAddress).send({ from: wallet }, async (err, txHash) => {
                       if (err) {
@@ -190,13 +171,14 @@ return async function (tokenID, wallet, user, charity, cause, paymentMethod, cur
                                   json: jsonArray[idx]
                                 })
                               })
-                              //console.log(data, '==========DATA*******')
+                              console.log(data, '==========DATA*******')
 
                               //Once donation is succesful create a row to store data
                               if (donationSuccess == true && nftMint == true) {
 
                                 if (nftCount == 1) {
 
+                                  console.log("YES")
                                   nftCount = 1
 
                                   const finalDonationAmount = await this.DonorPortal_DonationCut(amount)
@@ -206,7 +188,7 @@ return async function (tokenID, wallet, user, charity, cause, paymentMethod, cur
                                   const carbonSequestration = await this.DonorPortal_CalculateDonationCarbonSequestration(causeRow.yearlyCO2Sequestration, numberOfTrees)
 
                                   console.log('calling create row NFT and Donation row workflow')
-                                  await this.callWf({
+                                  this.callWf({
                                     workflow: '-NAA9tsNod6psXPRUZr0',
                                     payload: {
                                       tokenID: tokenID,
@@ -229,8 +211,6 @@ return async function (tokenID, wallet, user, charity, cause, paymentMethod, cur
                                     },
                                   })
 
-                                  return
-
                                 }
                                 else if (nftCount >= 2 && nftCount <= 10) {
 
@@ -246,7 +226,7 @@ return async function (tokenID, wallet, user, charity, cause, paymentMethod, cur
                                   const equalCarbonSequestration = await this.DonorPortal_CalculateDonationCarbonSequestration(causeRow.yearlyCO2Sequestration, equalNumberOfTrees)
 
                                   console.log('calling create multiple row NFT and Donation rows workflow')
-                                  await this.callWf({
+                                  this.callWf({
                                     workflow: '-NAA9tsNod6psXPRUZr0',
                                     payload: {
                                       tokenID: tokenID,
@@ -269,14 +249,11 @@ return async function (tokenID, wallet, user, charity, cause, paymentMethod, cur
                                     },
                                   })
 
-                                  return
-
                                 }
                               }
                               else {
                                 alert("Error with transaction/mint. Please contact support@betterverse.app");
                               }
-
                             })
                           }
                         })

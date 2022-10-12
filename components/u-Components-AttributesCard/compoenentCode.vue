@@ -37,8 +37,16 @@ module.exports = {
     }
   },
 
+  watch: {
+    url() {
+      this.getAttributes()
+    }
+  },
+
   methods: {
     async getAttributes(){
+      this.result = []
+
       if (!this.url) return
 
       const response = await fetch(this.url)
@@ -53,6 +61,7 @@ module.exports = {
   },
 
   async created() {
+
     this.icons = {
       "Biome": await this.getIconComponent('u-Icons-Biome'),
       "Species": await this.getIconComponent('u-Icons-Species'),
@@ -66,11 +75,6 @@ module.exports = {
 
     await this.getAttributes()
   },
-
-  //Recursive Call - Data Leak
-  async updated() {
-    //await this.getAttributes()
-  }
 }
 </script>
 

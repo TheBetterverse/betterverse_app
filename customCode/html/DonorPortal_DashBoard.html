@@ -115,7 +115,11 @@
         </div>
       </div>
 
-      <div id="bv__dashboard__carrousel" class="bv__dashboard__carrousel" v-if="DonorPortal_GetCurrentUserNFTs() != null">
+      <div
+        id="bv__dashboard__carrousel"
+        class="bv__dashboard__carrousel"
+        v-if="DonorPortal_GetCurrentUserNFTs() != null && !$getGlobalModel('dashboardRefresh')"
+      >
         <div v-for="(row, key) in DonorPortal_GetCurrentUserNFTs()" :key="key">
           <u-Components-TreeCard
             @view="DonorPortal_SelectedDonation(row.json, row.$initialDonationRow.rowKey, row.rowKey); DonorPortal_TriggerNFTModal('display');"

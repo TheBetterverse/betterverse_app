@@ -59,7 +59,8 @@
         </div>
 
         <small>Or create wallet with</small>
-     
+
+        <div>
           <bv-button
             name="connect-slide"
             type="submit"
@@ -86,15 +87,18 @@
               name="skip-step"
               type="submit"
             >
-              <template #default> <p>Skip step</p> 
-              </template>
+              <template #default> <p>Skip step</p> </template>
               <template #right-icon>
                 <div id="bv__right__arrow">
                   <icon-rightarrow />
                 </div>
-                <div id="bv__spinner" class="spinner-border spinner-border-sm" role="status" style="display: none;"></div>
+                <div
+                  id="bv__spinner"
+                  class="spinner-border spinner-border-sm"
+                  role="status"
+                  style="display: none"
+                ></div>
               </template>
-
             </bv-button>
           </div>
         </div>
