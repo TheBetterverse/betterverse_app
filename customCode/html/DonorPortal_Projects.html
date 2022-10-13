@@ -1,6 +1,8 @@
 <!-- DonorPortal_Projects.html -->
 
 <template>
+  <div id="bv-projects-topborder"></div>
+
   <main id="bv-projects">
     <u-DonorPortal-ProjectsSearch class="bv__globals__px" style="width: 100;"
       :data="DonorPortal_GetAllPublicCharityProjects()" @view="DonorPortal_ViewSelectedCharity"
@@ -13,19 +15,20 @@
 </template>
 
 <style>
+  #bv-projects-topborder {
+    position: sticky;
+    top: 67px;
+    z-index: 50;
+    background: #e3e1db;
+    width: 100%;
+    height: 1px;
+  }
 
   #bv-projects {
     width: 100%;
     margin-top: 22px;
     padding-top: 45px;
     min-height: calc(92vh - 67px);
-  }
-
-  #bv-projects-header {
-    padding-top: 45px;
-    padding-bottom: 15px;
-
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
   }
 
   #bv-projects-filters {
@@ -75,6 +78,10 @@
   }
 
   @media screen and (min-width: 992px) {
+    #bv-projects-topborder {
+      top: 92px;
+    }
+
     #bv-projects {
       margin-top: 47px;
       margin-bottom: 100px;

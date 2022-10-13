@@ -7,7 +7,7 @@
         <b-row class="mb-3">
           <p>Log in</p>
         </b-row>
-        <b-row>
+        <b-row class="d-flex flex-column">
           <slot>
             <h1>Welcome back to <b>Betterverse</b></h1>
             <p>We missed you while you were away.</p>
@@ -68,8 +68,15 @@
               <p v-if="form.email.content">Continue with email</p>
             </template>
             <template #right-icon>
-              <icon-rightarrow v-if="spinnerActive == false" color="white"></icon-rightarrow>
-              <div v-if="spinnerActive == true" class="spinner-border spinner-border-sm" role="status"></div>
+              <icon-rightarrow
+                v-if="spinnerActive == false"
+                color="white"
+              ></icon-rightarrow>
+              <div
+                v-if="spinnerActive == true"
+                class="spinner-border spinner-border-sm"
+                role="status"
+              ></div>
             </template>
           </bv-button>
         </div>
@@ -78,29 +85,27 @@
       <section name="socials">
         <div class="my-2">Or continue with</div>
         <div id="bv__register__socialsbuttons" class="w-100">
-          <bv-button responsive name="sign-up-google" class="mr-2 mr-lg-0">
-            <template #left-icon>
-              <icon-google v-if="googleSignIn == false"></icon-google>
-              <div
-                class="spinner-border"
-                v-if="googleSignIn == true"
-                style="width: 1rem; height: 1rem"
-                role="status"
-              ></div>
+          <bv-button responsive name="sign-up-google">
+            <template>
+              <div class="bv__register__socialbutton">
+                <icon-google></icon-google>
+                <p class="d-none d-xl-block">Google</p>
+              </div>
             </template>
-            <template> <p>Google</p> </template>
           </bv-button>
-          <bv-button responsive name="sign-up-facebook" class="mr-2 mr-lg-0">
-            <template #left-icon>
+
+          <bv-button responsive name="sign-up-facebook">
+            <div class="bv__register__socialbutton">
               <icon-facebook></icon-facebook>
-            </template>
-            <template> <p>Facebook</p> </template>
+              <p class="d-none d-xl-block">Facebook</p>
+            </div>
           </bv-button>
-          <bv-button responsive name="sign-up-unstoppable" class="mr-2 mr-lg-0">
-            <template #left-icon>
+
+          <bv-button responsive name="sign-up-discord">
+            <div class="bv__register__socialbutton">
               <icon-discord></icon-discord>
-            </template>
-            <template><p>UD</p> </template>
+              <p class="d-none d-xl-block">UD</p>
+            </div>
           </bv-button>
         </div>
       </section>
@@ -150,7 +155,7 @@ module.exports = {
       validators: {
         email: {
           "Email can't be empty": notEmptyString,
-          'Email format is invalid': emailIsRightFormat,
+          'Email format is invalid': emailIsRightFormat
           //'Email not registered!': emailNotRegistered
         },
         password: {
@@ -185,7 +190,7 @@ module.exports = {
       if (!this.inputsAreValid) return
 
       this.spinnerActive = true
-      await new Promise(r => setTimeout(r, 2000));
+      await new Promise(r => setTimeout(r, 2000))
 
       await $anonUserSignIn('emailAndPassword', {
         email: this.form.email.content,
@@ -268,17 +273,34 @@ module.exports = {
   padding: 0;
   margin: 0;
 }
-div.socials > button {
-  margin-right: 10px;
-}
 
 #bv__register__socialsbuttons {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  justify-content: flex-start;
+  height: auto;
+  width: auto;
+  gap: 10px;
 }
+
 #bv__register__socialsbuttons > button {
-  width: 100%;
+  height: 32px;
+  width: 32px;
+}
+
+.bv__register__socialbutton {
+  display: flex;
+  gap: 8px;
+}
+
+@media screen and (min-width: 992px) {
+  #bv__register__socialsbuttons {
+    justify-content: space-between;
+  }
+
+  #bv__register__socialsbuttons > button {
+    width: 100%;
+    height: 32px;
+  }
 }
 </style>

@@ -1995,6 +1995,10 @@
     "savePath": "widgetsComputed/DonorPortal_OpenSlide"
   },
   {
+    "filePath": "widgetsComputed/DonorPortal_OpenWallet.js",
+    "savePath": "widgetsComputed/DonorPortal_OpenWallet"
+  },
+  {
     "filePath": "widgetsComputed/DonorPortal_ProcessDonationAmount.js",
     "savePath": "widgetsComputed/DonorPortal_ProcessDonationAmount"
   },
@@ -2109,6 +2113,10 @@
   {
     "filePath": "widgetsComputed/DonorPortal_UploadProfilePicture.js",
     "savePath": "widgetsComputed/DonorPortal_UploadProfilePicture"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_UserIsMobile.js",
+    "savePath": "widgetsComputed/DonorPortal_UserIsMobile"
   },
   {
     "filePath": "widgetsComputed/DonorPortal_UserToPermanent.js",

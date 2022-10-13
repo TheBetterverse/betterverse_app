@@ -69,11 +69,18 @@
         <div class="d-flex justify-content-end">
           <bv-button secondary type="submit" name="continue-email-button">
             <template #default>
-              <p v-if="form.email.content">Continue with email </p>
+              <p v-if="form.email.content">Continue with email</p>
             </template>
             <template #right-icon>
-              <icon-rightarrow v-if="spinnerActive == false" color="white"></icon-rightarrow>
-              <div v-if="spinnerActive == true" class="spinner-border spinner-border-sm" role="status"></div>
+              <icon-rightarrow
+                v-if="spinnerActive == false"
+                color="white"
+              ></icon-rightarrow>
+              <div
+                v-if="spinnerActive == true"
+                class="spinner-border spinner-border-sm"
+                role="status"
+              ></div>
             </template>
           </bv-button>
         </div>
@@ -85,24 +92,26 @@
         <div class="my-2">Or continue with</div>
         <div id="bv__register__socialsbuttons" class="w-100">
           <bv-button responsive name="sign-up-google">
-            <template #left-icon>
-              <icon-google></icon-google>
+            <template>
+              <div class="bv__register__socialbutton">
+                <icon-google></icon-google>
+                <p class="d-none d-xl-block">Google</p>
+              </div>
             </template>
-            <template> <p>Google</p> </template>
           </bv-button>
 
           <bv-button responsive name="sign-up-facebook">
-            <template #left-icon>
+            <div class="bv__register__socialbutton">
               <icon-facebook></icon-facebook>
-            </template>
-            <template> <p>Facebook</p> </template>
+              <p class="d-none d-xl-block">Facebook</p>
+            </div>
           </bv-button>
 
           <bv-button responsive name="sign-up-discord">
-            <template #left-icon>
+            <div class="bv__register__socialbutton">
               <icon-discord></icon-discord>
-            </template>
-            <template><p>UD</p> </template>
+              <p class="d-none d-xl-block">UD</p>
+            </div>
           </bv-button>
         </div>
       </section>
@@ -204,19 +213,18 @@ module.exports = {
       if (!this.inputsAreValid) {
         return
       }
-      
+
       this.spinnerActive = true
 
-      await new Promise(r => setTimeout(r, 2000));
+      await new Promise(r => setTimeout(r, 2000))
 
       $anonUserToPermanent('emailAndPassword', {
         email: this.formContent.email,
         password: this.formContent.password
       })
         .then(() => {
-          
           //Redirect to personal info setup
-          $setUser('ProfileSetUpStage', 1)       
+          $setUser('ProfileSetUpStage', 1)
           $setCurrentTab('-Mx_5FLL2jlxjXYUMdIL')
         })
         .catch(err => {
@@ -291,11 +299,30 @@ div.status-bar-clearance {
 #bv__register__socialsbuttons {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  height: auto;
+  width: auto;
   gap: 10px;
 }
 
 #bv__register__socialsbuttons > button {
-  width: 100%;
+  height: 32px;
+  width: 32px;
+}
+
+.bv__register__socialbutton {
+  display: flex;
+  gap: 8px;
+}
+
+@media screen and (min-width: 992px) {
+  #bv__register__socialsbuttons {
+    justify-content: space-between;
+  }
+
+  #bv__register__socialsbuttons > button {
+    width: 100%;
+    height: 32px;
+  }
 }
 </style>

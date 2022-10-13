@@ -85,7 +85,7 @@
                 Donation
               </p>
               <h2 class="d-flex">
-                <u-Icons-USDC style="margin-right: 4px;"/>
+                <u-Icons-USDC style="margin-right: 4px;" />
                 {{ DonorPortal_GetSpecificDonation().donationAmount.toLocaleString(undefined, {minimumFractionDigits: 2,
                 maximumFractionDigits: 2}) }}&nbsp;
               </h2>
@@ -117,7 +117,7 @@
                 <p> CO2 Capture </p>
                 <u-Components-ToolTip>
                   <template #tooltip>
-                    <p><u>Learn</u> more about how we estimate this number.</p>
+                    <p>Want to know how we figure this out? Info coming soon.</p>
                   </template>
                 </u-Components-ToolTip>
               </span>
@@ -189,6 +189,8 @@
 
           <hr />
 
+
+
           <u-Components-AttributesCard :url="$getUser('Donation_SelectedNFT')" />
         </div>
 
@@ -220,7 +222,7 @@
               <u-Components-Button
                 @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'twitter')">
                 <template #left-icon>
-                  <u-Icons-Twitter-Blue/>
+                  <u-Icons-Twitter-Blue />
                 </template>
               </u-Components-Button>
 
@@ -356,7 +358,9 @@
               </template>
               <template #description>
                 <b>${{row.$initialDonationRow.donationAmount.toLocaleString()}}</b> donated to
-                <b v-if="DonorPortal_GetSpecificDonation().$charity$display">{{row.$initialDonationRow.$charity$display}}</b> to plant
+                <b
+                  v-if="DonorPortal_GetSpecificDonation().$charity$display">{{row.$initialDonationRow.$charity$display}}</b>
+                to plant
                 <b>{{row.$initialDonationRow.numberOfTreesPlanted.toLocaleString()}} trees</b> in
                 <b>{{row.$initialDonationRow.$charityProject.displayLocation}}</b>
               </template>

@@ -120,45 +120,6 @@ module.exports = {
     }
   },
 
-  methods: {
-    async handleSubmit(e) {
-      let target = e.submitter.name
-
-      switch (target) {
-        case 'connect-metamask':
-          this.wallet.provider = 'metamask'
-          this.wallet.address = '1GAAr5LWGWpujJug7uKhwoQSzns1gcXpyS' // 0x6da...fNa
-          this.wallet.balance = 7053642
-          throw 'metamask not implemented'
-          break
-
-        case 'connect-torus':
-          this.wallet.provider = 'torus'
-          this.wallet.address = '1GAAr5LWGWpujJug7uKhwoQSzns1gcXpyS' // 0x6da...fNa
-          this.wallet.balance = 7053642
-          throw 'torus not implemented'
-          break
-
-        case 'connect-coinbase':
-          this.wallet.provider = 'coinbase'
-          this.wallet.address = '1GAAr5LWGWpujJug7uKhwoQSzns1gcXpyS' // 0x6da...fNa
-          this.wallet.balance = 7053642
-          throw 'coinbase not implemented'
-          break
-
-        case 'create-torus':
-          this.wallet.provider = 'torus'
-          this.wallet.address = '1GAAr5LWGWpujJug7uKhwoQSzns1gcXpyS' // 0x6da...fNa
-          this.wallet.balance = 7053642
-          throw 'create torus wallet not implemented'
-          break
-
-        case 'skip-step':
-          break
-      }
-    }
-  },
-
   computed: {
     walletIsConnected() {
       return this.wallet.address !== undefined

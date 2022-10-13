@@ -5,9 +5,9 @@
   <!-- For large display size -->
   <b-container class="d-none d-lg-block col-6 vh-100 overflow-hidden bv__register__leftside">
     <!-- Top left logo -->
-    <div id="betterverse-lg-logo" class="d-none d-lg-block"
-      onclick="window.open('https://www.betterverse.app')" style="cursor: pointer">
-      <u-Icons-Betterverse-R/>
+    <div id="betterverse-lg-logo" class="d-none d-lg-block" onclick="window.open('https://www.betterverse.app')"
+      style="cursor: pointer">
+      <u-Icons-Betterverse-R />
     </div>
 
     <!-- Leftside image -->
@@ -16,7 +16,7 @@
   </b-container>
 
   <!-- Main form area -->
-  <b-container class="col-12 col-lg-5 d-flex align-items-center justify-content-center">
+  <b-container class="col-12 col-lg-6 d-flex align-items-center justify-content-center">
     <div class="form-area bv__globals__px d-flex align-items-center justify-content-center">
       <u-DonorPortal-Register-Wallet @submit.prevent="DonorPortal_ConnectWallet"
         :DonorPortal_CompleteProfile="DonorPortal_CompleteProfile">

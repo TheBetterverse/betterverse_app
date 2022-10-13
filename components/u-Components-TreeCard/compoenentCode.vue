@@ -1,5 +1,8 @@
 <template>
-  <div class="bv__treecard">
+  <div
+    class="bv__treecard"
+    @click="$event.pointerType === 'touch' ? $emit('view', $event) : undefined"
+  >
     <div class="bv__treecard__card">
       <div class="bv__treecard__overlay">
         <div class="bv__treecard__overlaytop">
@@ -232,28 +235,21 @@
   display: flex;
 }
 
-  @media screen and (max-width: 575px) {
-
-    .bv__treecard {
-
-      width: auto;
-      min-width: 300px;
-      height: auto;
-    }
+@media screen and (max-width: 575px) {
+  .bv__treecard {
+    width: auto;
+    min-width: 300px;
+    height: auto;
   }
+}
 
-    @media screen and (min-width: 1200px) {
-
-    .bv__treecard {
-
-      width: auto;
-      min-width: 300px;
-      height: auto;
-    }
+@media screen and (min-width: 1200px) {
+  .bv__treecard {
+    width: auto;
+    min-width: 300px;
+    height: auto;
   }
-
-  
-
+}
 </style>
 
 <script>

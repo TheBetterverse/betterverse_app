@@ -6,32 +6,33 @@
   <b-container class="d-none d-lg-block col-6 vh-100 overflow-hidden bv__signin__leftside"
     style="border-right: 1px solid white;">
     <!-- Top left logo -->
-    <div id="betterverse-lg-logo" class="d-none d-lg-block"
-      onclick="window.open('https://www.betterverse.app')" style="cursor: pointer">
-      <u-Icons-Betterverse-R/>
+    <div id="betterverse-lg-logo" class="d-none d-lg-block" onclick="window.open('https://www.betterverse.app')"
+      style="cursor: pointer">
+      <u-Icons-Betterverse-R />
     </div>
 
     <!-- Leftside image -->
-    <img
-      src="https://uploads-ssl.webflow.com/62554ccc10f0e2be91a8c9fc/6336be686d2930c4d230aa77_img-login.jpg" />
+    <img src="https://uploads-ssl.webflow.com/62554ccc10f0e2be91a8c9fc/6336be686d2930c4d230aa77_img-login.jpg" />
   </b-container>
 
 
-  <header class="d-flex d-lg-none w-100 align-items-center justify-content-center" style="margin-top: 44px;">
-    <b-row class="mt-1 mb-5 bv__signin__header bv__globals__px">
-      <b-col class="d-flex align-items-center">
-        <u-Icons-Betterverse width="32" heigth="32" />
-      </b-col>
-      <b-col class="text-right d-flex justify-content-end">
-        <small>Don't have an account?<br /><a href="#" @click.prevent="DonorPortal_RedirectToSignUp()">Create
-            account</a></small>
-      </b-col>
-    </b-row>
-  </header>
+
 
   <!-- Main form area -->
-  <div class="col-12 col-lg-5 w-100 d-flex align-items-center justify-content-center">
+  <div class="col-12 col-lg-6 w-100 d-flex align-items-center justify-content-center">
     <div class="form-area bv__globals__px">
+      <header class="w-100 d-flex d-lg-none  align-items-center justify-content-center " style="margin-top: 44px;">
+        <b-row class="mt-1 mb-5 w-100">
+          <b-col class="d-flex align-items-center">
+            <u-Icons-Betterverse width="32" heigth="32" />
+          </b-col>
+          <b-col class="text-right d-flex justify-content-end">
+            <small>Don't have an account?<br /><a href="#" @click.prevent="DonorPortal_RedirectToSignUp()">Create
+                account</a></small>
+          </b-col>
+        </b-row>
+      </header>
+
       <u-DonorPortal-SignIn :DonorPortal_RedirectToSignUp="DonorPortal_RedirectToSignUp"
         :DonorPortal_RedirectToResetPassword="DonorPortal_RedirectToResetPassword">
         <h1>Welcome back <br> to <b>Betterverse</b></h1>
@@ -56,29 +57,11 @@
     overflow: hidden;
   }
 
-  .row .no-gutters {
-    height: 100vh !important;
-  }
-
-  .status-bar-clearance {
-    height: 44px !important;
-  }
-
   #betterverse-lg-logo {
     position: absolute;
     z-index: 10;
     top: 24px;
     left: 30px;
-  }
-
-  .bv__signin__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    min-width: 200px;
-    width: 100%;
-    max-width: 420px;
   }
 
   .form-area {
@@ -88,6 +71,7 @@
   }
 
   .bv__signin__leftside {
+    border-image: none;
     border-right-color: none;
     border-right-width: 0;
     border-right-style: none;
@@ -114,7 +98,7 @@
     }
 
     .bv__signin__leftside {
-      border-right-color: rgba(80, 80, 80, 0);
+      border-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3)) 1;
       border-right-width: 1px;
       border-right-style: solid;
     }

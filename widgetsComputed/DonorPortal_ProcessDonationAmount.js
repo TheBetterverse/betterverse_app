@@ -26,7 +26,7 @@ let debouncedPart = debounceInput(async event => {
 
   if (!amount) amount = '100'
   
-  if (parseInt(amount) < 10) amount = '10'
+  if (parseInt(amount) < 20) amount = '20'
   else if (parseInt(amount) > 1000000) amount = '1000000'
 
   event.target.textContent = parseInt(amount).toLocaleString('en-us')

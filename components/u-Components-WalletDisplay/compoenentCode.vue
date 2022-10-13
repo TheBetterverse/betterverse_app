@@ -68,7 +68,7 @@ module.exports = {
   props: {
     wallet: {
       type: Promise,
-      default: new Promise((resolve => resolve()))
+      default: new Promise(resolve => resolve())
     },
 
     address: {
@@ -111,7 +111,7 @@ module.exports = {
       let result = await this.wallet
 
       if (!result) {
-        this.state = 404
+        this.state = 1
         return
       }
 
@@ -144,7 +144,7 @@ module.exports = {
     await this.updateComponent()
   },
 
-  async beforeUpdate() {
+  async update() {
     await this.updateComponent()
   }
 }

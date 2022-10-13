@@ -20,14 +20,19 @@
         </div>
 
         <div id="bv__projects__sorts">
+          <u-Icons-Popular
+            v-if="currentSort === 'most-popular'"
+          ></u-Icons-Popular>
+          <u-Icons-Recent v-if="currentSort === 'most-recent'"></u-Icons-Recent>
+          <u-Icons-High v-if="currentSort === 'highest-price'"></u-Icons-High>
+          <u-Icons-Low v-if="currentSort === 'lowest-price'"></u-Icons-Low>
+
           <select
             name="filter-input"
             id="bv__projects__sortsselect"
             @change="onSelectChange"
           >
-
             <option value="most-popular" selected>
-            
               <p>Most popular</p>
             </option>
             <option value="most-recent">
@@ -188,8 +193,10 @@ module.exports = {
     },
 
     updateData() {
+      console.count()
       this.filteredData = filterData(this.currentNeedle, this.data)
       this.filteredData.sort(sortingMethods[this.currentSort])
+      console.log(this.filteredData)
     }
   },
 
@@ -213,7 +220,7 @@ module.exports = {
   padding-top: 45px;
   padding-bottom: 15px;
 
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  /* border-top: 1px solid rgba(0, 0, 0, 0.05); */
 }
 
 #bv__projects__nav {
@@ -274,6 +281,11 @@ module.exports = {
   border-radius: 16px;
 }
 
+#bv__projects__sorts > * {
+  display: flex;
+  align-items: center;
+}
+
 #bv__projects__sortsselect {
   outline: none;
   color: black !important;
@@ -285,6 +297,8 @@ module.exports = {
   background: none;
   display: flex;
   align-items: center;
+
+  border-radius: 5px;
 }
 
 #bv__projects__sortsselect:active,

@@ -2,14 +2,15 @@ const {userId} = context.webhookdata
 const email = await getUserEmailByUID(userId)
 context.data = email
 
-$log('Installing web3 packages')
+//$log.debug('test')
+//$log('Installing web3 packages')
 
-const Web3 = require("web3");
-$log('Loaded web3 packages')
-const web3 = new Web3(new Web3.providers.HttpProvider('https://polygon-mumbai.g.alchemy.com/v2/dRrclX6ikOV1fZHA5fHhaORKzPB6MoEj'));
-$log('Configured web3 lfg')
+//const Web3 = require("web3");
+//$log('Loaded web3 packages')
+//const web3 = new Web3(new Web3.providers.HttpProvider('https://polygon-mumbai.g.alchemy.com/v2/dRrclX6ikOV1fZHA5fHhaORKzPB6MoEj'));
+//$log('Configured web3 lfg')
 
-//Tree contract ABI
+/*Tree contract ABI
 const treeContractData = {
     TreeContractAddress: '0xA1b4B161f2Dcf373B8C040151D8926cc8165f499',
     TreeContractABI: [
@@ -964,6 +965,7 @@ const treeContractData = {
         }
     ]
 }
+*/
 
 const tokenID = await context.webhookdata.payload.tokenID
 const wallet = await context.webhookdata.payload.wallet
@@ -998,7 +1000,7 @@ var emailTemplate =
     <tr height="300px;">
       <td align="center">
         <div style="font-family: 'Courier New', monospace; height: 100%; font-size: 14px; position: relative; background-color: #ECEAE3; line-height: 21px; border-bottom: 1px solid #E3E1DB; border-top: 1px solid #E3E1DB; vertical-align:middle; ">
-          <div style="margin: auto; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 50%; margin-top: 100px;">
+          <div style="margin: auto; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 50%; margin-top: 100px; margin-bottom: 100px;">
             <h3 style="color: black;">Your donation to <u>${charityName}</u> has planted <u>${numberOfTrees} trees</u>.</h3>
                 <p>
                 <div style="color: black;"> Your virtual tree is being generated. </div>
@@ -1107,24 +1109,29 @@ if (tokenID.length == 1) {
     }
 }
 
-$log(nftRows)
+$log('NFT ROWS ROWKEY:')
+$log(nftRows[0])
+$log('NFT ROWS JSON:')
+$log(json[0])
 
 try{
-
+/*
     const TreeContract = new web3.eth.Contract(treeContractData.TreeContractABI, treeContractData.TreeContractAddress);
 
     for (let i = 0; i < nftRows.length; i++) {
-        var calledJson = await TreeContract.methods.tokenURI(tokenID).call()
-        while (calledJson === nftRows[i].json) {
-            calledJson = await TreeContract.methods.tokenURI(tokenID).call()
-            await new Promise(r => setTimeout(r, 5000))
-            $log(`Old json: ${nftRows[i].json} current json is ${json}`)
+        var calledJson = await TreeContract.methods.tokenURI(tokenID[i]).call()
+        while (calledJson === json[i]) {
+            calledJson = await TreeContract.methods.tokenURI(tokenID[i]).call()
+            await new Promise(r => setTimeout(r, 3000))
+            $log(`Old json: ${json[i]} current json is ${calledJson}`)
             $log('Continuing to pull')
         }
-        createLog(callDash, '', calledJson, 'nFTs', nftRows[i], 'json')
-        $log('Updated json LETS FUCKING GO!!!!')
+        const splitURL = calledJson.split('ipfs://').pop();
+        const resolvedJson = 'https://ipfs.io/ipfs/' + splitURL
+    
+        await createLog(callDash, '', resolvedJson, 'nFTs', nftRows[i], 'json')
     }
-
+*/
 }
 catch(err){
     $log(err)

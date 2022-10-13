@@ -2,20 +2,20 @@
 
 <template>
   <div class="bv__profilepicture">
-    <div
-      class="bv__profilepicture__pp bv__globals__skeleton"
-      :style="{ height, width }"
-    >
+    <div class="bv__profilepicture__pp" :style="{ height, width }">
       <div v-if="modelValue.content || src">
         <img
-          class="bv__profilepicture__img"
+          class="bv__profilepicture__img bv__globals__skeleton"
           :src="modelValue.dataUrl || src"
           :style="{ height, width }"
         />
       </div>
 
       <div v-else>
-        <u-Icons-EmptyProfilePicture width="auto;" height="auto;" />
+        <u-Icons-EmptyProfilePicture
+          width="100%"
+          height="100%"
+        ></u-Icons-EmptyProfilePicture>
       </div>
     </div>
 

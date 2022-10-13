@@ -5,13 +5,19 @@
     <!-- For small displays -->
     <header class="d-block d-lg-none w-100">
       <b-row class="status-bar-clearance"></b-row>
-      <b-row class="mt-1 mb-5 d-flex">
+
+      <b-row class="mt-1 mb-5 d-flex align-items-center">
         <b-col class="d-flex align-items-center">
           <icon-betterverse width="32" heigth="32" />
         </b-col>
+
         <b-col class="text-right d-flex justify-content-end">
           <small
-            >Don't have an account?<br /><u><a href="#" @click="DonorPortal_RedirectToSignUp">Create account</a></u></small
+            >Don't have an account?<br /><a
+              href="#"
+              @click="DonorPortal_RedirectToSignUp"
+              >Create account</a
+            ></small
           >
         </b-col>
       </b-row>
@@ -27,13 +33,12 @@
           <b-row>
             <slot>
               <h1>Let's reset your <b>password</b></h1>
-              <p>
-                Write your new one below.
-              </p>
+              <p>Write your new one below.</p>
             </slot>
           </b-row>
         </b-container>
       </section>
+
       <form @submit.prevent>
         <section name="form-inputs">
           <div class="my-3">
@@ -45,28 +50,26 @@
               v-model="form.password"
               :validators="validators.password"
             >
-            <icon-lock />
-          </bv-input>
-        </div>
-        <div class="d-flex justify-content-between align-items-center">
-          <div>
-            <p style="line-height: 16px" v-if="resetSuccess == true">
-              <small>
-                <b>Password changed! Redirecting you to login.</b>
-              </small>
-            </p>
+              <icon-lock />
+            </bv-input>
           </div>
-          <bv-button @click="reset"
-            secondary
-            v-if="resetSuccess == false"
-          >
-            <template #default> <p>Update password</p></template>
-            <template #right-icon>
-              <icon-rightarrow color="white"></icon-rightarrow>
-            </template>
-          </bv-button>
-        </div>
-      </section>
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <p style="line-height: 16px" v-if="resetSuccess == true">
+                <small>
+                  <b>Password changed! Redirecting you to login.</b>
+                </small>
+              </p>
+            </div>
+            <bv-button @click="reset" secondary v-if="resetSuccess == false">
+              <template #default> <p>Update password</p></template>
+              <template #right-icon>
+                <icon-rightarrow color="white"></icon-rightarrow>
+              </template>
+            </bv-button>
+          </div>
+        </section>
+      </form>
     </div>
 
     <!--Password Reset Request-->
@@ -80,12 +83,14 @@
             <slot>
               <h1>Forgot your <b>password?</b></h1>
               <p>
-                Happens to the best of us. Enter the email you joined with and we’ll send you a reset code.
+                Happens to the best of us. Enter the email you joined with and
+                we’ll send you a reset code.
               </p>
             </slot>
           </b-row>
         </b-container>
       </section>
+
       <form @submit.prevent>
         <section name="form-inputs">
           <div class="my-3">
@@ -109,30 +114,21 @@
               </p>
             </div>
             <div v-if="validEmail == true && linkSent == false">
-              <bv-button  @click="sendLink" 
-                secondary
-              >
-                <template  #default> Reset my password </template>
+              <bv-button @click="sendLink" secondary>
+                <template #default> Reset my password </template>
                 <template #right-icon>
                   <icon-rightarrow color="white"></icon-rightarrow>
                 </template>
               </bv-button>
             </div>
-          </div> 
-      <div>
-
-
+          </div>
         </section>
         <!-- For large displays -->
-        <footer class="mt-9 d-none d-lg-block">
-        </footer>
+        <footer class="mt-9 d-none d-lg-block"></footer>
       </form>
     </div>
-
   </div>
 </template>
-
-
 
 <script>
 async function emailIsRightFormat(subject) {
@@ -196,29 +192,33 @@ module.exports = {
 
   methods: {
     sendLink() {
-      spinnerActive = true;
-      this.$parent.callWf({
-        workflow: '-N9b4lSJzR5UT35a_Odh',
-        payload: {
-          email: this.form.email.content,
-        }
-      }).then((res) => {
-        if (res.sent) this.linkSent = true
-      })
+      spinnerActive = true
+      this.$parent
+        .callWf({
+          workflow: '-N9b4lSJzR5UT35a_Odh',
+          payload: {
+            email: this.form.email.content
+          }
+        })
+        .then(res => {
+          if (res.sent) this.linkSent = true
+        })
     },
     reset() {
-      this.$parent.callWf({
-        workflow: '-N9b4lSJzR5UT35a_Odh',
-        payload: {
-          password: this.form.password.content,
-          token: this.$route.query.token,
-        }
-      }).then((res) => {
-        if (res.reset) this.resetSuccess = true
-        setTimeout(() => {     
-          $setCurrentSubTab('-N4IRMyIAw-t4q0VNr0C','-Mx_5FLL2jlxjXYUMdIL')
-        }, 5000);
-      })
+      this.$parent
+        .callWf({
+          workflow: '-N9b4lSJzR5UT35a_Odh',
+          payload: {
+            password: this.form.password.content,
+            token: this.$route.query.token
+          }
+        })
+        .then(res => {
+          if (res.reset) this.resetSuccess = true
+          setTimeout(() => {
+            $setCurrentSubTab('-N4IRMyIAw-t4q0VNr0C', '-Mx_5FLL2jlxjXYUMdIL')
+          }, 5000)
+        })
     },
     /* View controller */
 
@@ -264,5 +264,24 @@ module.exports = {
 
 div.status-bar-clearance {
   height: 44px;
+}
+
+#bv__register__socialsbuttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: auto;
+  width: auto;
+  gap: 10px;
+}
+
+#bv__register__socialsbuttons > button {
+  height: 32px;
+  width: 32px;
+}
+
+.bv__register__socialbutton {
+  display: flex;
+  gap: 8px;
 }
 </style>

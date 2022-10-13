@@ -36,48 +36,37 @@
         </u-Components-Button>
 
         <template #dropdown>
-          <span>
-            <a href="https://www.betterverse.app/#about">
-              <u-Icons-About/>
-              <p>About</p>
-            </a>
-          </span>
+          <a href="https://www.betterverse.app/#about">
+            <u-Icons-About />
+            <p>About</p>
+          </a>
 
-          <span>
-            <a href="https://www.betterverse.app/team">
-            <u-Icons-Team/>
+          <a href="https://www.betterverse.app/team">
+            <u-Icons-Team />
             <p>Team</p>
-            </a>
-          </span>
+          </a>
 
-          <span>
-            <a href="https://www.betterverse.app/#metaverse">
-            <u-Icons-Metaverse/>
+          <a href="https://www.betterverse.app/#metaverse">
+            <u-Icons-Metaverse />
             <p>Metaverse</p>
-            </a>
-          </span>
+          </a>
 
-          <span>
-            <a href="https://www.betterverse.app/roadmap">
-            <u-Icons-Roadmap/>
+          <a href="https://www.betterverse.app/roadmap">
+            <u-Icons-Roadmap />
             <p>Roadmap</p>
-            </a>
-          </span>
+          </a>
 
-          <span>
-            <a href="https://www.betteverse.app/team/#contact">
-            <u-Icons-Contact/>
+          <a href="https://www.betteverse.app/team/#contact">
+            <u-Icons-Contact />
             <p>Contact</p>
-            </a>
-          </span>
+          </a>
         </template>
       </u-Components-NavbarDropDown>
     </div>
   </div>
 
   <div id="bv__navbar__right" v-if="DonorPortal_GetCurrentUserProfileComplete() == true">
-    <u-Components-Button secondary class="d-none d-lg-flex"
-      @click="DonorPortal_RedirectToProjects()">
+    <u-Components-Button secondary class="d-none d-lg-flex" @click="DonorPortal_RedirectToProjects()">
       <template #default>
         <p>View projects</p>
       </template>
@@ -124,7 +113,7 @@
         </form>
       </div>
 
-      <div id="bv__navbar__walletconnected" v-else>
+      <div id="bv__navbar__walletconnected" @click="DonorPortal_OpenWallet()" v-else>
         <u-Components-WalletDisplay :wallet="DonorPortal_GetCurrentUserWalletInformation()"
           @DonorPortal_TriggerWalletPopup="DonorPortal_TriggerWalletPopup" />
       </div>
@@ -163,31 +152,31 @@
       </li>
       <li>
         <div class="iconwrapper">
-          <u-Icons-About/>
+          <u-Icons-About />
         </div>
         <a href="https://www.betterverse.app/#about">About</a>
       </li>
       <li>
         <div class="iconwrapper">
-          <u-Icons-Team/>
+          <u-Icons-Team />
         </div>
         <a href="https://www.betterverse.app/team">Team</a>
       </li>
       <li>
         <div class="iconwrapper">
-          <u-Icons-Metaverse/>
+          <u-Icons-Metaverse />
         </div>
         <a href="https://www.betterverse.app/#metaverse">Metaverse</a>
       </li>
       <li>
         <div class="iconwrapper">
-          <u-Icons-Roadmap/>
+          <u-Icons-Roadmap />
         </div>
         <a href="https://www.betterverse.app/roadmap">Roadmap</a>
       </li>
       <li>
         <div class="iconwrapper">
-          <u-Icons-Contact/>
+          <u-Icons-Contact />
         </div>
         <a href="https://www.betteverse.app/team/#contact">Contact</a>
       </li>

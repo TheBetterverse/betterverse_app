@@ -18,6 +18,7 @@ return async function (tokenID, wallet, user, charity, cause, paymentMethod, cur
     const userParam = await JSON.stringify(userRow)
     const causeRow = await ($dataGrid('charityProjects')[cause])
     const projectParam = await JSON.stringify(causeRow)
+    console.log({userRow, userParam, causeRow, projectParam}, '-----')
 
     //Declaring charity variables needed for checks
     var project
@@ -66,6 +67,7 @@ return async function (tokenID, wallet, user, charity, cause, paymentMethod, cur
     })
     const signer = await provider.getSigner()
     const TreeContractWithEther = new ethers.Contract(TreeContractAddress, TreeContractABI, signer)
+    const TestBTRContractWithEther = new ethers.Contract(TestBTRCAddress, TestBTRCABI, signer)
 
     //Check if charity and cause values are not null/invalid
     if (charity == null || cause == null) {
@@ -130,9 +132,12 @@ return async function (tokenID, wallet, user, charity, cause, paymentMethod, cur
                     //Task 3.3 minter.sol - function mintTree - 0x4A35ef8931a6636AA1e97303D82b38E34A57aB7A
 
                     const approveAmount = Web3.utils.toWei(amount.toString(), 'ether')
+                    // const tx = await TestBTRContractWithEther.approve(MinterContractAddress, approveAmount)
+                    // await tx.wait()
                     await TestBTRContract.methods.approve(MinterContractAddress, approveAmount).send({
-                      from: wallet,
+                      from: wallet
                     })
+                    console.log('==============after approval')
 
                     MinterContract.methods.mintTree(nftCount, charityID, approveAmount, TestBTRCAddress).send({ from: wallet }, async (err, txHash) => {
                       if (err) {
@@ -141,7 +146,6 @@ return async function (tokenID, wallet, user, charity, cause, paymentMethod, cur
                         nftMint = false
                       } else {
                         // successfully minted
-
                         donationSuccess = true
                         nftMint = true
 
@@ -150,19 +154,20 @@ return async function (tokenID, wallet, user, charity, cause, paymentMethod, cur
                         let jsonArray = []
                         TreeContractWithEther.on('minted', async (token, user, event) => {
                           const mintedTokenID = web3.utils.hexToNumber(token)
+                          console.log(mintedTokenID, '====minted Token ID')
                           if (user.toLowerCase() == wallet.toLowerCase()) {
                             nftIDs.push(mintedTokenID)
                           }
 
-                          if (nftCount == nftIDs.length) {
+                          if (nftCount === nftIDs.length) {
                             for (let i = 0; i < nftCount; i++) {
                               let tokenURI = await getTokenURI(nftIDs[i])
                               jsonArray.push(tokenURI)
                             }
 
+                            let data = []
                             web3.eth.getTransaction(txHash, async (error, res) => {
                               gas = res.gasPrice
-                              let data = []
                               nftIDs.map((nftID, idx) => {
 
                                 data.push({
