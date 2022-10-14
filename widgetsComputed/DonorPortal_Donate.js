@@ -130,13 +130,17 @@ return async function (tokenID, wallet, user, charity, cause, paymentMethod, cur
                     var charityID = charityRow.smartContractCharityID
 
                     //Task 3.3 minter.sol - function mintTree - 0x4A35ef8931a6636AA1e97303D82b38E34A57aB7A
-
                     const approveAmount = Web3.utils.toWei(amount.toString(), 'ether')
-                    // const tx = await TestBTRContractWithEther.approve(MinterContractAddress, approveAmount)
-                    // await tx.wait()
-                    await TestBTRContract.methods.approve(MinterContractAddress, approveAmount).send({
-                      from: wallet
-                    })
+                    if(walletProvider == 'coinbase') {
+                      const tx = await TestBTRContractWithEther.approve(MinterContractAddress, approveAmount)
+                      await tx.wait()
+                    } else {
+                      await TestBTRContract.methods.approve(MinterContractAddress, approveAmount).send({
+                        from: wallet
+                      })
+                    }
+                   
+                    
                     console.log('==============after approval')
 
                     MinterContract.methods.mintTree(nftCount, charityID, approveAmount, TestBTRCAddress).send({ from: wallet }, async (err, txHash) => {
@@ -159,7 +163,7 @@ return async function (tokenID, wallet, user, charity, cause, paymentMethod, cur
                             nftIDs.push(mintedTokenID)
                           }
 
-                          if (nftCount === nftIDs.length) {
+                          if (nftCount == nftIDs.length) {
                             for (let i = 0; i < nftCount; i++) {
                               let tokenURI = await getTokenURI(nftIDs[i])
                               jsonArray.push(tokenURI)
@@ -169,14 +173,21 @@ return async function (tokenID, wallet, user, charity, cause, paymentMethod, cur
                             web3.eth.getTransaction(txHash, async (error, res) => {
                               gas = res.gasPrice
                               nftIDs.map((nftID, idx) => {
-
                                 data.push({
                                   nftID,
                                   gas,
                                   json: jsonArray[idx]
                                 })
                               })
-                              console.log(data, '==========DATA*******')
+
+                              let collectedIDs = []
+                              data.map(item => {
+                                if(item && item.nftID) collectedIDs.push(item.nftID)
+                              })
+                              console.log({nftIDs, collectedIDs})
+
+                              const isSame = nftIDs.length >= 1 && collectedIDs.length >= 1 && (nftIDs.length == collectedIDs.length) && nftIDs.every((item, idx) => item === collectedIDs[idx])
+                              if(isSame) console.log(data,  '=======data')
 
                               //Once donation is succesful create a row to store data
                               if (donationSuccess == true && nftMint == true) {

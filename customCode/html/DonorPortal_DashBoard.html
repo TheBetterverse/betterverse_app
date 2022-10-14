@@ -3,9 +3,9 @@
   <main class="bv__dashboard__main">
     <div class="bv__dashboard__header bv__globals__px">
       <div class="bv__dashboard__profile">
-        <u-Components-ProfilePicture v-if="DonorPortal_GetCurrentUserProfilePicture() != null" height="80px"
+        <u-Components-ProfilePicture height="80px"
           width="80px" :src="DonorPortal_GetCurrentUserProfilePicture()" />
-        <u-Icons-EmptyProfilePicture v-if="DonorPortal_GetCurrentUserProfilePicture() == null" />
+        <!--u-Icons-EmptyProfilePicture v-if="DonorPortal_GetCurrentUserProfilePicture() == null" /-->
         <div>
           <h1 id="bv__dashboard__profileusername">
             {{ DonorPortal_GetCurrentUserNames('full') }}

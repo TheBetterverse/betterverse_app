@@ -1153,16 +1153,6 @@
     "savePath": "customCode/html/-NBvbOmFc4s_BKMUHswy/condition"
   },
   {
-    "filePath": "customCode/html/DonorPortal_GeneratingNFT.html",
-    "savePath": "customCode/html/-NDygNYIsig0xDRGJoc1/code",
-    "customCodeName": "DonorPortal_GeneratingNFT",
-    "customCodeScope": {
-      "-Mx_5FLL2jlxjXYUMdIL": {
-        "-NAtXkQSbLXO6CKKZj7d": true
-      }
-    }
-  },
-  {
     "filePath": "customCode/js/Redirect_Main.js",
     "savePath": "customCode/js/-MyhbtSo5FHi08VoZP5b/code",
     "customCodeName": "Redirect_Main",
