@@ -86,14 +86,9 @@ return async event => {
     // document.getElementById('bv__nftrefresh__textinfo').innerText = ''
   } finally {
     refreshButton.parentElement.disabled = false
+    setTimeout(() => refreshButton.setAttribute('state', 'default'), 6000)
+    console.dir(refreshButton)
   }
-
-  setTimeout(() => refreshButton.setAttribute('state', 'default'), 6000)
-
-  refreshButton.one(
-    'animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd',
-    () => console.log('HELLO')
-  )
 
   return null
 }
