@@ -25,7 +25,7 @@ let debouncedPart = debounceInput(async event => {
   let amount = event.target.textContent
 
   if (!amount) amount = '100'
-  
+
   if (parseInt(amount) < 20) amount = '20'
   else if (parseInt(amount) > 1000000) amount = '1000000'
 
@@ -41,6 +41,7 @@ return event => {
     event.target.textContent = event.target.textContent
       .trim()
       .replace(/\D/g, '')
+      .slice(0, 7)
     setCaretToEnd(event.srcElement)
   }
 

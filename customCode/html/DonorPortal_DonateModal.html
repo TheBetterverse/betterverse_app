@@ -27,23 +27,21 @@
               I want to donate
               <span v-if="DonorPortal_GetCurrentUserWalletProvider() == 'slide'">
                 <select id="bv__donatemodal__slidedonationinput">
-                  <option>10</option>
-                  <option>20</option>
-                  <option>30</option>
-                  <option>50</option>
-                  <option>80</option>
-                  <option>100</option>
-                  <option>250</option>
-                  <option>500</option>
-                  <option>1000</option>
+                  <option value="10">10</option>
+                  <option value="20">20</option>
+                  <option value="30">30</option>
+                  <option value="50">50</option>
+                  <option value="80">80</option>
+                  <option value="100">100</option>
+                  <option value="250">250</option>
+                  <option value="500">500</option>
+                  <option value="1000">1000</option>
                 </select>
 
-                <u-Icons-Chevron width="32px" height="32px" class="bv__donatemodal__chevronlg"
-                  style="align-items: center; width: auto; padding-bottom: 10px; margin-left: -12px;">
+                <u-Icons-Chevron width="32px" height="32px" class="bv__donatemodal__chevron bv__donatemodal__chevronlg">
                 </u-Icons-Chevron>
 
-                <u-Icons-Chevron width="12px" height="12px" class="bv__donatemodal__chevronsm"
-                  style="align-items: center; padding-bottom: 4px; margin-left: -6px;">
+                <u-Icons-Chevron width="12px" height="12px" class="bv__donatemodal__chevron bv__donatemodal__chevronsm">
                 </u-Icons-Chevron>
 
               </span>
@@ -323,13 +321,13 @@
 <script type="module">
 
   function resizeSlideDonationInput() {
-    let $slideDonationInput = $('#bv__donatemodal__slidedonationinput').first()
+    let $slideDonationInput = $('#bv__donatemodal__slidedonationinput')[0]
 
-    if (!$slideDonationInput.value) return
+    if (!$slideDonationInput) return
+    if (!$slideDonationInput.style) return
 
-    let letterSize = 0
+    let letterSize = 2
     let windowSizeWeight = 0.65
-
 
     for (let letter in $slideDonationInput.value) {
       if ($slideDonationInput.value[letter] === "1") letterSize += 0.95
@@ -343,7 +341,6 @@
 
   $('#bv__donatemodal__slidedonationinput').on('input', resizeSlideDonationInput)
   window.addEventListener('resize', resizeSlideDonationInput)
-
 
   resizeSlideDonationInput()
 
@@ -611,11 +608,22 @@
     border: none !important;
   }
 
+  .bv__donatemodal__chevron {
+    align-items: center;
+    pointer-events: none;
+  }
+
   .bv__donatemodal__chevronlg {
+    width: auto;
+    padding-bottom: 10px;
+    margin-left: -3rem;
     display: none;
   }
 
   .bv__donatemodal__chevronsm {
+    align-items: center;
+    padding-bottom: 4px;
+    margin-left: -1.75rem;
     display: inline-flex;
   }
 

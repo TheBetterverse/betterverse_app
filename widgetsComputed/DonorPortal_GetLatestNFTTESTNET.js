@@ -1,10 +1,25 @@
 /* DonorPortal_GetLatestNFT.js */
 
+function setLoadingState(button) {
+  button.setAttribute('state', 'loading')
+  button.parentElement.disabled = true
+}
+
+function endLoadingState(button, state = 'default') {
+  button.addEventListener(
+    'animationiteration',
+    () => {
+      button.setAttribute('state', state)
+      button.parentElement.disabled = false
+    },
+    { once: true }
+  )
+}
+
 return async event => {
   let refreshButton = event.target
 
-  refreshButton.setAttribute('state', 'loading')
-  refreshButton.parentElement.disabled = true
+  setLoadingState(refreshButton)
 
   //Checking for updates...
   var currentUserNFTs = await this.DonorPortal_GetCurrentUserNFTs()
@@ -32,8 +47,6 @@ return async event => {
       returnedJSONs[n] = resolvedJSON
     }
 
-    console.log('Compare JSON for each NFT to see if updates are required')
-    //Compare JSON for each NFT
     for (let u = 0; u < currentUserNFTs.length; u++) {
       if (currentUserNFTsJSONs[u] != returnedJSONs[u]) {
         updateRequiredNFTsRowKeys.push(currentUserNFTs[u].rowKey)
@@ -44,8 +57,6 @@ return async event => {
     //Updating nfts
     console.log(updateRequiredNFTsRowKeys.length + ' NFTs require an update')
     if (updateRequiredNFTsJSONs.length > 0) {
-      // document.getElementById('bv__nftrefresh__textinfo').innerText =
-      //   'Updating NFTs'
       this.callWf({
         workflow: '-NDyxl-6eHUgqV2fk2tg',
         payload: {
@@ -54,17 +65,11 @@ return async event => {
         }
       })
     } else {
-      // document.getElementById('bv__nftrefresh__textinfo').innerText =
-      //   'NFTs are already up to date'
       await new Promise(resolve => setTimeout(resolve, 3000))
-      // document.getElementById('bv__nftrefresh__textinfo').innerText = ''
-      refreshButton.setAttribute('state', 'default')
       return true
     }
 
     await new Promise(resolve => setTimeout(resolve, 3000))
-    // document.getElementById('bv__nftrefresh__textinfo').innerText =
-    //   'NFTs successfully updated'
 
     $setGlobalModel('dashboardRefresh', true)
     setTimeout(() => {
@@ -72,23 +77,14 @@ return async event => {
     }, 1000)
 
     await new Promise(resolve => setTimeout(resolve, 3000))
-    // document.getElementById('bv__nftrefresh__textinfo').innerText = ''
-    refreshButton.setAttribute('state', 'default')
 
     return returnedJSONs
   } catch (err) {
     console.error(err)
-    // document.getElementById('bv__nftrefresh__textinfo').innerText =
-    //   'Error please try again'
 
     await new Promise(resolve => setTimeout(resolve, 3000))
     refreshButton.setAttribute('state', 'error')
-    // document.getElementById('bv__nftrefresh__textinfo').innerText = ''
   } finally {
-    refreshButton.parentElement.disabled = false
-    setTimeout(() => refreshButton.setAttribute('state', 'default'), 6000)
-    console.dir(refreshButton)
+    endLoadingState(refreshButton)
   }
-
-  return null
 }
