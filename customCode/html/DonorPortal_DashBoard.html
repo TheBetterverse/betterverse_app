@@ -125,7 +125,7 @@
         v-if="DonorPortal_GetCurrentUserNFTs() != null && !$getGlobalModel('dashboardRefresh')">
         <div v-for="(row, key) in DonorPortal_GetCurrentUserNFTs()" :key="key">
           <u-Components-TreeCard
-            @view="DonorPortal_SelectedDonation(row.json, row.$initialDonationRow.rowKey, row.rowKey); DonorPortal_TriggerNFTModal('display');"
+            @view="DonorPortal_SelectedDonation(row.json, row.$initialDonationRow.rowKey, row.rowKey); setTimeout(DonorPortal_TriggerNFTModal, 200, 'display')  ;"
             :treejson="row.json">
             <template #description>
               <b>${{row.$initialDonationRow.donationAmount.toLocaleString(undefined, {minimumFractionDigits: 2,

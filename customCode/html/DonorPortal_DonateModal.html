@@ -25,7 +25,11 @@
           <div class="bv__donatemodal__donatemessagewrap">
             <h2 class="bv__donatemodal__donatemessage">
               I want to donate
-              <span v-if="DonorPortal_GetCurrentUserWalletProvider() == 'slide'">
+              <span v-if="DonorPortal_GetCurrentUserWalletProvider() == 'slide'" style="position: relative">
+                <span class="bv__inlineinput__topspan">
+                  <p>Select amount</p>
+                </span>
+
                 <select id="bv__donatemodal__slidedonationinput">
                   <option value="10">10</option>
                   <option value="20">20</option>

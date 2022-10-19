@@ -696,8 +696,7 @@
     justify-content: start;
     grid-auto-flow: column;
 
-    grid-template-columns: repeat(auto-fit, 1fr);
-    grid-template-rows: repeat(auto-fit, 1fr);
+    grid-template-columns: repeat(auto-fill, 1fr);
     gap: 20px;
     overflow-x: scroll;
 
@@ -710,6 +709,8 @@
 
   #bv__nftmodal__othernftscarousel>* {
     scroll-snap-align: start;
+    min-width: 330px;
+    min-height: 300px;
   }
 
 

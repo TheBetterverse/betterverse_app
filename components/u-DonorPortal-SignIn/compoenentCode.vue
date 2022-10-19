@@ -226,6 +226,7 @@ module.exports = {
           $setCurrentTab('-Mx_5FLL2jlxjXYUMdIL')
         })
         .catch(err => {
+          console.log(err)
           alert(err.message)
           spinnerActive == false
         })

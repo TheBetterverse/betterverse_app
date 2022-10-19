@@ -93,7 +93,6 @@
           :style="{ opacity: localData ? '1' : '0' }"
         >
           {{ localData ? localData.name : '...' }}
-          <!-- <slot name="title"> Birget-Handroanthus #456 </slot> -->
         </h3>
       </div>
     </div>
@@ -104,7 +103,7 @@
 .bv__treecard {
   position: relative;
 
-  width: 300px;
+  width: auto;
   height: auto;
 
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -112,6 +111,7 @@
 }
 
 .bv__treecard__card {
+  aspect-ratio: 3 / 3.1;
   height: 100%;
   width: 100%;
 }
@@ -166,7 +166,9 @@
   font-family: 'BN Cringe Sans';
   font-weight: 500;
   font-size: 24px;
+  text-overflow: ellipsis;
   white-space: nowrap;
+  overflow: hidden;
 }
 
 .bv__treecard__overlaytraits,
@@ -233,22 +235,6 @@
 .bv__treecard:hover .bv__treecard__overlay,
 .bv__treecard:focus .bv__treecard__overlay {
   display: flex;
-}
-
-@media screen and (max-width: 575px) {
-  .bv__treecard {
-    width: auto;
-    min-width: 300px;
-    height: auto;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .bv__treecard {
-    width: auto;
-    min-width: 300px;
-    height: auto;
-  }
 }
 </style>
 

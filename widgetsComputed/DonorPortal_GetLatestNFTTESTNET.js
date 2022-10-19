@@ -16,6 +16,10 @@ function endLoadingState(button, state = 'default') {
   )
 }
 
+async function delay(timeout = 3000) {
+  return new Promise(resolve => setTimeout(resolve, timeout))
+}
+
 return async event => {
   let refreshButton = event.target
 
@@ -65,25 +69,23 @@ return async event => {
         }
       })
     } else {
-      await new Promise(resolve => setTimeout(resolve, 3000))
+      await delay(3000)
       return true
     }
 
-    await new Promise(resolve => setTimeout(resolve, 3000))
+    await delay(3000)
 
     $setGlobalModel('dashboardRefresh', true)
+
     setTimeout(() => {
       $setGlobalModel('dashboardRefresh', false)
     }, 1000)
 
-    await new Promise(resolve => setTimeout(resolve, 3000))
-
+    await delay(3000)
     return returnedJSONs
   } catch (err) {
     console.error(err)
-
-    await new Promise(resolve => setTimeout(resolve, 3000))
-    refreshButton.setAttribute('state', 'error')
+    endLoadingState(refreshButton)
   } finally {
     endLoadingState(refreshButton)
   }
