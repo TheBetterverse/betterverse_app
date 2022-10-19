@@ -166,7 +166,8 @@
             <div v-else>
               <p> Wallet connected </p>
 
-              <u-Components-WalletDisplay address checkmark :wallet="DonorPortal_GetCurrentUserWalletInformation()" />
+              <u-Components-WalletDisplay address checkmark :wallet="DonorPortal_GetCurrentUserWalletInformation()" 
+              @click="DonorPortal_OpenWallet()"/>
 
               <div id="bv__settings__walletbalance">
                 <div>

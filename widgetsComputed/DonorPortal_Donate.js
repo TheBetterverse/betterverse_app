@@ -1,9 +1,9 @@
-const TestBTRCAddress = this.Contracts().TestBTRCAddress
-const TreeContractAddress = this.Contracts().TreeContractAddress
-const MinterContractAddress = this.Contracts().MinterContractAddress
-const TreeContractABI = this.Contracts().TreeContractABI
-const MinterContractABI = this.Contracts().MinterContractABI
-const TestBTRCABI = this.Contracts().TestBTRCABI
+const TestBTRCAddress = this.ContractsTESTNET().TestBTRCAddress
+const TreeContractAddress = this.ContractsTESTNET().TreeContractAddress
+const MinterContractAddress = this.ContractsTESTNET().MinterContractAddress
+const TreeContractABI = this.ContractsTESTNET().TreeContractABI
+const MinterContractABI = this.ContractsTESTNET().MinterContractABI
+const TestBTRCABI = this.ContractsTESTNET().TestBTRCABI
 
 const getTokenURI = this.DonorPortal_GetTokenURI
 const walletProvider = this.DonorPortal_GetCurrentUserWalletProvider()

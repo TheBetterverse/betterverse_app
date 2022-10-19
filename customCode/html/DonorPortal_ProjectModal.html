@@ -11,7 +11,7 @@
       </div>
       <div style="display: flex; gap: 1rem;">
         <u-Components-WalletDisplay v-if="DonorPortal_GetCurrentUserWalletAddress() != null && DonorPortal_GetCurrentUserProfileComplete() == true" :wallet="DonorPortal_GetCurrentUserWalletInformation()" class="d-none d-lg-block"
-          />
+        @click="DonorPortal_OpenWallet()"/>
         <button style="background: #efede7; border-radius: 100%;" @click="DonorPortal_TriggerProjectModal('hide')">
           <u-Icons-Close></u-Icons-Close>       
         </button>

@@ -203,7 +203,8 @@ return function (event) {
     const connectSlide = async () => {
 
       const slide = new Slide.SDK()
-      await slide.init();
+      slide.preload();
+      window.slide = slide;
 
       const wallet = await slide.request({ method: "eth_requestAccounts" })
 

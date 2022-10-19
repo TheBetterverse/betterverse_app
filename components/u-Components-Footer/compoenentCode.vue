@@ -1,7 +1,13 @@
 <template>
   <footer class="bv__footer bv__globals__px">
     <div class="bv__footer__titlesection" style="grid-area: title">
-      <h1><b>Betterverse</b></h1>
+      <!-- <h1><b>Betterverse</b></h1> -->
+      <img
+        src="https://uploads-ssl.webflow.com/62554ccc10f0e2be91a8c9fc/633f4b025d49a5b6b0809557_Betterverse-logo-large.svg"
+        loading="lazy"
+        alt=""
+        style="max-width: 254px; margin-bottom: 0.75rem"
+      />
       <p>
         Brought to you with
         <u-Icons-Heart fill="#FFA6AF" color="black"></u-Icons-Heart> from the
@@ -53,8 +59,10 @@
       <div class="bv__footer__linklist" style="grid-area: legal">
         <p>Legal</p>
         <div>
-          <p><a href="https://www.betterverse.app/legal">Cookies</a></p>
-          <p><a href="https://www.betterverse.app/legal">Privacy</a></p>
+          <p><a href="https://www.betterverse.app/legal">Donation FAQs</a></p>
+          <p>
+            <a href="https://www.betterverse.app/legal">Cookies & Privacy</a>
+          </p>
           <p>
             <a href="https://www.betterverse.app/legal/#terms-of-use"
               >Terms of use</a
@@ -81,8 +89,9 @@
 
     <div class="bv__footer__appinfosection" style="grid-area: appinfo">
       <p>
-        Our dontation platform is currently in Alpha v1.0 so please bare with us
-        or <a href="mailto: help@betterverse.app"><u>report them here</u></a
+        Our dontation platform is currently in Alpha v1.0<br />so please bare
+        with us or
+        <a href="mailto: help@betterverse.app"><u>report them here</u></a
         >.
       </p>
     </div>
@@ -104,7 +113,7 @@ module.exports = {
 .bv__footer {
   position: static;
   width: 100%;
-  min-height: 55vh;
+  min-height: 57vh;
   z-index: 100;
   bottom: 0;
 
@@ -114,8 +123,8 @@ module.exports = {
   justify-content: space-between;
   grid-template-areas: 'title' 'linksection' 'bvinfo' 'appinfo';
 
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 60px;
+  padding-bottom: 60px;
 
   color: #000;
   background-color: #eceae3;
@@ -133,6 +142,7 @@ module.exports = {
   display: grid;
   grid-template-areas: 'learn follow' 'legal donate' 'reach reach';
   gap: 30px;
+  width: 100%;
   margin-bottom: 22px;
   margin-top: 22px;
 }
@@ -141,6 +151,7 @@ module.exports = {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  width: max-content;
 }
 
 .bv__footer__linklist > p {
@@ -166,6 +177,10 @@ module.exports = {
   text-decoration: none;
 }
 
+.bv__footer__linklist > div > p > a:hover {
+  color: #777671;
+}
+
 .bv__footer__followlinks > p > a {
   display: flex;
   align-items: center;
@@ -181,6 +196,7 @@ module.exports = {
   display: flex;
   flex-direction: column;
   gap: 30px;
+  max-width: 100%;
 }
 
 @media screen and (min-width: 772px) {
@@ -192,13 +208,19 @@ module.exports = {
   .bv__footer__titlesection {
     height: 100%;
     justify-content: flex-start;
+    gap: 0px;
+  }
+
+  .bv__footer__linklist {
+    width: 128px;
   }
 
   .bv__footer__linksection {
     margin-bottom: 0;
     margin-top: 0;
+    grid-gap: 30px;
 
-    grid-template-areas: 'learn follow donate legal reach reach';
+    grid-template-areas: 'learn donate reach follow legal';
     grid-template-columns: repeat(auto-fit, 1fr);
     justify-content: end;
   }
@@ -207,13 +229,20 @@ module.exports = {
     height: 100%;
     justify-content: flex-end;
     gap: 0;
+    width: 100%;
   }
 
   .bv__footer__appinfosection {
+    width: 100%;
     height: 100%;
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
+  }
+
+  .bv__footer__bvinfosection {
+    max-width: 60%;
+    gap: 20px;
   }
 }
 </style>

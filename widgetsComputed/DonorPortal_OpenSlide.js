@@ -2,7 +2,7 @@ return function(){
 
         (async () => {
             const slide = new Slide.SDK()
-            await slide.init();
+            slide.preload();
 
             await slide.open();
 

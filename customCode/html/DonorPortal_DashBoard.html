@@ -3,8 +3,7 @@
   <main class="bv__dashboard__main">
     <div class="bv__dashboard__header bv__globals__px">
       <div class="bv__dashboard__profile">
-        <u-Components-ProfilePicture height="80px"
-          width="80px" :src="DonorPortal_GetCurrentUserProfilePicture()" />
+        <u-Components-ProfilePicture height="80px" width="80px" :src="DonorPortal_GetCurrentUserProfilePicture()" />
         <!--u-Icons-EmptyProfilePicture v-if="DonorPortal_GetCurrentUserProfilePicture() == null" /-->
         <div>
           <h1 id="bv__dashboard__profileusername">
@@ -47,7 +46,7 @@
           <div class="bv__dashboard__cardhead">
             <span class="w-100 d-flex align-items-center justify-content-between">
               <p> CO₂ Captured </p>
-              <u-Components-ToolTip @click="console.log($event)">
+              <u-Components-ToolTip>
                 <template #tooltip>
                   <p>Want to know how we figure this out? Info coming soon.</p>
                 </template>
@@ -101,10 +100,14 @@
         </div>
 
         <div v-else>
-          <h2 style="font-weight: 400">
+          <h2 style="font-weight: 400; display: flex; align-items: center; justify-content: space-between;">
             You have {{ DonorPortal_GetCurrentUserNFTsCount() }}
             NFT{{ DonorPortal_GetCurrentUserNFTsCount() > 1 ? 's' : '' }}
-            <div id="bv__nftrefresh" style="float: right;     display:inline-block">
+
+            <u-Components-RefreshButton @click="DonorPortal_GetLatestNFTTESTNET">
+            </u-Components-RefreshButton>
+
+            <!-- <div id="bv__nftrefresh" style="float: right;     display:inline-block">
               <div id="bv__nftrefresh__text" style="display: inline-block;">
                 <p id="bv__nftrefresh__textinfo" style="display: inline-block; display: none;">Checking...</p>
                 <div id="bv__nftrefresh__button" style="cursor: pointer; display: inline-block;"
@@ -112,7 +115,7 @@
                   <u-Icons-Refresh></u-Icons-Refresh>
                 </div>
               </div>
-            </div>
+            </div> -->
           </h2>
 
         </div>

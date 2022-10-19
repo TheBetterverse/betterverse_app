@@ -17,6 +17,8 @@
     //Exchange Rates Variables
     var exchangeGBPtoUSD = $getGlobalModel('exchangeGBPtoUSD');
 
+    console.log(exchangeGBPtoUSD)
+
     //Get GBP Projects
     let GBP_charityProjectRows = $getGrid('charityProjects').filter(row => row.$currency$display == "GBP") 
 

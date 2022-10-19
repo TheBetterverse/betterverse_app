@@ -151,6 +151,7 @@ module.exports = {
   text-align: center;
 
   user-select: none;
+  appearance: none;
 }
 
 .bv__comps__inputbutton > * {
@@ -165,6 +166,12 @@ module.exports = {
 
 .bv__comps__inputbutton:disabled {
   opacity: 0.2;
+}
+
+.bv__comps__inputbutton:focus {
+  appearance: none;
+  user-select: none;
+  background: black;
 }
 
 .bv__comps__input:disabled {

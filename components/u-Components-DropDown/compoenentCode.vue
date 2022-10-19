@@ -72,7 +72,7 @@ module.exports = {
 
     label: {
       type: String,
-      default: 'Country'
+      default: ''
     },
 
     items: {

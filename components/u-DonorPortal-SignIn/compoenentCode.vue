@@ -101,10 +101,10 @@
             </div>
           </bv-button>
 
-          <bv-button responsive name="sign-up-discord">
+          <bv-button responsive name="sign-up-unstoppable">
             <div class="bv__register__socialbutton">
               <icon-discord></icon-discord>
-              <p class="d-none d-xl-block">UD</p>
+              <p class="d-none d-xl-block">Unstoppable</p>
             </div>
           </bv-button>
         </div>
@@ -203,7 +203,6 @@ module.exports = {
           alert(err.message)
         })
 
-      //$setCurrentTab('-Mx_5FLL2jlxjXYUMdIL')
     },
 
     async signInGoogle(e) {
@@ -221,7 +220,7 @@ module.exports = {
       throw 'Sign in with facebook is not implemented'
     },
 
-    async signInUnstoppable(e) {
+    async signInUnstoppable(e) {   
       await $anonUserSignIn('unstoppableDomains')
         .then(() => {
           $setCurrentTab('-Mx_5FLL2jlxjXYUMdIL')

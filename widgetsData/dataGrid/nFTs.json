@@ -7,84 +7,87 @@
       "displayName": "additionalDonationRows",
       "invisible": false,
       "lookUpTable": "capturedDonationData",
-      "order": 1,
+      "order": 2,
       "type": "multi_lookup"
     },
     "createdDate": {
       "displayName": "Created Date",
       "invisible": true,
-      "order": 4,
+      "order": 7,
       "type": "date"
     },
     "initialDonationRow": {
       "displayName": "initialDonationRow",
       "invisible": false,
       "lookUpTable": "capturedDonationData",
-      "order": 0,
+      "order": 1,
       "type": "lookup"
     },
     "json": {
       "Width": "673px",
       "displayName": "json",
       "invisible": false,
-      "order": 3,
+      "order": 4,
       "type": "multiline_text"
     },
     "lastEditDate": {
       "displayName": "Last edit date",
       "invisible": true,
-      "order": 5,
+      "order": 8,
       "type": "date"
     },
     "lastEditedBy": {
       "displayName": "Last edited by",
       "invisible": true,
-      "order": 6,
+      "order": 9,
       "type": "user"
     },
     "layout": {
       "displayName": "Layout",
       "invisible": true,
-      "order": 7,
+      "order": 10,
       "type": "select"
     },
     "nextEvents": {
       "displayName": "Next Events",
       "invisible": true,
-      "order": 8,
+      "order": 11,
       "type": "string"
     },
     "nftType": {
       "displayName": "nftType",
-      "order": 12,
+      "invisible": false,
+      "order": 5,
       "type": "select"
     },
     "owner": {
       "displayName": "Owner",
       "invisible": true,
-      "order": 9,
+      "order": 12,
       "type": "user"
     },
     "shareableLink": {
       "displayName": "shareableLink",
-      "order": 13,
+      "invisible": false,
+      "order": 6,
       "type": "string"
     },
     "state": {
       "displayName": "State",
       "invisible": true,
-      "order": 10,
+      "order": 13,
       "type": "string"
     },
     "tokenID": {
       "displayName": "tokenID",
-      "order": 11,
+      "invisible": false,
+      "order": 0,
       "type": "string"
     },
     "walletAddress": {
       "displayName": "walletAddress",
       "invisible": false,
-      "order": 2,
+      "order": 3,
       "type": "string"
     }
   },

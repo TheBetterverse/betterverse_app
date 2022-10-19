@@ -1,10 +1,10 @@
-const TestBTRCAddress = this.Contracts().TestBTRCAddress
-const TreeContractAddress = this.Contracts().TreeContractAddress
-const MinterContractAddress = this.Contracts().MinterContractAddress
-const TreeContractABI = this.Contracts().TreeContractABI
-const MinterContractABI = this.Contracts().MinterContractABI
-const TestBTRCABI = this.Contracts().TestBTRCABI
-const getTokenURI = this.DonorPortal_GetTokenURI
+const TestBTRCAddress = this.ContractsTESTNET().TestBTRCAddress
+const TreeContractAddress = this.ContractsTESTNET().TreeContractAddress
+const MinterContractAddress = this.ContractsTESTNET().MinterContractAddress
+const TreeContractABI = this.ContractsTESTNET().TreeContractABI
+const MinterContractABI = this.ContractsTESTNET().MinterContractABI
+const TestBTRCABI = this.ContractsTESTNET().TestBTRCABI
+const getTokenURI = this.DonorPortal_GetTokenURITESTNET
 const walletProvider = this.DonorPortal_GetCurrentUserWalletProvider()
 
 //Get Donation modal data
@@ -18,6 +18,7 @@ const location = await this.DonorPortal_GetCurrentUserProfileLocation()
 const amount = await this.DonorPortal_GetDonationAmountNumber()
 const date = await this.DonorPortal_GetDateTime()
 var nftCount = await this.DonorPortal_GetDonationNFTCount()
+var availableTrees
 
 return async function () {
   if (!walletProvider) {
@@ -157,7 +158,7 @@ return async function () {
               //TASK 1 | Check if there are trees available to be minted in the smart contract.
               document.getElementById("bv__donate__buttontext").innerText = 'Checking trees'
               try{
-                const availableTrees = await TreeContract.methods.treesInStorage().call({
+                availableTrees = await TreeContract.methods.treesInStorage().call({
                   from: wallet
                 });
                 console.log('available trees: ' + availableTrees)
@@ -194,7 +195,7 @@ return async function () {
                     var charityID = charityRow.smartContractCharityID
 
                     //TASK 3 | Prepare variable and call the mintTree function from the smart contract.
-
+                    document.getElementById("bv__donate__buttontext").innerText = 'Requesting approval'
                     const approveAmount = Web3.utils.toWei(amount.toString(), 'ether')
                     if(walletProvider == 'coinbase') {	
                       const tx = await TestBTRContractWithEther.approve(MinterContractAddress, approveAmount)	
@@ -207,7 +208,6 @@ return async function () {
                       await TestBTRContract.methods.approve(MinterContractAddress, approveAmount).call()
                     }	
                     console.log('==============after approval')
-                    document.getElementById("bv__donate__buttontext").innerText = 'Requesting approval'
                     
                     console.log('NFT COUNT: ' + nftCount)
                     console.log('CHARITY ID: ' + charityID)

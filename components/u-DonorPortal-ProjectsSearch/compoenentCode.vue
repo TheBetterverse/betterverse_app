@@ -193,10 +193,8 @@ module.exports = {
     },
 
     updateData() {
-      console.count()
       this.filteredData = filterData(this.currentNeedle, this.data)
       this.filteredData.sort(sortingMethods[this.currentSort])
-      console.log(this.filteredData)
     }
   },
 

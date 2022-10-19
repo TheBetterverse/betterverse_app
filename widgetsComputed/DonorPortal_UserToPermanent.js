@@ -3,8 +3,6 @@
 return function (form) {
   let { email, password } = form
 
-  console.log({ email, password })
-
   $anonUserToPermanent('emailAndPassword', { email, password })
     .then(() => {
       $setCurrentTab('-Mx_5FLL2jlxjXYUMdIL')

@@ -107,13 +107,32 @@
             </div>
           </bv-button>
 
-          <bv-button responsive name="sign-up-discord">
+          <bv-button responsive name="sign-up-unstoppable">
             <div class="bv__register__socialbutton">
-              <icon-discord></icon-discord>
-              <p class="d-none d-xl-block">UD</p>
+              <icon-unstoppable></icon-unstoppable>
+              <p class="d-none d-xl-block">Unstoppable</p>
             </div>
           </bv-button>
         </div>
+      </section>
+
+      <section name="tos" style="padding-top: 5px;">
+        <b-container>
+          <b-row class="my-3">
+
+            <b-col cols="1">
+              <icon-info style=""></icon-info>
+            </b-col>
+            <b-col cols="11">
+              <p>
+              By creating an account with us you are confirming that you have read and agree to be bound by our
+              <a href="https://www.betterverse.app/legal#terms-of-use" style="font-weight: 500; color: black;" target="_blank"> Terms of Service</a>.
+              </p>
+            </b-col>
+
+
+          </b-row>
+        </b-container>
       </section>
 
       <!-- For large displays -->
@@ -199,8 +218,8 @@ module.exports = {
         case 'sign-up-facebook':
           await this.signUpFacebook(e)
           break
-        case 'sign-up-discord':
-          await this.signUpDiscord(e)
+        case 'sign-up-unstoppable':
+          await this.signUpUnstoppable(e)
           break
       }
     },
@@ -246,9 +265,16 @@ module.exports = {
       throw 'Sign up with facebook is not implemented'
     },
 
-    async signUpDiscord(e) {
-      throw 'Sign up with discord is not implemented'
-    },
+    async signUpUnstoppable(e) {
+      await $anonUserToPermanent('unstoppableDomains')
+        .then(() => {
+          $setCurrentTab('-Mx_5FLL2jlxjXYUMdIL')
+        })
+        .catch(err => {
+          alert(err.message)
+          spinnerActive == false
+        })    
+      },
 
     /* View controller */
 
@@ -275,7 +301,8 @@ module.exports = {
     IconMail: $getCustomComponent('u-Icons-Mail'),
     IconGoogle: $getCustomComponent('u-Icons-Google'),
     IconFacebook: $getCustomComponent('u-Icons-Facebook'),
-    IconDiscord: $getCustomComponent('u-Icons-UnstoppableDomains'),
+    IconUnstoppable: $getCustomComponent('u-Icons-UnstoppableDomains'),
+    IconInfo: $getCustomComponent('u-Icons-Info-Normal'),
     IconRightarrow: $getCustomComponent('u-Icons-ArrowRight'),
     IconBetterverse: $getCustomComponent('u-Icons-Betterverse'),
     BvButton: $getCustomComponent('u-Components-Button'),

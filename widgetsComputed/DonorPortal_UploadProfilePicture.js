@@ -6,7 +6,6 @@ return async (data, userRowKey) => {
   const fileName = await new Promise(resolve => {
     this.$storageService.upload(this.currentDash, data, uploaded => {
       const value = Object.entries(uploaded)[0].join('_')
-      console.log(value)
 
       resolve(value)
     })

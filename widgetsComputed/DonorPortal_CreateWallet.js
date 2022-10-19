@@ -7,10 +7,9 @@ return function(walletProvider){
         // wallet = 'TorusWalletAddressHere'
 
         (async () => {
-            console.log({ keys: Object.keys(window) });
-            console.log({ Slide });
             const slide = new Slide.SDK()
-            await slide.init();
+            slide.preload();
+            window.slide = slide;
 
             const wallet = await slide.request({ method: "eth_requestAccounts" });
 
