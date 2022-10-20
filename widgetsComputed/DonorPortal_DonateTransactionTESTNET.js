@@ -75,15 +75,15 @@ return async function () {
     } else {
       let ethereum
       if (window.ethereum.providers && window.ethereum.providers.length == 2) {
-
         if (walletProvider == 'coinbase') {
           ethereum = window.ethereum.providers[0]
         } else {
           ethereum = window.ethereum.providers[1]
+          ethereum.request({ method: 'eth_requestAccounts' });
         }
-      } else {
-        ethereum = window.ethereum
-      }
+        } else {
+          ethereum = window.ethereum
+        }
 
       web3 = new Web3(ethereum)
       await ethereum.request({

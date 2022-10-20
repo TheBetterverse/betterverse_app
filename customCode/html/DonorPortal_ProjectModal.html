@@ -10,10 +10,13 @@
         <u-Icons-Betterverse height="32px" width="32px" />
       </div>
       <div style="display: flex; gap: 1rem;">
-        <u-Components-WalletDisplay v-if="DonorPortal_GetCurrentUserWalletAddress() != null && DonorPortal_GetCurrentUserProfileComplete() == true" :wallet="DonorPortal_GetCurrentUserWalletInformation()" class="d-none d-lg-block"
-        @click="DonorPortal_OpenWallet()"/>
-        <button style="background: #efede7; border-radius: 100%;" @click="DonorPortal_TriggerProjectModal('hide')">
-          <u-Icons-Close></u-Icons-Close>       
+        <u-Components-WalletDisplay
+          v-if="DonorPortal_GetCurrentUserWalletAddress() != null && DonorPortal_GetCurrentUserProfileComplete() == true"
+          :wallet="DonorPortal_GetCurrentUserWalletInformation()" class="d-none d-lg-block"
+          @click="DonorPortal_OpenWallet()" />
+        <button style="background: var(--bg-secondary); border-radius: 100%;"
+          @click="DonorPortal_TriggerProjectModal('hide')">
+          <u-Icons-Close></u-Icons-Close>
         </button>
       </div>
     </nav>
@@ -86,9 +89,9 @@
           <div>
             <u-Components-Button secondary
               @click="DonorPortal_DonateToSelectedCharity(DonorPortal_GetSpecificProject())">
-              <p style="color: #ECEAE3">Donate</p>
+              <p style="color: var(--offwhite)">Donate</p>
               <template #right-icon>
-                <u-Icons-Heart color="#ECEAE3" />
+                <u-Icons-Heart color="var(--offwhite)" />
               </template>
             </u-Components-Button>
           </div>
@@ -206,7 +209,7 @@
               @click="DonorPortal_OpenCharityLinks(DonorPortal_GetSpecificProject().$charity, 'twitter')">
               <p>Twitter</p>
               <template #right-icon>
-                <u-Icons-Twitter-Blue/>
+                <u-Icons-Twitter-Blue />
               </template>
             </u-Components-Button>
             <u-Components-Button v-if="DonorPortal_GetSpecificProject().$charity.discordURL"
@@ -249,18 +252,18 @@
         <div id="bv__projectmodal__share">
           <div class="bv__projectmodal__infocard bv__projectmodal__sharecard" style="background: black">
             <div>
-              <h2 style="color: #ECEAE3">
+              <h2 style="color: var(--offwhite)">
                 Donate
               </h2>
-              <p style="color: #ECEAE3">Ready to support this project?</p>
+              <p style="color: var(--offwhite)">Ready to support this project?</p>
             </div>
-            <u-Components-Button style="border: 1px solid #ECEAE3"
+            <u-Components-Button style="border: 1px solid var(--offwhite)"
               @click="DonorPortal_DonateToSelectedCharity(DonorPortal_GetSpecificProject())">
               <template #right-icon>
-                <u-Icons-Heart color="#ECEAE3" />
+                <u-Icons-Heart color="var(--offwhite)" />
               </template>
               <template #default>
-                <p style="color: #ECEAE3">
+                <p style="color: var(--offwhite)">
                   Donate
                 </p>
               </template>
@@ -279,7 +282,7 @@
               <u-Components-Button
                 @click="DonorPortal_GenerateSharableProjectURL(DonorPortal_GetSpecificProject().rowKey, 'twitter')">
                 <template #left-icon>
-                  <u-Icons-Twitter-Blue/>
+                  <u-Icons-Twitter-Blue />
                 </template>
               </u-Components-Button>
 
@@ -369,7 +372,7 @@
     padding: 0;
     margin: 0;
 
-    background-color: #ECEAE3;
+    background-color: var(--bg-primary);
   }
 
   #bv__projectmodal__logolg {
@@ -397,16 +400,16 @@
     background: none;
   }
 
-  #bv__projectmodal__navbar button:hover{
-    opacity: 80%; 
+  #bv__projectmodal__navbar button:hover {
+    opacity: 80%;
   }
 
-  #bv__projectmodal__bottomnav__nav button:hover{
-    opacity: 80%; 
+  #bv__projectmodal__bottomnav__nav button:hover {
+    opacity: 80%;
   }
 
-  #bv__projectmodal__otherprojectsnav button:hover{
-    opacity: 80%; 
+  #bv__projectmodal__otherprojectsnav button:hover {
+    opacity: 80%;
   }
 
   #bv__projectmodal__navbarlogo {
@@ -430,7 +433,7 @@
   }
 
   #bv__projectmodal__leftsideimage {
-    background: #eceae3;
+    background: var(--bg-primary);
 
     flex-shrink: 0;
     height: 100%;
@@ -457,7 +460,7 @@
     padding-top: 30px;
     padding-bottom: 30px;
 
-    background: #efede7;
+    background: var(--bg-secondary);
 
     display: flex;
     flex-direction: column;
@@ -654,7 +657,7 @@
     margin-right: 0.25rem;
     content: counter(item);
     background: black;
-    color: #ECEAE3;
+    color: var(--offwhite);
     border-radius: 100%;
     width: 1.2rem;
     height: 1.2rem;

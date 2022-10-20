@@ -127,7 +127,7 @@ module.exports = {
   padding-bottom: 60px;
 
   color: #000;
-  background-color: #eceae3;
+  background-color: var(--bg-primary);
 
   border-top: 1px solid black;
 }

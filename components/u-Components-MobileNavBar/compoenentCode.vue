@@ -5,7 +5,7 @@
     <u-Components-Button
       id="bv__mobilenavbar__compassicon"
       @click="$emit('click', $event)"
-      style="background: #eceae3"
+      style="background: var(--bg-primary)"
     >
       <template #left-icon>
         <u-Icons-Compass />
@@ -16,7 +16,7 @@
       id="bv__mobilenavbar__closeicon"
       class="hide"
       @click="$emit('click', $event)"
-      style="background: #eceae3"
+      style="background: var(--bg-primary)"
     >
       <template #left-icon>
         <u-Icons-CloseX />
@@ -41,9 +41,6 @@ module.exports = {
   align-items: center;
   justify-content: flex-end;
   gap: 10px;
-
-  margin-top: 40px;
-  margin-bottom: 40px;
 
   position: sticky;
   bottom: 10px;

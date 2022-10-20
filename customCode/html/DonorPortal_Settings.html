@@ -166,8 +166,8 @@
             <div v-else>
               <p> Wallet connected </p>
 
-              <u-Components-WalletDisplay address checkmark :wallet="DonorPortal_GetCurrentUserWalletInformation()" 
-              @click="DonorPortal_OpenWallet()"/>
+              <u-Components-WalletDisplay address checkmark :wallet="DonorPortal_GetCurrentUserWalletInformation()"
+                @click="DonorPortal_OpenWallet()" />
 
               <div id="bv__settings__walletbalance">
                 <div>
@@ -279,18 +279,19 @@
           </div>
         </div>
 
-        <u-Components-MobileNavBar @click="DonorPortal_TriggerMobileNav()" class="bv__globals__px">
-          <u-Components-Button secondary class="w-100"
-            @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ', '-Mx_5FLL2jlxjXYUMdIL')">
-            <p>View Projects</p>
-            <template #right-icon>
-              <u-Icons-Heart color="white" />
-            </template>
-          </u-Components-Button>
-        </u-Components-MobileNavBar>
       </form>
+      <u-Components-Footer />
+
+      <u-Components-MobileNavBar @click="DonorPortal_TriggerMobileNav()" class="bv__globals__px">
+        <u-Components-Button secondary class="w-100"
+          @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ', '-Mx_5FLL2jlxjXYUMdIL')">
+          <p>View Projects</p>
+          <template #right-icon>
+            <u-Icons-Heart color="white" />
+          </template>
+        </u-Components-Button>
+      </u-Components-MobileNavBar>
     </main>
-    <u-Components-Footer />
   </div>
 </template>
 
@@ -332,7 +333,7 @@
     border-top: 1px solid rgba(0, 0, 0, 0.05);
 
 
-    background: #eceae3;
+    background: var(--bg-primary);
   }
 
 
@@ -353,7 +354,7 @@
     padding-top: 15px;
     padding-bottom: 15px;
 
-    background: #eceae3;
+    background: var(--bg-primary);
   }
 
   #bv__settings__menu::-webkit-scrollbar {
@@ -498,7 +499,7 @@
     position: absolute;
     top: 2rem;
     width: 100%;
-    background: #eceae3 !important;
+    background: var(--bg-primary) !important;
 
   }
 
@@ -507,7 +508,7 @@
     align-items: flex-start;
     justify-content: flex-start;
 
-    background: #eceae3 !important;
+    background: var(--bg-primary) !important;
 
     margin-top: 0.5rem;
     border: 1px solid rgba(0, 0, 0, 0.1);

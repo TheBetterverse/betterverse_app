@@ -16,8 +16,8 @@
                 v-if="DonorPortal_GetCurrentUserWalletAddress() != null && DonorPortal_GetCurrentUserProfileComplete() == true"
                 @click="DonorPortal_OpenWallet()" />
             </div>
-            <button style="background: #efede7; border-radius: 100%;" @click="DonorPortal_TriggerDonateModal('none')"
-              type="button">
+            <button style="background: var(--bg-secondary) ; border-radius: 100%;"
+              @click="DonorPortal_TriggerDonateModal('none')" type="button">
               <u-Icons-Close></u-Icons-Close>
             </button>
           </nav>
@@ -367,7 +367,7 @@
     padding: 0;
     margin: 0;
 
-    background-color: #eceae3;
+    background-color: var(--bg-primary);
   }
 
   .bv__donatemodal__main {
@@ -388,7 +388,7 @@
     justify-content: space-between;
     gap: 4rem;
 
-    background: #efede7;
+    background: var(--bg-secondary);
     border-bottom: 1px solid white;
 
     scroll-snap-align: start;
@@ -644,7 +644,7 @@
   .bv__donatemodal__footertext {
     font-size: 12px;
     font-weight: 500;
-    color: #ECEAE3;
+    color: var(--offwhite);
   }
 
   @media screen and (min-width: 992px) {

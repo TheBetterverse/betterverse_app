@@ -22,7 +22,7 @@
       <div id="bv__nftmodal__leftsideimage__rightborder"></div>
 
     </div>
-    
+
     <div id="bv__nftmodal__rightside">
       <div id="bv__nftmodal__main">
         <div class="bv__nftmodal__treetitle">
@@ -36,9 +36,9 @@
         <h1 id="bv__nftmodal__message">
           This donation captured <b v-if="DonorPortal_GetCurrentUserDailyCarbonSequestrationUpdate('specific')">{{
             DonorPortal_GetCurrentUserDailyCarbonSequestrationUpdate('specific')
-              .toLocaleString(DonarPortal_NavigatorLanguage,{
-                minimumFractionDigits: 0,
-                maximumFractionDigits:2})
+            .toLocaleString(DonarPortal_NavigatorLanguage,{
+            minimumFractionDigits: 0,
+            maximumFractionDigits:2})
             }} kgs</b>
           of <b>CO2</b>
           by planting <b>{{DonorPortal_GetSpecificDonation().numberOfTreesPlanted.toLocaleString() }} trees</b>
@@ -77,15 +77,17 @@
                 Donation
               </p>
               <h2 class="d-flex">
-                <u-Icons-USDC style="margin-right: 4px;"/>
-                {{ DonorPortal_GetSpecificDonation().donationAmount.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}&nbsp;
+                <u-Icons-USDC style="margin-right: 4px;" />
+                {{ DonorPortal_GetSpecificDonation().donationAmount.toLocaleString(undefined, {minimumFractionDigits: 2,
+                maximumFractionDigits: 2}) }}&nbsp;
               </h2>
               <p v-if="DonorPortal_GetCurrentUserComparisonCurrency() != null">
-                ~{{ DonorPortal_GetSpecificDonationComparisonCurrency().toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}
+                ~{{ DonorPortal_GetSpecificDonationComparisonCurrency().toLocaleString(undefined,
+                {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}
               </p>
             </div>
             <div class="bv__nftmodal__infocardfooter">
-              <u-Icons-Donation/>
+              <u-Icons-Donation />
             </div>
           </div>
 
@@ -113,10 +115,10 @@
               </span>
               <h2>
                 {{ DonorPortal_GetCurrentUserDailyCarbonSequestrationUpdate('specific')
-                  .toLocaleString(DonarPortal_NavigatorLanguage,{
-                    minimumFractionDigits: 0,
-                    maximumFractionDigits: 2
-                  })
+                .toLocaleString(DonarPortal_NavigatorLanguage,{
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 2
+                })
                 }} kg
               </h2>
             </div>
@@ -285,7 +287,7 @@
               <u-Components-Button
                 @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'twitter')">
                 <template #left-icon>
-                  <u-Icons-Twitter-Blue/>
+                  <u-Icons-Twitter-Blue />
                 </template>
               </u-Components-Button>
 
@@ -296,27 +298,31 @@
                 </template>
               </u-Components-Button>
 
-              <u-Components-Button @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'telegram')">
+              <u-Components-Button
+                @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'telegram')">
                 <template #left-icon>
                   <u-Icons-Telegram />
                 </template>
               </u-Components-Button>
 
-              <u-Components-Button @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'whatsapp')">
+              <u-Components-Button
+                @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'whatsapp')">
                 <template #left-icon>
                   <u-Icons-WhatsApp />
                 </template>
               </u-Components-Button>
 
-              <u-Components-Button @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'linkedin')">
+              <u-Components-Button
+                @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'linkedin')">
                 <template #left-icon>
-                  <u-Icons-Linkedin/>
+                  <u-Icons-Linkedin />
                 </template>
               </u-Components-Button>
 
-              <u-Components-Button @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'copy')">
+              <u-Components-Button
+                @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'copy')">
                 <template #left-icon>
-                  <u-Icons-Copy/>
+                  <u-Icons-Copy />
                 </template>
               </u-Components-Button>
             </div>
@@ -347,7 +353,7 @@
     padding: 0;
     margin: 0;
 
-    background-color: #ECEAE3;
+    background-color: var(--bg-primary);
   }
 
 
@@ -430,7 +436,7 @@
   #bv__nftmodal__main {
     height: 55vh;
     padding: 30px;
-    background: #efede7;
+    background: var(--bg-secondary);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -471,9 +477,9 @@
     gap: 10px;
   }
 
-.bv__tooltip {
+  .bv__tooltip {
     justify-content: flex-end !important;
-}
+  }
 
   #bv__nftmodal__info {
     height: 100%;

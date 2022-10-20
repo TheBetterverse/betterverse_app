@@ -1,5 +1,14 @@
 /* DonorPortal_Global.css */
 
+:root {
+  --bg-primary: #eceae3;
+  --bg-secondary: #efede7;
+  --offwhite: #eceae3;
+
+  --navbar-mobile-height: 67px;
+  --navbar-desktop-height: 92px;
+}
+
 *,
 *::before,
 *::after {

@@ -170,7 +170,7 @@ select.bv-dropdown-select {
   width: 100%;
   border: none;
   outline: none;
-  background: #eceae3;
+  background: var(--bg-primary);
   color: black !important;
 }
 

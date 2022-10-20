@@ -852,6 +852,14 @@
     "savePath": "components/-NEk7g-CZsKO1sk_2e2q/code"
   },
   {
+    "filePath": "components/u-Components-TreeCard2/index.json",
+    "savePath": "components/-NEqZuEOZXpamtmbNiRf"
+  },
+  {
+    "filePath": "components/u-Components-TreeCard2/compoenentCode.vue",
+    "savePath": "components/-NEqZuEOZXpamtmbNiRf/code"
+  },
+  {
     "filePath": "customCode/css/Betterverse_Bootstrap.css",
     "savePath": "customCode/css/-MvYLPXgaHOT2LWKJD3-/code",
     "customCodeName": "Betterverse_Bootstrap",
@@ -2017,6 +2025,10 @@
     "savePath": "widgetsComputed/DonorPortal_OpenCharityLinks"
   },
   {
+    "filePath": "widgetsComputed/DonorPortal_OpenMetamask.js",
+    "savePath": "widgetsComputed/DonorPortal_OpenMetamask"
+  },
+  {
     "filePath": "widgetsComputed/DonorPortal_OpenOpenSea.js",
     "savePath": "widgetsComputed/DonorPortal_OpenOpenSea"
   },
@@ -2027,6 +2039,10 @@
   {
     "filePath": "widgetsComputed/DonorPortal_OpenSlide.js",
     "savePath": "widgetsComputed/DonorPortal_OpenSlide"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_OpenTorus.js",
+    "savePath": "widgetsComputed/DonorPortal_OpenTorus"
   },
   {
     "filePath": "widgetsComputed/DonorPortal_OpenWallet.js",
@@ -2159,6 +2175,10 @@
   {
     "filePath": "widgetsComputed/DonorPortal_ViewSelectedCharity.js",
     "savePath": "widgetsComputed/DonorPortal_ViewSelectedCharity"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_ViewSelectedTree.js",
+    "savePath": "widgetsComputed/DonorPortal_ViewSelectedTree"
   },
   {
     "filePath": "widgetsComputed/Global_ConvertUSDtoEUR.js",

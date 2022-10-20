@@ -67,7 +67,7 @@ return function (event) {
             'metamask'
           )
 
-              if (
+            if (
             currentSubTab == '-N4UIKK5MmraPqo_BhCH' &&
             wallet != null
           ) {

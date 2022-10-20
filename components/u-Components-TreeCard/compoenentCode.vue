@@ -1,32 +1,28 @@
 <template>
-  <div
-    class="bv__treecard"
-    @click="$event.pointerType === 'touch' ? $emit('view', $event) : undefined"
-  >
-    <div class="bv__treecard__card">
+  <div class="bv__treecard">
+    <div
+      class="bv__treecard__card"
+      @click="
+        alert($event)
+        $event.pointerType === 'touch' ? $emit('view', $event) : undefined
+      "
+    >
       <div class="bv__treecard__overlay">
         <div class="bv__treecard__overlaytop">
-          <div class="bv__treecard__overlaytraits">
-            <!--span class="bv__treecard__trait">
-              <u-Icons-Eye2 />
-            </span>
-
-            <span class="bv__treecard__trait">
-              <u-Icons-Plant />
-            </span>
-
-            <span class="bv__treecard__trait">
-              <u-Icons-Globe width="24px" height="24px" />
-            </span-->
-          </div>
+          <div class="bv__treecard__overlaytraits"></div>
         </div>
 
         <div class="bv__treecard__overlaybottom">
-          <h4 class="bv__treecard__overlaytitle">
-            <slot name="title">
-              {{ localData ? localData.name : null }}
-              <!-- Birget-Handroanthus #456 -->
-            </slot>
+          <h4 v-if="localData" class="bv__treecard__overlaytitle">
+            {{ localData.name }}
+          </h4>
+
+          <h4
+            v-else
+            class="bv__treecard__overlaytitle bv__animations__opacitywave"
+            style="font-family: Documan; color: #999"
+          >
+            <span>.</span><span>.</span><span>.</span>
           </h4>
 
           <h3 class="bv__treecard__overlaydescription">
@@ -43,17 +39,11 @@
                 <u-Icons-Eye />
               </template>
             </u-Components-Button>
-            <!-- <u-Components-Button>
-              <template #left-icon>
-                <u-Icons-Share />
-              </template>
-            </u-Components-Button> -->
           </div>
         </div>
       </div>
 
       <div class="bv__treecard__image bv__globals__skeleton">
-        <!--img :src="localImage" class="bv__globals__skeleton"/-->
         <video
           v-if="localImage"
           ref="video"
@@ -74,25 +64,16 @@
       </div>
 
       <div class="bv__treecard__info">
-        <!--div class="bv__treecard__traits">
-          span class="bv__treecard__trait">
-            <u-Icons-Eye2 />
-          </span>
-
-          <span class="bv__treecard__trait">
-            <u-Icons-Plant />
-          </span>
-
-          <span class="bv__treecard__trait">
-            <u-Icons-Globe width="24px" height="24px" />
-          </span>
-        </div-->
+        <h3 v-if="localData" class="bv__treecard__title">
+          {{ localData.name }}
+        </h3>
 
         <h3
-          class="bv__treecard__title"
-          :style="{ opacity: localData ? '1' : '0' }"
+          v-else
+          class="bv__treecard__title bv__animations__opacitywave"
+          style="font-family: Documan; color: #999"
         >
-          {{ localData ? localData.name : '...' }}
+          <span>.</span><span>.</span><span>.</span>
         </h3>
       </div>
     </div>
@@ -111,9 +92,8 @@
 }
 
 .bv__treecard__card {
-  aspect-ratio: 3 / 3.1;
-  height: 100%;
-  width: 100%;
+  width: auto;
+  height: auto;
 }
 
 .bv__treecard__image {
@@ -121,6 +101,7 @@
 
   width: 100%;
   height: 100%;
+
   border-radius: 4px 4px 0 0;
 }
 
@@ -129,6 +110,9 @@
 
   width: 100%;
   height: 100%;
+
+  max-width: 330px;
+  max-height: 300px;
 
   object-fit: fill;
   border-radius: 4px 4px 0 0;
@@ -139,9 +123,10 @@
   aspect-ratio: 1 / 1;
 
   width: 100%;
-  height: 100% !important;
+  height: 100%;
+
   vertical-align: middle;
-  object-fit: cover;
+  object-fit: fill;
 
   border-radius: 4px 4px 0 0;
   border-bottom-style: solid;
@@ -226,15 +211,23 @@
   justify-content: space-between;
 }
 
-.bv__treecard:hover .bv__treecard__title,
-.bv__treecard:hover .bv__treecard__traits,
-.bv__treecard:focus .bv__treecard__traits {
-  visibility: hidden;
-}
+@media (hover: hover) {
+  .bv__treecard:hover .bv__treecard__title,
+  .bv__treecard:hover .bv__treecard__traits {
+    visibility: hidden;
+  }
 
-.bv__treecard:hover .bv__treecard__overlay,
-.bv__treecard:focus .bv__treecard__overlay {
-  display: flex;
+  .bv__treecard:hover .bv__treecard__overlay {
+    display: flex;
+  }
+
+  .bv__treecard:focus .bv__treecard__traits {
+    visibility: hidden;
+  }
+
+  .bv__treecard:focus .bv__treecard__overlay {
+    display: flex;
+  }
 }
 </style>
 

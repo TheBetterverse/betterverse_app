@@ -110,7 +110,7 @@ button.bv__button > span > * {
 
 button.bv__button.secondary {
   background: black;
-  color: #eceae3;
+  color: var(--offwhite);
 }
 
 button.bv__button.secondary:hover {

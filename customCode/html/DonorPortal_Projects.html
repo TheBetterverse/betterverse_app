@@ -9,9 +9,10 @@
       @donate="DonorPortal_DonateToSelectedCharity" />
   </main>
 
+  <u-Components-Footer />
+
   <u-Components-MobileNavBar @click="DonorPortal_TriggerMobileNav()" class="bv__globals__px" />
 
-  <u-Components-Footer />
 </template>
 
 <style>
@@ -28,6 +29,7 @@
     width: 100%;
     margin-top: 22px;
     padding-top: 45px;
+    margin-bottom: 50px;
     min-height: calc(92vh - 67px);
   }
 
@@ -83,8 +85,9 @@
     }
 
     #bv-projects {
+      min-height: calc(100vh - 92px);
       margin-top: 47px;
-      margin-bottom: 100px;
+      margin-bottom: 50px;
     }
   }
 

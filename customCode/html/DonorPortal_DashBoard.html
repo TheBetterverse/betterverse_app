@@ -77,8 +77,7 @@
 
     <div class="bv__dashboard__topborder"></div>
 
-    <div class="bv__globals__px">
-
+    <div id="bv__dashboard__maincontent" class="bv__globals__px">
       <div class="bv__dashboard__currentnfts ">
         <div v-if="DonorPortal_GetCurrentUserNFTsCount() == 0"
           style="display: flex; flex-direction: column; gap: 1rem; width: auto;">
@@ -121,45 +120,36 @@
         </div>
       </div>
 
-      <div id="bv__dashboard__carrousel" class="bv__dashboard__carrousel"
+      <div class="bv__dashboard__carrousel"
         v-if="DonorPortal_GetCurrentUserNFTs() != null && !$getGlobalModel('dashboardRefresh')">
-        <div v-for="(row, key) in DonorPortal_GetCurrentUserNFTs()" :key="key">
-          <u-Components-TreeCard
-            @view="DonorPortal_SelectedDonation(row.json, row.$initialDonationRow.rowKey, row.rowKey); setTimeout(DonorPortal_TriggerNFTModal, 200, 'display')  ;"
-            :treejson="row.json">
-            <template #description>
-              <b>${{row.$initialDonationRow.donationAmount.toLocaleString(undefined, {minimumFractionDigits: 2,
-                maximumFractionDigits: 2})}}</b> donated to
-              <b>{{row.$initialDonationRow.$charity$display}}</b> to plant
-              <b>{{row.$initialDonationRow.numberOfTreesPlanted.toLocaleString()}} trees</b> in
-              <b>{{row.$initialDonationRow.$charityProject.displayLocation}}</b>
-            </template>
-          </u-Components-TreeCard>
-        </div>
+
+        <u-Components-TreeCard2 v-for="(row, key) in DonorPortal_GetCurrentUserNFTs()" :data="row" :key="key"
+          @view="DonorPortal_ViewSelectedTree(row)">
+        </u-Components-TreeCard2>
       </div>
 
-      <u-Components-MobileNavBar @click="DonorPortal_TriggerMobileNav()">
-        <u-Components-Button secondary class="w-100"
-          @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ', '-Mx_5FLL2jlxjXYUMdIL')">
-          View Projects
-          <template #right-icon>
-            <u-Icons-Heart color="white" />
-          </template>
-        </u-Components-Button>
-      </u-Components-MobileNavBar>
-
-    </div>
   </main>
   <u-Components-Footer />
+
+  <u-Components-MobileNavBar @click="DonorPortal_TriggerMobileNav()" class="bv__globals__px">
+    <u-Components-Button secondary class="w-100"
+      @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ', '-Mx_5FLL2jlxjXYUMdIL')">
+      View Projects
+      <template #right-icon>
+        <u-Icons-Heart color="white" />
+      </template>
+    </u-Components-Button>
+  </u-Components-MobileNavBar>
 </template>
 
 <style>
   .bv__dashboard__main {
     margin-top: 67px;
-    background: #eceae3;
+    background: var(--bg-primary);
     width: 100%;
     min-height: calc(92vh - 67px);
   }
+
 
   .bv__dashboard__header {
     display: flex;
@@ -174,8 +164,12 @@
     padding-top: 20px;
     padding-bottom: 25px;
 
-    background: #efede7 !important;
+    background: var(--bg-secondary) !important;
     /* border-bottom: 1px solid #e3e1db; */
+  }
+
+  #bv__dashboard__maincontent {
+    margin-bottom: 40px;
   }
 
   .bv__dashboard__topborder {
@@ -238,58 +232,25 @@
     justify-content: flex-end !important;
   }
 
-  #bv__nftrefresh__elispsis:after {
-    overflow: hidden;
-    display: inline-block;
-    vertical-align: bottom;
-    -webkit-animation: ellipsis steps(4, end) 900ms infinite;
-    animation: ellipsis steps(4, end) 900ms infinite;
-    content: "\2026";
-    /* ascii code for the ellipsis character */
-    width: 0px;
-  }
-
-  @keyframes ellipsis {
-    to {
-      width: 1.25em;
-    }
-  }
-
-  @-webkit-keyframes ellipsis {
-    to {
-      width: 1.25em;
-    }
-  }
-
   .bv__dashboard__currentnfts {
     margin-top: 45px;
     margin-bottom: 15px;
   }
 
   .bv__dashboard__carrousel {
-    width: 100%;
-    padding-bottom: 20px;
-
     display: grid;
+    grid-template-columns: 1fr;
     gap: 20px;
 
-    justify-content: space-between;
-    grid-template-columns: repeat(1, 1fr);
-
+    width: 100%;
+    padding-bottom: 20px;
   }
 
   .bv__dashboard__totaldonated {
     gap: 0.25rem;
   }
 
-
-  @media only screen and (min-width: 480px) {
-    .bv__dashboard__carrousel {
-      grid-template-columns: repeat(1, 1fr);
-    }
-  }
-
-  @media only screen and (min-width: 576px) {
+  @media only screen and (min-width: 762px) {
     #bv__dashboard__profileusername {
       width: max-content;
     }
@@ -344,6 +305,31 @@
   @media only screen and (min-width: 2200px) {
     .bv__dashboard__carrousel {
       grid-template-columns: repeat(6, 1fr);
+    }
+  }
+
+
+
+  #bv__nftrefresh__elispsis:after {
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: bottom;
+    -webkit-animation: ellipsis steps(4, end) 900ms infinite;
+    animation: ellipsis steps(4, end) 900ms infinite;
+    content: "\2026";
+    /* ascii code for the ellipsis character */
+    width: 0px;
+  }
+
+  @keyframes ellipsis {
+    to {
+      width: 1.25em;
+    }
+  }
+
+  @-webkit-keyframes ellipsis {
+    to {
+      width: 1.25em;
     }
   }
 

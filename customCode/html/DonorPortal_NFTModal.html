@@ -30,10 +30,16 @@
 
         <div class="bv__nftmodal__treetitle">
           <h2 class="bv__nftmodal__treename">
-            <u-get-Async :data="DonorPortal_SelectedNFTName()" />
+            <u-get-Async :data="DonorPortal_SelectedNFTName()">
+              <span class="bv__animations__opacitywave">
+                <span>.</span><span>.</span><span>.</span>
+              </span>
+            </u-get-Async>
           </h2>
           <p class="bv__nftmodal__treenumber">
-            <u-get-Async :data="DonorPortal_SelectedNFTNumber()" />
+            <u-get-Async :data="DonorPortal_SelectedNFTNumber()">
+              #
+            </u-get-Async>
           </p>
         </div>
 
@@ -176,10 +182,16 @@
         <div id="bv__nftmodal__infoattributes">
           <div class="bv__nftmodal__treetitle">
             <h2 class="bv__nftmodal__treename">
-              <u-get-Async :data="DonorPortal_SelectedNFTName()" />
+              <u-get-Async :data="DonorPortal_SelectedNFTName()">
+                <span class="bv__animations__opacitywave">
+                  <span>.</span><span>.</span><span>.</span>
+                </span>
+              </u-get-Async>
             </h2>
             <p class="bv__nftmodal__treenumber">
-              <u-get-Async :data="DonorPortal_SelectedNFTNumber()" />
+              <u-get-Async :data="DonorPortal_SelectedNFTNumber()">
+                #
+              </u-get-Async>
             </p>
           </div>
 
@@ -349,28 +361,14 @@
           <hr />
 
           <div id="bv__nftmodal__othernftscarousel">
-            <u-Components-TreeCard v-for="(row, key) in DonorPortal_GetCurrentUserNFTs()" :key="key"
+            <u-Components-TreeCard2 v-for="(row, key) in DonorPortal_GetCurrentUserNFTs()" :data="row" :key="key"
               v-if="row.$initialDonationRow.rowKey !== DonorPortal_GetSpecificDonation().rowKey"
-              @view="DonorPortal_SelectedDonation(row.json, row.$initialDonationRow.rowKey); DonorPortal_TriggerNFTModal('display'); $('#bv__nftmodal').scrollTop(0)"
-              :treejson="row.json">
-              <template #title>
-                <u-get-json :url="row.json" prop="name" />
-              </template>
-              <template #description>
-                <b>${{row.$initialDonationRow.donationAmount.toLocaleString()}}</b> donated to
-                <b
-                  v-if="DonorPortal_GetSpecificDonation().$charity$display">{{row.$initialDonationRow.$charity$display}}</b>
-                to plant
-                <b>{{row.$initialDonationRow.numberOfTreesPlanted.toLocaleString()}} trees</b> in
-                <b>{{row.$initialDonationRow.$charityProject.displayLocation}}</b>
-              </template>
-            </u-Components-TreeCard>
+              @view="DonorPortal_ViewSelectedTree(row)">
+            </u-Components-TreeCard2>
           </div>
         </div>
 
         <div id="bv__nftmodal__footer"></div>
-
-
       </div>
 
     </div>
@@ -382,7 +380,7 @@
     position: fixed;
     left: 0;
     top: 0;
-    z-index: 200;
+    z-index: 300;
 
     display: none;
     overflow: auto;
@@ -393,9 +391,8 @@
     padding: 0;
     margin: 0;
 
-    background-color: #ECEAE3;
+    background-color: var(--bg-primary);
   }
-
 
   #bv__nftmodal__logolg {
     position: fixed;
@@ -446,7 +443,7 @@
     width: 100%;
     height: 50vh;
 
-    /* background: #efede7; */
+    /* background: var(--bg-secondary) ; */
     background: #ccc;
     display: flex;
     justify-content: center;
@@ -457,7 +454,7 @@
   }
 
   #bv__nftmodal__leftsideimage {
-    background: #eceae3;
+    background: var(--bg-primary);
 
     height: 100%;
     width: 100%;
@@ -474,7 +471,7 @@
     height: 65vh;
     padding: 30px;
 
-    background: #efede7;
+    background: var(--bg-secondary);
 
     display: flex;
     flex-direction: column;
@@ -495,9 +492,14 @@
   .bv__nftmodal__treenumber {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
-    padding: 0.25rem 0.5rem;
+    align-items: center;
+    justify-content: center;
     gap: 10px;
+
+    min-width: 35px;
+    min-height: 32px;
+    padding: 0.25rem 0.5rem;
+
     background: #CDDABA;
     border: 1px solid #000000;
     border-radius: 5px;
@@ -692,8 +694,9 @@
 
   #bv__nftmodal__othernftscarousel {
     display: grid;
-    align-items: center;
+    align-items: flex-start;
     justify-content: start;
+    flex-wrap: nowrap;
     grid-auto-flow: column;
 
     grid-template-columns: repeat(auto-fill, 1fr);
@@ -701,16 +704,16 @@
     overflow-x: scroll;
 
     width: 100%;
-    height: auto;
+    height: 500px;
 
     padding: 10px 0;
     scroll-snap-type: x mandatory;
   }
 
+
   #bv__nftmodal__othernftscarousel>* {
     scroll-snap-align: start;
-    min-width: 330px;
-    min-height: 300px;
+    width: 400px
   }
 
 
@@ -753,6 +756,10 @@
 
 
   @media screen and (min-width: 992px) {
+    .bv__nftmodal__treenumber {
+      min-width: 43px;
+    }
+
     #bv__nftmodal__infocards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
