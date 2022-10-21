@@ -193,7 +193,7 @@ return async function () {
 
                     var charityID = charityRow.smartContractCharityID
 
-                    //TASK 3 | Prepare variable and call the mintTree function from the smart contract.
+                    //TASK 3 | Prepare variables and call the mintTree function from the smart contract.
 
                     const approveAmount = Web3.utils.toWei(amount.toString(), 'ether')
                     if(walletProvider == 'coinbase') {	
@@ -235,7 +235,7 @@ return async function () {
                         donationSuccess = true
                         nftMint = true
                         document.getElementById("bv__donate__buttontext").innerText = 'Please wait'
-                        await new Promise(resolve => setTimeout(resolve, 3000));
+                        await new Promise(resolve => setTimeout(resolve, 4000));
                         document.getElementById("bv__donate__buttontext").innerText = 'Do not close this window'
 
                         //Task 3.4 Save NFT Data
@@ -254,6 +254,7 @@ return async function () {
                               jsonArray.push(tokenURI)
                             }
 
+                            /*
                             web3.eth.getTransaction(txHash, async (error, res) => {
                               gas = res.gasPrice
                               let data = []
@@ -266,7 +267,8 @@ return async function () {
                                 })
                               })
                               console.log(data, '==========DATA*******')
-
+                              */
+                              
                               console.log(nftIDs)
 
                               //Once donation is succesful create a row to store data

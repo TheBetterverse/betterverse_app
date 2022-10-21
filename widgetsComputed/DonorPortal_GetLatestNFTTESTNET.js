@@ -70,23 +70,29 @@ return async event => {
       })
     } else {
       await delay(3000)
-      return true
+    }
+
+    //Check for NFT transfers
+    console.log('checking transfers')
+
+    //Get current NFT token IDs and JSONs
+    for (let i = 0; i < currentUserNFTs.length; i++) {
+      this.DonorPortal_CheckNFTTransfersAlchemy()
     }
 
     await delay(3000)
 
-    $setGlobalModel('dashboardRefresh', true)
-
-    setTimeout(() => {
-      $setGlobalModel('dashboardRefresh', false)
-    }, 1000)
-
-    await delay(3000)
     return returnedJSONs
   } catch (err) {
     console.error(err)
     endLoadingState(refreshButton)
   } finally {
+    $setGlobalModel('dashboardRefresh', true)
+    setTimeout(() => {
+      $setGlobalModel('dashboardRefresh', false)
+    }, 1000)
     endLoadingState(refreshButton)
   }
+
+
 }

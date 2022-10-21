@@ -66,6 +66,16 @@
       "order": 12,
       "type": "user"
     },
+    "pinataMP4": {
+      "displayName": "pinataMP4",
+      "order": 15,
+      "type": "string"
+    },
+    "pinataPNG": {
+      "displayName": "pinataPNG",
+      "order": 14,
+      "type": "string"
+    },
     "shareableLink": {
       "displayName": "shareableLink",
       "invisible": false,
@@ -462,6 +472,92 @@
                 "editorMode": "javascript",
                 "propName": "shareableLink",
                 "gridId": "nFTs"
+              },
+              {
+                "type": "text",
+                "name": "control_8bcbe370-50d3-11ed-9aed-dd95e0112d1b",
+                "fieldName": "control_8bcbe370-50d3-11ed-9aed-dd95e0112d1b",
+                "label": "pinataPNG",
+                "order": 0,
+                "defaultValue": "",
+                "value": "",
+                "className": "col-md-6",
+                "readonly": false,
+                "readonlyCondition": "",
+                "placeholder": "",
+                "required": false,
+                "requiredCondition": "",
+                "isMultiLine": false,
+                "isInteger": false,
+                "decimalPlace": 0,
+                "isTodayValue": false,
+                "isTodayValueCreated": true,
+                "dateFormat": "mm/dd/yy hh:mm p",
+                "isCurrentUser": false,
+                "isCurrentUserOwner": true,
+                "isNowTimeValue": false,
+                "timeFormat": "HH:mm",
+                "isMultiple": false,
+                "isAjax": false,
+                "dataOptions": [],
+                "ajaxDataUrl": "",
+                "isChecked": false,
+                "vif": "",
+                "customCode": "",
+                "invisible": false,
+                "invisibleCondition": "",
+                "invisibleInDataGrid": false,
+                "invisibleLabel": false,
+                "enableCustomValidation": false,
+                "customValidationRule": "",
+                "customValidationErrorMessage": "",
+                "mask": "",
+                "lookupOpenInModalDisabled": false,
+                "editorMode": "javascript",
+                "propName": "pinataPNG"
+              },
+              {
+                "type": "text",
+                "name": "control_90b5d2b0-50d3-11ed-9aed-dd95e0112d1b",
+                "fieldName": "control_90b5d2b0-50d3-11ed-9aed-dd95e0112d1b",
+                "label": "pinataMP4",
+                "order": 0,
+                "defaultValue": "",
+                "value": "",
+                "className": "col-md-6",
+                "readonly": false,
+                "readonlyCondition": "",
+                "placeholder": "",
+                "required": false,
+                "requiredCondition": "",
+                "isMultiLine": false,
+                "isInteger": false,
+                "decimalPlace": 0,
+                "isTodayValue": false,
+                "isTodayValueCreated": true,
+                "dateFormat": "mm/dd/yy hh:mm p",
+                "isCurrentUser": false,
+                "isCurrentUserOwner": true,
+                "isNowTimeValue": false,
+                "timeFormat": "HH:mm",
+                "isMultiple": false,
+                "isAjax": false,
+                "dataOptions": [],
+                "ajaxDataUrl": "",
+                "isChecked": false,
+                "vif": "",
+                "customCode": "",
+                "invisible": false,
+                "invisibleCondition": "",
+                "invisibleInDataGrid": false,
+                "invisibleLabel": false,
+                "enableCustomValidation": false,
+                "customValidationRule": "",
+                "customValidationErrorMessage": "",
+                "mask": "",
+                "lookupOpenInModalDisabled": false,
+                "editorMode": "javascript",
+                "propName": "pinataMP4"
               }
             ]
           }
@@ -748,7 +844,7 @@
       }
     ],
     "layout": "collapse",
-    "_uniqueId": 0.07696363464227551
+    "_uniqueId": 0.9485095902050049
   },
   "source": "nFTs",
   "storageType": "dashboard",
@@ -796,6 +892,12 @@
         "owner": {
           "invisible": true,
           "order": 12
+        },
+        "pinataMP4": {
+          "order": 15
+        },
+        "pinataPNG": {
+          "order": 14
         },
         "shareableLink": {
           "invisible": false,

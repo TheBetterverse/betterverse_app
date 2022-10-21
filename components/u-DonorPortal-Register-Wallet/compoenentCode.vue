@@ -50,12 +50,12 @@
             <template> <p>Torus</p> </template>
           </bv-button>
 
-          <bv-button name="connect-coinbase" type="submit">
+          <!--bv-button name="connect-coinbase" type="submit">
             <template v-slot:left-icon>
               <icon-coinbase />
             </template>
             <template> <p>Coinbase</p> </template>
-          </bv-button>
+          </bv-button-->
         </div>
 
         <small>Or create wallet with</small>

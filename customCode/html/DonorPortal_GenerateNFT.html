@@ -8,8 +8,8 @@
     </div>
 
     <div id="bv__generatenft__body">
-      <div id="bv__generatenft__image">
-        <iframe src="https://player.vimeo.com/video/758864810?background=1" loop=0 width="300px" height="300px%"
+      <div id="bv__generatenft__image" style="background-color: #efebe4;">
+        <iframe src="https://player.vimeo.com/video/758864810?background=1&loop=0" loop="0" 
           frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
       </div>
 
@@ -39,7 +39,7 @@
         </div>
 
         <div class="bv__globals__px">
-          <u-Components-Button secondary @click="DonorPortal_RedirectToDashboard()">
+          <u-Components-Button id="bv__backtodashboard__button"secondary @click="DonorPortal_RedirectToDashboard()">
             <p>Back to dashboard</p>
             <template #right-icon>
               <u-Icons-Dashboard color="var(--offwhite)" />
@@ -58,6 +58,10 @@
 <style>
   #bv__generatenft {
     background: var(--bg-primary)
+  }
+
+  #bv__backtodashboard__button{
+    opacity: 0;
   }
 
   #bv__generatenft__header {

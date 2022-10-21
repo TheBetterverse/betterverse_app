@@ -16,15 +16,8 @@
         </div>
 
         <h2 class="bv-treecard-hoveroverlay-description">
-          <b> ${{ donationAmount }} </b>
-          donated to
-          <b>
-            {{ charity }}
-          </b>
-          to plant
-          <b> {{ numberOfTrees }} trees </b>
-          in
-          <b>{{ location }}</b>
+          <b> ${{ donationAmount }} </b> donated to <b> {{ charity }} </b> to
+          plant <b> {{ numberOfTrees }} trees </b> in <b>{{ location }}</b>
         </h2>
 
         <div>
@@ -177,14 +170,6 @@ module.exports = {
   font-family: 'Documan', sans-serif;
 }
 
-.bv-treecard:hover .bv-treecard-hoveroverlay {
-  visibility: visible;
-}
-
-.bv-treecard:hover .bv-treecard-title {
-  visibility: hidden;
-}
-
 /* HOVER OVERLAY */
 
 .bv-treecard-hoveroverlay {
@@ -224,5 +209,17 @@ module.exports = {
   font-weight: 400;
   font-size: 1.25rem;
   line-height: 1.5rem;
+}
+
+@media (hover: hover) {
+  .bv-treecard:focus .bv-treecard-hoveroverlay,
+  .bv-treecard:hover .bv-treecard-hoveroverlay {
+    visibility: visible;
+  }
+
+  .bv-treecard:focus .bv-treecard-title,
+  .bv-treecard:hover .bv-treecard-title {
+    visibility: hidden;
+  }
 }
 </style>

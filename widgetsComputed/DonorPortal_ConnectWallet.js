@@ -125,7 +125,7 @@ return function (event) {
 
     connectTorus()
 
-  //COINBASE
+  /*COINBASE
   } else if (walletProvider == 'connect-coinbase') {
     const connectWalletHandler = async () => {
       const { ethereum } = window
@@ -193,7 +193,7 @@ return function (event) {
           window.open("https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad?hl=en")
         }
       }
-    }
+    }*/
 
     connectWalletHandler()
 

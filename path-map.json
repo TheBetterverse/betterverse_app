@@ -1313,6 +1313,17 @@
     }
   },
   {
+    "filePath": "customCode/js/DonorPortal_GenerateNFTButton.js",
+    "savePath": "customCode/js/-NErRml9RUjiPMC2UpbH/code",
+    "customCodeName": "DonorPortal_GenerateNFTButton",
+    "customCodeScope": {
+      "-Mx_5FLL2jlxjXYUMdIL": {
+        "-NAtXkQSbLXO6CKKZj7d": true
+      }
+    },
+    "customCodeLifecycle": "beforeMount"
+  },
+  {
     "filePath": "settings.json",
     "savePath": "settings"
   },
@@ -1651,6 +1662,10 @@
   {
     "filePath": "widgetsComputed/DonorPortal_CheckIfUsernameExists.js",
     "savePath": "widgetsComputed/DonorPortal_CheckIfUsernameExists"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_CheckNFTTransfersAlchemy.js",
+    "savePath": "widgetsComputed/DonorPortal_CheckNFTTransfersAlchemy"
   },
   {
     "filePath": "widgetsComputed/DonorPortal_CheckRampActive.js",

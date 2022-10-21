@@ -73,26 +73,38 @@ return async function () {
       web3 = new Web3(window.slide);
       provider = new ethers.providers.Web3Provider(slide);
     } else {
-      let ethereum
+      let window_ethereumm
+
+      console.log(window.ethereum)
+
       if (window.ethereum.providers && window.ethereum.providers.length == 2) {
         if (walletProvider == 'coinbase') {
-          ethereum = window.ethereum.providers[0]
+          window_ethereum = window.ethereum.providers[0]
         } else {
-          ethereum = window.ethereum.providers[1]
-          ethereum.request({ method: 'eth_requestAccounts' });
+          window_ethereum = window.ethereum.providers[1]
         }
         } else {
-          ethereum = window.ethereum
+          window_ethereum = window.ethereum
         }
 
-      web3 = new Web3(ethereum)
-      await ethereum.request({
+      console.log('configured window ethereum is:')
+      console.log(window_ethereum)
+      console.log('etherum is:')
+      console.log(ethereum)
+      console.log('web3 is')
+      console.log(web3)
+      web3 = new Web3(window_ethereum)
+
+      provider = new ethers.providers.Web3Provider(window_ethereum)
+      await provider.send("eth_requestAccounts", [])
+      const signer = provider.getSigner();
+
+      await window_ethereum.request({
         method: 'wallet_switchEthereumChain',
         params: [{
             chainId: '0x13881', //mumbai test network chain id 80001
         }]
       })
-      provider = new ethers.providers.Web3Provider(ethereum)
     }
 
     const TreeContract = new web3.eth.Contract(TreeContractABI, TreeContractAddress, {
@@ -244,16 +256,17 @@ return async function () {
                         TreeContractWithEther.on('minted', async (token, user, event) => {
                           const mintedTokenID = web3.utils.hexToNumber(token)
                           console.log(mintedTokenID, '====minted Token ID')
-                          if (user.toLowerCase() == wallet.toLowerCase()) {
+                          //if (user.toLowerCase() == wallet.toLowerCase()) {
                             nftIDs.push(mintedTokenID)
-                          }
+                          //}
 
                           if (nftCount == nftIDs.length) {
                             for (let i = 0; i < nftCount; i++) {
-                              let tokenURI = await getTokenURI(nftIDs[i])
+                              let tokenURI = await getTokenURI(nftIDs[i], window_ethereum)
                               jsonArray.push(tokenURI)
                             }
 
+                            
                             web3.eth.getTransaction(txHash, async (error, res) => {
                               gas = res.gasPrice
                               let data = []
@@ -266,6 +279,7 @@ return async function () {
                                 })
                               })
                               console.log(data, '==========DATA*******')
+                              
 
                               console.log(nftIDs)
 
