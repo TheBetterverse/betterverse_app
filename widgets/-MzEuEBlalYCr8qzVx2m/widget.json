@@ -6,10 +6,10 @@
   "columnMinWidth": "200",
   "dataSource": "capturedDonationData",
   "gsOptions": {
-    "h": 22,
+    "h": 7,
     "w": 24,
     "x": 0,
-    "y": 4
+    "y": 14
   },
   "itemsPerPage": 20,
   "offSet": 0,

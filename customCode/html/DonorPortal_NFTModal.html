@@ -347,13 +347,12 @@
             </h2>
 
             <div id="bv__nftmodal__othernftsnav">
-              <button
-                @click="document.getElementById('bv__nftmodal__othernftscarousel').scrollBy({left: -210, behavior: 'smooth'})">
-                <u-Icons-ArrowLeft color="black"></u-Icons-ArrowLeft>
+              <button @click="NFTModal_ScrollOtherNFTs($event, 'left')" id="othernftsnav-left">
+                <u-Icons-Arrow left color="black"></u-Icons-Arrow>
               </button>
-              <button
-                @click="document.getElementById('bv__nftmodal__othernftscarousel').scrollBy({left: 210, behavior: 'smooth'})">
-                <u-Icons-ArrowRight color="black" />
+
+              <button @click="NFTModal_ScrollOtherNFTs($event, 'right')" id="othernftsnav-right">
+                <u-Icons-Arrow right color="black"></u-Icons-Arrow>
               </button>
             </div>
           </div>
@@ -368,12 +367,66 @@
           </div>
         </div>
 
-        <div id="bv__nftmodal__footer"></div>
       </div>
 
     </div>
   </div>
 </template>
+
+<script type="module">
+
+  function NFTModal_WaitForScrollEnd(element, callback, ...args) {
+    let currentScrollPosition = element.scrollLeft
+
+    return function (event) {
+      console.count()
+      console.log(event.srcElement.scrollLeft, currentScrollPosition)
+
+      if (event.srcElement.scrollLeft === currentScrollPosition) {
+        console.log("ENDED!")
+        callback(...args)
+        event.srcElement.removeEventListener(this)
+      } else {
+        currentScrollPosition = event.srcElement.scrollLeft
+      }
+    }
+  }
+
+  function NFTModal_UpdateNavButtons() {
+    const CarrouselElement = $('#bv__nftmodal__othernftscarousel')[0]
+    const LeftButton = $('#othernftsnav-left')[0]
+    const RightButton = $('#othernftsnav-right')[0]
+
+    LeftButton.disabled = false
+    RightButton.disabled = false
+
+
+    if (CarrouselElement.scrollLeft === 0) {
+      LeftButton.disabled = true
+    }
+
+    else if (CarrouselElement.scrollLeft + CarrouselElement.offsetWidth >= CarrouselElement.scrollWidth) {
+      RightButton.disabled = true
+    }
+  }
+
+  function NFTModal_ScrollOtherNFTs(event, direction) {
+    const CarrouselElement = $('#bv__nftmodal__othernftscarousel')[0]
+    const LeftButton = $('#othernftsnav-left')[0]
+    const RightButton = $('#othernftsnav-right')[0]
+
+    CarrouselElement.scrollBy({
+      left: direction === 'left' ? -210 : 210,
+      behavior: 'smooth'
+    })
+
+    CarrouselElement.addEventListener('scrollend', NFTModal_WaitForScrollEnd(CarrouselElement, NFTModal_UpdateNavButtons))
+
+    // NFTModal_UpdateNavButtons()
+  }
+
+  NFTModal_UpdateNavButtons()
+</script>
 
 <style>
   #bv__nftmodal {
@@ -422,9 +475,7 @@
     opacity: 80%;
   }
 
-  #bv__nftmodal__othernftsnav button:hover {
-    opacity: 80%;
-  }
+
 
   #bv__nftmodal__navbar button:hover {
     opacity: 80%;
@@ -690,6 +741,10 @@
   #bv__nftmodal__othernftsnav {
     display: flex;
     gap: 10px;
+  }
+
+  #bv__nftmodal__othernftsnav>button:disabled {
+    opacity: 50%;
   }
 
   #bv__nftmodal__othernftscarousel {

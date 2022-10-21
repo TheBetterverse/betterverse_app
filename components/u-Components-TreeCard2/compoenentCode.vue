@@ -155,7 +155,7 @@ module.exports = {
   align-items: center;
 
   height: auto;
-  width: 100%;
+  min-width: 100%;
   padding: 10px 15px;
 }
 

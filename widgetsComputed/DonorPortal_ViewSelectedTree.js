@@ -3,6 +3,8 @@
 return async row => {
   let { json, $initialDonationRow, rowKey } = row
 
+  $('#bv__nftmodal').scrollTop(0)
+
   await this.DonorPortal_SelectedDonation(
     json,
     $initialDonationRow.rowKey,
@@ -10,5 +12,4 @@ return async row => {
   )
 
   this.DonorPortal_TriggerNFTModal('display')
-  $('#bv__nftmodal').scrollTop(0)
 }

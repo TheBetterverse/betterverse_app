@@ -1,15 +1,14 @@
 {
-  "classes": "",
+  "component": "-N47KJAgCjpSOJm394gH",
   "gsOptions": {
-    "h": 3,
-    "w": 24,
-    "x": 0,
-    "y": 6
+    "h": 15,
+    "w": 6,
+    "x": 11,
+    "y": 35
   },
   "layout": "b-card",
   "offSet": 0,
   "perPage": 2,
-  "styles": "",
   "tab": "-N48uIJZrqSslpcm1w51",
-  "title": ""
+  "type": "custom"
 }

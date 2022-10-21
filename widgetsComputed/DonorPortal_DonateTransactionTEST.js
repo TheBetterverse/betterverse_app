@@ -18,6 +18,7 @@ const location = await this.DonorPortal_GetCurrentUserProfileLocation()
 const amount = await this.DonorPortal_GetDonationAmountNumber()
 const date = await this.DonorPortal_GetDateTime()
 var nftCount = await this.DonorPortal_GetDonationNFTCount()
+var availableTrees
 
 return async function () {
   if (!walletProvider) {
@@ -72,26 +73,38 @@ return async function () {
       web3 = new Web3(window.slide);
       provider = new ethers.providers.Web3Provider(slide);
     } else {
-      let ethereum
+      let window_ethereumm
+
+      console.log(window.ethereum)
+
       if (window.ethereum.providers && window.ethereum.providers.length == 2) {
-
         if (walletProvider == 'coinbase') {
-          ethereum = window.ethereum.providers[0]
+          window_ethereum = window.ethereum.providers[0]
         } else {
-          ethereum = window.ethereum.providers[1]
+          window_ethereum = window.ethereum.providers[1]
         }
-      } else {
-        ethereum = window.ethereum
-      }
+        } else {
+          window_ethereum = window.ethereum
+        }
 
-      web3 = new Web3(ethereum)
-      await ethereum.request({
+      console.log('configured window ethereum is:')
+      console.log(window_ethereum)
+      console.log('etherum is:')
+      console.log(ethereum)
+      console.log('web3 is')
+      console.log(web3)
+      web3 = new Web3(window_ethereum)
+
+      provider = new ethers.providers.Web3Provider(window_ethereum)
+      await provider.send("eth_requestAccounts", [])
+      const signer = provider.getSigner();
+
+      await window_ethereum.request({
         method: 'wallet_switchEthereumChain',
         params: [{
             chainId: '0x13881', //mumbai test network chain id 80001
         }]
       })
-      provider = new ethers.providers.Web3Provider(ethereum)
     }
 
     const TreeContract = new web3.eth.Contract(TreeContractABI, TreeContractAddress, {
@@ -157,7 +170,7 @@ return async function () {
               //TASK 1 | Check if there are trees available to be minted in the smart contract.
               document.getElementById("bv__donate__buttontext").innerText = 'Checking trees'
               try{
-                const availableTrees = await TreeContract.methods.treesInStorage().call({
+                availableTrees = await TreeContract.methods.treesInStorage().call({
                   from: wallet
                 });
                 console.log('available trees: ' + availableTrees)
@@ -181,8 +194,8 @@ return async function () {
                 var currencyTokenID = $dataGrid('currencies')[currency].smartContractID
                 console.log('Selected currency is: ' + currencyCode + ' with the address of: ' + currencyContractAddress)
 
-                //BTRC TO BE CHANGED TO USDC
-                currencyContractAddress = '0xFc376f2199AC29357e907929842c6fFdedf77182'
+                //USDC
+                currencyContractAddress = '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174'
 
                 //TASK 2 | Check if the token the user is donating with is accepted in the smart contract.                         
                 try {
@@ -193,8 +206,8 @@ return async function () {
 
                     var charityID = charityRow.smartContractCharityID
 
-                    //TASK 3 | Prepare variables and call the mintTree function from the smart contract.
-
+                    //TASK 3 | Prepare variable and call the mintTree function from the smart contract.
+                    document.getElementById("bv__donate__buttontext").innerText = 'Requesting approval'
                     const approveAmount = Web3.utils.toWei(amount.toString(), 'ether')
                     if(walletProvider == 'coinbase') {	
                       const tx = await TestBTRContractWithEther.approve(MinterContractAddress, approveAmount)	
@@ -207,7 +220,6 @@ return async function () {
                       await TestBTRContract.methods.approve(MinterContractAddress, approveAmount).call()
                     }	
                     console.log('==============after approval')
-                    document.getElementById("bv__donate__buttontext").innerText = 'Requesting approval'
                     
                     console.log('NFT COUNT: ' + nftCount)
                     console.log('CHARITY ID: ' + charityID)
@@ -235,7 +247,7 @@ return async function () {
                         donationSuccess = true
                         nftMint = true
                         document.getElementById("bv__donate__buttontext").innerText = 'Please wait'
-                        await new Promise(resolve => setTimeout(resolve, 4000));
+                        await new Promise(resolve => setTimeout(resolve, 3000));
                         document.getElementById("bv__donate__buttontext").innerText = 'Do not close this window'
 
                         //Task 3.4 Save NFT Data
@@ -244,17 +256,17 @@ return async function () {
                         TreeContractWithEther.on('minted', async (token, user, event) => {
                           const mintedTokenID = web3.utils.hexToNumber(token)
                           console.log(mintedTokenID, '====minted Token ID')
-                          if (user.toLowerCase() == wallet.toLowerCase()) {
+                          //if (user.toLowerCase() == wallet.toLowerCase()) {
                             nftIDs.push(mintedTokenID)
-                          }
+                          //}
 
                           if (nftCount == nftIDs.length) {
                             for (let i = 0; i < nftCount; i++) {
-                              let tokenURI = await getTokenURI(nftIDs[i])
+                              let tokenURI = await getTokenURI(nftIDs[i], window_ethereum)
                               jsonArray.push(tokenURI)
                             }
 
-                            /*
+                            
                             web3.eth.getTransaction(txHash, async (error, res) => {
                               gas = res.gasPrice
                               let data = []
@@ -267,8 +279,8 @@ return async function () {
                                 })
                               })
                               console.log(data, '==========DATA*******')
-                              */
                               
+
                               console.log(nftIDs)
 
                               //Once donation is succesful create a row to store data

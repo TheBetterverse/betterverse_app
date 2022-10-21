@@ -1536,22 +1536,6 @@
     "savePath": "widgets/-N1IpXSQdojOjnVCezd3"
   },
   {
-    "filePath": "widgets/-N2lHTAf6XHgsGYtjxxF/widget.json",
-    "savePath": "widgets/-N2lHTAf6XHgsGYtjxxF"
-  },
-  {
-    "filePath": "widgets/-N2lHTAf6XHgsGYtjxxF/detailTemplate.html",
-    "savePath": "widgets/-N2lHTAf6XHgsGYtjxxF/detailTemplate"
-  },
-  {
-    "filePath": "widgets/-N2lHTAf6XHgsGYtjxxF/template.html",
-    "savePath": "widgets/-N2lHTAf6XHgsGYtjxxF/template"
-  },
-  {
-    "filePath": "widgets/-N2pCFxlb04P4guMWTo1/widget.json",
-    "savePath": "widgets/-N2pCFxlb04P4guMWTo1"
-  },
-  {
     "filePath": "widgets/-N5Zy7-fYSqsLovYIN9h/widget.json",
     "savePath": "widgets/-N5Zy7-fYSqsLovYIN9h"
   },
@@ -1622,6 +1606,10 @@
   {
     "filePath": "widgets/-NDjtRs26ubF7xzqYKlc/template.html",
     "savePath": "widgets/-NDjtRs26ubF7xzqYKlc/template"
+  },
+  {
+    "filePath": "widgets/-NEvMS83h5nZZJLMpZxZ/widget.json",
+    "savePath": "widgets/-NEvMS83h5nZZJLMpZxZ"
   },
   {
     "filePath": "widgetsComputed/Contracts.js",

@@ -116,23 +116,18 @@
         </div>
       </section>
 
-      <section name="tos" style="padding-top: 5px;">
-        <b-container>
-          <b-row class="my-3">
-
-            <b-col cols="1">
-              <icon-info style=""></icon-info>
-            </b-col>
-            <b-col cols="11">
-              <p>
-              By creating an account with us you are confirming that you have read and agree to be bound by our
-              <a href="https://www.betterverse.app/legal#terms-of-use" style="font-weight: 500; color: black;" target="_blank"> Terms of Service</a>.
-              </p>
-            </b-col>
-
-
-          </b-row>
-        </b-container>
+      <section name="tos">
+        <icon-info height="32px" width="32px"></icon-info>
+        <p>
+          By creating an account with us you are confirming that you have read
+          and agree to be bound by our
+          <a
+            href="https://www.betterverse.app/legal#terms-of-use"
+            target="_blank"
+          >
+            Terms of Service </a
+          >.
+        </p>
       </section>
 
       <!-- For large displays -->
@@ -273,8 +268,8 @@ module.exports = {
         .catch(err => {
           alert(err.message)
           spinnerActive == false
-        })    
-      },
+        })
+    },
 
     /* View controller */
 
@@ -351,5 +346,20 @@ div.status-bar-clearance {
     width: 100%;
     height: 32px;
   }
+}
+
+section[name='tos'] {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+
+  margin-top: 20px;
+}
+
+section[name='tos'] > p {
+  margin: 0;
+  padding: 0 !important;
 }
 </style>
