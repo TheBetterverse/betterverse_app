@@ -1,162 +1,218 @@
-return function(walletProvider){
+/* DonorPortal_ConnectWallet.js */
 
-    //User Identifier
-    var currentUserRowKey = this.DonorPortal_GetCurrentUserRowKey();
-    //Wallet Variable
-    var wallet = null
+/*This throws for some reason but does work */
+var currentUserRowKey = this.DonorPortal_GetCurrentUserRowKey()
+var currentUserRow = this.DonorPortal_GetCurrentUser()
+var currentSubTab = this.currentSubTab
 
-    //Connect Wallet Functionality
-    if(walletProvider == "Metamask"){
+return function (event) {
 
-        const connectWalletHandler = async () => {
-            const { ethereum } = window
+  //METAMASK
+  let walletProvider = event.submitter.name
 
-            if( ethereum && ethereum['providers'] && ethereum.providers.find(({ isMetaMask  }) => isMetaMask ) ) {
-                try {
-                    const MetamaskProvider = ethereum.providers.find(({ isMetaMask  }) => isMetaMask )
-                    const accounts = await MetamaskProvider.request({ method: 'eth_requestAccounts' })
-                    wallet = accounts[0]
-                    
-                    //Save Wallet Address to User Profile Row
-                    $setDataGridVal('users', currentUserRowKey + '.walletAddress', wallet)
-                    $setDataGridVal('users', currentUserRowKey + '.walletProvider', 'Metamask')
-                } catch (err) {
-                    console.log(err)
-                }
-            } else if (ethereum && ethereum.isMetaMask) {
-                try {
-                    const accounts = await ethereum.request({ method: 'eth_requestAccounts' })
-                    wallet = accounts[0]
-                    
-                    //Save Wallet Address to User Profile Row
-                    $setDataGridVal('users', currentUserRowKey + '.walletAddress', wallet)
-                    $setDataGridVal('users', currentUserRowKey + '.walletProvider', 'Metamask')
-                    this.DonorPortal_CloseConnectWalletModal()
+  if (walletProvider == 'connect-metamask') {
+    const connectWalletHandler = async () => {
+      const { ethereum } = window
+      if (
+        ethereum &&
+        ethereum['providers'] &&
+        ethereum.providers.find(({ isMetaMask }) => isMetaMask)
+      ) {
+        try {
+          const MetamaskProvider = ethereum.providers.find(
+            ({ isMetaMask }) => isMetaMask
+          )
+          const accounts = await MetamaskProvider.request({
+            method: 'eth_requestAccounts'
+          })
+          wallet = accounts[0]
 
-                } catch (err) {
-                    console.log(err)
-                }
-            } else {
-                alert('Please install MetaMask')
-            }
+          //Save Wallet Address to User Profile Row
+          $setDataGridVal('users', currentUserRowKey + '.walletAddress', wallet)
+          $setDataGridVal(
+            'users',
+            currentUserRowKey + '.walletProvider',
+            'metamask'
+          )
+          if (
+            currentSubTab == '-N4UIKK5MmraPqo_BhCH' &&
+            wallet != null
+          ) {
+            $setCurrentSubTab('-N6OJKPA76EZPTjdgEMp', '-Mx_5FLL2jlxjXYUMdIL')
+          }
+        } catch (err) {
+          console.log(err)
         }
+      } else if (ethereum && ethereum.isMetaMask) {
+        try {
+          const accounts = await ethereum.request({
+            method: 'eth_requestAccounts'
+          })
+          wallet = accounts[0]
 
-        connectWalletHandler()
+          //Save Wallet Address to User Profile Row
+          $setDataGridVal('users', currentUserRowKey + '.walletAddress', wallet)
+          $setDataGridVal(
+            'users',
+            currentUserRowKey + '.walletProvider',
+            'metamask'
+          )
+
+            if (
+            currentSubTab == '-N4UIKK5MmraPqo_BhCH' &&
+            wallet != null
+          ) {
+            $setCurrentSubTab('-N6OJKPA76EZPTjdgEMp', '-Mx_5FLL2jlxjXYUMdIL')
+          }
+          //this.DonorPortal_CloseConnectWalletModal()
+        } catch (err) {
+          console.log(err)
+        }
+      } else {
+        alert('Please install MetaMask')
+        if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+          window.open("https://metamask.io/faqs/")
+        }
+        else{
+          window.open("https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en")
+        }
+      }
     }
 
-    else if(walletProvider == "Torus"){
-        //     await torus.init({
-        //         // buildEnv: "production",
-        //         network: {
-        //             host: "matic", // mandatory
-        //             chainId: 137, // Polygon chianID optional
-        //             networkName: "Polygon Mainnet", // optional
-        //         },
-        //         whitelabel: {
-        //             theme: {
-        //                 isDark: true,
-        //                 colors: {
-        //                     torusBrand1: "#282c34",
-        //                 },
-        //             },
-        //             defaultLanguage: "en",
-        //             logoDark: "https://tkey.surge.sh/images/Device.svg", // Dark logo for light background
-        //             logoLight: "https://tkey.surge.sh/images/Device.svg", // Light logo for dark background
-        //         }
-        //     })
+    connectWalletHandler()
 
-
-        const connectTorus = async () => {
-            const torus = new Torus()
-            window.torus = torus
-            await window.torus.init({
-            buildEnv: "production", // default: production
-            enableLogging: true, // default: false
-            network: {
-                host: "matic", // default: mainnet
-                chainId: 137, // default: 1
-                networkName: "Polygon Mainnet" // default: Main Ethereum Network
-            },
-            // showTorusButton: false // default: true
-            });
-            await window.torus.login(); // await torus.ethereum.enable()
-            const web3 = new Web3(window.torus.provider);
-            wallet = (await web3.eth.getAccounts())[0]
-            //     const web3 = new Web3(torus.provider)
-            //     const balance = await web3.eth.getBalance(wallet)
-            $setDataGridVal('users', currentUserRowKey + '.walletAddress', wallet)
-            $setDataGridVal('users', currentUserRowKey + '.walletProvider', 'Torus')
-            this.DonorPortal_CloseConnectWalletModal()
+  //TORUS
+  } else if (walletProvider == 'connect-torus') {
+    const connectTorus = async () => {
+      const torus = new Torus()
+      window.torus = torus
+      await window.torus.init({
+        buildEnv: 'production', // default: production
+        enableLogging: true, // default: false
+        network: {
+          host: 'matic', // default: mainnet
+          chainId: 137, // default: 1
+          networkName: 'Polygon Mainnet' // default: Main Ethereum Network
         }
+        // showTorusButton: false // default: true
+      })
+      await window.torus.login() // await torus.ethereum.enable()
+      const web3 = new Web3(window.torus.provider)
+      wallet = (await web3.eth.getAccounts())[0]
+      //     const web3 = new Web3(torus.provider)
+      //     const balance = await web3.eth.getBalance(wallet)
+      $setDataGridVal('users', currentUserRowKey + '.walletAddress', wallet)
+      $setDataGridVal('users', currentUserRowKey + '.walletProvider', 'torus')
 
-        connectTorus()
+      //If user is on the register page and connected wallet successful, redirect to topup page
+      if (
+        currentSubTab == '-N4UIKK5MmraPqo_BhCH' &&
+        wallet != null
+      ) {
+        $setCurrentSubTab('-N6OJKPA76EZPTjdgEMp', '-Mx_5FLL2jlxjXYUMdIL')
+      }
+      //this.DonorPortal_CloseConnectWalletModal()
     }
-    
-    else if(walletProvider == "Coinbase Wallet"){
-        // const APP_NAME = 'Tangle'
-        // const APP_LOGO_URL = 'https://example.com/logo.png'
-        // const DEFAULT_ETH_JSONRPC_URL = 'https://mainnet.infura.io/v3/2654ad380c45449aaa54a351f0026d3c' // Jack Jin's infura key
-        // const DEFAULT_CHAIN_ID = 1
 
-        // const coinbaseWallet = new CoinbaseWalletSDK({
-        //     appName: APP_NAME,
-        //     appLogoUrl: APP_LOGO_URL,
-        //     darkMode: false
-        // })
-        // const WalletConnect = window.WalletConnectProvider.default
+    connectTorus()
 
-        // const providerOptions = {
-        //     walletlink: {
-        //         package: CoinbaseWalletSDK, 
-        //         options: {
-        //             appName: "Tangle",
-        //             infuraId: '2654ad380c45449aaa54a351f0026d3c' 
-        //         }
-        //     },
-        //     walletconnect: {
-        //         package: WalletConnect, 
-        //         options: {
-        //             infuraId: '2654ad380c45449aaa54a351f0026d3c'
-        //         }
-        //     }
-        // }
-        
-        // wallet = 'MetamaskWalletAddressHere'
+  /*COINBASE
+  } else if (walletProvider == 'connect-coinbase') {
+    const connectWalletHandler = async () => {
+      const { ethereum } = window
+      if (
+        ethereum &&
+        ethereum['providers'] &&
+        ethereum.providers.find(({ isCoinbaseWallet }) => isCoinbaseWallet)
+      ) {
+        try {
+          const CoinbaseProvider = ethereum.providers.find(
+            ({ isCoinbaseWallet }) => isCoinbaseWallet
+          )
+          const accounts = await CoinbaseProvider.request({
+            method: 'eth_requestAccounts'
+          })
+          wallet = accounts[0]
 
-        const connectWalletHandler = async () => {
-            const { ethereum } = window
+          //Save Wallet Address to User Profile Row
+          $setDataGridVal('users', currentUserRowKey + '.walletAddress', wallet)
+           $setDataGridVal(
+            'users',
+            currentUserRowKey + '.walletProvider',
+            'coinbase'
+          )
 
-            if( ethereum && ethereum['providers'] && ethereum.providers.find(({ isCoinbaseWallet  }) => isCoinbaseWallet ) ) {
-                try {
-                    const CoinbaseProvider = ethereum.providers.find(({ isCoinbaseWallet  }) => isCoinbaseWallet )
-                    const accounts = await CoinbaseProvider.request({ method: 'eth_requestAccounts' })
-                    wallet = accounts[0]
-                    
-                    //Save Wallet Address to User Profile Row
-                    $setDataGridVal('users', currentUserRowKey + '.walletAddress', wallet)
-                } catch (err) {
-                    console.log(err)
-                }
-            } else if (ethereum) {
-                try {
-                    const accounts = await ethereum.request({ method: 'eth_requestAccounts' })
-                    wallet = accounts[0]
-                    
-                    //Save Wallet Address to User Profile Row
-                    $setDataGridVal('users', currentUserRowKey + '.walletAddress', wallet)
-                    $setDataGridVal('users', currentUserRowKey + '.walletProvider', 'Coinbase')
-                    this.DonorPortal_CloseConnectWalletModal()
-
-                } catch (err) {
-                    console.log(err)
-                }
-            } else {
-                alert('Please install MetaMask')
-            }
+              if (
+            currentSubTab == '-N4UIKK5MmraPqo_BhCH' &&
+            wallet != null
+          ) {
+            $setCurrentSubTab('-N6OJKPA76EZPTjdgEMp', '-Mx_5FLL2jlxjXYUMdIL')
+          }
+        } catch (err) {
+          console.log(err)
         }
+      } else if (ethereum && ethereum.isCoinbaseWallet) {
+        try {
+          const accounts = await ethereum.request({
+            method: 'eth_requestAccounts'
+          })
+          wallet = accounts[0]
 
-        connectWalletHandler()
+          //Save Wallet Address to User Profile Row
+          $setDataGridVal('users', currentUserRowKey + '.walletAddress', wallet)
+          $setDataGridVal(
+            'users',
+            currentUserRowKey + '.walletProvider',
+            'coinbase'
+          )
+          if (
+            currentSubTab == '-N4UIKK5MmraPqo_BhCH' &&
+            wallet != null
+          ) {
+            $setCurrentSubTab('-N6OJKPA76EZPTjdgEMp', '-Mx_5FLL2jlxjXYUMdIL')
+          }
+
+        } catch (err) {
+          console.log(err)
+        }
+      } else {
+        alert('Please install MetaMask/Coinbase')
+        if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+          window.open("https://metamask.io/faqs/")
+        }
+        else{
+          window.open("https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad?hl=en")
+        }
+      }
+    }*/
+
+    connectWalletHandler()
+
+  //SLIDE
+  } else if (walletProvider === "connect-slide") {
+
+    const connectSlide = async () => {
+
+      const slide = new Slide.SDK()
+      slide.preload();
+      window.slide = slide;
+
+      const wallet = await slide.request({ method: "eth_requestAccounts" })
+
+      $setDataGridVal('users', currentUserRowKey + '.walletAddress', wallet[0])
+      $setDataGridVal('users', currentUserRowKey + '.walletProvider', 'slide')
+
+      //If user is on the register page and connected wallet successful, redirect to topup page
+      if (
+        currentSubTab == '-N4UIKK5MmraPqo_BhCH' &&
+        wallet != null
+      ) {
+        $setCurrentSubTab('-N6OJKPA76EZPTjdgEMp', '-Mx_5FLL2jlxjXYUMdIL')
+      }
     }
-    
-    return null
+
+    connectSlide()
+  }
+
+  return null
 }

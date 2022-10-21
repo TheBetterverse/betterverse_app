@@ -1,0 +1,326 @@
+<!-- DonorPortal_DashBoard.html -->
+<template>
+  <main class="bv__dashboard__main">
+    <div class="bv__dashboard__header bv__globals__px">
+      <div class="bv__dashboard__profile">
+        <u-Components-ProfilePicture height="80px" width="80px" :src="DonorPortal_GetCurrentUserProfilePicture()" />
+        <!--u-Icons-EmptyProfilePicture v-if="DonorPortal_GetCurrentUserProfilePicture() == null" /-->
+        <div>
+          <h1 id="bv__dashboard__profileusername">
+            {{ DonorPortal_GetCurrentUserNames('full') }}
+          </h1>
+          <p>
+            Joined {{ DonorPortal_GetCurrentUserJoinedDate() }}
+          </p>
+        </div>
+      </div>
+
+      <div class="bv__dashboard__cards">
+        <div class="bv__dashboard__card">
+          <div class="bv__dashboard__cardhead">
+            <p> Total donated </p>
+            <h2 class="bv__dashboard__totaldonated d-flex">
+              <u-Icons-USDC />
+              {{ parseFloat(DonorPortal_GetCurrentUserTotalDonationsAmount()).toLocaleString() }}
+            </h2>
+            <p v-if="DonorPortal_GetCurrentUserComparisonCurrency() != null"> ~{{
+              DonorPortal_GetCurrentUserTotalDonationsAmountComparisonCurrency() }} </p>
+          </div>
+          <div class="bv__dashboard__cardfoot">
+            <u-Icons-Donation />
+          </div>
+        </div>
+
+        <div class="bv__dashboard__card">
+          <div class="bv__dashboard__cardhead">
+            <p> Trees planted </p>
+            <h2> {{ DonorPortal_GetCurrentUserTotalTreesPlanted().toLocaleString() }} </h2>
+          </div>
+
+          <div class="bv__dashboard__cardfoot">
+            <u-Icons-TreesPlanted />
+          </div>
+        </div>
+
+        <div class="bv__dashboard__card">
+          <div class="bv__dashboard__cardhead">
+            <span class="w-100 d-flex align-items-center justify-content-between">
+              <p> CO₂ Captured </p>
+              <u-Components-ToolTip>
+                <template #tooltip>
+                  <p>Want to know how we figure this out? Info coming soon.</p>
+                </template>
+              </u-Components-ToolTip>
+            </span>
+
+            <h2> {{ parseFloat(DonorPortal_GetCurrentUserDailyCarbonSequestrationUpdate('all')).toLocaleString() }} kg
+            </h2>
+          </div>
+
+          <div class="bv__dashboard__cardfoot">
+            <u-Icons-CO2Captured />
+          </div>
+        </div>
+
+        <div class="bv__dashboard__card">
+          <div class="bv__dashboard__cardhead">
+            <span> Locations </span>
+            <h2> {{ DonorPortal_GetCurrentUserTotalDonationsProjectsLocations.toLocaleString() }} </h2>
+          </div>
+
+          <div class="bv__dashboard__cardfoot">
+            <u-Icons-Locations />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bv__dashboard__topborder"></div>
+
+    <div id="bv__dashboard__maincontent" class="bv__globals__px">
+      <div class="bv__dashboard__currentnfts ">
+        <div v-if="DonorPortal_GetCurrentUserNFTsCount() == 0"
+          style="display: flex; flex-direction: column; gap: 1rem; width: auto;">
+          <h2 style="font-weight: 400">
+            You have 0 NFTs
+          </h2>
+
+          <p>
+            Not to worry! You can make your first donation and start offsetting some CO₂.
+          </p>
+
+          <u-Components-Button @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ', '-Mx_5FLL2jlxjXYUMdIL')" secondary
+            style="width: max-content">
+            <p> View projects </p>
+            <template #right-icon>
+              <u-Icons-Heart color="white"></u-Icons-Heart>
+            </template>
+          </u-Components-Button>
+        </div>
+
+        <div v-else>
+          <h2 style="font-weight: 400; display: flex; align-items: center; justify-content: space-between;">
+            You have {{ DonorPortal_GetCurrentUserNFTsCount() }}
+            NFT{{ DonorPortal_GetCurrentUserNFTsCount() > 1 ? 's' : '' }}
+
+            <u-Components-RefreshButton @click="DonorPortal_GetLatestNFTTESTNET">
+            </u-Components-RefreshButton>
+          </h2>
+
+        </div>
+      </div>
+
+      <div class="bv__dashboard__carrousel"
+        v-if="DonorPortal_GetCurrentUserNFTs() != null && !$getGlobalModel('dashboardRefresh')">
+
+        <u-Components-TreeCard2 v-for="(row, key) in DonorPortal_GetCurrentUserNFTs()" :data="row" :key="key"
+          @view="DonorPortal_ViewSelectedTree(row)">
+        </u-Components-TreeCard2>
+      </div>
+
+  </main>
+  <u-Components-Footer />
+
+  <u-Components-MobileNavBar @click="DonorPortal_TriggerMobileNav()" class="bv__globals__px">
+    <u-Components-Button secondary class="w-100"
+      @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ', '-Mx_5FLL2jlxjXYUMdIL')">
+      View Projects
+      <template #right-icon>
+        <u-Icons-Heart color="white" />
+      </template>
+    </u-Components-Button>
+  </u-Components-MobileNavBar>
+</template>
+
+<style>
+  .bv__dashboard__main {
+    margin-top: 67px;
+    background: var(--bg-primary);
+    width: 100%;
+    min-height: calc(92vh - 67px);
+  }
+
+
+  .bv__dashboard__header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+
+    scroll-snap-align: start;
+    scroll-margin-top: 92px;
+
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 25px;
+
+    background: var(--bg-secondary) !important;
+    /* border-bottom: 1px solid #e3e1db; */
+  }
+
+  #bv__dashboard__maincontent {
+    margin-bottom: 40px;
+  }
+
+  .bv__dashboard__topborder {
+    position: sticky;
+    top: 67px;
+    background: #e3e1db;
+    width: 100%;
+    height: 1px;
+    z-index: 50;
+  }
+
+  .bv__dashboard__profile {
+    display: grid;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 15px;
+    width: fit-content;
+  }
+
+  #bv__dashboard__profileusername {
+    text-overflow: ellipsis;
+    width: fit-content;
+    font-family: 'BN Cringe Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 45px;
+    line-height: 48px;
+  }
+
+  .bv__dashboard__cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    justify-content: space-between;
+    gap: 15px;
+
+
+    width: 100%;
+    margin: 20px 0;
+  }
+
+  .bv__dashboard__card {
+    height: 160px;
+    width: 100%;
+    padding: 12px 16px 16px 16px;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+
+    border: 1px solid #d7d5d0;
+    border-radius: 5px;
+  }
+
+  .bv__dashboard__cardhead {
+    width: 100%;
+  }
+
+  .bv__tooltip {
+    justify-content: flex-end !important;
+  }
+
+  .bv__dashboard__currentnfts {
+    margin-top: 45px;
+    margin-bottom: 15px;
+  }
+
+  .bv__dashboard__carrousel {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+
+    width: 100%;
+    padding-bottom: 20px;
+  }
+
+  .bv__dashboard__totaldonated {
+    gap: 0.25rem;
+  }
+
+  @media only screen and (min-width: 762px) {
+    #bv__dashboard__profileusername {
+      width: max-content;
+    }
+
+    .bv__dashboard__carrousel {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media only screen and (min-width: 992px) {
+    .bv__dashboard__main {
+      margin-top: 92px;
+      margin-bottom: 100px;
+    }
+
+    .bv__dashboard__topborder {
+      top: 92px;
+    }
+
+
+    .bv__dashboard__header {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 20px;
+    }
+
+    .bv__dashboard__cards {
+      grid-template-rows: 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 213px));
+      justify-content: end;
+    }
+
+    .bv__dashboard__carrousel {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media only screen and (min-width: 1300px) {
+    .bv__dashboard__carrousel {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+
+  @media only screen and (min-width: 1800px) {
+    .bv__dashboard__carrousel {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+
+
+  @media only screen and (min-width: 2200px) {
+    .bv__dashboard__carrousel {
+      grid-template-columns: repeat(6, 1fr);
+    }
+  }
+
+
+
+  #bv__nftrefresh__elispsis:after {
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: bottom;
+    -webkit-animation: ellipsis steps(4, end) 900ms infinite;
+    animation: ellipsis steps(4, end) 900ms infinite;
+    content: "\2026";
+    /* ascii code for the ellipsis character */
+    width: 0px;
+  }
+
+  @keyframes ellipsis {
+    to {
+      width: 1.25em;
+    }
+  }
+
+  @-webkit-keyframes ellipsis {
+    to {
+      width: 1.25em;
+    }
+  }
+
+</style>

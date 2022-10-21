@@ -1,9 +1,6 @@
-return function  () {
+/* DonorPortal_GetCurrentUserDonationRows.js */
 
-    let currentUser = fbUser.uid
-    let myDonationRows = []
-    myDonationRows = $getGrid('capturedDonationData').filter(row => row.user == currentUser) 
-
-    return myDonationRows
-    
+return function () {
+  let user = fbUser.uid
+  return $getGrid('capturedDonationData').filter(row => row.user == user)
 }

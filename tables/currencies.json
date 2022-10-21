@@ -1312,19 +1312,21 @@
     "countryName": "Zimbabwe Dollar",
     "rowKey": "-MuQtWatE3u9pumnMFcM"
   },
-  "-MvOQw7iMhJRyDGEO_4I": {
-    "_id": 163,
-    "code": "$USDT",
-    "countryName": "",
-    "lastEditDate": 1644415005634,
-    "lastEditedBy": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
-    "rowKey": "-MvOQw7iMhJRyDGEO_4I"
-  },
   "-MvOSbx1QKOeHNJWW7pQ": {
     "_id": 164,
     "code": "$USDC",
-    "lastEditDate": 1644325935289,
+    "contract": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+    "lastEditDate": 1665180557184,
     "lastEditedBy": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
-    "rowKey": "-MvOSbx1QKOeHNJWW7pQ"
+    "rowKey": "-MvOSbx1QKOeHNJWW7pQ",
+    "smartContractID": 1
+  },
+  "-NAEDxpjPk5gWqCKrRME": {
+    "_id": 165,
+    "code": "$TBTRC",
+    "contract": "0xFc376f2199AC29357e907929842c6fFdedf77182",
+    "lastEditDate": 1661334213118,
+    "lastEditedBy": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
+    "rowKey": "-NAEDxpjPk5gWqCKrRME"
   }
 }

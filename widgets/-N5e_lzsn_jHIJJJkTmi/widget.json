@@ -1,0 +1,23 @@
+{
+  "autoHeight": false,
+  "classes": "",
+  "columnCount": "6",
+  "dataSource": "nFTs",
+  "gsOptions": {
+    "h": 9,
+    "w": 24,
+    "x": 0,
+    "y": 0
+  },
+  "layout": "b-card",
+  "offSet": 0,
+  "overflow": "height: auto;",
+  "perPage": 2,
+  "styles": "",
+  "tab": "-N48uIJZrqSslpcm1w51",
+  "title": "My Donations",
+  "type": "card-list",
+  "useContainerForDetail": false,
+  "useContainerForList": false,
+  "widthType": "columnCount"
+}

@@ -1,0 +1,15 @@
+{
+  "dependency": "dataGrid/sharedPages",
+  "gsOptions": {
+    "h": 6,
+    "w": 24
+  },
+  "layout": "b-card",
+  "overflow": "height: auto",
+  "props": {
+    "gridId": "sharedPages"
+  },
+  "subtab": "-N9psoqk-XXhtkuJMHhC",
+  "tab": "-Mx_2_VCOc__FGnUdqrq",
+  "type": "DataGrid"
+}

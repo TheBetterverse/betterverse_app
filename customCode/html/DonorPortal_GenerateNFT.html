@@ -1,0 +1,187 @@
+<!-- DonorPortal_GenerateNFT.html -->
+
+<template>
+  <div id="bv__generatenft" style="width: 100%;">
+    <div id="bv__generatenft__header" class="bv__globals__px">
+      <u-Icons-Betterverse height="32px" width="32px" class="d-block d-lg-none"></u-Icons-Betterverse>
+      <u-Icons-Betterverse class="d-none d-lg-flex"></u-Icons-Betterverse>
+    </div>
+
+    <div id="bv__generatenft__body">
+      <div id="bv__generatenft__image" style="background-color: #efebe4;">
+        <iframe src="https://player.vimeo.com/video/758864810?background=1&loop=0" loop="0" 
+          frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      </div>
+
+      <div class="bv__generatenft__border"></div>
+
+      <div id="bv__generatenft__contents">
+
+
+        <div id="bv__generatenft__title" class="bv__globals__px">
+          <p>
+            Thank you for your <b>donation</b>!
+          </p>
+
+          <h1>
+            We're generating your <b>NFT Tree!</b>
+          </h1>
+        </div>
+
+        <div id="bv__generatenft__subtitle" class="bv__globals__px">
+          <p>
+            Your <b> {{ DonorPortal_GetDonationAmount() }} USDC </b> donation to <b> {{
+              DonorPortal_GetSpecificProject()['$displayName'] }} </b> generated {{$getUser('Donation_NFTCount')}}
+            <span v-if="$getUser('Donation_NFTCount') > 1"> NFTs. </span>
+            <span v-if="$getUser('Donation_NFTCount') == 1"> NFT. </span>
+            They will show on your dashboard when they're ready.
+          </p>
+        </div>
+
+        <div class="bv__globals__px">
+          <u-Components-Button id="bv__backtodashboard__button"secondary @click="DonorPortal_RedirectToDashboard()">
+            <p>Back to dashboard</p>
+            <template #right-icon>
+              <u-Icons-Dashboard color="var(--offwhite)" />
+            </template>
+          </u-Components-Button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</template>
+
+
+
+<style>
+  #bv__generatenft {
+    background: var(--bg-primary)
+  }
+
+  #bv__backtodashboard__button{
+    opacity: 0;
+  }
+
+  #bv__generatenft__header {
+    position: static;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 66px;
+  }
+
+  #bv__generatenft__image {
+    padding-top: 35px;
+    padding-bottom: 15px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    height: calc(50vh - 66px)
+  }
+
+  #bv__generatenft__image>iframe {
+    object-fit: fill;
+    width: 100%;
+    height: 100%;
+  }
+
+  .bv__generatenft__border {
+    width: 100%;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  #bv__generatenft__contents {
+    height: calc(50vh - 66px);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  #bv__generatenft__title {
+    padding-top: 15px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  #bv__generatenft__title>h1 {
+    font-weight: 400;
+  }
+
+  #bv__generatenft__subtitle {
+    padding-bottom: 30px;
+  }
+
+  #bv__generatenft__subtitle>p {
+    font-size: 17px;
+    line-height: 28px;
+  }
+
+
+  #bv__generatenft__subtitle>p>br {
+    display: none;
+  }
+
+
+  @media screen and (min-width: 992px) {
+    #bv__generatenft__body {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      gap: 0;
+    }
+
+    .bv__generatenft__border {
+      height: 100%;
+      width: 1px;
+    }
+
+    #bv__generatenft__header {
+      position: absolute;
+      padding-top: 24px;
+      padding-bottom: 24px;
+      height: 92px;
+    }
+
+    #bv__generatenft__image {
+      padding-top: 0;
+      justify-content: center;
+      width: 50vw;
+      height: 100%;
+    }
+
+    #bv__generatenft__image>iframe {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    #bv__generatenft__contents {
+      width: 50vw;
+      height: 100%;
+      padding: 0 10%;
+    }
+
+    #bv__generatenft__title {
+      width: 100%;
+      text-align: left;
+    }
+
+    #bv__generatenft__subtitle {
+      text-align: left;
+    }
+
+    #bv__generatenft__subtitle>p>br {
+      display: block;
+    }
+
+  }
+
+</style>

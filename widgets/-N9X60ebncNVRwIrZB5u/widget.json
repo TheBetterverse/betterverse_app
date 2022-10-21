@@ -1,0 +1,17 @@
+{
+  "dependency": "dataGrid/conversionCurrencies",
+  "gsOptions": {
+    "h": 4,
+    "w": 24,
+    "x": 0,
+    "y": 130
+  },
+  "layout": "b-card",
+  "overflow": "height: auto",
+  "props": {
+    "gridId": "conversionCurrencies"
+  },
+  "subtab": "-Mx_3SXgBk5SECkRduDE",
+  "tab": "-Mx_2_VCOc__FGnUdqrq",
+  "type": "DataGrid"
+}

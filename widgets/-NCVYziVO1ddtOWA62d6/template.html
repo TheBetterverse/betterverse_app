@@ -1,0 +1,16 @@
+<h1>Donate to: {{$getUser('Donation_SelectedCharityName')}},  {{$getUser('Donation_SelectedProjectName')}}</h1>
+
+<b-button @click="DonorPortal_Donate(
+    1,
+    DonorPortal_GetCurrentUserWalletAddress(),
+    fbUser.uid,
+    $getUser('Donation_SelectedCharity'),
+    $getUser('Donation_SelectedProject'),
+    '-MuQuXTPrcNddIlCbmAL',
+    '-NAEDxpjPk5gWqCKrRME',
+    DonorPortal_GetCurrentUserProfileLocation(),
+    10,
+    null,
+    DonorPortal_GetDateTime(),
+    1
+)">Donate</b-button>

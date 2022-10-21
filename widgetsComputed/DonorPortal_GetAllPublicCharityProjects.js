@@ -1,12 +1,20 @@
-return function  () {
+/* DonorPortal_GetAllPublicCharityProjects.js */
 
-    //Get todays date in MS
-    var nowDate = new Date();
-    var today = nowDate.getTime()
+return function () {
+  //Get todays date in MS
+  var nowDate = new Date()
+  var today = nowDate.getTime()
 
-    let rows = []
+  let rows = $getGrid('charityProjects').filter(
+    row =>
+      row.$projectAccess$display == 'Public' &&
+      row.inactiveProject != true &&
+      (row.endDate > today || row.noEndDate == true) &&
+      row.charity != null &&
+      row.currency != null &&
+      row.pricePerTree != null &&
+      row.yearlyCO2Sequestration != null
+  )
 
-    rows = $getGrid('charityProjects').filter(row => row.$projectAccess$display == "Public" && (row.endDate > today || row.noEndDate == true) && row.charity != null && row.currency != null && row.pricePerTree != null && row.yearlyCO2Sequestration != null) 
-
-    return rows
+  return rows
 }

@@ -1,0 +1,876 @@
+<!-- DonorPortal_DonateModal.html -->
+<template>
+  <form @submit.prevent="">
+    <div id="bv__donatemodal" class="w-100">
+      <div class="bv__donatemodal__main" v-if="DonorPortal_GetSpecificProject()">
+        <div class="bv__donatemodal__header  bv__globals__px">
+          <nav id="bv__donatemodal__navbar">
+            <div id="bv__donatemodal__logolg" class="d-none d-lg-flex">
+              <u-Icons-Betterverse />
+            </div>
+            <div class="d-lg-none">
+              <u-Icons-Betterverse height="32px" width="32px" />
+            </div>
+            <div>
+              <u-Components-WalletDisplay :wallet="DonorPortal_GetCurrentUserWalletInformation()"
+                v-if="DonorPortal_GetCurrentUserWalletAddress() != null && DonorPortal_GetCurrentUserProfileComplete() == true"
+                @click="DonorPortal_OpenWallet()" />
+            </div>
+            <button style="background: var(--bg-secondary) ; border-radius: 100%;"
+              @click="DonorPortal_TriggerDonateModal('none')" type="button">
+              <u-Icons-Close></u-Icons-Close>
+            </button>
+          </nav>
+
+          <div class="bv__donatemodal__donatemessagewrap">
+            <h2 class="bv__donatemodal__donatemessage">
+              I want to donate
+              <span v-if="DonorPortal_GetCurrentUserWalletProvider() == 'slide'" style="position: relative">
+                <span class="bv__inlineinput__topspan">
+                  <p>Select amount</p>
+                </span>
+
+                <span>
+                  <select name="slide-donation-amount" id="bv__donatemodal__slidedonationinput"
+                    @input="DonorPortal_ProcessDonationAmount">
+                    <option value="20" default>20</option>
+                    <option value="30">30</option>
+                    <option value="50">50</option>
+                    <option value="80">80</option>
+                    <option value="100">100</option>
+                    <option value="250">250</option>
+                    <option value="500">500</option>
+                    <option value="1000">1000</option>
+                  </select>
+
+                  <u-Icons-Chevron width="32px" height="32px"
+                    class="bv__donatemodal__chevron bv__donatemodal__chevronlg">
+                  </u-Icons-Chevron>
+
+                  <u-Icons-Chevron width="12px" height="12px"
+                    class="bv__donatemodal__chevron bv__donatemodal__chevronsm">
+                  </u-Icons-Chevron>
+                </span>
+
+              </span>
+
+              <u-Components-InlineInput v-else name="donation-amount" :value="DonorPortal_GetDonationAmount"
+                @input="DonorPortal_ProcessDonationAmount" id="bv__donatemodal__donationamountinput" />
+
+              to <b>{{ DonorPortal_GetSpecificProject().$charity$display }}</b>
+              to plant <b>{{ DonorPortal_CalculateTreesPlanted( $getUser('DonorPortal_DonationAmount',
+                DonorPortal_GetSpecificProject().pricePerTree ),
+                DonorPortal_GetSpecificProject().pricePerTree).toLocaleString() }}</b> trees
+              in <b>{{DonorPortal_GetSpecificProject().displayLocation}}</b> to help with
+              <b>{{ DonorPortal_GetSpecificProject().$cause$display.toLowerCase() }}.</b>
+            </h2>
+
+            <u-Components-Button secondary class="bv__donatemodal__donatebutton"
+              @click="$('.bv__donatemodal__descriptioncont').get(0).scrollIntoView({behavior: 'smooth'})" type="button">
+              <p>Review donation</p>
+              <template #right-icon>
+                <u-Icons-Arrow down />
+              </template>
+            </u-Components-Button>
+          </div>
+
+          <div>
+            <hr class="d-none d-lg-block" />
+            <div class="bv__donatemodal__headerfoot">
+              <u-Icons-Info />
+              <p>By increasing your donation you are increasing your
+                chance
+                to mint a
+                rarer NFT.
+                <!--a style="font-weight: 500;" href="https://www.betterverse.app">  </a-->
+              </p>
+            </div>
+          </div>
+
+
+        </div>
+
+        <div class="bv__donatemodal__description bv__globals__px">
+          <div class="bv__donatemodal__donation ">
+            <div>
+              <p>Donation</p>
+              <h2 style="display: flex; gap: 0.25rem; align-items: center;">
+                {{ DonorPortal_GetDonationAmount() }}
+                <u-Icons-USDC height="24px" width="24px" />
+              </h2>
+            </div>
+
+            <u-Components-Button
+              @click="$('.bv__donatemodal__header').get(0).scrollIntoView({behavior: 'smooth'}); document.getElementById('bv__donatemodal__donationamountinput').focus();"
+              type="button">
+              <p>Edit donation</p>
+              <template #left-icon>
+                <u-Icons-Edit />
+              </template>
+            </u-Components-Button>
+          </div>
+
+          <hr />
+
+          <div class="bv__donatemodal__charity">
+            <div class="w-100">
+              <p>Charity</p>
+              <h2 style="display: flex; gap: 0.5rem; align-items: center">
+                <img :src="DonorPortal_GetSpecificProject().$charity.charityLogo.url"
+                  style="height: 24px; display: flex; align-items: center" />
+                {{ DonorPortal_GetSpecificProject().$charity$display }}
+              </h2>
+            </div>
+          </div>
+
+          <hr />
+
+          <div class="bv__donatemodal__projectname">
+            <div class="w-100">
+              <p>Project</p>
+              <h2>
+                {{DonorPortal_GetSpecificProject().projectName }}
+              </h2>
+            </div>
+          </div>
+
+          <hr />
+
+        </div>
+      </div>
+
+      <div class="bv__donatemodal__descriptioncont bv__globals__px">
+        <div class="bv__donatemodal__donation grid-area-1">
+          <div>
+            <p>Donation</p>
+            <h2 style="display: flex; gap: 0.25rem">
+              {{ DonorPortal_GetDonationAmount() }}
+              <u-Icons-USDC height="24px" width="24px"></u-Icons-USDC>
+            </h2>
+          </div>
+
+          <u-Components-Button
+            @click="$('.bv__donatemodal__header').get(0).scrollIntoView({behavior: 'smooth'}); document.getElementById('bv__donatemodal__donationamountinput').focus();"
+            type="button">
+            <p>Edit donation</p>
+            <template #left-icon>
+              <u-Icons-Edit />
+            </template>
+          </u-Components-Button>
+        </div>
+
+        <div class="bv__donatemodal__charity grid-area-2">
+          <div class="w-100">
+            <p>Charity</p>
+            <h2 style="display: flex; gap: 0.5rem; align-items: center">
+              <img :src="DonorPortal_GetSpecificProject().$charity.charityLogo.url"
+                style="height: 24px; display: flex; align-items: center" />
+              {{ DonorPortal_GetSpecificProject().$charity$display }}
+            </h2>
+          </div>
+        </div>
+
+        <div class="bv__donatemodal__projectname grid-area-3">
+          <div class="w-100">
+            <p>Project</p>
+            <h2>
+              {{ DonorPortal_GetSpecificProject().projectName }}
+            </h2>
+          </div>
+        </div>
+
+        <div class="bv__donatemodal__projectlocation grid-area-4">
+          <div class="w-100">
+            <p>Location</p>
+            <h2>
+              {{DonorPortal_GetSpecificProject().displayLocation }}
+            </h2>
+          </div>
+        </div>
+
+        <hr class="d-block d-lg-none" />
+
+        <div class="bv__donatemodal__treeamount grid-area-5">
+          <div class="w-100">
+            <p>Trees to be planted</p>
+            <h2>
+              {{ DonorPortal_CalculateTreesPlanted($getUser('DonorPortal_DonationAmount'),
+              DonorPortal_GetSpecificProject().pricePerTree).toLocaleString() }}
+            </h2>
+          </div>
+        </div>
+
+        <hr class="d-block d-lg-none" />
+
+        <div class="bv__donatemodal__projectcause grid-area-6">
+          <div class="w-100">
+            <p>Cause</p>
+            <h2>
+              {{DonorPortal_GetSpecificProject().$cause$display }}
+            </h2>
+          </div>
+        </div>
+
+        <hr class="d-block d-lg-none" />
+
+        <div class="grid-area-7">
+          <div class="bv__donatemodal__donationsplit w-100">
+            <p>Split donation to generate:</p>
+
+            <div class="bv__donatemodal__radioinputlist">
+              <div class="bv__donatemodal__radioinputwrap">
+                <input type="radio" id="bv__donatemodal__nosplit" name="split_donation" value="no"
+                  :checked="DonorPortal_GetDonationAmountNumber() < 20 ? 'checked' : 'false'" />
+                <label for="bv__donatemodal__nosplit" style="display: flex; gap: 0.5rem; align-items: center;">
+                  <p>
+                    1 NFT (1 tree)
+                  </p>
+                  <small
+                    style="border-radius: 5px; background: #25C791; padding: 0 0.5rem; height: 20px; display: flex; align-items: center;">
+                    higher chance of rarer nft
+                  </small>
+                </label>
+              </div>
+
+              <div v-if="DonorPortal_GetDonationAmountNumber() >= 20" class="bv__donatemodal__radioinputwrap">
+                <input type="radio" id="bv__donatemodal__customsplit" name="split_donation" value="yes" />
+                <label for="bv__donatemodal__customsplit">
+                  <div style="display: flex; gap: 1rem; align-items: center">
+                    <p id="bv__donatemodal_customsplit__text">
+                      Custom amount of NFTs
+                    </p>
+
+                    <u-Components-NumberInput name="nft_custom_amount" :min="() => 2"
+                      :max="Validation_MaxAmountOfCustomNFTs" />
+                  </div>
+                </label>
+              </div>
+
+              <div v-else class="bv__donatemodal__radioinputwrap">
+                <input type="radio" id="bv__donatemodal__customsplitdisabled" value="disabled" style="opacity: 60%"
+                  disabled />
+                <label for="bv__donatemodal__customsplitdisabled">
+                  <div style="display: flex; gap: 1rem; align-items: center; opacity: 60%">
+                    <p id="bv__donatemodal_customsplit__text">
+                      Custom amount of NFTs
+                    </p>
+
+                    <!-- <u-Components-NumberInput name="nft_custom_amount" :min="() => 2" :max="Validation_MaxAmountOfCustomNFTs" /> -->
+                  </div>
+                </label>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <hr class="d-block d-lg-none" />
+
+        <div class="grid-area-8">
+          <div class="bv__donatemodal__paymentmethod">
+            <p>Payment method:</p>
+
+            <div style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+              <!--input type="radio" id="bv__donatemodal__payment" name="payment_method" value="wallet" checked /-->
+              <label for="bv__donatemodal__payment">
+                <div style="display: flex; gap: 1rem; align-items: center">
+                  <u-Components-WalletDisplay balance :wallet="DonorPortal_GetCurrentUserWalletInformation()"
+                    class="bv__donatemodal__walletbalance" />
+                </div>
+              </label>
+
+              <div style="position: relative; float: right;">
+                <u-Components-Button v-if="DonorPortal_GetCurrentUserWalletAddress() != null"
+                  @click="DonorPortal_LoadRamp('overlay')">
+                  <p> Top up wallet </p>
+                </u-Components-Button>
+              </div>
+            </div>
+
+
+
+            <div class="bv__donatemodal__radioinputwrap" style="opacity: 60%;">
+              <input type="radio" id="bv__donatemodal__payment" name="payment_method" value="card" disabled />
+              <label for="bv__donatemodal__payment">
+                <p>
+                  Pay with debit card (coming soon)
+                </p>
+              </label>
+            </div>
+          </div>
+        </div>
+
+
+        <hr class="d-block d-lg-none" />
+
+        <div class="grid-area-9"
+          style="width: 100%; display: flex; align-items: center; justify-content: flex-end; padding: 1rem 0;">
+          <u-Components-Button @click="DonorPortal_DonateTransactionTESTNET()" secondary type="submit"
+            id="bv__donate__button">
+            <p id="bv__donate__buttontext">Donate and Generate NFT</p>
+            <div style="margin-left: 6px; display: none;" class="spinner-border spinner-border-sm" id="bv__spinner"
+              role="status"></div>
+          </u-Components-Button>
+        </div>
+
+        <small class="grid-area-10">
+          Did you know you can split your donation to generate more NFTs? However, you'll a smaller chance to <u><a
+              style="font-weight: 500;" href="https://www.betterverse.app"> mint a
+              rarer
+              NFT. </a></u>
+        </small>
+      </div>
+
+      <u-Components-Footer style="position: static" />
+    </div>
+  </form>
+</template>
+
+<script type="module">
+
+  function DonateModal_ResizeSlideDonationInput() {
+    let $slideDonationInput = $('#bv__donatemodal__slidedonationinput')[0]
+
+    if (!$slideDonationInput) return
+    if (!$slideDonationInput.style) return
+
+    let letterSize = 2
+    let windowSizeWeight = 0.65
+
+    for (let letter in $slideDonationInput.value) {
+      if ($slideDonationInput.value[letter] === "1") letterSize += 0.95
+      else letterSize += 1.9
+    }
+
+    if (document.body.clientWidth > 992) windowSizeWeight = 1.25
+
+    $slideDonationInput.style.width = `${letterSize * windowSizeWeight}rem`
+  }
+
+  $('#bv__donatemodal__slidedonationinput').on('input', DonateModal_ResizeSlideDonationInput)
+  window.addEventListener('resize', DonateModal_ResizeSlideDonationInput)
+
+  DonateModal_ResizeSlideDonationInput()
+
+</script>
+
+<style>
+  #bv__donatemodal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 300;
+
+    display: none;
+    overflow: auto;
+
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+
+    padding: 0;
+    margin: 0;
+
+    background-color: var(--bg-primary);
+  }
+
+  .bv__donatemodal__main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  .bv__donatemodal__header {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 4rem;
+
+    background: var(--bg-secondary);
+    border-bottom: 1px solid white;
+
+    scroll-snap-align: start;
+  }
+
+  #bv__donatemodal__navbar {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    align-items: center;
+    justify-content: space-between;
+
+    height: 67px;
+
+    background: none;
+  }
+
+  #bv__donatemodal__navbarlogo {
+    height: 32px;
+    width: 32px;
+  }
+
+  .bv__donatemodal__header>h2,
+  .bv__donatemodal__header>div>h2 {
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 42px;
+  }
+
+  .bv__donatemodal__headerfoot {
+    display: flex;
+    gap: 0.25rem;
+    align-items: flex-start;
+    margin-top: 0;
+    margin-bottom: 2.5rem;
+  }
+
+  .bv__donatemodal__description {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1.25rem;
+
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+
+    scroll-snap-align: start;
+  }
+
+  .bv__donatemodal__description>hr {
+    padding: 0;
+    margin: 0;
+  }
+
+  .bv__donatemodal__donation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .bv__donatemodal__charity {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .bv__donatemodal__projectname {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .bv__donatemodal__projectlocation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .bv__donatemodal__projectcause {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .bv__donatemodal__treeamount {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+  }
+
+  .bv__donatemodal__donationsplit {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.5rem;
+  }
+
+  .bv__donatemodal__paymentmethod {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.5rem;
+  }
+
+  .bv__donatemodal__descriptioncont {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+
+    padding-bottom: 1.25rem;
+    scroll-snap-align: start;
+
+  }
+
+  .bv__donatemodal__descriptioncont>hr {
+    padding: 0;
+    margin: 0;
+  }
+
+  .bv__donatemodal__radioinputlist {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem
+  }
+
+  .bv__donatemodal__radioinputwrap {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  input[type="radio"] {
+    appearance: none;
+    background-color: none;
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 1rem;
+    height: 1rem;
+    border: 1px solid black;
+    border-radius: 50%;
+    transform: translateY(0.25rem);
+
+    display: grid;
+    place-content: center;
+
+  }
+
+  input[type="radio"]::before {
+    content: "";
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em black;
+  }
+
+  input[type="radio"]:checked::before {
+    transform: scale(1);
+  }
+
+  input[type="radio"]:disabled {
+    opacity: 20%;
+  }
+
+  .bv__donatemodal__walletbalance {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none !important;
+    height: auto;
+    padding: 0 !important;
+  }
+
+  .bv__donatemodal__descriptioncont>.bv__donatemodal__donation,
+  .bv__donatemodal__descriptioncont>.bv__donatemodal__charity,
+  .bv__donatemodal__descriptioncont>.bv__donatemodal__projectname {
+    display: none;
+  }
+
+  .bv__donatemodal__donatemessagewrap {
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #bv__donatemodal__slidedonationinput {
+    width: auto;
+    background: none;
+    border: none;
+    outline: none;
+    appearance: none;
+    font-weight: 700;
+    user-select: none;
+    text-decoration-line: underline;
+    padding-left: 5px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+  }
+
+  #bv__donatemodal__slidedonationinput:active,
+  #bv__donatemodal__slidedonationinput:focus {
+    user-select: none;
+    outline: none !important;
+    border: none !important;
+  }
+
+  .bv__donatemodal__chevron {
+    align-items: center;
+    pointer-events: none;
+  }
+
+  .bv__donatemodal__chevronlg {
+    width: auto;
+    padding-bottom: 10px;
+    margin-left: -3rem;
+    display: none;
+  }
+
+  .bv__donatemodal__chevronsm {
+    align-items: center;
+    padding-bottom: 4px;
+    margin-left: -1.75rem;
+    display: inline-flex;
+  }
+
+
+  .bv__donatemodal__donatemessageusdciconlg {
+    display: none !important;
+  }
+
+  .bv__donatemodal__donatemessageusdciconsm {
+    display: inline-flex !important;
+    padding-bottom: 6px;
+  }
+
+  .bv__donatemodal__footertext {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--offwhite);
+  }
+
+  @media screen and (min-width: 992px) {
+    #bv__donatemodal {
+      align-items: center;
+      justify-content: center;
+    }
+
+    .bv__donatemodal__main {
+      height: max-content;
+      margin-bottom: 1rem;
+    }
+
+    #bv__donatemodal__navbar {
+      justify-content: space-between;
+      height: 92px;
+    }
+
+    .bv__donatemodal__header {
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .bv__donatemodal__donatebutton {
+      height: 4;
+      width: 100%;
+    }
+
+    .bv__donatemodal__donatebutton>span>p {
+      font-size: 14px;
+    }
+
+    .bv__donatemodal__donatemessage {
+      text-align: center;
+      width: 72%;
+      font-size: 64px !important;
+      line-height: 72px !important;
+      font-weight: 400 !important;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .bv__donatemodal__chevronlg {
+      display: inline-flex;
+    }
+
+    .bv__donatemodal__chevronsm {
+      display: none
+    }
+
+    .bv__donatemodal__donatemessageusdciconlg {
+      display: inline-flex !important;
+      padding-bottom: 12px;
+    }
+
+    .bv__donatemodal__donatemessageusdciconsm {
+      display: none !important;
+    }
+
+    .bv__donatemodal__donatemessagewrap {
+      display: flex;
+      gap: 2rem;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .bv__donatemodal__headerfoot {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0;
+    }
+
+    .bv__donatemodal__headerfoot>p {
+      font-size: 20px;
+    }
+
+    .bv__donatemodal__description {
+      display: none;
+    }
+
+    .bv__donatemodal__descriptioncont {
+      height: 94vh;
+      gap: 1.25rem;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr;
+      align-items: center;
+      justify-content: center;
+      column-gap: 0;
+      row-gap: 0.5rem;
+
+      grid-template-areas: "a b" "c d" "e f" "g h" "j i";
+      padding: 10% 20% !important;
+
+      width: 100%;
+
+      margin-bottom: 1rem;
+    }
+
+    .bv__donatemodal__descriptioncont>.bv__donatemodal__donation,
+    .bv__donatemodal__descriptioncont>.bv__donatemodal__charity,
+    .bv__donatemodal__descriptioncont>.bv__donatemodal__projectname {
+      display: flex;
+    }
+
+    .grid-area-1 {
+      grid-area: a;
+
+      height: auto;
+      padding: 1rem 0;
+      padding-right: 1rem;
+      border-bottom: 1px solid rgb(0, 0, 0, 0.05);
+      border-right: 1px solid rgb(0, 0, 0, 0.05);
+    }
+
+    .grid-area-2 {
+      grid-area: b;
+      height: auto;
+      padding: 1rem 0;
+      padding-left: 1rem;
+      border-bottom: 1px solid rgb(0, 0, 0, 0.05);
+      border-left: 1px solid rgb(0, 0, 0, 0.05);
+    }
+
+    .grid-area-3 {
+      grid-area: c;
+      height: auto;
+      padding: 1rem 0;
+      padding-right: 1rem;
+      border-bottom: 1px solid rgb(0, 0, 0, 0.05);
+      border-right: 1px solid rgb(0, 0, 0, 0.05);
+
+    }
+
+    .grid-area-4 {
+      grid-area: d;
+      height: auto;
+      padding: 1rem 0;
+      padding-left: 1rem;
+      border-bottom: 1px solid rgb(0, 0, 0, 0.05);
+      border-left: 1px solid rgb(0, 0, 0, 0.05);
+    }
+
+    .grid-area-5 {
+      grid-area: e;
+      height: auto;
+      padding: 1rem 0;
+      padding-right: 1rem;
+      border-bottom: 1px solid rgb(0, 0, 0, 0.05);
+      border-right: 1px solid rgb(0, 0, 0, 0.05);
+
+    }
+
+    .grid-area-6 {
+      grid-area: f;
+      height: auto;
+      padding: 1rem 0;
+      padding-left: 1rem;
+      border-bottom: 1px solid rgb(0, 0, 0, 0.05);
+      border-left: 1px solid rgb(0, 0, 0, 0.05);
+    }
+
+    .grid-area-7 {
+      grid-area: g;
+      height: 100%;
+      padding: 1rem 0;
+      padding-right: 1rem;
+      border-bottom: 1px solid rgb(0, 0, 0, 0.05);
+      border-right: 1px solid rgb(0, 0, 0, 0.05);
+
+    }
+
+    .grid-area-8 {
+      grid-area: h;
+      height: 100%;
+      width: 100%;
+      padding: 1rem 0;
+      padding-left: 1rem;
+      border-bottom: 1px solid rgb(0, 0, 0, 0.05);
+      border-left: 1px solid rgb(0, 0, 0, 0.05);
+    }
+
+    .grid-area-9 {
+      grid-area: i;
+      height: auto;
+    }
+
+    .grid-area-10 {
+      grid-area: j;
+      height: auto;
+    }
+
+    .bv__donatemodal__footertext {
+      font-size: 14px;
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    .bv__donatemodal__donatemessage {
+      width: 60%;
+    }
+
+  }
+
+  .bv__inlineinput__topspan {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    top: -2rem;
+
+    min-width: max-content;
+    width: 100%;
+    margin-bottom: 1rem;
+
+    text-align: center;
+  }
+
+</style>

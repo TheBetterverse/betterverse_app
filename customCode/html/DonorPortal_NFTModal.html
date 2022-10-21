@@ -1,115 +1,877 @@
-<div id="nft-modal" class="nft-modal">
-    <div class="row no-gutters">
-
-        <div class="col-md-6 no-gutters">
-            <div class="leftside">
-                <center>
-                    <video autoplay loop style="width: 100%;">
-                        <source src="https://drive.google.com/uc?export=download&id=1Mt2cvrXHr4rgACDTHiGBGMIMDpXBHLkO" type="video/mp4">
-                    </video>
-                </center>
-            </div>
-        </div>
-
-        <div class="col-md-6 no-gutters">
-            <div class="rightside">
-
-                <div class="modal-close-container">
-                    <b-button @click="DonorPortal_TriggerNFTModal('hide')">x</b-button>
-                </div>
-
-                <div class="nft-information-container">
-                    <h1>Tree Name Here #1</h1>
-                    <h1>You've captured {{DonorPortal_GetSpecificDonation().yearlyCarbonSequestration}}kgs of CO2 
-                        by planting {{DonorPortal_GetSpecificDonation().numberOfTreesPlanted}} trees 
-                        in {{DonorPortal_GetSpecificDonation().$charityProject.displayLocation}}
-                    </h1>
-                
-                    <h1>Charity Name: {{DonorPortal_GetSpecificDonation().$charity$displayLocation}}</h1>
-                    <div class="row">
-                        <div class="col">
-                            <b-card>
-                                <h2>Donation</h2>
-                                <h1>${{DonorPortal_GetSpecificDonation().donationAmount}}</h1>
-                            </b-card>
-                        </div>
-
-                        <div class="col">
-                            <b-card>
-                                <h2>Trees planted</h2>
-                                <h1>{{DonorPortal_GetSpecificDonation().numberOfTreesPlanted}}</h1>
-                            </b-card>
-                        </div>  
-
-                        <div class="col">
-                            <b-card>
-                                <h2>CO2 Capture</h2>
-                                <h1>{{DonorPortal_GetSpecificDonation().yearlyCarbonSequestration}}kg</h1>
-                            </b-card>
-                        </div>  
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <b-card>
-                                <h2>Location</h2>
-                                <h1>{{DonorPortal_GetSpecificDonation().$charityProject.displayLocation}}</h1>
-                            </b-card>
-                        </div>  
-                        <div class="col">
-                            <b-card>
-                                <h2>Date</h2>
-                                <h1>{{DonorPortal_GetSpecificDonation().donationDate}}</h1>
-                            </b-card>
-                        </div>  
-                    </div>
-
-                    <h3>You're making a great impact!</h3>
-                        <div v-for="item in DonorPortal_GetSpecificDonation().$charityProject.$keyImpactAreas$display">
-                        <b-badge style="margin: 10px;">
-                            {{item}}
-                        </b-badge>
-                    </div>
-
-                    <h1>Tree Name Here #1</h1>
-                    <h2>Owned by {{DonorPortal_GetCurrentUserNames('username')}}</h2>
-                    <div class="row">
-                        <div class="col">
-                            <h2>Biome</h2>
-                            <h3>ATTRIBUTE HERE</h3>
-                        </div>
-                        <div class="col">
-                            <h2>Species</h2>
-                            <h3>ATTRIBUTE HERE</h3>
-                        </div>
-                        <div class="col">
-                            <h2>Palette</h2>
-                            <h3>ATTRIBUTE HERE</h3>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <h2>Fungi or Flora</h2>
-                            <h3>ATTRIBUTE HERE</h3>
-                        </div>
-                        <div class="col">
-                            <h2>Growth Stage</h2>
-                            <h3>ATTRIBUTE HERE</h3>
-                        </div>
-                        <div class="col">
-                            <h2>Rarity</h2>
-                            <h3>ATTRIBUTE HERE</h3>
-                        </div>
-                    </div>
-
-                    <h1> You have {{DonorPortal_GetCurrentUserDonationsCount()}} other NFTs </h1>
-                    <div v-for="item in DonorPortal_GetCurrentUserDonationRows()">
-                        <b-card>TREE NAME HERE</b-card>
-                    </div>
-
-
-                </div>
-
-            </div>
-        </div>
+<!-- DonorPortal_NFTModal.html -->
+<template>
+  <div id="bv__nftmodal" class="w-100" v-if="DonorPortal_GetSpecificDonation()">
+    <div id="bv__nftmodal__logolg" class="d-none d-lg-flex bv__globals__px">
+      <u-Icons-Betterverse />
     </div>
-</div>
+
+    <nav id="bv__nftmodal__navbar" class="bv__globals__px">
+      <div class="d-lg-none">
+        <u-Icons-Betterverse height="32px" width="32px" />
+      </div>
+      <button id="bv__nftmodal__close" class="bg-transparent" @click="DonorPortal_TriggerNFTModal('hide')">
+        <u-Icons-Close></u-Icons-Close>
+      </button>
+    </nav>
+
+    <div id="bv__nftmodal__leftside">
+      <div id="bv__nftmodal__leftsideimage" class="bv__globals__skeleton">
+        <u-Components-TreeAnimation :url="$getUser('Donation_SelectedNFT')" />
+      </div>
+
+      <div id="bv__nftmodal__leftsideimage__bottomborder"></div>
+      <div id="bv__nftmodal__leftsideimage__rightborder"></div>
+
+    </div>
+
+    <div id="bv__nftmodal__rightside">
+
+      <div id="bv__nftmodal__main">
+
+        <div class="bv__nftmodal__treetitle">
+          <h2 class="bv__nftmodal__treename">
+            <u-get-Async :data="DonorPortal_SelectedNFTName()">
+              <span class="bv__animations__opacitywave" style="font-family: 'Documan', sans-serif; opacity: 50%">
+                <span>.</span><span>.</span><span>.</span>
+              </span>
+            </u-get-Async>
+          </h2>
+          <p class="bv__nftmodal__treenumber">
+            <u-get-Async :data="DonorPortal_SelectedNFTNumber()">
+              #
+            </u-get-Async>
+          </p>
+        </div>
+
+        <h1 id="bv__nftmodal__message">
+          You've captured <b>
+            {{
+            DonorPortal_GetCurrentUserDailyCarbonSequestrationUpdate('specific').toLocaleString(DonarPortal_NavigatorLanguage,{minimumFractionDigits:0,
+            maximumFractionDigits:2}) }}kgs</b>
+          of <b>CO2</b>
+          by planting <b>{{DonorPortal_GetSpecificDonation().numberOfTreesPlanted.toLocaleString() }} trees</b>
+          in <b>{{ DonorPortal_GetSpecificDonation().$charityProject.displayLocation }}</b>
+        </h1>
+
+        <div id="bv__nftmodal__bottomnav">
+          <button v-if="DonorPortal_GetCurrentUserNFTsCount() > 1"
+            @click="DonorPortal_NavigateNFTs('left', $getUser('Donation_SelectedNFTRowKey'))">
+            <u-Icons-ArrowLeft color="black"></u-Icons-ArrowLeft>
+          </button>
+          <button v-if="DonorPortal_GetCurrentUserNFTsCount() > 1"
+            @click="DonorPortal_NavigateNFTs('right', $getUser('Donation_SelectedNFTRowKey'))">
+            <u-Icons-ArrowRight color="black" />
+          </button>
+        </div>
+
+      </div>
+
+      <div id="bv__nftmodal__info">
+
+        <div id="bv__nftmodal__infoheader">
+          <div>
+            <small>
+              Charity
+            </small>
+            <h2 v-if="DonorPortal_GetSpecificDonation().$charity$display">
+              {{ DonorPortal_GetSpecificDonation().$charity$display }}
+            </h2>
+          </div>
+          <div id="bv__nftmodal__infoheadercharitylogo">
+            <img :src="DonorPortal_GetSpecificDonation().$charity.charityLogo.url" />
+          </div>
+        </div>
+
+        <hr />
+
+        <div id="bv__nftmodal__infocards">
+          <div class="bv__nftmodal__infocard">
+            <div class="bv__nftmodal__infocardheader">
+              <p>
+                Donation
+              </p>
+              <h2 class="d-flex">
+                <u-Icons-USDC style="margin-right: 4px;" />
+                {{ DonorPortal_GetSpecificDonation().donationAmount.toLocaleString(undefined, {minimumFractionDigits: 2,
+                maximumFractionDigits: 2}) }}&nbsp;
+              </h2>
+              <p v-if="DonorPortal_GetCurrentUserComparisonCurrency() != null">
+                ~{{ DonorPortal_GetSpecificDonationComparisonCurrency().toLocaleString(undefined,
+                {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}
+              </p>
+            </div>
+            <div class="bv__nftmodal__infocardfooter">
+              <u-Icons-Donation />
+            </div>
+          </div>
+
+          <div class="bv__nftmodal__infocard">
+            <div class="bv__nftmodal__infocardheader">
+              <p> Trees planted </p>
+              <h2 class="m-0">
+                {{ DonorPortal_GetSpecificDonation().numberOfTreesPlanted.toLocaleString() }}
+              </h2>
+            </div>
+            <div class="bv__nftmodal__infocardfooter">
+              <u-Icons-TreesPlanted />
+            </div>
+          </div>
+
+          <div class="bv__nftmodal__infocard">
+            <div class="bv__nftmodal__infocardheader">
+              <span class="w-100 d-flex justify-content-between">
+                <p> CO2 Capture </p>
+                <u-Components-ToolTip>
+                  <template #tooltip>
+                    <p>Want to know how we figure this out? Info coming soon.</p>
+                  </template>
+                </u-Components-ToolTip>
+              </span>
+              <h2>
+                {{
+                DonorPortal_GetCurrentUserDailyCarbonSequestrationUpdate('specific').toLocaleString(DonarPortal_NavigatorLanguage,{minimumFractionDigits:0,
+                maximumFractionDigits:2}) }} kg
+              </h2>
+            </div>
+            <div class="bv__nftmodal__infocardfooter">
+              <u-Icons-CO2Captured />
+            </div>
+          </div>
+
+          <div class="bv__nftmodal__infocard">
+            <div class="bv__nftmodal__infocardheader">
+              <p> Location </p>
+              <h2>
+                {{DonorPortal_GetSpecificDonation().$charityProject.displayLocation}}
+              </h2>
+            </div>
+            <div class="bv__nftmodal__infocardfooter">
+              <u-Icons-Location />
+            </div>
+          </div>
+
+          <div class="bv__nftmodal__infocard">
+            <div class="bv__nftmodal__infocardheader">
+              <p> Date </p>
+              <h2>
+                {{ new Date(DonorPortal_GetSpecificDonation().donationDate).toLocaleDateString('en-us', {dateStyle:
+                "medium"}) }}
+              </h2>
+            </div>
+            <div class="bv__nftmodal__infocardfooter">
+              <u-Icons-Date />
+            </div>
+          </div>
+        </div>
+
+        <div id="bv__nftmodal__infoimpact">
+          <p>
+            You're making a great impact!
+          </p>
+          <div id="bv__nftmodal__infoimpacttags">
+
+            <div class="bv__nftmodal__impacttag"
+              v-for="item in DonorPortal_GetSpecificDonation().$charityProject.$keyImpactAreas$display">
+              <p>
+                {{ item }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div id="bv__nftmodal__infoattributes">
+          <div class="bv__nftmodal__treetitle">
+            <h2 class="bv__nftmodal__treename">
+              <u-get-Async :data="DonorPortal_SelectedNFTName()">
+                <span class="bv__animations__opacitywave" style="font-family: 'Documan', sans-serif; opacity: 50%">
+                  <span>.</span><span>.</span><span>.</span>
+                </span>
+              </u-get-Async>
+            </h2>
+            <p class="bv__nftmodal__treenumber">
+              <u-get-Async :data="DonorPortal_SelectedNFTNumber()">
+                #
+              </u-get-Async>
+            </p>
+          </div>
+
+          <p>
+            Owned by <b>{{DonorPortal_GetCurrentUserNames('username')}}</b>
+          </p>
+
+          <hr />
+
+
+
+          <u-Components-AttributesCard :url="$getUser('Donation_SelectedNFT')" />
+        </div>
+
+        <div id="bv__nftmodal__share">
+          <div class="bv__nftmodal__infocard bv__nftmodal__sharecard">
+            <div>
+              <h2>
+                Download
+              </h2>
+              <p>Take your tree with you wherever you go.</p>
+            </div>
+            <u-Components-Button @click="DonorPortal_DownloadNFT($getUser('Donation_SelectedNFT'))">
+              <template #left-icon>
+                <u-Icons-Download />
+              </template>
+              <template #default>Download</template>
+            </u-Components-Button>
+          </div>
+
+          <div class="bv__nftmodal__infocard bv__nftmodal__sharecard">
+            <div>
+              <h2>
+                Share
+              </h2>
+              <p>Share your impact with friends and inspire your community.</p>
+              <b-spinner id="bv__nftmodal__sharecard__spinner" small style="display: none;"></b-spinner>
+            </div>
+            <div id="bv__nftmodal__infocardsocials">
+              <u-Components-Button
+                @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'twitter')">
+                <template #left-icon>
+                  <u-Icons-Twitter-Blue />
+                </template>
+              </u-Components-Button>
+
+              <u-Components-Button
+                @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'facebook')">
+                <template #left-icon>
+                  <u-Icons-Facebook />
+                </template>
+              </u-Components-Button>
+
+              <u-Components-Button
+                @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'telegram')">
+                <template #left-icon>
+                  <u-Icons-Telegram />
+                </template>
+              </u-Components-Button>
+
+              <u-Components-Button
+                @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'whatsapp')">
+                <template #left-icon>
+                  <u-Icons-WhatsApp />
+                </template>
+              </u-Components-Button>
+
+              <u-Components-Button
+                @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'linkedin')">
+                <template #left-icon>
+                  <u-Icons-Linkedin />
+                </template>
+              </u-Components-Button>
+
+              <u-Components-Button
+                @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'copy')">
+                <template #left-icon>
+                  <u-Icons-Copy />
+                </template>
+              </u-Components-Button>
+            </div>
+          </div>
+        </div>
+
+        <div id="bv__nftmodal__actions">
+          <div class="bv__nftmodal__actioncard">
+            <div class="bv__nftmodal__statustext">
+              <small>new</small>
+            </div>
+
+            <div>
+              <h2>
+                Sell your Tree on OpenSea
+              </h2>
+              <p>
+                Put your unique tree on the market. With each new sale a cut will go to the original charity.
+              </p>
+            </div>
+
+            <div>
+              <u-Components-Button @click="DonorPortal_OpenOpenSea($getUser('Donation_SelectedNFTRowKey'))">Sell NFT
+              </u-Components-Button>
+            </div>
+          </div>
+
+          <div class="bv__nftmodal__actioncard disabled">
+            <div class="bv__nftmodal__statustext">
+              <small>coming soon</small>
+            </div>
+
+            <div>
+              <h2>
+                Speed growth rate with Fertiliser
+              </h2>
+              <p>
+                Getting impatient? Fertiliser will speed things up.
+              </p>
+            </div>
+
+            <div>
+              <u-Components-Button style="border: 1px solid #9f9d98; color: #9f9d98; cursor: not-allowed;">Buy
+                fertiliser</u-Components-Button>
+            </div>
+          </div>
+
+          <div class="bv__nftmodal__actioncard disabled">
+            <div class="bv__nftmodal__statustext">
+              <small>coming soon</small>
+            </div>
+
+            <div>
+              <h2>
+                Plant your tree in our metaverse
+              </h2>
+              <p>
+                Secure your place in our explorable 3D metaverse.
+              </p>
+            </div>
+
+            <div>
+              <u-Components-Button style="border: 1px solid #9f9d98; color: #9f9d98; cursor: not-allowed;">Enter the
+                Betterverse</u-Components-Button>
+            </div>
+          </div>
+        </div>
+
+        <div id="bv__nftmodal__othernfts" v-if="DonorPortal_GetCurrentUserNFTsCount() > 1">
+          <div class=" d-flex align-items-center justify-content-between">
+            <h2>
+              You've got {{ DonorPortal_GetCurrentUserNFTsCount() - 1 }} other NFT{{
+              (DonorPortal_GetCurrentUserNFTsCount() - 1) > 1 ? 's' :
+              '' }}
+            </h2>
+
+            <div id="bv__nftmodal__othernftsnav">
+              <button @click="NFTModal_ScrollOtherNFTs($event, 'left')" id="othernftsnav-left">
+                <u-Icons-Arrow left color="black"></u-Icons-Arrow>
+              </button>
+
+              <button @click="NFTModal_ScrollOtherNFTs($event, 'right')" id="othernftsnav-right">
+                <u-Icons-Arrow right color="black"></u-Icons-Arrow>
+              </button>
+            </div>
+          </div>
+
+          <hr />
+
+          <div id="bv__nftmodal__othernftscarousel">
+            <u-Components-TreeCard2 v-for="(row, key) in DonorPortal_GetCurrentUserNFTs()" :data="row" :key="key"
+              v-if="row.$initialDonationRow.rowKey !== DonorPortal_GetSpecificDonation().rowKey"
+              @view="DonorPortal_ViewSelectedTree(row)">
+            </u-Components-TreeCard2>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</template>
+
+<script type="module">
+
+
+  function NFTModal_WaitForScrollEnd(element, callback, ...args) {
+    let currentScrollPosition = element.scrollLeft
+
+    return function (event) {
+      console.count()
+      console.log(event.srcElement.scrollLeft, currentScrollPosition)
+
+      if (event.srcElement.scrollLeft === currentScrollPosition) {
+        console.log("ENDED!")
+        callback(...args)
+        event.srcElement.removeEventListener(this)
+      } else {
+        currentScrollPosition = event.srcElement.scrollLeft
+      }
+    }
+  }
+
+  function NFTModal_UpdateNavButtons() {
+    const CarrouselElement = $('#bv__nftmodal__othernftscarousel')[0]
+    const LeftButton = $('#othernftsnav-left')[0]
+    const RightButton = $('#othernftsnav-right')[0]
+
+    LeftButton.disabled = false
+    RightButton.disabled = false
+
+
+    if (CarrouselElement.scrollLeft === 0) {
+      LeftButton.disabled = true
+    }
+
+    else if (CarrouselElement.scrollLeft + CarrouselElement.offsetWidth >= CarrouselElement.scrollWidth) {
+      RightButton.disabled = true
+    }
+  }
+
+  function NFTModal_ScrollOtherNFTs(event, direction) {
+    const CarrouselElement = $('#bv__nftmodal__othernftscarousel')[0]
+    const LeftButton = $('#othernftsnav-left')[0]
+    const RightButton = $('#othernftsnav-right')[0]
+
+    CarrouselElement.scrollBy({
+      left: direction === 'left' ? -210 : 210,
+      behavior: 'smooth'
+    })
+
+    NFTModal_UpdateNavButtons()
+
+    setTimeout(NFTModal_UpdateNavButtons, 300)
+    setTimeout(NFTModal_UpdateNavButtons, 600)
+  }
+
+  $(document).on('resize', NFTModal_UpdateNavButtons)
+  NFTModal_UpdateNavButtons()
+</script>
+
+<style>
+  #bv__nftmodal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 300;
+
+    display: none;
+    overflow: auto;
+
+    width: 100vw;
+    height: 100%;
+
+    padding: 0;
+    margin: 0;
+
+    background-color: var(--bg-primary);
+  }
+
+  #bv__nftmodal__logolg {
+    position: fixed;
+    top: 3px;
+    z-index: 250;
+    height: 86px;
+    align-items: center;
+  }
+
+
+  #bv__nftmodal__navbar {
+    position: absolute;
+    top: 0;
+    z-index: 250;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 67px;
+
+    background: none;
+  }
+
+  #bv__nftmodal__bottomnav button:hover {
+    opacity: 80%;
+  }
+
+
+
+  #bv__nftmodal__navbar button:hover {
+    opacity: 80%;
+  }
+
+  #bv__nftmodal__navbarlogo {
+    height: 32px;
+    width: 32px;
+  }
+
+
+  #bv__nftmodal__leftside {
+    position: relative;
+
+    /* margin-top: 80px; */
+    width: 100%;
+    height: 50vh;
+
+    /* background: var(--bg-secondary) ; */
+    background: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    scroll-snap-align: start;
+  }
+
+  #bv__nftmodal__leftsideimage {
+    background: var(--bg-primary);
+
+    height: 100%;
+    width: 100%;
+  }
+
+  #bv__nftmodal__rightside {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+
+  #bv__nftmodal__main {
+    height: 65vh;
+    padding: 30px;
+
+    background: var(--bg-secondary);
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    border-bottom: 1px solid white;
+
+    scroll-snap-align: start;
+  }
+
+  .bv__nftmodal__treetitle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+
+  .bv__nftmodal__treenumber {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    min-width: 35px;
+    min-height: 32px;
+    padding: 0.25rem 0.5rem;
+
+    background: #CDDABA;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    font-weight: 700;
+  }
+
+  #bv__nftmodal__message {
+    font-size: 36px;
+    line-height: 40px;
+  }
+
+  #bv__nftmodal__bottomnav {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+
+
+  #bv__nftmodal__info {
+    height: 100%;
+    padding: 30px;
+    margin-bottom: 50vh;
+    scroll-snap-align: start;
+  }
+
+  #bv__nftmodal__infoheader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  #bv__nftmodal__infoheadercharitylogo {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center
+  }
+
+  #bv__nftmodal__infoheadercharitylogo>img {
+    max-height: 50px;
+  }
+
+  #bv__nftmodal__infocards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .bv__nftmodal__infocard {
+    min-height: 170px;
+    height: 100%;
+    max-height: 200px;
+    width: 100%;
+
+    padding: 12px 16px 16px 16px;
+
+    border: 1px solid #d3d2cb;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .bv__nftmodal__infocardheader {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-overflow: ellipsis;
+    overflow-x: clip;
+  }
+
+
+  .bv__nftmodal__infocardheader>h2 {
+    text-overflow: ellipsis;
+  }
+
+  #bv__nftmodal__infoimpact {
+    margin: 30px 0;
+    width: 100%;
+  }
+
+  #bv__nftmodal__infoimpacttags {
+    margin: 15px 0;
+
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+  }
+
+  .bv__nftmodal__impacttag {
+    height: 32px;
+    padding: 6px 12px;
+    background: #e0ded8;
+    border: 1px solid black;
+    border-radius: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #bv__nftmodal__infoattributes {
+    margin: 60px 0;
+  }
+
+
+  #bv__nftmodal__share {
+
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 60px;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+
+    scroll-margin-top: 30px;
+  }
+
+  .bv__nftmodal__sharecard {
+    width: 100%;
+  }
+
+  #bv__nftmodal__infocardsocials {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+  }
+
+
+  #bv__nftmodal__actions {
+    width: 100%;
+    margin: 60px 0;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+
+    scroll-margin-top: 0;
+  }
+
+  .bv__nftmodal__actioncard {
+    padding: 16px;
+
+    width: 100%;
+
+    border: 1px solid black;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 25px;
+  }
+
+  .bv__nftmodal__actioncard.disabled {
+    border: 1px solid #d3d2cb
+  }
+
+  .bv__nftmodal__statustext {
+    background: #e0ded8;
+    padding: 2px 10px;
+
+    border: 1px solid black;
+    border-radius: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center
+  }
+
+
+  #bv__nftmodal__othernfts {
+    margin: 60px 0;
+    scroll-margin-top: 30px;
+  }
+
+  #bv__nftmodal__othernftsnav {
+    display: flex;
+    gap: 10px;
+  }
+
+  #bv__nftmodal__othernftsnav>button:disabled {
+    opacity: 50%;
+  }
+
+  #bv__nftmodal__othernftscarousel {
+    display: grid;
+    align-items: flex-start;
+    justify-content: start;
+    flex-wrap: nowrap;
+    grid-auto-flow: column;
+
+    grid-template-columns: repeat(auto-fill, 1fr);
+    gap: 20px;
+    overflow-x: scroll;
+
+    width: 100%;
+    height: 500px;
+
+    padding: 10px 0;
+    scroll-snap-type: x mandatory;
+  }
+
+
+  #bv__nftmodal__othernftscarousel>* {
+    scroll-snap-align: start;
+    width: 400px
+  }
+
+
+  #bv__nftmodal__footer {
+    height: 30px;
+  }
+
+
+  #bv__nftmodal__othernftscarousel::-webkit-scrollbar,
+  #bv__nftmodal__othernftscarousel::-webkit-scrollbar-track,
+  #bv__nftmodal__othernftscarousel::-webkit-scrollbar-thumb {
+    display: none;
+    visibility: hidden;
+  }
+
+
+  #bv__nftmodal__info>hr {
+    border: 1px solid #000000;
+    opacity: 0.05;
+  }
+
+
+  .bv__nftmodal__impacttag p {
+    font-weight: 700;
+  }
+
+
+  #bv__nftmodal__bottomnav>button,
+  #bv__nftmodal__othernftsnav>button {
+    background: none;
+    border: 1px solid black;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center
+  }
+
+
+  @media screen and (min-width: 992px) {
+    .bv__nftmodal__treenumber {
+      min-width: 43px;
+    }
+
+    #bv__nftmodal__infocards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    #bv__nftmodal__navbar {
+      padding: 24px 30px 24px 48px !important;
+      justify-content: flex-end;
+      height: 92px;
+    }
+
+    #bv__nftmodal__leftside {
+      margin-top: 0;
+      position: fixed;
+      width: 50%;
+      height: 100vh;
+    }
+
+    #bv__nftmodal__leftsideimage {
+      height: 100vh;
+    }
+
+    #bv__nftmodal__leftsideimage__bottomborder {
+      position: fixed;
+      bottom: 0;
+      height: 1px;
+      width: calc(50% - 2px);
+      backdrop-filter: blur(4px);
+      background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3))
+    }
+
+    #bv__nftmodal__leftsideimage__rightborder {
+      position: fixed;
+      right: 50%;
+      height: 100%;
+      width: 1px;
+      background-image: linear-gradient(to bottom, rgba(244, 244, 244, 1), rgba(225, 225, 225, 1));
+    }
+
+    #bv__nftmodal__rightside {
+      height: 100vh;
+      margin-left: 50%;
+    }
+
+    #bv__nftmodal__main {
+      height: 100vh;
+    }
+
+    #bv__nftmodal__message {
+      font-size: 64px;
+      line-height: 72px;
+    }
+  }
+
+</style>

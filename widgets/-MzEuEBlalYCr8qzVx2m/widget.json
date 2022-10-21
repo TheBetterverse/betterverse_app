@@ -6,17 +6,16 @@
   "columnMinWidth": "200",
   "dataSource": "capturedDonationData",
   "gsOptions": {
-    "h": 14,
+    "h": 7,
     "w": 24,
     "x": 0,
-    "y": 12
+    "y": 14
   },
   "itemsPerPage": 20,
   "offSet": 0,
   "perPage": 2,
   "styles": "",
-  "subtab": "-MyvUthgoLrT0z0HdIX9",
-  "tab": "-Mx_5FLL2jlxjXYUMdIL",
+  "tab": "-N48uIJZrqSslpcm1w51",
   "title": "My Donations",
   "type": "card-list",
   "useContainerForDetail": false,

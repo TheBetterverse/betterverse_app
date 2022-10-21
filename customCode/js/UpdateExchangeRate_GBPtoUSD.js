@@ -1,19 +1,25 @@
 (async () => {
 
     //GBP -> USD
-    var requestURL = 'https://api.exchangerate.host/convert?from=GBP&to=USD';
-    var request = new XMLHttpRequest();
-    request.open('GET', requestURL);
-    request.responseType = 'json';
-    request.send();
 
-    request.onload = function() {
-      var response = request.response;
-      $setGlobalModel('exchangeGBPtoUSD', response.result);
-    }
+    var myHeaders = new Headers();
+    myHeaders.append("apikey", "cHg1hzg5CveCJjBEjDMKTyICbehgNap5");
+
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow',
+      headers: myHeaders
+    };
+
+    await fetch("https://api.apilayer.com/exchangerates_data/convert?to=USD&from=GBP&amount=1", requestOptions)
+      .then(response => response.json())
+      .then(result => $setGlobalModel('exchangeGBPtoUSD', result.result))
+      .catch(error => console.log('error', error));
 
     //Exchange Rates Variables
     var exchangeGBPtoUSD = $getGlobalModel('exchangeGBPtoUSD');
+
+    console.log(exchangeGBPtoUSD)
 
     //Get GBP Projects
     let GBP_charityProjectRows = $getGrid('charityProjects').filter(row => row.$currency$display == "GBP") 
@@ -34,5 +40,5 @@
         }
         }
     }
-
+    
 })();

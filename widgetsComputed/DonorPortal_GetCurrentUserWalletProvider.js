@@ -1,16 +1,14 @@
-return function(){
+return function () {
+  let walletProvider
+  let currentUser = this.DonorPortal_GetCurrentUser()
 
-    let currentUser = this.DonorPortal_GetCurrentUser()
+  if (currentUser.walletProvider != null) {
+    walletProvider = currentUser.walletProvider
+  }
 
-    var walletProvider
+  if (currentUser.walletProvider == null) {
+    walletProvider = null
+  }
 
-    if(currentUser.walletProvider != null){
-        walletProvider = currentUser.walletProvider
-    }   
-
-    if(currentUser.walletProvider == null){
-        walletProvider = null
-    }   
-
-    return walletProvider
+  return walletProvider
 }

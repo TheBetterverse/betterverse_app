@@ -1,0 +1,661 @@
+<!-- DonorPortal_Settings.html -->
+
+<template>
+  <div id="bv__settings">
+    <main>
+      <form id="bv__settings__mainforms" @input="DonorPortal_SettingsFormHandler"
+        @submit.prevent="DonorPortal_SubmitProfileUpdate" autocomplete="off">
+        <div id="bv__settings__header" class="bv__globals__px">
+          <h1> Settings </h1>
+
+          <div style="display: flex; gap: 1rem; align-items: center; justify-content: flex-end;">
+            <p class="d-none d-lg-block bv__settings__updatetxt hidden">Changes saved!</p>
+            <u-Components-Button secondary disabled type="submit"
+              class="d-none d-lg-block bv__settings__savechangesbtn">
+              <p>Save changes</p>
+            </u-Components-Button>
+          </div>
+        </div>
+
+        <div id="bv__settings__menu" class="bv__globals__px">
+          <h4 id="bv__setings__menuitemprofile" class="bv__settings__menuitem"
+            @click="Global_ScrollToElement('bv__settings__profileform')">
+            Profile
+          </h4>
+
+          <h4 id="bv__setings__menuitempreferences" class="bv__settings__menuitem"
+            @click="Global_ScrollToElement('bv__settings__preferencesform')">
+            Preferences
+          </h4>
+
+          <h4 id="bv__setings__menuitemwallet" class="bv__settings__menuitem"
+            @click="Global_ScrollToElement('bv__settings__walletform')">
+            Wallet
+          </h4>
+
+          <h4 id="bv__setings__menuitemauth" class="bv__settings__menuitem"
+            @click="Global_ScrollToElement('bv__settings_resetpassword')">
+            Security
+          </h4>
+
+          <h4 id="bv__setings__menuitemaccount" class="bv__settings__menuitem"
+            @click="Global_ScrollToElement('bv__settings__accountform')">
+            Account
+          </h4>
+        </div>
+
+        <div id="bv__settings__main" class="bv__globals__px">
+          <div id="bv__settings__profileform" class="bv__settings__scrollbreakpoint">
+            <u-Components-ProfilePicture editable :src="DonorPortal_GetCurrentUserProfilePicture()"
+              name="profilePicture" id="bv__settings__profilepicinput" />
+
+            <u-Components-Input label="Username" name="username" :placeholder="DonorPortal_GetCurrentUserNames()"
+              :validators="{
+          'Username already exists': Validation_UsernameDoesntExist,
+          'Username cannot contain profanity!': Validation_UsernameIsValid,
+          'Invalid characters': Validation_UsernameHasValidCharacters,
+          'Username must contain atleast 4 characters': Validation_UsernameValidLength,
+          'Username must contain atleast 3 letters': Validation_UsernameIncludeLetters
+        }" />
+
+            <div class="bv__settings__formrow">
+              <u-Components-Input label="First name" name="firstName"
+                :placeholder="DonorPortal_GetCurrentUserNames('first')" :validators="{
+              'Input cannot contain profanity!': Validation_UsernameIsValid,
+              'Invalid characters': Validation_NamesHasValidCharacters
+            }" />
+
+              <u-Components-Input label="Last name" name="lastName"
+                :placeholder="DonorPortal_GetCurrentUserNames('last')" :validators="{
+              'Input cannot contain profanity!': Validation_UsernameIsValid,
+              'Invalid characters': Validation_NamesHasValidCharacters
+            }" />
+            </div>
+
+            <div class="bv__settings__formrow">
+              <u-Components-Input name="phoneNumber" label="Phone number"
+                :placeholder="DonorPortal_GetCurrentUserPhoneNumber()" :validators="{
+              'Invalid phone number': Validation_IsPhoneNumber
+            }">
+                <u-Icons-Plus />
+              </u-Components-Input>
+
+              <u-Components-DropDown required label="Country" name="location"
+                :placeholder="DonorPortal_GetCurrentUserProfileLocation()"
+                :items="$getGrid('locations').map(value => value.name)" :disabled="$getGlobalModel('signUpProcess')" />
+            </div>
+
+            <div style="display: flex; gap: 1rem; align-items: center; justify-content: flex-end;">
+              <p class="d-lg-none bv__settings__updatetxt hidden">Changes saved!</p>
+
+              <u-Components-Button secondary disabled type="submit" class="d-lg-none bv__settings__savechangesbtn">
+                <p>Save changes</p>
+              </u-Components-Button>
+            </div>
+          </div>
+
+          <hr class="d-none d-lg-block" />
+
+          <div id="bv__settings__preferencesform" class="bv__settings__scrollbreakpoint">
+            <h2 class="bv__settings__sectiontitle d-none d-lg-block">Preferences</h2>
+
+
+            <div class="bv__settings__formrow">
+              <u-Components-DropDown required label="Comparrison currency" name="comparisonCurrency"
+                :placeholder="DonorPortal_GetCurrentUserComparisonCurrency()"
+                :items="$getGrid('conversionCurrencies').map(value => value.currency)"
+                :disabled="$getGlobalModel('signUpProcess')" />
+              <u-Components-DropDown disabled label="Language (coming soon)" name="userLanguage"
+                placeholder="English" />
+            </div>
+
+            <div class="bv__settings__formrow" style="margin-top: -12px;">
+              <u-Components-DropDown disabled name="defaultCryptoCurrency" label="Default crypto currency"
+                placeholder="USD Coin (USDC)" />
+            </div>
+
+            <div style="display: flex; gap: 1rem; align-items: center; justify-content: flex-end;">
+              <p class="d-lg-none bv__settings__updatetxt hidden">Changes saved!</p>
+
+              <u-Components-Button secondary disabled type="submit" class="d-lg-none bv__settings__savechangesbtn">
+                <p>Save changes</p>
+              </u-Components-Button>
+            </div>
+          </div>
+
+          <hr class="d-none d-lg-block" />
+
+          <div id="bv__settings__walletform" class="bv__settings__scrollbreakpoint">
+            <h2 class="bv__settings__sectiontitle d-none d-lg-block">Wallet</h2>
+
+            <div v-if="DonorPortal_GetCurrentUserWalletAddress() === null">
+              <form @submit.prevent="DonorPortal_ConnectWallet">
+
+                <p> Connect wallet </p>
+
+                <div id="bv__settings__connectwalletbutton">
+                  <u-Components-WalletDisplay class="w-100" />
+                  <div class="bv__settings__connectwalletdropdownwrap">
+                    <div class="bv__settings__connectwalletdropdown">
+                      <button type="submit" name="connect-metamask">
+                        <u-Icons-Metamask />
+                        Metamask
+                      </button>
+                      <button type="submit" name="connect-torus">
+                        <u-Icons-Torus />
+                        Torus
+                      </button>
+                      <button type="submit" name="connect-coinbase">
+                        <u-Icons-Coinbase />
+                        Coinbase
+                      </button>
+                      <button type="submit" name="connect-slide">
+                        <u-Icons-Slide outline />
+                        Slide
+                      </button>
+                      <button type="submit" name="connect-slide">
+                        <u-Icons-Plus outline />
+                        Create Wallet
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <div v-else>
+              <p> Wallet connected </p>
+
+              <u-Components-WalletDisplay address checkmark :wallet="DonorPortal_GetCurrentUserWalletInformation()"
+                @click="DonorPortal_OpenWallet()" />
+
+              <div id="bv__settings__walletbalance">
+                <div>
+                  <small><b>Balance</b></small>
+                  <p style="display: flex; gap: 0.25rem; align-items: center; justify-content: start;">
+                    <u-Icons-USDC />
+                    <u-get-Async :data="DonorPortal_DisplayUSDCBalance()" />
+
+                  </p>
+                </div>
+
+                <div style="display: flex; gap: 0.5rem">
+                  <u-Components-Button v-if="DonorPortal_GetCurrentUserWalletAddress() != null"
+                    @click="DonorPortal_LoadRamp('overlay')">
+                    <p> Top up wallet </p>
+                  </u-Components-Button>
+                  <u-Components-Button v-if="DonorPortal_GetCurrentUserWalletAddress() != null" color="#C72525"
+                    style="border: 1px solid #E15564" @click="DonorPortal_DisconnectWallet()">
+                    <p style="color: #C72525"> Disconnect Wallet </p>
+                  </u-Components-Button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <hr class="d-none d-lg-block" />
+
+          <div id="bv__settings_resetpassword" class="bv__settings__scrollbreakpoint">
+            <h2 class="bv__settings__sectiontitle d-none d-lg-block">Security</h2>
+
+            <u-Components-ResetPasswordButton> </u-Components-ResetPasswordButton>
+
+            <!--u-Components-Input name="currentPassword" label="Current password" type="password" autocomplete="off"
+          placeholder="Type current password" />
+
+        <u-Components-Input name="newPassword" label="New password" type="password" placeholder="Type new password"
+          :validators="{
+          'Password should have at least 8 characters': subject => subject.length >= 8
+        }" />
+
+        <u-Components-Input name="confirmNewPassword" label="Repeat new password" type="password" placeholder="Repeat new password" 
+          :validators="{
+          'Passwords should match!': subject => subject == document.getElementsByName('newPassword')[0].value
+        }" />
+
+        <div class="w-100 d-flex justify-content-end">
+          <u-Components-Button secondary type="submit" class="d-lg-none">Save changes</u-Components-Button>
+        </div-->
+
+            <!--p class="mt-lg-5">Link your account</p>
+
+        <div id="bv__settings__socials">
+          <u-Components-Button name="linkGoogle">
+            <template #left-icon>
+              <u-Icons-Google />
+            </template>
+            <p>Google</p>
+          </u-Components-Button>
+
+          <u-Components-Button name="linkFacebook">
+            <template #left-icon>
+              <u-Icons-Facebook />
+            </template>
+            <p> Facebook </p>
+          </u-Components-Button>
+
+          <u-Components-Button name="linkDiscord">
+            <template #left-icon>
+              <u-Icons-Discord />
+            </template>
+            <p> Discord </p>
+          </u-Components-Button>
+        </div>
+      </div-->
+          </div>
+
+          <hr class="d-none d-lg-block" />
+
+          <div id="bv__settings__accountform" class="bv__settings__scrollbreakpoint">
+            <h2 class="bv__settings__sectiontitle d-none d-lg-block">Account</h2>
+
+            <div class="bv__settings__box">
+              <div>
+                <h2> Sign out </h2>
+                <p> See you soon. You can log back in, anytime. </p>
+              </div>
+
+              <u-Components-Button
+                @click="$signOut({redirect: '/dashboard/-N3z8rEgVVtApDNoNjXV?tab=-Mx_5FLL2jlxjXYUMdIL&subtab=-N4IRMyIAw-t4q0VNr0C'});">
+                <p>Log out</p>
+                <template #right-icon>
+                  <u-Icons-Logout />
+                </template>
+              </u-Components-Button>
+            </div>
+
+            <div class="bv__settings__box" style="background: #e8d6d0; border: 1px solid #ebdbd6">
+              <div>
+                <h2> Delete account </h2>
+                <p> This action is irreversible. Proceed with caution. </p>
+              </div>
+
+              <u-Components-Button color="#C72525" style="border: 1px solid #E15564"
+                @click="DonorPortal_DeleteAccount()">
+                <p style="color: #C72525">Delete account</p>
+              </u-Components-Button>
+            </div>
+          </div>
+        </div>
+
+      </form>
+      <u-Components-Footer />
+
+      <u-Components-MobileNavBar @click="DonorPortal_TriggerMobileNav()" class="bv__globals__px">
+        <u-Components-Button secondary class="w-100"
+          @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ', '-Mx_5FLL2jlxjXYUMdIL')">
+          <p>View Projects</p>
+          <template #right-icon>
+            <u-Icons-Heart color="white" />
+          </template>
+        </u-Components-Button>
+      </u-Components-MobileNavBar>
+    </main>
+  </div>
+</template>
+
+
+<style>
+  #panel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dashboard__content>div::-webkit-scrollbar {
+    display: none;
+  }
+
+  .bv__footer {
+    z-index: 500;
+  }
+
+  #bv__settings {
+    position: static;
+    width: 100%;
+    margin-top: 229px;
+    margin-bottom: 0;
+  }
+
+  #bv__settings__header {
+    position: fixed;
+    top: 67px;
+    z-index: 50;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+
+    padding-top: 45px;
+    padding-bottom: 15px;
+
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+
+
+    background: var(--bg-primary);
+  }
+
+
+  #bv__settings__menu {
+    position: fixed;
+    top: 176px;
+    z-index: 50;
+
+
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 15px;
+
+    overflow: scroll;
+
+    width: 100%;
+
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    background: var(--bg-primary);
+  }
+
+  #bv__settings__menu::-webkit-scrollbar {
+    display: none;
+  }
+
+  .bv__settings__menuitem {
+    font-weight: 400;
+    font-size: 20px;
+    opacity: 0.5;
+    width: max-content;
+    cursor: pointer;
+  }
+
+  .bv__settings__menuitem.selected {
+    font-weight: 500;
+    opacity: 1;
+  }
+
+  #bv__settings__main {
+    position: static;
+    padding-top: 15px;
+  }
+
+  #bv__settings__main>hr {
+    margin-bottom: 30px;
+  }
+
+  #bv__settings__profileform {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  #bv__settings__preferencesform {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+
+  .bv__settings__formrow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .bv__settings__scrollbreakpoint {
+    scroll-snap-align: start;
+    height: 85vh;
+    scroll-margin-top: 250px;
+  }
+
+  #bv__settings__main>.bv__settings__scrollbreakpoint:last-child {
+    height: 65vh;
+  }
+
+  #bv__settings__preferencesform>.bv__settings__formrow {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  #bv__settings__walletform {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  #bv__settings__walletform>div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #bv__settings__walletbalance {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  #bv__settings__socials {
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    justify-content: start;
+    gap: 1rem;
+  }
+
+  #bv__settings__socials>button {
+    width: 100%;
+  }
+
+
+  #bv__settings_resetpassword {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #bv__settings__accountform {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .bv__settings__box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 155px;
+    padding: 12px 16px 16px 16px;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .bv__walletdisplay {
+    width: 100% !important;
+  }
+
+  .bv__settings__sectiontitle {
+    font-weight: 400;
+    margin-bottom: 15px;
+  }
+
+  .bv__redbutton {
+    background: #e8d6d0;
+    border: 1px solid #ebdbd6;
+  }
+
+  #bv__settings__connectwalletbutton {
+    margin-top: 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bv__settings__connectwalletdropdownwrap {
+    display: none;
+    position: absolute;
+    top: 2rem;
+    width: 100%;
+    background: var(--bg-primary) !important;
+
+  }
+
+  .bv__settings__connectwalletdropdown {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    background: var(--bg-primary) !important;
+
+    margin-top: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+
+    width: 100%;
+  }
+
+  .bv__settings__connectwalletdropdown>* {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    width: 100%;
+  }
+
+  .bv__settings__connectwalletdropdown>*:hover {
+    background: #dfddd8;
+    cursor: pointer;
+
+  }
+
+  #bv__settings__connectwalletbutton:hover .bv__settings__connectwalletdropdownwrap,
+  #bv__settings__connectwalletbutton:focus .bv__settings__connectwalletdropdownwrap {
+    display: flex;
+  }
+
+  @media screen and (min-width: 992px) {
+
+    #bv__settings {
+      margin-bottom: 0;
+    }
+
+    #bv__settings__header {
+      top: 92px;
+      padding-left: 25% !important;
+      padding-right: 25% !important;
+      display: flex;
+    }
+
+    #bv__settings__menu {
+      position: fixed;
+      padding-left: 25% !important;
+      width: 50% !important;
+      flex-direction: column;
+      top: 201px;
+      z-index: 0;
+    }
+
+    .bv__footer {
+      position: relative;
+      z-index: 100;
+    }
+
+    #bv__settings__main {
+      position: relative;
+      top: -20px;
+      border: 0;
+      margin-bottom: 120px;
+
+      padding-left: 0 !important;
+      margin-left: 50% !important;
+      padding-right: 25% !important
+    }
+
+    .bv__settings__scrollbreakpoint {
+      height: auto;
+      margin-bottom: 30px;
+    }
+
+    #bv__settings__main>.bv__settings__scrollbreakpoint:last-child {
+      height: 78vh;
+    }
+
+
+    .bv__settings__scrollbreakpoint {
+      scroll-margin-top: 215px;
+    }
+
+    .bv__settings__connectwalletdropdownwrap {
+      width: 100%;
+    }
+
+    .bv__settings__connectwalletdropdown {
+      width: 100%;
+      padding: 0.5rem auto;
+    }
+
+  }
+
+</style>
+
+
+<script type="module">
+  (() => {
+    const panel = $('#panel')
+    const menuItems = $('.bv__settings__menuitem')
+    const scrollForms = $('.bv__settings__scrollbreakpoint')
+
+    function debounceInput(callback, delay = 50) {
+      let timeout
+      return (...args) => {
+        clearInterval(timeout)
+        timeout = setTimeout(() => {
+          callback(...args)
+        }, delay)
+      }
+    }
+
+    function createMenuUpdater(conditionFn, scrollPosFn, marginThreshold) {
+      return () => {
+        if (!conditionFn()) return
+
+        const currScrollPosition = scrollPosFn()
+        const margin = window.innerHeight * marginThreshold
+
+        let breakpoints = scrollForms.map((index, el) => {
+          if (index == 0)
+            return [[0, scrollForms[index + 1].offsetTop - margin]]
+          else if (index == menuItems.length - 1)
+            return [[el.offsetTop - margin, el.offsetTop + el.clientHeight]]
+          else
+            return [[el.offsetTop - margin, scrollForms[index + 1].offsetTop - margin]]
+        })
+
+        menuItems.each((index, el) => {
+          const $el = $(el)
+          const [upper, lower] = breakpoints[index]
+
+          if (currScrollPosition >= upper && currScrollPosition <= lower) {
+            $el.addClass('selected')
+            $el[0].scrollIntoView({ behavior: 'smooth', inline: 'end' })
+          } else {
+            $el.removeClass('selected')
+          }
+        })
+      }
+    }
+
+    let panelUpdater = createMenuUpdater(() => window.innerWidth > 768, () => panel.scrollTop(), 0.05)
+    let windowUpdater = createMenuUpdater(() => window.innerWidth < 768, () => window.scrollY, 0.5)
+
+    panel.on('scroll', debounceInput(panelUpdater))
+    window.addEventListener('scroll', debounceInput(windowUpdater))
+
+    panelUpdater()
+    windowUpdater()
+  })()
+</script>

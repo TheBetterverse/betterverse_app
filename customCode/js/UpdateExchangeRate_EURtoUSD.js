@@ -1,16 +1,21 @@
 (async () => {
 
    //EUR -> USD
-    var requestURL = 'https://api.exchangerate.host/convert?from=EUR&to=USD';
-    var request = new XMLHttpRequest();
-    request.open('GET', requestURL);
-    request.responseType = 'json';
-    request.send();
 
-    request.onload = function() {
-      var response = request.response;
-      $setGlobalModel('exchangeEURtoUSD', response.result);
-    }
+    var myHeaders = new Headers();
+    myHeaders.append("apikey", "cHg1hzg5CveCJjBEjDMKTyICbehgNap5");
+
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow',
+      headers: myHeaders
+    };
+
+    await fetch("https://api.apilayer.com/exchangerates_data/convert?to=USD&from=EUR&amount=1", requestOptions)
+      .then(response => response.json())
+      .then(result => $setGlobalModel('exchangeEURtoUSD', result.result))
+      .catch(error => console.log('error', error));
+
 
     //Exchange Rates Variables
     var exchangeEURtoUSD = $getGlobalModel('exchangeEURtoUSD');

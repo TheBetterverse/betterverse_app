@@ -8,13 +8,17 @@ return function(){
         //Remove Wallet Address Value from User row (Set to null)
         $setDataGridVal('users', currentUserRowKey + '.walletAddress', null)
         $setDataGridVal('users', currentUserRowKey + '.walletProvider', null)
-        this.DonorPortal_DisableRamp()
-        this.DonorPortal_HideTorusButton()
+
+        //Disconnect wallet here
+
+        //this.DonorPortal_DisableRamp()
+        const walletProvider = this.DonorPortal_GetCurrentUserWalletProvider()
+        const { ethereum } = window
+        if(walletProvider == 'torus') {
+            this.DonorPortal_HideTorusButton()
+        }
+        return true
     } else {
-
+        return null
     }
-    return null
 }
-
-
-

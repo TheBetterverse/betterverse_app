@@ -1,0 +1,94 @@
+<template>
+  <div id="bv__tablet">
+    <nav id="bv__tablet__navbar" class="bv__globals__px">
+      <div class="">
+        <u-Icons-Betterverse height="32px" width="32px" onclick="window.open('https:\/\/www.betterverse.app','_blank')"
+          style="cursor: pointer;" />
+      </div>
+    </nav>
+
+    <div id="bv__tablet__imagecontainer">
+      <img
+        src="https://firebasestorage.googleapis.com/v0/b/tangle-157402.appspot.com/o/-N3z8rEgVVtApDNoNjXV%2Fe667d840-341b-11ed-8157-4dbe2e2581be_datagrid_profile_img.png?alt=media&token=6b12f815-3d8e-4459-982b-f39e6d545abe" />
+    </div>
+
+    <div id="bv__tablet__textcontainer">
+      <h1>Bare with us!</h1>
+      <p>We need a bit more time to make Betterverse look beautiful on tablet.
+        For now, you can make your donation and track the good you’re doing
+        on desktop or mobile.
+      </p>
+    </div>
+
+    <u-Components-Footer />
+</template>
+
+
+<style>
+  #bv__tablet {
+    background: var(--bg-primary);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100vw;
+    z-index: 100000;
+    overflow: auto;
+  }
+
+  #bv__tablet__navbar {
+    position: absolute;
+    top: 0;
+    z-index: 250;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 67px;
+    background: none;
+  }
+
+  #bv__tablet__imagecontainer {
+    height: 70%;
+  }
+
+  #bv__tablet__imagecontainer>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #bv__tablet__textcontainer {
+    padding-left: 60px;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+
+    width: 75%;
+    height: 30%;
+  }
+
+  #bv__tablet__textcontainer>h1 {
+    font-family: 'BN Cringe Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 72px;
+    color: #000000;
+  }
+
+  #bv__tablet__textcontainer>p {
+    font-family: 'Documan';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .bv__footer {
+    position: static;
+  }
+
+</style>
