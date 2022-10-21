@@ -2,32 +2,19 @@
 
 <template>
   <div class="bv__treeanimation">
-    <!--img v-if="imageResult" :src="imageResult" --/-->
-    <!--video
-      v-if="imageResult"
-      ref="video"
+    <video
+      v-if="imageResult && animationResult"
       :poster="imageResult"
       :src="animationResult"
+      ref="video"
       preload
+      playsinline
+      autobuffer
       autoplay
-      autobuffer 
       loop
       muted
       defaultmuted
-      playsinline 
-    /-->
-
-  <video ref="video" 
-    preload
-    playsinline 
-    autobuffer 
-    autoplay 
-    loop 
-    muted 
-    :poster="imageResult"
-    :src="animationResult">
-  </video>
-
+    ></video>
   </div>
 </template>
 
@@ -61,17 +48,15 @@ module.exports = {
       const response = await fetch(this.url)
       const json = await response.json()
 
-      const splitImageURL = json.image.split('ipfs://').pop();
+      const splitImageURL = json.image.split('ipfs://').pop()
       const newImageURL = 'https://ipfs.io/ipfs/' + splitImageURL
-      
-      const splitAnimationURL = json.animation_url.split('ipfs://').pop();
+
+      const splitAnimationURL = json.animation_url.split('ipfs://').pop()
       const newAnimationURL = 'https://ipfs.io/ipfs/' + splitAnimationURL
 
       this.animationResult = await newAnimationURL
       this.imageResult = await newImageURL
-
-      //this.$nextTick(this.applyRotationControl)
-    },
+    }
 
     /*applyRotationControl() {
       var vid = this.$refs.video;
@@ -114,7 +99,7 @@ module.exports = {
           keyLoop()
       });
     }*/
-  },
+  }
 }
 </script>
 
@@ -124,21 +109,21 @@ module.exports = {
   height: 100%;
 }
 
-.bv__treeanimation > img{
+.bv__treeanimation > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   z-index: 5;
 }
 
-.bv__treeanimation > video{
+.bv__treeanimation > video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   z-index: 6;
 }
 
-.bv__treeanimation > video[poster]{
+.bv__treeanimation > video[poster] {
   width: 100%;
   height: 100%;
   object-fit: cover;

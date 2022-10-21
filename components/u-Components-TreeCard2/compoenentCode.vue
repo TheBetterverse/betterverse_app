@@ -1,5 +1,5 @@
 <template>
-  <div class="bv-treecard" @click="$emit('view', $event)">
+  <div class="bv-treecard" :id="`bv-treecard${data.rowKey}`">
     <div class="bv-treecard-hoveroverlay">
       <div class="bv-treecard-hoveroverlay-top"></div>
       <div class="bv-treecard-hoveroverlay-bottom">
@@ -31,34 +31,40 @@
       </div>
     </div>
 
-    <div class="bv-treecard-image bv__globals__skeleton">
-      <video
-        v-if="animationUrl && imageUrl"
-        :poster="imageUrl"
-        :src="animationUrl"
-        onmouseover="this.play()"
-        onmouseout="this.pause();this.currentTime=0;"
-        ref="video"
-        preload
-        loop
-        muted
-        defaultmuted
-        playsinline
-      ></video>
+    <div class="bv-treecard-main">
+      <div class="bv-treecard-image bv__globals__skeleton">
+        <video
+          v-if="animationUrl && imageUrl"
+          :id="`bv-treecard-animation${data.rowKey}`"
+          :poster="imageUrl"
+          :src="animationUrl"
+          ref="video"
+          preload
+          loop
+          muted
+          defaultmuted
+          playsinline
+        ></video>
+      </div>
+
+      <div class="bv-treecard-title">
+        <h2 v-if="treeName">
+          {{ treeName }}
+        </h2>
+        <h2
+          v-else
+          class="bv-treecard-title-skeleton bv__animations__opacitywave"
+        >
+          <span>.</span><span>.</span><span>.</span>
+        </h2>
+      </div>
     </div>
 
-    <div class="bv-treecard-title">
-      <h2 v-if="treeName">
-        {{ treeName }}
-      </h2>
-      <h2 v-else class="bv-treecard-title-skeleton bv__animations__opacitywave">
-        <span>.</span><span>.</span><span>.</span>
-      </h2>
-    </div>
+    <div class="bv-treecard-hovertrigger" @click="$emit('view', $event)"></div>
   </div>
 </template>
 
-<script>
+<script type="module">
 module.exports = {
   props: {
     data: {
@@ -70,6 +76,19 @@ module.exports = {
   components: {
     uIconsEye: $getCustomComponent('u-Icons-Eye'),
     uComponentsButton: $getCustomComponent('u-Components-Button')
+  },
+
+  methods: {
+    playAnimation() {
+      document.getElementById(`bv-treecard-animation${this.data.rowKey}`).play()
+    },
+
+    stopAnimation() {
+      const TreeCardAnimation = document.getElementById(
+        `bv-treecard-animation${this.data.rowKey}`
+      )
+      TreeCardAnimation.pause()
+    }
   },
 
   data() {
@@ -112,6 +131,16 @@ module.exports = {
     const newAnimationURL = 'https://ipfs.io/ipfs/' + splitAnimationURL
 
     this.animationUrl = newAnimationURL
+  },
+
+  async mounted() {
+    const TreeCard = document.getElementById(`bv-treecard${this.data.rowKey}`)
+
+    if (!TreeCard.getAttribute('mouse-listener')) {
+      TreeCard.addEventListener('mouseover', this.playAnimation)
+      TreeCard.addEventListener('mouseout', this.stopAnimation)
+      TreeCard.setAttribute('mouse-listener', 'true')
+    }
   }
 }
 </script>
@@ -134,8 +163,6 @@ module.exports = {
   width: 100%;
   height: auto;
   background: #f1ebe7;
-
-  overflow: clip;
 
   border-radius: 4px 4px 0 0;
   border-bottom: 1px solid white;
@@ -173,6 +200,7 @@ module.exports = {
 /* HOVER OVERLAY */
 
 .bv-treecard-hoveroverlay {
+  display: none;
   visibility: hidden;
 
   top: 0;
@@ -211,7 +239,27 @@ module.exports = {
   line-height: 1.5rem;
 }
 
+.bv-treecard-hovertrigger {
+  display: block;
+  visibility: visible;
+
+  position: absolute;
+  top: 0;
+
+  width: 100%;
+  height: 100%;
+  pointer-events: all;
+}
+
 @media (hover: hover) {
+  .bv-treecard-hoveroverlay {
+    display: block;
+  }
+
+  .bv-treecard-hovertrigger {
+    display: none;
+  }
+
   .bv-treecard:focus .bv-treecard-hoveroverlay,
   .bv-treecard:hover .bv-treecard-hoveroverlay {
     visibility: visible;

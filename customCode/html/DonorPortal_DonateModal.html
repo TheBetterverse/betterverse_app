@@ -30,23 +30,27 @@
                   <p>Select amount</p>
                 </span>
 
-                <select id="bv__donatemodal__slidedonationinput">
-                  <option value="10">10</option>
-                  <option value="20">20</option>
-                  <option value="30">30</option>
-                  <option value="50">50</option>
-                  <option value="80">80</option>
-                  <option value="100">100</option>
-                  <option value="250">250</option>
-                  <option value="500">500</option>
-                  <option value="1000">1000</option>
-                </select>
+                <span>
+                  <select name="slide-donation-amount" id="bv__donatemodal__slidedonationinput"
+                    @input="DonorPortal_ProcessDonationAmount">
+                    <option value="20" default>20</option>
+                    <option value="30">30</option>
+                    <option value="50">50</option>
+                    <option value="80">80</option>
+                    <option value="100">100</option>
+                    <option value="250">250</option>
+                    <option value="500">500</option>
+                    <option value="1000">1000</option>
+                  </select>
 
-                <u-Icons-Chevron width="32px" height="32px" class="bv__donatemodal__chevron bv__donatemodal__chevronlg">
-                </u-Icons-Chevron>
+                  <u-Icons-Chevron width="32px" height="32px"
+                    class="bv__donatemodal__chevron bv__donatemodal__chevronlg">
+                  </u-Icons-Chevron>
 
-                <u-Icons-Chevron width="12px" height="12px" class="bv__donatemodal__chevron bv__donatemodal__chevronsm">
-                </u-Icons-Chevron>
+                  <u-Icons-Chevron width="12px" height="12px"
+                    class="bv__donatemodal__chevron bv__donatemodal__chevronsm">
+                  </u-Icons-Chevron>
+                </span>
 
               </span>
 
@@ -324,7 +328,7 @@
 
 <script type="module">
 
-  function resizeSlideDonationInput() {
+  function DonateModal_ResizeSlideDonationInput() {
     let $slideDonationInput = $('#bv__donatemodal__slidedonationinput')[0]
 
     if (!$slideDonationInput) return
@@ -343,10 +347,10 @@
     $slideDonationInput.style.width = `${letterSize * windowSizeWeight}rem`
   }
 
-  $('#bv__donatemodal__slidedonationinput').on('input', resizeSlideDonationInput)
-  window.addEventListener('resize', resizeSlideDonationInput)
+  $('#bv__donatemodal__slidedonationinput').on('input', DonateModal_ResizeSlideDonationInput)
+  window.addEventListener('resize', DonateModal_ResizeSlideDonationInput)
 
-  resizeSlideDonationInput()
+  DonateModal_ResizeSlideDonationInput()
 
 </script>
 
@@ -852,6 +856,21 @@
       width: 60%;
     }
 
+  }
+
+  .bv__inlineinput__topspan {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    top: -2rem;
+
+    min-width: max-content;
+    width: 100%;
+    margin-bottom: 1rem;
+
+    text-align: center;
   }
 
 </style>

@@ -1,9 +1,9 @@
-const TestBTRCAddress = this.Contracts().TestBTRCAddress
+const USDCAddress = this.Contracts().USDCAddress
 const TreeContractAddress = this.Contracts().TreeContractAddress
 const MinterContractAddress = this.Contracts().MinterContractAddress
 const TreeContractABI = this.Contracts().TreeContractABI
 const MinterContractABI = this.Contracts().MinterContractABI
-const TestBTRCABI = this.Contracts().TestBTRCABI
+const USDCABI = this.Contracts().USDCABI
 const getTokenURI = this.DonorPortal_GetTokenURI
 const walletProvider = this.DonorPortal_GetCurrentUserWalletProvider()
 
@@ -102,7 +102,7 @@ return async function () {
       await window_ethereum.request({
         method: 'wallet_switchEthereumChain',
         params: [{
-            chainId: '0x13881', //mumbai test network chain id 80001
+            chainId: '0x89', //mumbai test network chain id 80001
         }]
       })
     }
@@ -113,12 +113,12 @@ return async function () {
  
     const MinterContract = new web3.eth.Contract(MinterContractABI, MinterContractAddress);
 
-    const TestBTRContract = new web3.eth.Contract(TestBTRCABI, TestBTRCAddress, {
+    const USDCContract = new web3.eth.Contract(USDCABI, USDCAddress, {
       from: wallet
     })
     const signer = await provider.getSigner()
     const TreeContractWithEther = new ethers.Contract(TreeContractAddress, TreeContractABI, signer)
-    const TestBTRContractWithEther = new ethers.Contract(TestBTRCAddress, TestBTRCABI, signer)
+    const USDCContractWithEther = new ethers.Contract(USDCAddress, USDCABI, signer)
 
     //Check if charity and cause values are not null/invalid
     if (charity == null || cause == null) {
@@ -147,17 +147,17 @@ return async function () {
           var nftCountByDonationAmount = amount / nftCount
 
           //Check if donation amount and nft count values are ♦valid♠
-          if (amount < 10 || amount == null) {
+          if (amount < 1 || amount == null) {
             document.getElementById("bv__spinner").style.display = "none";
             document.getElementById("bv__donate__buttontext").innerText = 'Donate and Generate NFT'
-            alert("Invalid donation amount, the donation needs to be atleast $10")
+            alert("Invalid donation amount, the donation needs to be atleast $1")
           }
-          else if (nftCountByDonationAmount < 10) {
+          else if (nftCountByDonationAmount < 1) {
             document.getElementById("bv__spinner").style.display = "none";
             document.getElementById("bv__donate__buttontext").innerText = 'Donate and Generate NFT'
-            alert("Invalid donation amount and NFT count combination. Each NFT has a minimum donation amount of $10")
+            alert("Invalid donation amount and NFT count combination. Each NFT has a minimum donation amount of $1")
           }
-          else if (nftCountByDonationAmount => 10) {
+          else if (nftCountByDonationAmount => 1) {
 
             //If wallet is not connected, alert user
             if (wallet == null) {
@@ -210,21 +210,21 @@ return async function () {
                     document.getElementById("bv__donate__buttontext").innerText = 'Requesting approval'
                     const approveAmount = Web3.utils.toWei(amount.toString(), 'ether')
                     if(walletProvider == 'coinbase') {	
-                      const tx = await TestBTRContractWithEther.approve(MinterContractAddress, approveAmount)	
+                      const tx = await USDCContractWithEther.approve(MinterContractAddress, approveAmount)	
                       await tx.wait()	
-                      await TestBTRContract.methods.approve(MinterContractAddress, approveAmount).call()
+                      await USDCContract.methods.approve(MinterContractAddress, approveAmount).call()
                     } else if (walletProvider !== 'slide') {	// Don't do approval step for slide
-                      await TestBTRContract.methods.approve(MinterContractAddress, approveAmount).send({	
+                      await USDCContract.methods.approve(MinterContractAddress, approveAmount).send({	
                         from: wallet	
                       })	
-                      await TestBTRContract.methods.approve(MinterContractAddress, approveAmount).call()
+                      await USDCContract.methods.approve(MinterContractAddress, approveAmount).call()
                     }	
                     console.log('==============after approval')
                     
                     console.log('NFT COUNT: ' + nftCount)
                     console.log('CHARITY ID: ' + charityID)
                     console.log('AMOUNT (WEI) ' + approveAmount)
-                    console.log('TOKEN: ' + TestBTRCAddress)
+                    console.log('TOKEN: ' + USDCAddress)
 
                     let gas;
                     if (walletProvider === 'slide') {
@@ -234,7 +234,7 @@ return async function () {
 
                     document.getElementById("bv__donate__buttontext").innerText = 'Requesting mint'
                     
-                    MinterContract.methods.mintTree(nftCount, charityID, approveAmount, TestBTRCAddress).send({ from: wallet, gas }, async (err, txHash) => {
+                    MinterContract.methods.mintTree(nftCount, charityID, approveAmount, USDCAddress).send({ from: wallet, gas }, async (err, txHash) => {
                       //Unsuccessful mint
                       if (err) {
                         document.getElementById("bv__spinner").style.display = "none";

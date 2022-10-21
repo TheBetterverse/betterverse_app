@@ -1043,6 +1043,13 @@ $log('TokenID length: ' + tokenID.length)
 
 if (tokenID.length == 1) {
     $log('Creating single nft and donation row')
+
+    /*PINATA HERE
+    const convertedGatewayUrl = ipfsGatewayTools.convertToDesiredGateway(
+        json[0],
+        "assets.betterverse.app"
+    )*/
+    
     //Create donation row
     let newDonationRow = await $addRow('capturedDonationData', {
         tokenID: tokenID[0],
@@ -1075,6 +1082,8 @@ if (tokenID.length == 1) {
     nftRows.push(newNFTRow)
     
 } else if (tokenID.length >= 2 && tokenID.length <= 10) {
+
+    //PINATA HERE
 
     for (let i = 0; i < tokenID.length; i++) {
         $log("Writing donation entry for " + tokenID[i])
@@ -1126,6 +1135,8 @@ try{
             $log(`Old json: ${json[i]} current json is ${calledJson}`)
             $log('Continuing to pull')
         }
+
+        //PINATA HERE
         const splitURL = calledJson.split('ipfs://').pop();
         const resolvedJson = 'https://ipfs.io/ipfs/' + splitURL
     

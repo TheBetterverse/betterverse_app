@@ -31,7 +31,7 @@
         <div class="bv__nftmodal__treetitle">
           <h2 class="bv__nftmodal__treename">
             <u-get-Async :data="DonorPortal_SelectedNFTName()">
-              <span class="bv__animations__opacitywave">
+              <span class="bv__animations__opacitywave" style="font-family: 'Documan', sans-serif; opacity: 50%">
                 <span>.</span><span>.</span><span>.</span>
               </span>
             </u-get-Async>
@@ -183,7 +183,7 @@
           <div class="bv__nftmodal__treetitle">
             <h2 class="bv__nftmodal__treename">
               <u-get-Async :data="DonorPortal_SelectedNFTName()">
-                <span class="bv__animations__opacitywave">
+                <span class="bv__animations__opacitywave" style="font-family: 'Documan', sans-serif; opacity: 50%">
                   <span>.</span><span>.</span><span>.</span>
                 </span>
               </u-get-Async>
@@ -375,6 +375,7 @@
 
 <script type="module">
 
+
   function NFTModal_WaitForScrollEnd(element, callback, ...args) {
     let currentScrollPosition = element.scrollLeft
 
@@ -420,11 +421,13 @@
       behavior: 'smooth'
     })
 
-    CarrouselElement.addEventListener('scrollend', NFTModal_WaitForScrollEnd(CarrouselElement, NFTModal_UpdateNavButtons))
+    NFTModal_UpdateNavButtons()
 
-    // NFTModal_UpdateNavButtons()
+    setTimeout(NFTModal_UpdateNavButtons, 300)
+    setTimeout(NFTModal_UpdateNavButtons, 600)
   }
 
+  $(document).on('resize', NFTModal_UpdateNavButtons)
   NFTModal_UpdateNavButtons()
 </script>
 

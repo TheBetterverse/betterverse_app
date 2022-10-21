@@ -3,7 +3,7 @@ return function(){
     const walletProvider = this.DonorPortal_GetCurrentUserWalletProvider()
 
     if(walletProvider == 'metamask'){
-        this.DonorPortal_OpenMetamask()
+        return null
     }
     else if(walletProvider == 'torus'){
         this.DonorPortal_OpenTorus()

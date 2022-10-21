@@ -5,15 +5,6 @@ var currentUserRowKey = this.DonorPortal_GetCurrentUserRowKey()
 var currentUserRow = this.DonorPortal_GetCurrentUser()
 var currentSubTab = this.currentSubTab
 
-/*
-console.log("Got data ------->")
-console.log(currentUserRowKey)
-console.log(currentUserRow)
-console.log(currentSubTab)
-console.log("Completed get data <--------")
-*/
-
-
 return function (event) {
 
   //METAMASK
@@ -96,12 +87,12 @@ return function (event) {
       const torus = new Torus()
       window.torus = torus
       await window.torus.init({
-        buildEnv: 'test', // default: production
+        buildEnv: 'production', // default: production
         enableLogging: true, // default: false
         network: {
-          host: 'mumbai', // default: mainnet
-          chainId: 80001, // default: 1
-          networkName: 'Mumbai Test Network' // default: Main Ethereum Network
+          host: 'matic', // default: mainnet
+          chainId: 137, // default: 1
+          networkName: 'Polygon Mainnet' // default: Main Ethereum Network
         }
         // showTorusButton: false // default: true
       })
