@@ -1,6 +1,6 @@
 <!-- DonorPortal_NFTModal.html -->
 <template>
-  <div id="bv__nftmodal" class="w-100" v-if="DonorPortal_GetSpecificDonation()">
+  <div id="bv__nftmodal" v-if="DonorPortal_GetSpecificDonation()">
     <div id="bv__nftmodal__logolg" class="d-none d-lg-flex bv__globals__px">
       <u-Icons-Betterverse />
     </div>
@@ -436,10 +436,11 @@
     position: fixed;
     left: 0;
     top: 0;
-    z-index: 300;
+    z-index: 600;
 
     display: none;
-    overflow: auto;
+    overflow-x: clip;
+    overflow-y: scroll;
 
     width: 100vw;
     height: 100%;

@@ -126,7 +126,6 @@ module.exports = {
   position: absolute;
   bottom: -3px;
   left: 52px;
-  z-index: 1;
 
   display: flex;
   align-items: center;

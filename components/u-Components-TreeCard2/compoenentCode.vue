@@ -1,5 +1,5 @@
 <template>
-  <div class="bv-treecard" :id="`bv-treecard${data.rowKey}`">
+  <div class="bv-treecard" :id="cardId">
     <div class="bv-treecard-hoveroverlay">
       <div class="bv-treecard-hoveroverlay-top"></div>
       <div class="bv-treecard-hoveroverlay-bottom">
@@ -32,10 +32,10 @@
     </div>
 
     <div class="bv-treecard-main">
-      <div class="bv-treecard-image bv__globals__skeleton">
+      <div class="bv-treecard-animation bv__globals__skeleton">
         <video
           v-if="animationUrl && imageUrl"
-          :id="`bv-treecard-animation${data.rowKey}`"
+          :id="animationId"
           :poster="imageUrl"
           :src="animationUrl"
           ref="video"
@@ -45,6 +45,10 @@
           defaultmuted
           playsinline
         ></video>
+      </div>
+
+      <div class="bv-treecard-image bv__globals__skeleton">
+        <img :id="`bv-treecard-image${data.rowKey}`" :src="imageUrl" />
       </div>
 
       <div class="bv-treecard-title">
@@ -80,14 +84,23 @@ module.exports = {
 
   methods: {
     playAnimation() {
-      document.getElementById(`bv-treecard-animation${this.data.rowKey}`).play()
+      const TreeAnimationElement = document.getElementById(this.animationId)
+      if (TreeAnimationElement) TreeAnimationElement.play()
     },
 
     stopAnimation() {
-      const TreeCardAnimation = document.getElementById(
-        `bv-treecard-animation${this.data.rowKey}`
-      )
-      TreeCardAnimation.pause()
+      const TreeAnimationElement = document.getElementById(this.animationId)
+      if (TreeAnimationElement) TreeAnimationElement.pause()
+    }
+  },
+
+  computed: {
+    cardId() {
+      return `bv-treecard${this.data.rowKey}`
+    },
+
+    animationId() {
+      return `bv-treecard-animation${this.data.rowKey}`
     }
   },
 
@@ -134,7 +147,7 @@ module.exports = {
   },
 
   async mounted() {
-    const TreeCard = document.getElementById(`bv-treecard${this.data.rowKey}`)
+    const TreeCard = document.getElementById(this.cardId)
 
     if (!TreeCard.getAttribute('mouse-listener')) {
       TreeCard.addEventListener('mouseover', this.playAnimation)
@@ -157,7 +170,8 @@ module.exports = {
   background: #e8e4dd;
 }
 
-.bv-treecard-image {
+.bv-treecard-image,
+.bv-treecard-animation {
   aspect-ratio: 1/1;
 
   width: 100%;
@@ -168,13 +182,22 @@ module.exports = {
   border-bottom: 1px solid white;
 }
 
-.bv-treecard-image > video {
+.bv-treecard-image > img,
+.bv-treecard-animation > video {
   max-width: 100%;
   height: auto;
 
   vertical-align: middle;
   object-fit: cover;
   border-radius: 4px 4px 0 0;
+}
+
+.bv-treecard-animation {
+  display: none;
+}
+
+.bv-treecard-image {
+  display: block;
 }
 
 .bv-treecard-title {
@@ -252,6 +275,12 @@ module.exports = {
 }
 
 @media (hover: hover) {
+  .bv-treecard-image {
+    display: none;
+  }
+  .bv-treecard-animation {
+    display: block;
+  }
   .bv-treecard-hoveroverlay {
     display: block;
   }
