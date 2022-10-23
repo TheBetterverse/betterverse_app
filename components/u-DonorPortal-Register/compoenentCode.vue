@@ -257,12 +257,21 @@ module.exports = {
     },
 
     async signUpFacebook(e) {
-      throw 'Sign up with facebook is not implemented'
+      await $anonUserToPermanent('facebook')
+        .then(() => {
+          $setUser('ProfileSetUpStage', 1)
+          $setCurrentTab('-Mx_5FLL2jlxjXYUMdIL')
+        })
+        .catch(err => {
+          alert(err.message)
+          //spinnerActive == false
+        })
     },
 
     async signUpUnstoppable(e) {
       await $anonUserToPermanent('unstoppableDomains')
         .then(() => {
+          $setUser('ProfileSetUpStage', 1)
           $setCurrentTab('-Mx_5FLL2jlxjXYUMdIL')
         })
         .catch(err => {

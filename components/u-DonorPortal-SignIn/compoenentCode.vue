@@ -217,7 +217,15 @@ module.exports = {
     },
 
     async signInFaceBook(e) {
-      throw 'Sign in with facebook is not implemented'
+      await $anonUserSignIn('facebook')
+        .then(() => {
+          $setCurrentTab('-Mx_5FLL2jlxjXYUMdIL')
+        })
+        .catch(err => {
+          console.log(err)
+          alert(err.message)
+          //spinnerActive == false
+        })
     },
 
     async signInUnstoppable(e) {   
@@ -228,7 +236,7 @@ module.exports = {
         .catch(err => {
           console.log(err)
           alert(err.message)
-          spinnerActive == false
+          //spinnerActive == false
         })
     },
 
