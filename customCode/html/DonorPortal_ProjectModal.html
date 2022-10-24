@@ -26,10 +26,6 @@
       <div id="bv__projectmodal__leftsideimage" class="bv__globals__skeleton">
         <img :src="DonorPortal_GetSpecificProject().projectImage.url" />
 
-        <!--div v-if="DonorPortal_GetAdditionalProjectImages()" id="bv__projectmodal__leftsideimagegallery">
-            <img v-for="image in DonorPortal_GetAdditionalProjectImages()" :src="image" @click="DonorPortal_ProjectImageSelector(image)">
-        </div-->
-
       </div>
 
       <div id="bv__projectmodal__leftsideimage__rightborder"></div>
@@ -98,10 +94,10 @@
 
           <div id="bv__projectmodal__bottomnav__nav">
             <button @click="DonorPortal_NavigateProjects('left', DonorPortal_GetSpecificProject().rowKey)">
-              <u-Icons-ArrowLeft color="black"></u-Icons-ArrowLeft>
+              <u-Icons-Arrow left color="black"></u-Icons-Arrow>
             </button>
             <button @click="DonorPortal_NavigateProjects('right', DonorPortal_GetSpecificProject().rowKey)">
-              <u-Icons-ArrowRight color="black" />
+              <u-Icons-Arrow right color="black"></u-Icons-Arrow right>
             </button>
           </div>
         </div>

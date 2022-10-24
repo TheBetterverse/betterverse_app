@@ -4,22 +4,6 @@
     "savePath": "chat"
   },
   {
-    "filePath": "components/u-SignUpForm/index.json",
-    "savePath": "components/-N0ZywIPA3OV2BcJq-Yf"
-  },
-  {
-    "filePath": "components/u-SignUpForm/compoenentCode.vue",
-    "savePath": "components/-N0ZywIPA3OV2BcJq-Yf/code"
-  },
-  {
-    "filePath": "components/u-SignInForm/index.json",
-    "savePath": "components/-N0ZzaKUwnQK3TzHXqJT"
-  },
-  {
-    "filePath": "components/u-SignInForm/compoenentCode.vue",
-    "savePath": "components/-N0ZzaKUwnQK3TzHXqJT/code"
-  },
-  {
     "filePath": "components/u-Icons-Checkmark/index.json",
     "savePath": "components/-N47H3yh9WSaVtiQ3ZK4"
   },
@@ -292,14 +276,6 @@
     "savePath": "components/-N5hnYjsgmss3fYsWsRz/code"
   },
   {
-    "filePath": "components/u-Old-Components-TreeCard/index.json",
-    "savePath": "components/-N5kL6-BHipoEamFtiHA"
-  },
-  {
-    "filePath": "components/u-Old-Components-TreeCard/compoenentCode.vue",
-    "savePath": "components/-N5kL6-BHipoEamFtiHA/code"
-  },
-  {
     "filePath": "components/u-Icons-Eye2/index.json",
     "savePath": "components/-N5kLAc5NZTtFv2bU5Jr"
   },
@@ -314,14 +290,6 @@
   {
     "filePath": "components/u-Icons-Plant/compoenentCode.vue",
     "savePath": "components/-N5kLLESgKPdK4IVFuU7/code"
-  },
-  {
-    "filePath": "components/u-Temp-TreeCardPlaceholder/index.json",
-    "savePath": "components/-N5kMrl-_OuVSd_dI5-i"
-  },
-  {
-    "filePath": "components/u-Temp-TreeCardPlaceholder/compoenentCode.vue",
-    "savePath": "components/-N5kMrl-_OuVSd_dI5-i/code"
   },
   {
     "filePath": "components/u-Icons-Share/index.json",
@@ -951,14 +919,6 @@
     }
   },
   {
-    "filePath": "customCode/html/[OFF]Login/Register.html",
-    "savePath": "customCode/html/-Mys7Xh9ZEhpjpDl8wCN/code",
-    "customCodeName": "[OFF]Login/Register",
-    "customCodeScope": {
-      "-N48uIJZrqSslpcm1w51": true
-    }
-  },
-  {
     "filePath": "customCode/html/DonorPortal_Navbar.html",
     "savePath": "customCode/html/-Myvbf-OwE6zGMZgsLI6/code",
     "customCodeName": "DonorPortal_Navbar",
@@ -986,22 +946,6 @@
     "customCodeName": "DonorPortal_CreateWalletModal",
     "customCodeScope": {
       "-Mx_5FLL2jlxjXYUMdIL": true
-    }
-  },
-  {
-    "filePath": "customCode/html/[OFF]DonorPortal_Register/SignIn.html",
-    "savePath": "customCode/html/-N2W12j9j57em58vNrK2/code",
-    "customCodeName": "[OFF]DonorPortal_Register/SignIn",
-    "customCodeScope": {
-      "-N48uIJZrqSslpcm1w51": true
-    }
-  },
-  {
-    "filePath": "customCode/html/[OFF]DonorPortal_ProfileSetup.html",
-    "savePath": "customCode/html/-N2WdNX8nNGA0ItdXcZ2/code",
-    "customCodeName": "[OFF]DonorPortal_ProfileSetup",
-    "customCodeScope": {
-      "-N48uIJZrqSslpcm1w51": true
     }
   },
   {

@@ -56,11 +56,11 @@
         <div id="bv__nftmodal__bottomnav">
           <button v-if="DonorPortal_GetCurrentUserNFTsCount() > 1"
             @click="DonorPortal_NavigateNFTs('left', $getUser('Donation_SelectedNFTRowKey'))">
-            <u-Icons-ArrowLeft color="black"></u-Icons-ArrowLeft>
+            <u-Icons-Arrow left color="black"></u-Icons-Arrow left>
           </button>
           <button v-if="DonorPortal_GetCurrentUserNFTsCount() > 1"
             @click="DonorPortal_NavigateNFTs('right', $getUser('Donation_SelectedNFTRowKey'))">
-            <u-Icons-ArrowRight color="black" />
+            <u-Icons-Arrow right color="black" />
           </button>
         </div>
 

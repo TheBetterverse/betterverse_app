@@ -967,6 +967,7 @@ const treeContractData = {
 }
 */
 
+const ipfsGatewayTools = new IPFSGatewayTools();
 const tokenID = await context.webhookdata.payload.tokenID
 const wallet = await context.webhookdata.payload.wallet
 const user = await JSON.parse(context.webhookdata.payload.user)
@@ -1032,24 +1033,11 @@ var emailTemplate =
 </div>
 `
 
-var name = user.username
-if (user.firstName) {
-    name = user.firstName
-} else {
-    name = user.username
-}
-
 $log('TokenID length: ' + tokenID.length)
 
 if (tokenID.length == 1) {
     $log('Creating single nft and donation row')
-
-    /*PINATA HERE
-    const convertedGatewayUrl = ipfsGatewayTools.convertToDesiredGateway(
-        json[0],
-        "assets.betterverse.app"
-    )*/
-    
+  
     //Create donation row
     let newDonationRow = await $addRow('capturedDonationData', {
         tokenID: tokenID[0],
@@ -1068,6 +1056,12 @@ if (tokenID.length == 1) {
         donationAmountGBP: donationAmountGBP,
         donationAmountEUR: donationAmountEUR
     })
+
+    //Pinata Conversion
+    const convertedGatewayUrl = ipfsGatewayTools.convertToDesiredGateway(
+        json[0],
+        "assets.betterverse.app"
+    )
 
     //Create NFT row
     let newNFTRow = await $addRow('nFTs', {
@@ -1104,6 +1098,14 @@ if (tokenID.length == 1) {
             donationAmountGBP: donationAmountGBP,
             donationAmountEUR: donationAmountEUR
         })
+
+
+        //Pinata Conversion
+        const convertedGatewayUrl = ipfsGatewayTools.convertToDesiredGateway(
+            json[i],
+            "assets.betterverse.app"
+        )
+
         $log("Writing NFT entry for " + tokenID[i])
         let newNFTRow = await $addRow('nFTs', {
             tokenID: tokenID[i],
