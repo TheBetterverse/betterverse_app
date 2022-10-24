@@ -28,13 +28,14 @@
           <p>Price / tree</p>
           <p style="display: flex; gap: 0.25rem">
             <u-Icons-Usdc> </u-Icons-Usdc>
-            {{ project.pricePerTree.toFixed(2) }} 
+            {{ project.pricePerTree.toFixed(2) }}
           </p>
         </div>
       </div>
 
       <div class="bv__comps__projectactions">
         <u-Components-Button
+          title="View project"
           class="bv__comps__projectactionsview"
           @click="$emit('view', project)"
         >
@@ -46,7 +47,10 @@
             ></u-Icons-Eye>
           </template>
         </u-Components-Button>
-        <u-Components-Button @click="$emit('donate', project)">
+        <u-Components-Button
+          @click="$emit('donate', project)"
+          title="Donate to project"
+        >
           <p>Donate</p>
           <template #right-icon>
             <u-Icons-Heart color="black" />

@@ -2,7 +2,12 @@
 
 <template>
   <div style="width: 100%">
-    <bv-button v-if="linkSent == false" secondary @click="sendLink">
+    <bv-button
+      v-if="linkSent == false"
+      secondary
+      @click="sendLink"
+      title="Email reset password link button"
+    >
       Email me a reset password link
       <b-spinner
         v-if="spinnerActive == true"

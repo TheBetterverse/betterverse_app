@@ -3,6 +3,7 @@
     primary
     name="bv-walletdisplay"
     class="bv__walletdisplay"
+    :title="walletTitle"
     :class="{ error: state >= STATES.ERROR }"
     @click="$emit('click', $event)"
   >
@@ -103,6 +104,27 @@ module.exports = {
       let address = this.wallet_address
       let len = address.length
       return `${address.slice(0, 5)}...${address.slice(len - 3, len)}`
+    },
+
+    walletTitle() {
+      switch (this.state) {
+        case this.STATES.LOADING:
+          return 'Loading wallet'
+
+        case this.STATES.WALLET_NOT_CONNECTED:
+          return 'Wallet not connected'
+
+        case this.STATES.WALLET_CONNECTED:
+          let formated =
+            this.provider.charAt(0).toUpperCase() + this.provider.substr(1)
+          return `${formated} wallet connected (${this.formattedAddress})`
+
+        case this.STATES.ERROR:
+          return 'Wallet error'
+
+        default:
+          return 'Wallet'
+      }
     }
   },
 

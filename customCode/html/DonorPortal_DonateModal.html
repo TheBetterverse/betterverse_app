@@ -1,6 +1,6 @@
 <!-- DonorPortal_DonateModal.html -->
 <template>
-  <form @submit.prevent="DonorPortal_DonateTransactionTESTNET">
+  <form @submit.prevent="DonorPortal_DonateTransactionTEST">
     <div id="bv__donatemodal" class="w-100">
       <div class="bv__donatemodal__main" v-if="DonorPortal_GetSpecificProject()">
         <div class="bv__donatemodal__header  bv__globals__px">
@@ -65,7 +65,8 @@
             </h2>
 
             <u-Components-Button secondary class="bv__donatemodal__donatebutton"
-              @click="$('.bv__donatemodal__descriptioncont').get(0).scrollIntoView({behavior: 'smooth'})" type="button">
+              @click="$('.bv__donatemodal__descriptioncont').get(0).scrollIntoView({behavior: 'smooth'})" type="button"
+              title="Review donation">
               <p>Review donation</p>
               <template #right-icon>
                 <u-Icons-Arrow down />
@@ -101,7 +102,7 @@
 
             <u-Components-Button
               @click="$('.bv__donatemodal__header').get(0).scrollIntoView({behavior: 'smooth'}); document.getElementById('bv__donatemodal__donationamountinput').focus();"
-              type="button">
+              type="button" title="Edit donation">
               <p>Edit donation</p>
               <template #left-icon>
                 <u-Icons-Edit />
@@ -150,7 +151,7 @@
 
           <u-Components-Button
             @click="$('.bv__donatemodal__header').get(0).scrollIntoView({behavior: 'smooth'}); document.getElementById('bv__donatemodal__donationamountinput').focus();"
-            type="button">
+            type="button" title="Edit donation">
             <p>Edit donation</p>
             <template #left-icon>
               <u-Icons-Edit />
@@ -280,7 +281,7 @@
 
               <div style="position: relative; float: right;">
                 <u-Components-Button v-if="DonorPortal_GetCurrentUserWalletAddress() != null"
-                  @click="DonorPortal_LoadRamp('overlay')">
+                  @click="DonorPortal_LoadRamp('overlay')" title="Top up wallet">
                   <p> Top up wallet </p>
                 </u-Components-Button>
               </div>
@@ -304,7 +305,7 @@
 
         <div class="grid-area-9"
           style="width: 100%; display: flex; align-items: center; justify-content: flex-end; padding: 1rem 0;">
-          <u-Components-Button secondary type="submit" id="bv__donate__button">
+          <u-Components-Button secondary type="submit" id="bv__donate__button" title="Donate and generate NFT">
             <p id="bv__donate__buttontext">Donate and Generate NFT</p>
             <div style="margin-left: 6px; display: none;" class="spinner-border spinner-border-sm" id="bv__spinner"
               role="status"></div>

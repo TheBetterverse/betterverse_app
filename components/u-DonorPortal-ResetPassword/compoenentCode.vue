@@ -61,7 +61,12 @@
                 </small>
               </p>
             </div>
-            <bv-button @click="reset" secondary v-if="resetSuccess == false">
+            <bv-button
+              @click="reset"
+              secondary
+              v-if="resetSuccess == false"
+              title="Update password"
+            >
               <template #default> <p>Update password</p></template>
               <template #right-icon>
                 <icon-arrow right color="white"></icon-arrow>
@@ -114,7 +119,7 @@
               </p>
             </div>
             <div v-if="validEmail == true && linkSent == false">
-              <bv-button @click="sendLink" secondary>
+              <bv-button @click="sendLink" secondary title="Reset password">
                 <template #default> Reset my password </template>
                 <template #right-icon>
                   <icon-rightarrow color="white"></icon-rightarrow>

@@ -1552,6 +1552,10 @@
     "savePath": "widgetsComputed/DonorPortal_CheckNFTTransfersAlchemy"
   },
   {
+    "filePath": "widgetsComputed/DonorPortal_CheckNFTTransfersAlchemyTESTNET.js",
+    "savePath": "widgetsComputed/DonorPortal_CheckNFTTransfersAlchemyTESTNET"
+  },
+  {
     "filePath": "widgetsComputed/DonorPortal_CheckRampActive.js",
     "savePath": "widgetsComputed/DonorPortal_CheckRampActive"
   },

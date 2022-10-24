@@ -80,8 +80,6 @@ return async event => {
     } else {
       let window_ethereumm
 
-      console.log(window.ethereum)
-
       if (window.ethereum.providers && window.ethereum.providers.length == 2) {
         if (walletProvider == 'coinbase') {
           window_ethereum = window.ethereum.providers[0]

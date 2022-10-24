@@ -116,7 +116,12 @@
           <div class="d-flex align-items-center justify-content-between my-4">
             <small>*Mandatory fields</small>
             <div>
-              <bv-button secondary type="submit" name="continue-button">
+              <bv-button
+                secondary
+                type="submit"
+                name="continue-button"
+                title="Continue registration"
+              >
                 <template id="bv__continue__button__contents">
                   <p>Continue</p>
                 </template>

@@ -15,7 +15,7 @@
 
     <div id="bv__navbar__leftmenu">
       <u-Components-Button tertiary @click="DonorPortal_RedirectToDashboard()"
-        :highlight="currentSubTab === '-MyvUthgoLrT0z0HdIX9'">
+        :highlight="currentSubTab === '-MyvUthgoLrT0z0HdIX9'" title="Dashboard">
         <p>Dashboard</p>
 
         <template #left-icon>
@@ -24,7 +24,7 @@
       </u-Components-Button>
 
       <u-Components-NavbarDropDown>
-        <u-Components-Button tertiary>
+        <u-Components-Button tertiary title="Resources">
           <template #left-icon>
             <u-Icons-Resources />
           </template>
@@ -67,7 +67,8 @@
   </div>
 
   <div id="bv__navbar__right" v-if="DonorPortal_GetCurrentUserProfileComplete() == true">
-    <u-Components-Button secondary class="d-none d-lg-flex" @click="DonorPortal_RedirectToProjects()">
+    <u-Components-Button secondary class="d-none d-lg-flex" @click="DonorPortal_RedirectToProjects()"
+      title="View projects">
       <template #default>
         <p>View projects</p>
       </template>

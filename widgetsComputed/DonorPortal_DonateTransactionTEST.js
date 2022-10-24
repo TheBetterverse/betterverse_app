@@ -1,26 +1,26 @@
-const USDCAddress = this.Contracts().USDCAddress
-const TreeContractAddress = this.Contracts().TreeContractAddress
-const MinterContractAddress = this.Contracts().MinterContractAddress
-const TreeContractABI = this.Contracts().TreeContractABI
-const MinterContractABI = this.Contracts().MinterContractABI
-const USDCABI = this.Contracts().USDCABI
-const getTokenURI = this.DonorPortal_GetTokenURI
-const walletProvider = this.DonorPortal_GetCurrentUserWalletProvider()
-
-//Get Donation modal data
-const wallet = await this.DonorPortal_GetCurrentUserWalletAddress();
-const user = await fbUser.uid
-const charity = await $getUser('Donation_SelectedCharity')
-const cause = await $getUser('Donation_SelectedProject')
 const paymentMethod = '-MuQuXTPrcNddIlCbmAL'
 const currency = '-MvOSbx1QKOeHNJWW7pQ'
-const location = await this.DonorPortal_GetCurrentUserProfileLocation()
-const amount = await this.DonorPortal_GetDonationAmountNumber()
-const date = await this.DonorPortal_GetDateTime()
-var nftCount = await this.DonorPortal_GetDonationNFTCount()
-var availableTrees
 
-return async function () {
+return async event => {
+  const USDCAddress = this.Contracts().USDCAddress
+  const TreeContractAddress = this.Contracts().TreeContractAddress
+  const MinterContractAddress = this.Contracts().MinterContractAddress
+  const TreeContractABI = this.Contracts().TreeContractABI
+  const MinterContractABI = this.Contracts().MinterContractABI
+  const USDCABI = this.Contracts().USDCABI
+  const getTokenURI = this.DonorPortal_GetTokenURI
+  const walletProvider = this.DonorPortal_GetCurrentUserWalletProvider()
+
+  //Get Donation modal data
+  const wallet = await this.DonorPortal_GetCurrentUserWalletAddress();
+  const user = await fbUser.uid
+  const charity = await $getUser('Donation_SelectedCharity')
+  const cause = await $getUser('Donation_SelectedProject')
+  const location = await this.DonorPortal_GetCurrentUserProfileLocation()
+  const amount = await this.DonorPortal_GetDonationAmountNumber()
+  const date = await this.DonorPortal_GetDateTime()
+  var nftCount = await this.DonorPortal_GetDonationNFTCount()
+  var availableTrees
 
   if (!walletProvider) {
     alert('No wallet connected to account.')
@@ -76,8 +76,6 @@ return async function () {
     } else {
       let window_ethereumm
 
-      console.log(window.ethereum)
-
       if (window.ethereum.providers && window.ethereum.providers.length == 2) {
         if (walletProvider == 'coinbase') {
           window_ethereum = window.ethereum.providers[0]
@@ -88,12 +86,6 @@ return async function () {
           window_ethereum = window.ethereum
         }
 
-      console.log('configured window ethereum is:')
-      console.log(window_ethereum)
-      console.log('etherum is:')
-      console.log(ethereum)
-      console.log('web3 is')
-      console.log(web3)
       web3 = new Web3(window_ethereum)
 
       provider = new ethers.providers.Web3Provider(window_ethereum)
@@ -103,7 +95,7 @@ return async function () {
       await window_ethereum.request({
         method: 'wallet_switchEthereumChain',
         params: [{
-            chainId: '0x89', //mumbai test network chain id 80001
+            chainId: '0x89',
         }]
       })
     }
@@ -111,7 +103,7 @@ return async function () {
     const TreeContract = new web3.eth.Contract(TreeContractABI, TreeContractAddress, {
       from: wallet,
     });
- 
+
     const MinterContract = new web3.eth.Contract(MinterContractABI, MinterContractAddress);
 
     const USDCContract = new web3.eth.Contract(USDCABI, USDCAddress, {
@@ -176,7 +168,7 @@ return async function () {
                   from: wallet
                 });
                 console.log('available trees: ' + availableTrees)
-                console.log('Requested NFT(s): ' + nftCount)
+                //console.log('Requested NFT(s): ' + nftCount)
               }
               catch(err){
                 console.log(err)
@@ -194,7 +186,7 @@ return async function () {
                 var currencyCode = $dataGrid('currencies')[currency].code
                 var currencyContractAddress = $dataGrid('currencies')[currency].contract
                 var currencyTokenID = $dataGrid('currencies')[currency].smartContractID
-                console.log('Selected currency is: ' + currencyCode + ' with the address of: ' + currencyContractAddress)
+                //console.log('Selected currency is: ' + currencyCode + ' with the address of: ' + currencyContractAddress)
 
                 //USDC
                 currencyContractAddress = '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174'
@@ -202,8 +194,6 @@ return async function () {
                 //TASK 2 | Check if the token the user is donating with is accepted in the smart contract.                         
                 try {
                   const { token } = await MinterContract.methods.tokens(currencyTokenID).call()
-                  console.log(token, 'token')
-                  console.log(currencyContractAddress)
                   if (currencyContractAddress === token || true) {
 
                     var charityID = charityRow.smartContractCharityID
@@ -212,15 +202,10 @@ return async function () {
                     document.getElementById("bv__donate__buttontext").innerText = 'Requesting approval'
                     
                     //USDC Conversion
-                    //const weiAmount = Web3.utils.toWei(amount.toString(), 'ether')
                     const approveAmount = ethers.utils.parseUnits(amount.toString(), 6)
-                    //const approveAmount = new BigNumber(result).div(10 ** 6);
 
-                    console.log('Donation amount: ', amount)
-                    console.log('Approve amount: ', approveAmount)
-
-                    //const decimals = await USDCContract.methods.decimals().call();
-                    //const approveAmount = new BigNumber(amount).div(10 ** decimals);
+                    //console.log('Donation amount: ', amount)
+                    //console.log('Approve amount: ', approveAmount)
 
                     if(walletProvider == 'coinbase') {	
                       const tx = await USDCContractWithEther.approve(MinterContractAddress, approveAmount)	
@@ -232,7 +217,6 @@ return async function () {
                       })	
                       await USDCContract.methods.approve(MinterContractAddress, approveAmount).call()
                     }	
-                    console.log('==============after approval')
                     
                     console.log('NFT COUNT: ' + nftCount)
                     console.log('CHARITY ID: ' + charityID)
@@ -291,10 +275,8 @@ return async function () {
                                   json: jsonArray[idx]
                                 })
                               })
-                              console.log(data, '==========DATA*******')
-                              
-
-                              console.log(nftIDs)
+                              //console.log(data, '==========DATA*******')
+                              //console.log(nftIDs)
 
                               //Once donation is succesful create a row to store data
                               if (donationSuccess == true && nftMint == true) {

@@ -21,7 +21,7 @@
         </h2>
 
         <div>
-          <u-Components-Button @click="$emit('view', $event)">
+          <u-Components-Button @click="$emit('view', $event)" title="View Tree">
             <p>View</p>
             <template #right-icon>
               <u-Icons-Eye></u-Icons-Eye>
@@ -33,14 +33,12 @@
 
     <div class="bv-treecard-main">
       <div class="bv-treecard-animation bv__globals__skeleton">
-        <u-Components-TreeAnimation
-          :id="animationId"
-          :url="data.json"
-        ></u-Components-TreeAnimation>
+        <u-Components-TreeAnimation :id="animationId" :url="data.json">
+        </u-Components-TreeAnimation>
       </div>
 
       <div class="bv-treecard-image bv__globals__skeleton">
-        <img :id="`bv-treecard-image${data.rowKey}`" :src="imageUrl" />
+        <img :id="imageId" :src="imageUrl" />
       </div>
 
       <div class="bv-treecard-title">
@@ -88,14 +86,6 @@ module.exports = {
   },
 
   computed: {
-    cardId() {
-      return `bv-treecard${this.data.rowKey}`
-    },
-
-    animationId() {
-      return `bv-treecard-animation${this.data.rowKey}`
-    },
-
     animationElement() {
       return document.getElementById(this.animationId)
     }
@@ -109,11 +99,27 @@ module.exports = {
       donationAmount: 0.0,
       numberOfTrees: 0,
       location: '',
-      charity: ''
+      charity: '',
+      baseId: 'bv-treecard',
+      uniqueId: `${this.data.rowKey}`,
+      cardId: '',
+      animationId: '',
+      imageId: ''
     }
   },
 
   async created() {
+    let cardId = this.baseId + this.uniqueId
+
+    for (let x = 0; document.getElementById(cardId); x++) {
+      this.uniqueId += x
+      cardId = this.baseId + this.uniqueId
+    }
+
+    this.cardId = this.baseId + this.uniqueId
+    this.imageId = this.baseId + '-image' + this.uniqueId
+    this.animationId = this.baseId + '-animation' + this.uniqueId
+
     this.donationAmount =
       this.data.$initialDonationRow.donationAmount.toLocaleString(undefined, {
         minimumFractionDigits: 2,
@@ -145,6 +151,8 @@ module.exports = {
 
   async mounted() {
     const TreeCard = document.getElementById(this.cardId)
+
+    if (!TreeCard) return
 
     if (!TreeCard.getAttribute('mouse-listener')) {
       TreeCard.addEventListener('mouseover', this.playAnimation)

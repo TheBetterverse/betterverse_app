@@ -67,7 +67,12 @@
         </div>
 
         <div class="d-flex justify-content-end">
-          <bv-button secondary type="submit" name="continue-email-button">
+          <bv-button
+            secondary
+            type="submit"
+            name="continue-email-button"
+            title="Continue with email"
+          >
             <template #default>
               <p v-if="form.email.content">Continue with email</p>
             </template>
@@ -92,7 +97,11 @@
       <section name="socials">
         <div class="my-2">Or continue with</div>
         <div id="bv__register__socialsbuttons" class="w-100">
-          <bv-button responsive name="sign-up-google">
+          <bv-button
+            responsive
+            name="sign-up-google"
+            title="Sign up with Google"
+          >
             <template>
               <div class="bv__register__socialbutton">
                 <icon-google></icon-google>
@@ -101,14 +110,22 @@
             </template>
           </bv-button>
 
-          <bv-button responsive name="sign-up-facebook">
+          <bv-button
+            responsive
+            name="sign-up-facebook"
+            title="Sign up with Facebook"
+          >
             <div class="bv__register__socialbutton">
               <icon-facebook></icon-facebook>
               <p class="d-none d-xl-block">Facebook</p>
             </div>
           </bv-button>
 
-          <bv-button responsive name="sign-up-unstoppable">
+          <bv-button
+            responsive
+            name="sign-up-unstoppable"
+            title="Sign up with Unstoppable"
+          >
             <div class="bv__register__socialbutton">
               <icon-unstoppable></icon-unstoppable>
               <p class="d-none d-xl-block">Unstoppable</p>

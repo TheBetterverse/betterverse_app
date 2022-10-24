@@ -68,7 +68,7 @@ module.exports = {
       this.disableRight = false
 
       if (scrollLeft === 0) this.disableLeft = true
-      if (scrollLeft + offsetWidth >= scrollWidth) this.disableRight = true
+      else if (scrollLeft + offsetWidth >= scrollWidth) this.disableRight = true
     },
 
     updateComponent() {

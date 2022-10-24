@@ -77,7 +77,7 @@ return async event => {
 
     //Get current NFT token IDs and JSONs
     for (let i = 0; i < currentUserNFTs.length; i++) {
-      this.DonorPortal_CheckNFTTransfersAlchemy()
+      this.DonorPortal_CheckNFTTransfersAlchemyTESTNET()
     }
 
     await delay(3000)

@@ -215,7 +215,7 @@
               </h2>
               <p>Take your tree with you wherever you go.</p>
             </div>
-            <u-Components-Button @click="DonorPortal_DownloadNFT($getUser('Donation_SelectedNFT'))">
+            <u-Components-Button @click="DonorPortal_DownloadNFT($getUser('Donation_SelectedNFT'))" title="Download">
               <template #left-icon>
                 <u-Icons-Download />
               </template>
@@ -233,42 +233,48 @@
             </div>
             <div id="bv__nftmodal__infocardsocials">
               <u-Components-Button
-                @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'twitter')">
+                @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'twitter')"
+                title="Share on Twitter">
                 <template #left-icon>
                   <u-Icons-Twitter-Blue />
                 </template>
               </u-Components-Button>
 
               <u-Components-Button
-                @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'facebook')">
+                @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'facebook')"
+                title="Share on Facebook">
                 <template #left-icon>
                   <u-Icons-Facebook />
                 </template>
               </u-Components-Button>
 
               <u-Components-Button
-                @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'telegram')">
+                @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'telegram')"
+                title="Share on Telegram">
                 <template #left-icon>
                   <u-Icons-Telegram />
                 </template>
               </u-Components-Button>
 
               <u-Components-Button
-                @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'whatsapp')">
+                @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'whatsapp')"
+                title="Share on WhatsApp">
                 <template #left-icon>
                   <u-Icons-WhatsApp />
                 </template>
               </u-Components-Button>
 
               <u-Components-Button
-                @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'linkedin')">
+                @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'linkedin')"
+                title="Share on Linkedin">
                 <template #left-icon>
                   <u-Icons-Linkedin />
                 </template>
               </u-Components-Button>
 
               <u-Components-Button
-                @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'copy')">
+                @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'copy')"
+                title="Copy link to clipboard">
                 <template #left-icon>
                   <u-Icons-Copy />
                 </template>
@@ -293,7 +299,8 @@
             </div>
 
             <div>
-              <u-Components-Button @click="DonorPortal_OpenOpenSea($getUser('Donation_SelectedNFTRowKey'))">Sell NFT
+              <u-Components-Button @click="DonorPortal_OpenOpenSea($getUser('Donation_SelectedNFTRowKey'))"
+                title="Sell NFT on OpenSea">Sell NFT
               </u-Components-Button>
             </div>
           </div>
@@ -313,7 +320,8 @@
             </div>
 
             <div>
-              <u-Components-Button style="border: 1px solid #9f9d98; color: #9f9d98; cursor: not-allowed;">Buy
+              <u-Components-Button style="border: 1px solid #9f9d98; color: #9f9d98; cursor: not-allowed;"
+                title="Buy fertiliser">Buy
                 fertiliser</u-Components-Button>
             </div>
           </div>
@@ -333,7 +341,8 @@
             </div>
 
             <div>
-              <u-Components-Button style="border: 1px solid #9f9d98; color: #9f9d98; cursor: not-allowed;">Enter the
+              <u-Components-Button style="border: 1px solid #9f9d98; color: #9f9d98; cursor: not-allowed;"
+                title="Enter betterverse">Enter the
                 Betterverse</u-Components-Button>
             </div>
           </div>
@@ -369,7 +378,6 @@
     z-index: 600;
 
     display: none;
-    overflow-x: clip;
     overflow-y: scroll;
 
     width: 100vw;
