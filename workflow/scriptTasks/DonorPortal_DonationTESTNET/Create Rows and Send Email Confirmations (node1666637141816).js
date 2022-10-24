@@ -2,15 +2,15 @@ const {userId} = context.webhookdata
 const email = await getUserEmailByUID(userId)
 context.data = email
 
-//$log.debug('test')
-//$log('Installing web3 packages')
+$log.debug('test')
+$log('Installing web3 packages')
 
-//const Web3 = require("web3");
-//$log('Loaded web3 packages')
-//const web3 = new Web3(new Web3.providers.HttpProvider('https://polygon-mumbai.g.alchemy.com/v2/dRrclX6ikOV1fZHA5fHhaORKzPB6MoEj'));
-//$log('Configured web3 lfg')
+const Web3 = require("web3");
+$log('Loaded web3 packages')
+const web3 = new Web3(new Web3.providers.HttpProvider('https://polygon-mumbai.g.alchemy.com/v2/dRrclX6ikOV1fZHA5fHhaORKzPB6MoEj'));
+$log('Configured web3 lfg')
 
-/*Tree contract ABI
+//Tree contract ABI
 const treeContractData = {
     TreeContractAddress: '0xA1b4B161f2Dcf373B8C040151D8926cc8165f499',
     TreeContractABI: [
@@ -965,9 +965,8 @@ const treeContractData = {
         }
     ]
 }
-*/
 
-const ipfsGatewayTools = new IPFSGatewayTools();
+const gatewayURL = "https://assets.betterverse.app"
 const tokenID = await context.webhookdata.payload.tokenID
 const wallet = await context.webhookdata.payload.wallet
 const user = await JSON.parse(context.webhookdata.payload.user)
@@ -1057,11 +1056,12 @@ if (tokenID.length == 1) {
         donationAmountEUR: donationAmountEUR
     })
 
-    //Pinata Conversion
-    const convertedGatewayUrl = ipfsGatewayTools.convertToDesiredGateway(
-        json[0],
-        "assets.betterverse.app"
-    )
+    /*Pinata Conversion
+    const splitUrl = json[0].split(/\/|\?/);
+    const cid = splitUrl[2]
+    const file = splitUrl[3]
+    var convertedURL = `${gatewayURL}/ipfs/${cid}/${file}`
+    */
 
     //Create NFT row
     let newNFTRow = await $addRow('nFTs', {
@@ -1099,13 +1099,6 @@ if (tokenID.length == 1) {
             donationAmountEUR: donationAmountEUR
         })
 
-
-        //Pinata Conversion
-        const convertedGatewayUrl = ipfsGatewayTools.convertToDesiredGateway(
-            json[i],
-            "assets.betterverse.app"
-        )
-
         $log("Writing NFT entry for " + tokenID[i])
         let newNFTRow = await $addRow('nFTs', {
             tokenID: tokenID[i],
@@ -1126,7 +1119,7 @@ $log('NFT ROWS JSON:')
 $log(json[0])
 
 try{
-/*
+
     const TreeContract = new web3.eth.Contract(treeContractData.TreeContractABI, treeContractData.TreeContractAddress);
 
     for (let i = 0; i < nftRows.length; i++) {
@@ -1139,12 +1132,14 @@ try{
         }
 
         //PINATA HERE
-        const splitURL = calledJson.split('ipfs://').pop();
-        const resolvedJson = 'https://ipfs.io/ipfs/' + splitURL
+        const splitUrl = calledJson.split(/\/|\?/);
+        const cid = splitUrl[2]
+        const file = splitUrl[3]
+        var convertedURL = `${gatewayURL}/ipfs/${cid}/${file}`
     
-        await createLog(callDash, '', resolvedJson, 'nFTs', nftRows[i], 'json')
+        await createLog(callDash, '', convertedURL, 'nFTs', nftRows[i], 'json')
     }
-*/
+
 }
 catch(err){
     $log(err)

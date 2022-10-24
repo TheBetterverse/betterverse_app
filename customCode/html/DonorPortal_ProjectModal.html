@@ -15,7 +15,7 @@
           :wallet="DonorPortal_GetCurrentUserWalletInformation()" class="d-none d-lg-block"
           @click="DonorPortal_OpenWallet()" />
         <button style="background: var(--bg-secondary); border-radius: 100%;"
-          @click="DonorPortal_TriggerProjectModal('hide')">
+          @click="DonorPortal_TriggerProjectModal('hide')" title="Close">
           <u-Icons-Close></u-Icons-Close>
         </button>
       </div>
@@ -940,6 +940,8 @@
       height: 1px;
       width: calc(50% - 2px);
       backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+
       background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3))
     }
 

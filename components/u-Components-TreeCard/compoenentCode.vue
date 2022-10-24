@@ -77,12 +77,12 @@ module.exports = {
 
   methods: {
     playAnimation() {
-      const TreeAnimationElement = document.getElementById(this.animationId)
+      const TreeAnimationElement = this.animationElement
       if (TreeAnimationElement) TreeAnimationElement.play()
     },
 
     stopAnimation() {
-      const TreeAnimationElement = document.getElementById(this.animationId)
+      const TreeAnimationElement = this.animationElement
       if (TreeAnimationElement) TreeAnimationElement.pause()
     }
   },
@@ -94,6 +94,10 @@ module.exports = {
 
     animationId() {
       return `bv-treecard-animation${this.data.rowKey}`
+    },
+
+    animationElement() {
+      return document.getElementById(this.animationId)
     }
   },
 
@@ -239,6 +243,7 @@ module.exports = {
   padding: 15px;
   background: rgba(236, 234, 227, 0.8);
   backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   border-top: 1px solid white;
   border-radius: 0 0 5px 5px;
 }

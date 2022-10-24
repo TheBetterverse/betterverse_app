@@ -8,7 +8,7 @@
     </div>
 
     <div class="d-lg-grid">
-      <button onclick="window.open('https:\/\/www.betterverse.app')" style="background: none">
+      <button onclick="window.open('https:\/\/www.betterverse.app')" style="background: none" title="Betterverse.app">
         <u-Icons-Betterverse></u-Icons-Betterverse>
       </button>
     </div>
@@ -85,27 +85,27 @@
               :wallet="DonorPortal_GetCurrentUserWalletInformation()" />
 
             <template #dropdown>
-              <button type="submit" name="connect-metamask">
+              <button type="submit" name="connect-metamask" title="Connect metamask wallet">
                 <u-Icons-Metamask />
                 <p>Metamask</p>
               </button>
 
-              <button type="submit" name="connect-torus">
+              <button type="submit" name="connect-torus" title="Connect torus wallet">
                 <u-Icons-Torus />
                 <p>Torus</p>
               </button>
 
-              <!--button type="submit" name="connect-coinbase">
+              <!--button type="submit" name="connect-coinbase" title="Connect coinbase wallet">
                 <u-Icons-Coinbase />
                 <p>Coinbase</p>
               </button-->
 
-              <button type="submit" name="connect-slide">
+              <button type="submit" name="connect-slide" title="Connect slide wallet">
                 <u-Icons-Slide />
                 <p>Slide</p>
               </button>
 
-              <button type="submit" name="connect-slide">
+              <button type="submit" name="create-wallet" title="Create wallet">
                 <u-Icons-Plus outline />
                 <p>Create wallet</p>
               </button>

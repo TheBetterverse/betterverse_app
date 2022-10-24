@@ -6,10 +6,14 @@
       </h2>
 
       <div class="bv-cardslider-nav">
-        <button @click="slideLeft" :disabled="disableLeft">
+        <button title="Slide left" :disabled="disableLeft" @click="slideLeft">
           <u-Icons-Arrow left color="#000"></u-Icons-Arrow>
         </button>
-        <button @click="slideRight" :disabled="disableRight">
+        <button
+          title="Slide right"
+          :disabled="disableRight"
+          @click="slideRight"
+        >
           <u-Icons-Arrow right color="#000"></u-Icons-Arrow>
         </button>
       </div>
@@ -107,6 +111,8 @@ module.exports = {
     let style = document.createElement('style')
     style.innerText = `#${this.sliderId} > * { width: ${this.cardWidth}px }`
     document.head.appendChild(style)
+
+    this.updateComponent()
   }
 }
 </script>

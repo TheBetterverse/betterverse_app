@@ -9,7 +9,8 @@
       <div class="d-lg-none">
         <u-Icons-Betterverse height="32px" width="32px" />
       </div>
-      <button id="bv__nftmodal__close" class="bg-transparent" @click="DonorPortal_TriggerNFTModal('hide')">
+      <button id="bv__nftmodal__close" class="bg-transparent" @click="DonorPortal_TriggerNFTModal('hide')"
+        title="Close">
         <u-Icons-Close></u-Icons-Close>
       </button>
     </nav>
@@ -55,11 +56,11 @@
 
         <div id="bv__nftmodal__bottomnav">
           <button v-if="DonorPortal_GetCurrentUserNFTsCount() > 1"
-            @click="DonorPortal_NavigateNFTs('left', $getUser('Donation_SelectedNFTRowKey'))">
+            @click="DonorPortal_NavigateNFTs('left', $getUser('Donation_SelectedNFTRowKey'))" title="Previous Tree">
             <u-Icons-Arrow left color="black"></u-Icons-Arrow left>
           </button>
           <button v-if="DonorPortal_GetCurrentUserNFTsCount() > 1"
-            @click="DonorPortal_NavigateNFTs('right', $getUser('Donation_SelectedNFTRowKey'))">
+            @click="DonorPortal_NavigateNFTs('right', $getUser('Donation_SelectedNFTRowKey'))" title="Next Tree">
             <u-Icons-Arrow right color="black" />
           </button>
         </div>
@@ -735,6 +736,8 @@
       height: 1px;
       width: calc(50% - 2px);
       backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+
       background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3))
     }
 
