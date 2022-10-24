@@ -113,9 +113,9 @@
       <div class="bv__dashboard__carrousel"
         v-if="DonorPortal_GetCurrentUserNFTs() != null && !$getGlobalModel('dashboardRefresh')">
 
-        <u-Components-TreeCard2 v-for="(row, key) in DonorPortal_GetCurrentUserNFTs()" :data="row" :key="key"
+        <u-Components-TreeCard v-for="(row, key) in DonorPortal_GetCurrentUserNFTs()" :data="row" :key="key"
           @view="DonorPortal_ViewSelectedTree(row)">
-        </u-Components-TreeCard2>
+        </u-Components-TreeCard>
       </div>
 
   </main>

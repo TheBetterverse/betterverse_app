@@ -1,17 +1,19 @@
 {
   "data": {
     "metaData": {
-      "id": "-NDyxl-6eHUgqV2fk2tg",
+      "id": "-NFAJ5FTPC1S4DAUubnv",
       "statusField": ""
     },
     "nodes": [
       {
-        "id": "node1665356215380",
-        "x": 144.29,
-        "y": 241.43,
-        "width": 191,
+        "id": "node1666637139897",
+        "x": 317.14285714285717,
+        "y": 340,
+        "width": 190,
         "height": 65,
-        "attachment": {},
+        "attachment": {
+          "script": ""
+        },
         "name": "start-event",
         "clazz": "startEvent",
         "label": "Start Event",
@@ -21,25 +23,25 @@
         }
       },
       {
-        "id": "node1665356221273",
-        "x": 561.4285714285716,
-        "y": 240.00000000000003,
-        "width": 190,
-        "height": 64,
+        "id": "node1666637141816",
+        "x": 752.86,
+        "y": 318.86,
+        "width": 200,
+        "height": 108,
         "attachment": {},
         "name": "script-task",
         "clazz": "scriptTask",
-        "label": "Update NFTs",
+        "label": "Create Rows and Send Email Confirmations",
         "icon": {
           "name": "terminal",
           "color": "hsl(218, 54%, 20%)"
         }
       },
       {
-        "id": "node1665356235913",
-        "x": 1091.43,
-        "y": 240,
-        "width": 191,
+        "id": "node1666637155305",
+        "x": 1211.4285714285716,
+        "y": 342.8571428571429,
+        "width": 190,
         "height": 64,
         "attachment": {},
         "name": "end-event",
@@ -53,10 +55,10 @@
     ],
     "edges": [
       {
-        "source": "node1665356215380-right",
-        "target": "node1665356221273",
+        "source": "node1666637139897-right",
+        "target": "node1666637141816",
         "endSocket": "left",
-        "id": "line-1665356240728",
+        "id": "line-1666637143496",
         "label": "Start Event",
         "targetLabel": "Script Task",
         "type": {
@@ -68,11 +70,11 @@
         }
       },
       {
-        "source": "node1665356221273-right",
-        "target": "node1665356235913",
+        "source": "node1666637141816-right",
+        "target": "node1666637155305",
         "endSocket": "left",
-        "id": "line-1665356242325",
-        "label": "Script Task",
+        "id": "line-1666637157156",
+        "label": "Create Rows and Send Email Confirmations",
         "targetLabel": "End Event",
         "type": {
           "startPlug": "behind",
@@ -85,9 +87,9 @@
     ],
     "transform": {
       "x": 0,
-      "y": -3,
+      "y": 0,
       "scale": 0.7
     }
   },
-  "name": "DonorPortal_GetLatestNFTs"
+  "name": "DonorPortal_DonationTESTNET"
 }

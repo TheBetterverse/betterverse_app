@@ -30,6 +30,8 @@ return async event => {
   var currentUserNFTsIDs = []
   var currentUserNFTsJSONs = []
   var returnedJSONs = []
+  var returnedPNGs = []
+  var returnedMP4s = []
 
   //Workflow data
   var updateRequiredNFTsRowKeys = []
@@ -44,11 +46,9 @@ return async event => {
   try {
     //Get latest JSON for each NFT
     for (let n = 0; n < currentUserNFTs.length; n++) {
-      var returnedJSON = await this.DonorPortal_GetTokenURIAlchemyTESTNET(
-        currentUserNFTsIDs[n]
-      )
-      var resolvedJSON = await this.DonorPortal_ResolveNFTURL(returnedJSON)
-      returnedJSONs[n] = resolvedJSON
+      var returnedJSON = await this.DonorPortal_GetTokenURIAlchemyTESTNET(currentUserNFTsIDs[n])
+      var gatewayURL = await this.DonorPortal_GetGatewayURL(returnedJSON)
+      returnedJSONs[n] = gatewayURL
     }
 
     for (let u = 0; u < currentUserNFTs.length; u++) {

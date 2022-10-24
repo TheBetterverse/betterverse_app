@@ -16,7 +16,7 @@
 
     <div id="bv__nftmodal__leftside">
       <div id="bv__nftmodal__leftsideimage" class="bv__globals__skeleton">
-        <u-Components-TreeAnimation :url="$getUser('Donation_SelectedNFT')" />
+        <u-Components-TreeAnimation autoplay :url="$getUser('Donation_SelectedNFT')" />
       </div>
 
       <div id="bv__nftmodal__leftsideimage__bottomborder"></div>
@@ -338,98 +338,27 @@
           </div>
         </div>
 
-        <div id="bv__nftmodal__othernfts" v-if="DonorPortal_GetCurrentUserNFTsCount() > 1">
-          <div class=" d-flex align-items-center justify-content-between">
-            <h2>
-              You've got {{ DonorPortal_GetCurrentUserNFTsCount() - 1 }} other NFT{{
-              (DonorPortal_GetCurrentUserNFTsCount() - 1) > 1 ? 's' :
-              '' }}
-            </h2>
+        <u-Components-CardSlider v-if="DonorPortal_GetCurrentUserNFTsCount() > 1" name="othernfts">
+          <template #title>
+            You've got {{ DonorPortal_GetCurrentUserNFTsCount() - 1 }} other NFT{{
+            (DonorPortal_GetCurrentUserNFTsCount() - 1) > 1 ? 's' :
+            '' }}
+          </template>
 
-            <div id="bv__nftmodal__othernftsnav">
-              <button @click="NFTModal_ScrollOtherNFTs($event, 'left')" id="othernftsnav-left">
-                <u-Icons-Arrow left color="black"></u-Icons-Arrow>
-              </button>
-
-              <button @click="NFTModal_ScrollOtherNFTs($event, 'right')" id="othernftsnav-right">
-                <u-Icons-Arrow right color="black"></u-Icons-Arrow>
-              </button>
-            </div>
-          </div>
-
-          <hr />
-
-          <div id="bv__nftmodal__othernftscarousel">
-            <u-Components-TreeCard2 v-for="(row, key) in DonorPortal_GetCurrentUserNFTs()" :data="row" :key="key"
-              v-if="row.$initialDonationRow.rowKey !== DonorPortal_GetSpecificDonation().rowKey"
+          <template #default>
+            <u-Components-TreeCard v-for="(row, key) in DonorPortal_GetCurrentUserNFTs()"
+              v-if="row.$initialDonationRow.rowKey !== DonorPortal_GetSpecificDonation().rowKey" :data="row" :key="key"
               @view="DonorPortal_ViewSelectedTree(row)">
-            </u-Components-TreeCard2>
-          </div>
-        </div>
+            </u-Components-TreeCard>
+          </template>
+        </u-Components-CardSlider>
+
 
       </div>
 
     </div>
   </div>
 </template>
-
-<script type="module">
-
-
-  function NFTModal_WaitForScrollEnd(element, callback, ...args) {
-    let currentScrollPosition = element.scrollLeft
-
-    return function (event) {
-      console.count()
-      console.log(event.srcElement.scrollLeft, currentScrollPosition)
-
-      if (event.srcElement.scrollLeft === currentScrollPosition) {
-        console.log("ENDED!")
-        callback(...args)
-        event.srcElement.removeEventListener(this)
-      } else {
-        currentScrollPosition = event.srcElement.scrollLeft
-      }
-    }
-  }
-
-  function NFTModal_UpdateNavButtons() {
-    const CarrouselElement = $('#bv__nftmodal__othernftscarousel')[0]
-    const LeftButton = $('#othernftsnav-left')[0]
-    const RightButton = $('#othernftsnav-right')[0]
-
-    LeftButton.disabled = false
-    RightButton.disabled = false
-
-
-    if (CarrouselElement.scrollLeft === 0) {
-      LeftButton.disabled = true
-    }
-
-    else if (CarrouselElement.scrollLeft + CarrouselElement.offsetWidth >= CarrouselElement.scrollWidth) {
-      RightButton.disabled = true
-    }
-  }
-
-  function NFTModal_ScrollOtherNFTs(event, direction) {
-    const CarrouselElement = $('#bv__nftmodal__othernftscarousel')[0]
-    const LeftButton = $('#othernftsnav-left')[0]
-    const RightButton = $('#othernftsnav-right')[0]
-
-    CarrouselElement.scrollBy({
-      left: direction === 'left' ? -210 : 210,
-      behavior: 'smooth'
-    })
-
-    NFTModal_UpdateNavButtons()
-
-    setTimeout(NFTModal_UpdateNavButtons, 300)
-    setTimeout(NFTModal_UpdateNavButtons, 600)
-  }
-
-  $(document).on('resize', NFTModal_UpdateNavButtons)
-  NFTModal_UpdateNavButtons()
-</script>
 
 <style>
   #bv__nftmodal {
@@ -736,40 +665,6 @@
     justify-content: center
   }
 
-
-  #bv__nftmodal__othernfts {
-    margin: 60px 0;
-    scroll-margin-top: 30px;
-  }
-
-  #bv__nftmodal__othernftsnav {
-    display: flex;
-    gap: 10px;
-  }
-
-  #bv__nftmodal__othernftsnav>button:disabled {
-    opacity: 50%;
-  }
-
-  #bv__nftmodal__othernftscarousel {
-    display: grid;
-    align-items: flex-start;
-    justify-content: start;
-    flex-wrap: nowrap;
-    grid-auto-flow: column;
-
-    grid-template-columns: repeat(auto-fill, 1fr);
-    gap: 20px;
-    overflow-x: scroll;
-
-    width: 100%;
-    height: 500px;
-
-    padding: 10px 0;
-    scroll-snap-type: x mandatory;
-  }
-
-
   #bv__nftmodal__othernftscarousel>* {
     scroll-snap-align: start;
     width: 400px
@@ -778,14 +673,6 @@
 
   #bv__nftmodal__footer {
     height: 30px;
-  }
-
-
-  #bv__nftmodal__othernftscarousel::-webkit-scrollbar,
-  #bv__nftmodal__othernftscarousel::-webkit-scrollbar-track,
-  #bv__nftmodal__othernftscarousel::-webkit-scrollbar-thumb {
-    display: none;
-    visibility: hidden;
   }
 
 
@@ -800,8 +687,7 @@
   }
 
 
-  #bv__nftmodal__bottomnav>button,
-  #bv__nftmodal__othernftsnav>button {
+  #bv__nftmodal__bottomnav>button {
     background: none;
     border: 1px solid black;
     height: 32px;

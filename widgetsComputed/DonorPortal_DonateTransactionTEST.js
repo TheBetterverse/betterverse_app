@@ -21,8 +21,9 @@ var nftCount = await this.DonorPortal_GetDonationNFTCount()
 var availableTrees
 
 return async function () {
+
   if (!walletProvider) {
-    alert('No wallet connected')
+    alert('No wallet connected to account.')
   } else {
 
     if (document.getElementById('bv__donatemodal__nosplit').checked == true){
@@ -116,6 +117,7 @@ return async function () {
     const USDCContract = new web3.eth.Contract(USDCABI, USDCAddress, {
       from: wallet
     })
+
     const signer = await provider.getSigner()
     const TreeContractWithEther = new ethers.Contract(TreeContractAddress, TreeContractABI, signer)
     const USDCContractWithEther = new ethers.Contract(USDCAddress, USDCABI, signer)
@@ -208,7 +210,18 @@ return async function () {
 
                     //TASK 3 | Prepare variable and call the mintTree function from the smart contract.
                     document.getElementById("bv__donate__buttontext").innerText = 'Requesting approval'
-                    const approveAmount = Web3.utils.toWei(amount.toString(), 'ether')
+                    
+                    //USDC Conversion
+                    //const weiAmount = Web3.utils.toWei(amount.toString(), 'ether')
+                    const approveAmount = ethers.utils.parseUnits(amount.toString(), 6)
+                    //const approveAmount = new BigNumber(result).div(10 ** 6);
+
+                    console.log('Donation amount: ', amount)
+                    console.log('Approve amount: ', approveAmount)
+
+                    //const decimals = await USDCContract.methods.decimals().call();
+                    //const approveAmount = new BigNumber(amount).div(10 ** decimals);
+
                     if(walletProvider == 'coinbase') {	
                       const tx = await USDCContractWithEther.approve(MinterContractAddress, approveAmount)	
                       await tx.wait()	

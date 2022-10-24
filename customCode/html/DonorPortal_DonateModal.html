@@ -1,6 +1,6 @@
 <!-- DonorPortal_DonateModal.html -->
 <template>
-  <form @submit.prevent="">
+  <form @submit.prevent="DonorPortal_DonateTransactionTESTNET">
     <div id="bv__donatemodal" class="w-100">
       <div class="bv__donatemodal__main" v-if="DonorPortal_GetSpecificProject()">
         <div class="bv__donatemodal__header  bv__globals__px">
@@ -51,7 +51,6 @@
                     class="bv__donatemodal__chevron bv__donatemodal__chevronsm">
                   </u-Icons-Chevron>
                 </span>
-
               </span>
 
               <u-Components-InlineInput v-else name="donation-amount" :value="DonorPortal_GetDonationAmount"
@@ -305,8 +304,7 @@
 
         <div class="grid-area-9"
           style="width: 100%; display: flex; align-items: center; justify-content: flex-end; padding: 1rem 0;">
-          <u-Components-Button @click="DonorPortal_DonateTransactionTESTNET()" secondary type="submit"
-            id="bv__donate__button">
+          <u-Components-Button secondary type="submit" id="bv__donate__button">
             <p id="bv__donate__buttontext">Donate and Generate NFT</p>
             <div style="margin-left: 6px; display: none;" class="spinner-border spinner-border-sm" id="bv__spinner"
               role="status"></div>
