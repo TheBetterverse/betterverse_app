@@ -90,7 +90,7 @@
               <template #default> <p>Skip step</p> </template>
               <template #right-icon>
                 <div id="bv__right__arrow">
-                  <icon-rightarrow />
+                  <icon-arrow right />
                 </div>
                 <div
                   id="bv__spinner"
@@ -145,7 +145,7 @@ module.exports = {
     IconCoinbase: $getCustomComponent('u-Icons-Coinbase'),
     IconUsdc: $getCustomComponent('u-Icons-USDC'),
     IconPlus: $getCustomComponent('u-Icons-Plus'),
-    IconRightarrow: $getCustomComponent('u-Icons-ArrowRight'),
+    IconArrow: $getCustomComponent('u-Icons-Arrow'),
     IconCheckmark: $getCustomComponent('u-Icons-Checkmark'),
     IconBetterverse: $getCustomComponent('u-Icons-Betterverse'),
     IconSlide: $getCustomComponent('u-Icons-Slide'),

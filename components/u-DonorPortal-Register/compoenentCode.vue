@@ -72,10 +72,11 @@
               <p v-if="form.email.content">Continue with email</p>
             </template>
             <template #right-icon>
-              <icon-rightarrow
+              <icon-arrow
+                right
                 v-if="spinnerActive == false"
                 color="white"
-              ></icon-rightarrow>
+              ></icon-arrow>
               <div
                 v-if="spinnerActive == true"
                 class="spinner-border spinner-border-sm"
@@ -307,7 +308,7 @@ module.exports = {
     IconFacebook: $getCustomComponent('u-Icons-Facebook'),
     IconUnstoppable: $getCustomComponent('u-Icons-UnstoppableDomains'),
     IconInfo: $getCustomComponent('u-Icons-Info-Normal'),
-    IconRightarrow: $getCustomComponent('u-Icons-ArrowRight'),
+    IconArrow: $getCustomComponent('u-Icons-Arrow'),
     IconBetterverse: $getCustomComponent('u-Icons-Betterverse'),
     BvButton: $getCustomComponent('u-Components-Button'),
     BvInput: $getCustomComponent('u-Components-Input')

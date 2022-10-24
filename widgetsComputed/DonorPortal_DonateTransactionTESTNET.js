@@ -427,7 +427,7 @@ return async event => {
                                         }
                                         console.log('Writing entry to DB')
                                         await this.callWf({
-                                          workflow: '-NAA9tsNod6psXPRUZr0',
+                                          workflow: '-NFAJ5FTPC1S4DAUubnv',
                                           payload: payload
                                         })
 
@@ -470,7 +470,7 @@ return async event => {
                                           )
 
                                         await this.callWf({
-                                          workflow: '-NAA9tsNod6psXPRUZr0',
+                                          workflow: '-NFAJ5FTPC1S4DAUubnv',
                                           payload: {
                                             tokenID: nftIDs,
                                             wallet: wallet,

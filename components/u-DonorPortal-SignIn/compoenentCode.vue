@@ -68,10 +68,11 @@
               <p v-if="form.email.content">Continue with email</p>
             </template>
             <template #right-icon>
-              <icon-rightarrow
+              <icon-arrow
+                right
                 v-if="spinnerActive == false"
                 color="white"
-              ></icon-rightarrow>
+              ></icon-arrow>
               <div
                 v-if="spinnerActive == true"
                 class="spinner-border spinner-border-sm"
@@ -202,7 +203,6 @@ module.exports = {
         .catch(err => {
           alert(err.message)
         })
-
     },
 
     async signInGoogle(e) {
@@ -228,7 +228,7 @@ module.exports = {
         })
     },
 
-    async signInUnstoppable(e) {   
+    async signInUnstoppable(e) {
       await $anonUserSignIn('unstoppableDomains')
         .then(() => {
           $setCurrentTab('-Mx_5FLL2jlxjXYUMdIL')
@@ -267,7 +267,7 @@ module.exports = {
     IconGoogle: $getCustomComponent('u-Icons-Google'),
     IconFacebook: $getCustomComponent('u-Icons-Facebook'),
     IconDiscord: $getCustomComponent('u-Icons-UnstoppableDomains'),
-    IconRightarrow: $getCustomComponent('u-Icons-ArrowRight'),
+    IconArrow: $getCustomComponent('u-Icons-Arrow'),
     IconBetterverse: $getCustomComponent('u-Icons-Betterverse'),
     BvButton: $getCustomComponent('u-Components-Button'),
     BvInput: $getCustomComponent('u-Components-Input')
