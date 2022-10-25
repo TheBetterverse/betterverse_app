@@ -291,15 +291,14 @@ module.exports = {
     BvInput: $getCustomComponent('u-Components-Input')
   },
 
-  async created() {
+  async mounted() {
 
     const currentProvider = fbUser.providerData[0].providerId
 
-    if(currentProvider === 'oidc.unstoppable.domains'){
+    if(currentProvider === 'oidc.unstoppable-domains'){
       const domain = fbUser.providerData[0].uid
       setTimeout(() => {
         let UsernameInputEl = document.getElementById('username-input') 
-        console.log(UsernameInputEl)
         UsernameInputEl.value = domain
         UsernameInputEl.dispatchEvent(new Event('input'))
       }, 1000)
