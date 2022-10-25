@@ -20,6 +20,7 @@
         <div class="my-3">
           <bv-input
             label="Continue with email"
+            id="email-input"
             name="email-input"
             type="text"
             v-model="form.email"

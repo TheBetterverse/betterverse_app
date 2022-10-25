@@ -1,18 +1,25 @@
+<!-- u-Components-ProjectCard -->
+
 <template>
   <div class="bv__comps__projectcard">
     <div class="bv__comps__projectimage bv__globals__skeleton">
-      <img :src="project.projectImage.url" />
+      <img
+        :src="project.projectImage.url"
+        :title="`${project.$cause$display} in ${project.displayLocation}`"
+      />
     </div>
 
     <div class="bv__comps__projectdescription">
       <div class="bv__comps__projecttitle">
         <div class="bv__comps__projectcharity">
           <img :src="project.$charity.charityLogo.url" />
+
           <p>
             {{ project.$charity.charityName }}
           </p>
         </div>
-        <h2>{{ project.projectName }}</h2>
+
+        <h2>{{ formattedProjectName }}</h2>
       </div>
 
       <div class="bv__comps__projectinfo">
@@ -69,6 +76,16 @@ module.exports = {
       default(data) {
         return { ...data }
       }
+    }
+  },
+
+  computed: {
+    formattedProjectName() {
+      let name = this.project.projectName
+      if (name.length > 24) {
+        name = name.substr(0, 22) + '...'
+      }
+      return name
     }
   },
 

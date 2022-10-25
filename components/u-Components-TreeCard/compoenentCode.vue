@@ -155,8 +155,8 @@ module.exports = {
     if (!TreeCard) return
 
     if (!TreeCard.getAttribute('mouse-listener')) {
-      TreeCard.addEventListener('mouseover', this.playAnimation)
-      TreeCard.addEventListener('mouseout', this.stopAnimation)
+      TreeCard.addEventListener('mouseenter', this.playAnimation)
+      TreeCard.addEventListener('mouseleave', this.stopAnimation)
       TreeCard.setAttribute('mouse-listener', 'true')
     }
   }
@@ -173,6 +173,10 @@ module.exports = {
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   background: #e8e4dd;
+}
+
+.bv-treecard-main {
+  border-radius: 4px;
 }
 
 .bv-treecard-image,
@@ -194,6 +198,7 @@ module.exports = {
 
   vertical-align: middle;
   object-fit: cover;
+  overflow: hidden;
   border-radius: 4px 4px 0 0;
 }
 

@@ -73,7 +73,7 @@ return async event => {
     }
 
     //Check for NFT transfers
-    console.log('checking transfers')
+    console.log('Checking for transfers')
 
     //Get current NFT token IDs and JSONs
     for (let i = 0; i < currentUserNFTs.length; i++) {
@@ -93,6 +93,4 @@ return async event => {
     }, 1000)
     endLoadingState(refreshButton)
   }
-
-
 }

@@ -23,7 +23,7 @@ return async function(){
                         category: [
                                 "external"
                         ],
-                        withMetadata: false,
+                        withMetadata: true,
                         excludeZeroValue: true,
                         maxCount: "0x3e8",
                         fromAddress: currentUserWalletAddress
@@ -31,9 +31,13 @@ return async function(){
                 ]
         })
     })
-    const data = response.json()
-
-    console.log(data)
+    .then((response) => {
+        var data = response.json()
+        console.log(data)
+    })
+    .catch((error) => {
+        console.log(error)
+    });
 
     return data
 }

@@ -42,6 +42,7 @@
 
         <div class="my-3">
           <bv-input
+            id="username-input"
             label="Username*"
             name="username-input"
             type="text"
@@ -288,6 +289,21 @@ module.exports = {
     BvDropdown: $getCustomComponent('u-Components-DropDown'),
     BvButton: $getCustomComponent('u-Components-Button'),
     BvInput: $getCustomComponent('u-Components-Input')
+  },
+
+  async created() {
+
+    const currentProvider = fbUser.providerData[0].providerId
+
+    if(currentProvider === 'oidc.unstoppable.domains'){
+      const domain = fbUser.providerData[0].uid
+      setTimeout(() => {
+        let UsernameInputEl = document.getElementById('username-input') 
+        console.log(UsernameInputEl)
+        UsernameInputEl.value = domain
+        UsernameInputEl.dispatchEvent(new Event('input'))
+      }, 1000)
+    }
   }
 }
 </script>

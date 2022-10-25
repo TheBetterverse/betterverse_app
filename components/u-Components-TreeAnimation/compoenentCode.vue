@@ -1,23 +1,21 @@
 <!-- u-Components-TreeAnimation -->
 
 <template>
-  <div class="bv__treeanimation">
-    <video
-      class="bv__treeanimation"
-      v-if="imageResult && animationResult"
-      :poster="imageResult"
-      :src="animationResult"
-      :id="id"
-      :autoplay="autoplay"
-      ref="video"
-      preload
-      playsinline
-      autobuffer
-      loop
-      muted
-      defaultmuted
-    ></video>
-  </div>
+  <video
+    class="bv__treeanimation"
+    v-if="imageResult && animationResult"
+    :poster="imageResult"
+    :src="animationResult"
+    :id="id"
+    :autoplay="autoplay"
+    ref="video"
+    preload
+    playsinline
+    autobuffer
+    loop
+    muted
+    defaultmuted
+  ></video>
 </template>
 
 <script>
@@ -91,23 +89,10 @@ module.exports = {
 .bv__treeanimation {
   width: 100%;
   height: 100%;
-}
-
-.bv__treeanimation > img {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
-  z-index: 5;
 }
 
-.bv__treeanimation > video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 6;
-}
-
-.bv__treeanimation > video[poster] {
+.bv__treeanimation video[poster] {
   width: 100%;
   height: 100%;
   object-fit: cover;
