@@ -61,10 +61,15 @@
                 </small>
               </p>
             </div>
-            <bv-button @click="reset" secondary v-if="resetSuccess == false">
+            <bv-button
+              @click="reset"
+              secondary
+              v-if="resetSuccess == false"
+              title="Update password"
+            >
               <template #default> <p>Update password</p></template>
               <template #right-icon>
-                <icon-rightarrow color="white"></icon-rightarrow>
+                <icon-arrow right color="white"></icon-arrow>
               </template>
             </bv-button>
           </div>
@@ -114,7 +119,7 @@
               </p>
             </div>
             <div v-if="validEmail == true && linkSent == false">
-              <bv-button @click="sendLink" secondary>
+              <bv-button @click="sendLink" secondary title="Reset password">
                 <template #default> Reset my password </template>
                 <template #right-icon>
                   <icon-rightarrow color="white"></icon-rightarrow>
@@ -246,7 +251,7 @@ module.exports = {
     IconGoogle: $getCustomComponent('u-Icons-Google'),
     IconFacebook: $getCustomComponent('u-Icons-Facebook'),
     IconDiscord: $getCustomComponent('u-Icons-Discord'),
-    IconRightarrow: $getCustomComponent('u-Icons-ArrowRight'),
+    IconArrow: $getCustomComponent('u-Icons-Arrow'),
     IconBetterverse: $getCustomComponent('u-Icons-Betterverse'),
     BvButton: $getCustomComponent('u-Components-Button'),
     BvInput: $getCustomComponent('u-Components-Input')

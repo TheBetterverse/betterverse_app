@@ -12,6 +12,7 @@
       <input
         class="bv__input__input"
         :name="name"
+        :id="id"
         :placeholder="placeholder"
         :autocomplete="autocomplete"
         :type="currentType"
@@ -120,6 +121,11 @@ module.exports = {
     name: {
       type: String,
       default: undefined
+    },
+
+    id: {
+      type: String,
+      default: 'bv-input'
     },
 
     label: {

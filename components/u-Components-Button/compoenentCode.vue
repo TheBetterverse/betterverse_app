@@ -2,6 +2,7 @@
   <button
     class="bv__button"
     :name="name"
+    :title="title"
     :class="{
       primary,
       secondary,
@@ -52,6 +53,11 @@ module.exports = {
     name: {
       type: String,
       default: ''
+    },
+
+    title: {
+      type: String,
+      default: 'Button'
     }
   }
 }
@@ -106,6 +112,7 @@ button.bv__button > span > * {
   display: flex;
   align-items: center;
   justify-content: center;
+  user-select: none;
 }
 
 button.bv__button.secondary {

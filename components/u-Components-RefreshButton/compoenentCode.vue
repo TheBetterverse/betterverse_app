@@ -1,6 +1,7 @@
 <template>
   <button
     class="bv__refreshbutton"
+    title="Refresh"
     type="button"
     @click="$emit('click', $event)"
   >

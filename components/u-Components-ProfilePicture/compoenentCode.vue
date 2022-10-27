@@ -6,6 +6,7 @@
       <div v-if="modelValue.content || src">
         <img
           class="bv__profilepicture__img bv__globals__skeleton"
+          alt="Profile picture"
           :src="modelValue.dataUrl || src"
           :style="{ height, width }"
         />
@@ -126,7 +127,6 @@ module.exports = {
   position: absolute;
   bottom: -3px;
   left: 52px;
-  z-index: 1;
 
   display: flex;
   align-items: center;

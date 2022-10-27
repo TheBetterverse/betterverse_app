@@ -4,7 +4,6 @@
     <div class="bv__dashboard__header bv__globals__px">
       <div class="bv__dashboard__profile">
         <u-Components-ProfilePicture height="80px" width="80px" :src="DonorPortal_GetCurrentUserProfilePicture()" />
-        <!--u-Icons-EmptyProfilePicture v-if="DonorPortal_GetCurrentUserProfilePicture() == null" /-->
         <div>
           <h1 id="bv__dashboard__profileusername">
             {{ DonorPortal_GetCurrentUserNames('full') }}
@@ -90,7 +89,7 @@
           </p>
 
           <u-Components-Button @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ', '-Mx_5FLL2jlxjXYUMdIL')" secondary
-            style="width: max-content">
+            style="width: max-content" title="View projects">
             <p> View projects </p>
             <template #right-icon>
               <u-Icons-Heart color="white"></u-Icons-Heart>
@@ -113,9 +112,9 @@
       <div class="bv__dashboard__carrousel"
         v-if="DonorPortal_GetCurrentUserNFTs() != null && !$getGlobalModel('dashboardRefresh')">
 
-        <u-Components-TreeCard2 v-for="(row, key) in DonorPortal_GetCurrentUserNFTs()" :data="row" :key="key"
+        <u-Components-TreeCard v-for="(row, key) in DonorPortal_GetCurrentUserNFTs()" :data="row" :key="key"
           @view="DonorPortal_ViewSelectedTree(row)">
-        </u-Components-TreeCard2>
+        </u-Components-TreeCard>
       </div>
 
   </main>
@@ -123,7 +122,7 @@
 
   <u-Components-MobileNavBar @click="DonorPortal_TriggerMobileNav()" class="bv__globals__px">
     <u-Components-Button secondary class="w-100"
-      @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ', '-Mx_5FLL2jlxjXYUMdIL')">
+      @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ', '-Mx_5FLL2jlxjXYUMdIL')" title="View projects">
       View Projects
       <template #right-icon>
         <u-Icons-Heart color="white" />

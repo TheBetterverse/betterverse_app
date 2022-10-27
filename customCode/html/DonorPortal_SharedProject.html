@@ -9,8 +9,7 @@
       <u-Icons-Betterverse height="32px" width="32px" />
     </div>
     <div style="display: flex; gap: 1rem;">
-      <!--u-Components-WalletDisplay :wallet="DonorPortal_GetCurrentUserWalletInformation()" class="d-none d-lg-block" v-if="!isUserAnonymous"/-->
-      <button class="bg-transparent" @click="DonorPortal_CloseSharedProject()">
+      <button class="bg-transparent" @click="DonorPortal_CloseSharedProject()" title="Close">
         <u-Icons-Close></u-Icons-Close>
       </button>
     </div>
@@ -297,45 +296,8 @@
       </div>
 
 
-      <!--div id="bv__projectmodal__othernfts" v-if="DonorPortal_GetCurrentUserNFTsCount() > 1">
-          <div class=" d-flex align-items-center justify-content-between">
-            <h2>
-              Other projects
-              {{ DonorPortal_GetOtherProjects(DonorPortal_GetSpecificProject()) }}
-            </h2>
-
-            <div id="bv__projectmodal__othernftsnav">
-              <button
-                @click="document.getElementById('bv__projectmodal__similarprojects').scrollBy({left: -210, behavior: 'smooth'})">
-                <u-Icons-ArrowLeft color="black"></u-Icons-ArrowLeft>
-              </button>
-              <button
-                @click="document.getElementById('bv__projectmodal__similarprojects').scrollBy({left: 210, behavior: 'smooth'})">
-                <u-Icons-ArrowRight color="black" />
-              </button>
-            </div>
-          </div-->
-
       <hr />
       <div id="bv__projectmodal__footer"></div>
-
-      <!--div id="bv__projectmodal__similarprojects">
-            <u-Components-TreeCard v-for="(row, key) in DonorPortal_GetCurrentUserNFTs()" :key="key"
-              v-if="row.$initialDonationRow.rowKey !== DonorPortal_GetSpecificDonation().rowKey"
-              @view="DonorPortal_SelectedDonation(row.json, row.$initialDonationRow.rowKey); DonorPortal_TriggerNFTModal('display');">
-              <template #title>
-                <u-get-json :url="row.json" prop="name" />
-              </template>
-              <template #description>
-                <b>${{row.$initialDonationRow.donationAmount.toLocaleString()}}</b> donated to
-                <b>{{row.$initialDonationRow.$charity$display}}</b> to plant
-                <b>{{row.$initialDonationRow.numberOfTreesPlanted.toLocaleString()}} trees</b> in
-                <b>{{row.$initialDonationRow.$charityProject.displayLocation}}</b>
-              </template>
-            </u-Components-TreeCard>
-          </div>
-        </div-->
-
 
     </div>
 
@@ -422,6 +384,7 @@
       height: 1px;
       width: calc(50% - 2px);
       backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
       background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3))
     }
 

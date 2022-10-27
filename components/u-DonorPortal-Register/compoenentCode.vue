@@ -67,15 +67,21 @@
         </div>
 
         <div class="d-flex justify-content-end">
-          <bv-button secondary type="submit" name="continue-email-button">
+          <bv-button
+            secondary
+            type="submit"
+            name="continue-email-button"
+            title="Continue with email"
+          >
             <template #default>
               <p v-if="form.email.content">Continue with email</p>
             </template>
             <template #right-icon>
-              <icon-rightarrow
+              <icon-arrow
+                right
                 v-if="spinnerActive == false"
                 color="white"
-              ></icon-rightarrow>
+              ></icon-arrow>
               <div
                 v-if="spinnerActive == true"
                 class="spinner-border spinner-border-sm"
@@ -91,7 +97,11 @@
       <section name="socials">
         <div class="my-2">Or continue with</div>
         <div id="bv__register__socialsbuttons" class="w-100">
-          <bv-button responsive name="sign-up-google">
+          <bv-button
+            responsive
+            name="sign-up-google"
+            title="Sign up with Google"
+          >
             <template>
               <div class="bv__register__socialbutton">
                 <icon-google></icon-google>
@@ -100,14 +110,22 @@
             </template>
           </bv-button>
 
-          <bv-button responsive name="sign-up-facebook">
+          <bv-button
+            responsive
+            name="sign-up-facebook"
+            title="Sign up with Facebook"
+          >
             <div class="bv__register__socialbutton">
               <icon-facebook></icon-facebook>
               <p class="d-none d-xl-block">Facebook</p>
             </div>
           </bv-button>
 
-          <bv-button responsive name="sign-up-unstoppable">
+          <bv-button
+            responsive
+            name="sign-up-unstoppable"
+            title="Sign up with Unstoppable"
+          >
             <div class="bv__register__socialbutton">
               <icon-unstoppable></icon-unstoppable>
               <p class="d-none d-xl-block">Unstoppable</p>
@@ -257,12 +275,21 @@ module.exports = {
     },
 
     async signUpFacebook(e) {
-      throw 'Sign up with facebook is not implemented'
+      await $anonUserToPermanent('facebook')
+        .then(() => {
+          $setUser('ProfileSetUpStage', 1)
+          $setCurrentTab('-Mx_5FLL2jlxjXYUMdIL')
+        })
+        .catch(err => {
+          alert(err.message)
+          //spinnerActive == false
+        })
     },
 
     async signUpUnstoppable(e) {
       await $anonUserToPermanent('unstoppableDomains')
         .then(() => {
+          $setUser('ProfileSetUpStage', 1)
           $setCurrentTab('-Mx_5FLL2jlxjXYUMdIL')
         })
         .catch(err => {
@@ -298,7 +325,7 @@ module.exports = {
     IconFacebook: $getCustomComponent('u-Icons-Facebook'),
     IconUnstoppable: $getCustomComponent('u-Icons-UnstoppableDomains'),
     IconInfo: $getCustomComponent('u-Icons-Info-Normal'),
-    IconRightarrow: $getCustomComponent('u-Icons-ArrowRight'),
+    IconArrow: $getCustomComponent('u-Icons-Arrow'),
     IconBetterverse: $getCustomComponent('u-Icons-Betterverse'),
     BvButton: $getCustomComponent('u-Components-Button'),
     BvInput: $getCustomComponent('u-Components-Input')

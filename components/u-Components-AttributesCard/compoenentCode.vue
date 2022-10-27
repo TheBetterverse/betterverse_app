@@ -23,10 +23,25 @@
 
   <div v-else class="bv__attributes__cards" style="gap: 15px">
     <div
-      v-for="n in [...Array(8).keys()]"
-      class="bv__globals__skeleton"
+      v-for="(icon, key) in icons"
       style="height: 128px; border-radius: 5px"
-    ></div>
+      class="bv__attributes__card"
+    >
+      <div v-html="icon"></div>
+
+      <div>
+        <b>
+          {{ key }}
+        </b>
+
+        <div
+          class="bv__animations__opacitywave"
+          style="font-family: 'Documan', sans-serif"
+        >
+          <span>.</span><span>.</span><span>.</span>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

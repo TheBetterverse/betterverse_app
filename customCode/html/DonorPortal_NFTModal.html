@@ -1,6 +1,6 @@
 <!-- DonorPortal_NFTModal.html -->
 <template>
-  <div id="bv__nftmodal" class="w-100" v-if="DonorPortal_GetSpecificDonation()">
+  <div id="bv__nftmodal" v-if="DonorPortal_GetSpecificDonation()">
     <div id="bv__nftmodal__logolg" class="d-none d-lg-flex bv__globals__px">
       <u-Icons-Betterverse />
     </div>
@@ -9,14 +9,15 @@
       <div class="d-lg-none">
         <u-Icons-Betterverse height="32px" width="32px" />
       </div>
-      <button id="bv__nftmodal__close" class="bg-transparent" @click="DonorPortal_TriggerNFTModal('hide')">
+      <button id="bv__nftmodal__close" class="bg-transparent" @click="DonorPortal_TriggerNFTModal('hide')"
+        title="Close">
         <u-Icons-Close></u-Icons-Close>
       </button>
     </nav>
 
     <div id="bv__nftmodal__leftside">
       <div id="bv__nftmodal__leftsideimage" class="bv__globals__skeleton">
-        <u-Components-TreeAnimation :url="$getUser('Donation_SelectedNFT')" />
+        <u-Components-TreeAnimation autoplay :url="$getUser('Donation_SelectedNFT')" />
       </div>
 
       <div id="bv__nftmodal__leftsideimage__bottomborder"></div>
@@ -55,12 +56,12 @@
 
         <div id="bv__nftmodal__bottomnav">
           <button v-if="DonorPortal_GetCurrentUserNFTsCount() > 1"
-            @click="DonorPortal_NavigateNFTs('left', $getUser('Donation_SelectedNFTRowKey'))">
-            <u-Icons-ArrowLeft color="black"></u-Icons-ArrowLeft>
+            @click="DonorPortal_NavigateNFTs('left', $getUser('Donation_SelectedNFTRowKey'))" title="Previous Tree">
+            <u-Icons-Arrow left color="black"></u-Icons-Arrow left>
           </button>
           <button v-if="DonorPortal_GetCurrentUserNFTsCount() > 1"
-            @click="DonorPortal_NavigateNFTs('right', $getUser('Donation_SelectedNFTRowKey'))">
-            <u-Icons-ArrowRight color="black" />
+            @click="DonorPortal_NavigateNFTs('right', $getUser('Donation_SelectedNFTRowKey'))" title="Next Tree">
+            <u-Icons-Arrow right color="black" />
           </button>
         </div>
 
@@ -214,7 +215,7 @@
               </h2>
               <p>Take your tree with you wherever you go.</p>
             </div>
-            <u-Components-Button @click="DonorPortal_DownloadNFT($getUser('Donation_SelectedNFT'))">
+            <u-Components-Button @click="DonorPortal_DownloadNFT($getUser('Donation_SelectedNFT'))" title="Download">
               <template #left-icon>
                 <u-Icons-Download />
               </template>
@@ -232,42 +233,48 @@
             </div>
             <div id="bv__nftmodal__infocardsocials">
               <u-Components-Button
-                @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'twitter')">
+                @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'twitter')"
+                title="Share on Twitter">
                 <template #left-icon>
                   <u-Icons-Twitter-Blue />
                 </template>
               </u-Components-Button>
 
               <u-Components-Button
-                @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'facebook')">
+                @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'facebook')"
+                title="Share on Facebook">
                 <template #left-icon>
                   <u-Icons-Facebook />
                 </template>
               </u-Components-Button>
 
               <u-Components-Button
-                @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'telegram')">
+                @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'telegram')"
+                title="Share on Telegram">
                 <template #left-icon>
                   <u-Icons-Telegram />
                 </template>
               </u-Components-Button>
 
               <u-Components-Button
-                @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'whatsapp')">
+                @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'whatsapp')"
+                title="Share on WhatsApp">
                 <template #left-icon>
                   <u-Icons-WhatsApp />
                 </template>
               </u-Components-Button>
 
               <u-Components-Button
-                @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'linkedin')">
+                @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'linkedin')"
+                title="Share on Linkedin">
                 <template #left-icon>
                   <u-Icons-Linkedin />
                 </template>
               </u-Components-Button>
 
               <u-Components-Button
-                @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'copy')">
+                @click="DonorPortal_GenerateSharableDonationURL(DonorPortal_GetSpecificDonation().rowKey, $getUser('Donation_SelectedNFTRowKey'), 'copy')"
+                title="Copy link to clipboard">
                 <template #left-icon>
                   <u-Icons-Copy />
                 </template>
@@ -292,7 +299,8 @@
             </div>
 
             <div>
-              <u-Components-Button @click="DonorPortal_OpenOpenSea($getUser('Donation_SelectedNFTRowKey'))">Sell NFT
+              <u-Components-Button @click="DonorPortal_OpenOpenSea($getUser('Donation_SelectedNFTRowKey'))"
+                title="Sell NFT on OpenSea">Sell NFT
               </u-Components-Button>
             </div>
           </div>
@@ -312,7 +320,8 @@
             </div>
 
             <div>
-              <u-Components-Button style="border: 1px solid #9f9d98; color: #9f9d98; cursor: not-allowed;">Buy
+              <u-Components-Button style="border: 1px solid #9f9d98; color: #9f9d98; cursor: not-allowed;"
+                title="Buy fertiliser">Buy
                 fertiliser</u-Components-Button>
             </div>
           </div>
@@ -332,40 +341,28 @@
             </div>
 
             <div>
-              <u-Components-Button style="border: 1px solid #9f9d98; color: #9f9d98; cursor: not-allowed;">Enter the
+              <u-Components-Button style="border: 1px solid #9f9d98; color: #9f9d98; cursor: not-allowed;"
+                title="Enter betterverse">Enter the
                 Betterverse</u-Components-Button>
             </div>
           </div>
         </div>
 
-        <div id="bv__nftmodal__othernfts" v-if="DonorPortal_GetCurrentUserNFTsCount() > 1">
-          <div class=" d-flex align-items-center justify-content-between">
-            <h2>
-              You've got {{ DonorPortal_GetCurrentUserNFTsCount() - 1 }} other NFT{{
-              (DonorPortal_GetCurrentUserNFTsCount() - 1) > 1 ? 's' :
-              '' }}
-            </h2>
+        <u-Components-CardSlider v-if="DonorPortal_GetCurrentUserNFTsCount() > 1" name="othernfts">
+          <template #title>
+            You've got {{ DonorPortal_GetCurrentUserNFTsCount() - 1 }} other NFT{{
+            (DonorPortal_GetCurrentUserNFTsCount() - 1) > 1 ? 's' :
+            '' }}
+          </template>
 
-            <div id="bv__nftmodal__othernftsnav">
-              <button @click="NFTModal_ScrollOtherNFTs($event, 'left')" id="othernftsnav-left">
-                <u-Icons-Arrow left color="black"></u-Icons-Arrow>
-              </button>
-
-              <button @click="NFTModal_ScrollOtherNFTs($event, 'right')" id="othernftsnav-right">
-                <u-Icons-Arrow right color="black"></u-Icons-Arrow>
-              </button>
-            </div>
-          </div>
-
-          <hr />
-
-          <div id="bv__nftmodal__othernftscarousel">
-            <u-Components-TreeCard2 v-for="(row, key) in DonorPortal_GetCurrentUserNFTs()" :data="row" :key="key"
-              v-if="row.$initialDonationRow.rowKey !== DonorPortal_GetSpecificDonation().rowKey"
+          <template #default>
+            <u-Components-TreeCard v-for="(row, key) in DonorPortal_GetCurrentUserNFTs()"
+              v-if="row.$initialDonationRow.rowKey !== DonorPortal_GetSpecificDonation().rowKey" :data="row" :key="key"
               @view="DonorPortal_ViewSelectedTree(row)">
-            </u-Components-TreeCard2>
-          </div>
-        </div>
+            </u-Components-TreeCard>
+          </template>
+        </u-Components-CardSlider>
+
 
       </div>
 
@@ -373,73 +370,15 @@
   </div>
 </template>
 
-<script type="module">
-
-
-  function NFTModal_WaitForScrollEnd(element, callback, ...args) {
-    let currentScrollPosition = element.scrollLeft
-
-    return function (event) {
-      console.count()
-      console.log(event.srcElement.scrollLeft, currentScrollPosition)
-
-      if (event.srcElement.scrollLeft === currentScrollPosition) {
-        console.log("ENDED!")
-        callback(...args)
-        event.srcElement.removeEventListener(this)
-      } else {
-        currentScrollPosition = event.srcElement.scrollLeft
-      }
-    }
-  }
-
-  function NFTModal_UpdateNavButtons() {
-    const CarrouselElement = $('#bv__nftmodal__othernftscarousel')[0]
-    const LeftButton = $('#othernftsnav-left')[0]
-    const RightButton = $('#othernftsnav-right')[0]
-
-    LeftButton.disabled = false
-    RightButton.disabled = false
-
-
-    if (CarrouselElement.scrollLeft === 0) {
-      LeftButton.disabled = true
-    }
-
-    else if (CarrouselElement.scrollLeft + CarrouselElement.offsetWidth >= CarrouselElement.scrollWidth) {
-      RightButton.disabled = true
-    }
-  }
-
-  function NFTModal_ScrollOtherNFTs(event, direction) {
-    const CarrouselElement = $('#bv__nftmodal__othernftscarousel')[0]
-    const LeftButton = $('#othernftsnav-left')[0]
-    const RightButton = $('#othernftsnav-right')[0]
-
-    CarrouselElement.scrollBy({
-      left: direction === 'left' ? -210 : 210,
-      behavior: 'smooth'
-    })
-
-    NFTModal_UpdateNavButtons()
-
-    setTimeout(NFTModal_UpdateNavButtons, 300)
-    setTimeout(NFTModal_UpdateNavButtons, 600)
-  }
-
-  $(document).on('resize', NFTModal_UpdateNavButtons)
-  NFTModal_UpdateNavButtons()
-</script>
-
 <style>
   #bv__nftmodal {
     position: fixed;
     left: 0;
     top: 0;
-    z-index: 300;
+    z-index: 600;
 
     display: none;
-    overflow: auto;
+    overflow-y: scroll;
 
     width: 100vw;
     height: 100%;
@@ -735,40 +674,6 @@
     justify-content: center
   }
 
-
-  #bv__nftmodal__othernfts {
-    margin: 60px 0;
-    scroll-margin-top: 30px;
-  }
-
-  #bv__nftmodal__othernftsnav {
-    display: flex;
-    gap: 10px;
-  }
-
-  #bv__nftmodal__othernftsnav>button:disabled {
-    opacity: 50%;
-  }
-
-  #bv__nftmodal__othernftscarousel {
-    display: grid;
-    align-items: flex-start;
-    justify-content: start;
-    flex-wrap: nowrap;
-    grid-auto-flow: column;
-
-    grid-template-columns: repeat(auto-fill, 1fr);
-    gap: 20px;
-    overflow-x: scroll;
-
-    width: 100%;
-    height: 500px;
-
-    padding: 10px 0;
-    scroll-snap-type: x mandatory;
-  }
-
-
   #bv__nftmodal__othernftscarousel>* {
     scroll-snap-align: start;
     width: 400px
@@ -777,14 +682,6 @@
 
   #bv__nftmodal__footer {
     height: 30px;
-  }
-
-
-  #bv__nftmodal__othernftscarousel::-webkit-scrollbar,
-  #bv__nftmodal__othernftscarousel::-webkit-scrollbar-track,
-  #bv__nftmodal__othernftscarousel::-webkit-scrollbar-thumb {
-    display: none;
-    visibility: hidden;
   }
 
 
@@ -799,8 +696,7 @@
   }
 
 
-  #bv__nftmodal__bottomnav>button,
-  #bv__nftmodal__othernftsnav>button {
+  #bv__nftmodal__bottomnav>button {
     background: none;
     border: 1px solid black;
     height: 32px;
@@ -848,6 +744,8 @@
       height: 1px;
       width: calc(50% - 2px);
       backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+
       background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3))
     }
 

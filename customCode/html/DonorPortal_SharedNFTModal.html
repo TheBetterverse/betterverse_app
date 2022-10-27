@@ -9,7 +9,7 @@
       <div class="d-lg-none">
         <u-Icons-Betterverse height="32px" width="32px" />
       </div>
-      <button class="bg-transparent" @click="DonorPortal_CloseSharedDonation()">
+      <button class="bg-transparent" @click="DonorPortal_CloseSharedDonation()" title="Close">
         <u-Icons-Close></u-Icons-Close>
       </button>
     </nav>
@@ -415,6 +415,8 @@
     height: 1px;
     width: calc(50% - 2px);
     backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+
     background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3))
   }
 

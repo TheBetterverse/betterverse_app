@@ -1,16 +1,20 @@
-return async function(){
+return async function(sourceUrl){
 
-    var url = 'ipfs://bafybeibccdeetnfvh4gcnzhxsyl2xrtbfgq7si52x4jggppl4xji4nyan4/8a.json'
-
-    const ipfsGatewayTools = new IPFSGatewayTools()
-    const gatewayURL = "https://assets.betterverse.app"
-
-    const convertedGatewayUrl = await ipfsGatewayTools.convertToDesiredGateway(
+    //const ipfsGatewayTools = new IPFSGatewayTools()
+    /*const convertedGatewayUrl = await ipfsGatewayTools.convertToDesiredGateway(
         url,
         gatewayURL
-    );
+    );*/
+    
+    const gatewayURL = "https://assets.betterverse.app"
 
-    console.log(convertedGatewayUrl)
+    const splitUrl = sourceUrl.split(/\/|\?/);
+    const cid = splitUrl[2]
+    const file = splitUrl[3]
 
-    return convertedGatewayUrl
+    if (sourceUrl.includes(`ipfs://${cid}`)) {
+       var convertedURL = `${gatewayURL}/ipfs/${cid}/${file}`;
+    }
+
+    return convertedURL
 }

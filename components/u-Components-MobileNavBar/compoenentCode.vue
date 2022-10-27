@@ -4,6 +4,7 @@
 
     <u-Components-Button
       id="bv__mobilenavbar__compassicon"
+      name="Open mobile navigation"
       @click="$emit('click', $event)"
       style="background: var(--bg-primary)"
     >
@@ -15,6 +16,7 @@
     <u-Components-Button
       id="bv__mobilenavbar__closeicon"
       class="hide"
+      title="Close mobile navigation"
       @click="$emit('click', $event)"
       style="background: var(--bg-primary)"
     >

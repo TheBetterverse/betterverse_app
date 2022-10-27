@@ -8,14 +8,14 @@
     </div>
 
     <div class="d-lg-grid">
-      <button onclick="window.open('https:\/\/www.betterverse.app')" style="background: none">
+      <button onclick="window.open('https:\/\/www.betterverse.app')" style="background: none" title="Betterverse.app">
         <u-Icons-Betterverse></u-Icons-Betterverse>
       </button>
     </div>
 
     <div id="bv__navbar__leftmenu">
       <u-Components-Button tertiary @click="DonorPortal_RedirectToDashboard()"
-        :highlight="currentSubTab === '-MyvUthgoLrT0z0HdIX9'">
+        :highlight="currentSubTab === '-MyvUthgoLrT0z0HdIX9'" title="Dashboard">
         <p>Dashboard</p>
 
         <template #left-icon>
@@ -24,7 +24,7 @@
       </u-Components-Button>
 
       <u-Components-NavbarDropDown>
-        <u-Components-Button tertiary>
+        <u-Components-Button tertiary title="Resources">
           <template #left-icon>
             <u-Icons-Resources />
           </template>
@@ -67,7 +67,8 @@
   </div>
 
   <div id="bv__navbar__right" v-if="DonorPortal_GetCurrentUserProfileComplete() == true">
-    <u-Components-Button secondary class="d-none d-lg-flex" @click="DonorPortal_RedirectToProjects()">
+    <u-Components-Button secondary class="d-none d-lg-flex" @click="DonorPortal_RedirectToProjects()"
+      title="View projects">
       <template #default>
         <p>View projects</p>
       </template>
@@ -85,27 +86,27 @@
               :wallet="DonorPortal_GetCurrentUserWalletInformation()" />
 
             <template #dropdown>
-              <button type="submit" name="connect-metamask">
+              <button type="submit" name="connect-metamask" title="Connect metamask wallet">
                 <u-Icons-Metamask />
                 <p>Metamask</p>
               </button>
 
-              <button type="submit" name="connect-torus">
+              <button type="submit" name="connect-torus" title="Connect torus wallet">
                 <u-Icons-Torus />
                 <p>Torus</p>
               </button>
 
-              <button type="submit" name="connect-coinbase">
+              <!--button type="submit" name="connect-coinbase" title="Connect coinbase wallet">
                 <u-Icons-Coinbase />
                 <p>Coinbase</p>
-              </button>
+              </button-->
 
-              <button type="submit" name="connect-slide">
+              <button type="submit" name="connect-slide" title="Connect slide wallet">
                 <u-Icons-Slide />
                 <p>Slide</p>
               </button>
 
-              <button type="submit" name="connect-slide">
+              <button type="submit" name="create-wallet" title="Create wallet">
                 <u-Icons-Plus outline />
                 <p>Create wallet</p>
               </button>
@@ -195,7 +196,7 @@
     transition: all .5s;
     opacity: 0;
     pointer-events: none;
-    z-index: 100;
+    z-index: 1000;
   }
 
   #bv__mobile__navbar.display {

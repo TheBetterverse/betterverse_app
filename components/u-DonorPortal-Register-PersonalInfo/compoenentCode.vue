@@ -42,6 +42,7 @@
 
         <div class="my-3">
           <bv-input
+            id="username-input"
             label="Username*"
             name="username-input"
             type="text"
@@ -116,19 +117,28 @@
           <div class="d-flex align-items-center justify-content-between my-4">
             <small>*Mandatory fields</small>
             <div>
-            <bv-button 
-              secondary
-              type="submit"
-              name="continue-button"
-            >
-              <template id="bv__continue__button__contents"> 
-                <p> Continue</p> 
-              </template>
-              <template #right-icon>
-                <icon-rightarrow v-if="spinnerActive == false" color="white"></icon-rightarrow>
-                <div v-if="spinnerActive == true" class="spinner-border spinner-border-sm" role="status"></div>
-              </template>
-            </bv-button>
+              <bv-button
+                secondary
+                type="submit"
+                name="continue-button"
+                title="Continue registration"
+              >
+                <template id="bv__continue__button__contents">
+                  <p>Continue</p>
+                </template>
+                <template #right-icon>
+                  <icon-arrow
+                    right
+                    v-if="spinnerActive == false"
+                    color="white"
+                  ></icon-arrow>
+                  <div
+                    v-if="spinnerActive == true"
+                    class="spinner-border spinner-border-sm"
+                    role="status"
+                  ></div>
+                </template>
+              </bv-button>
             </div>
           </div>
         </div>
@@ -157,7 +167,7 @@ async function validNames(subject) {
   return invalidCharacters.test(subject)
 }
 
-async function includeCharacters(subject){
+async function includeCharacters(subject) {
   const characters = /(.*[a-z]){3}/i
 
   return characters.test(subject)
@@ -231,7 +241,7 @@ module.exports = {
       if (!this.inputsAreValid) return
       this.spinnerActive = true
 
-      await new Promise(r => setTimeout(r, 2000));
+      await new Promise(r => setTimeout(r, 2000))
       this.$emit('submit', this.formContent)
     },
 
@@ -273,12 +283,26 @@ module.exports = {
     IconLock: $getCustomComponent('u-Icons-Lock'),
     IconMail: $getCustomComponent('u-Icons-Mail'),
     IconPlus: $getCustomComponent('u-Icons-Plus'),
-    IconRightarrow: $getCustomComponent('u-Icons-ArrowRight'),
+    IconArrow: $getCustomComponent('u-Icons-Arrow'),
     IconBetterverse: $getCustomComponent('u-Icons-Betterverse'),
     BvProfilePicture: $getCustomComponent('u-Components-ProfilePicture'),
     BvDropdown: $getCustomComponent('u-Components-DropDown'),
     BvButton: $getCustomComponent('u-Components-Button'),
     BvInput: $getCustomComponent('u-Components-Input')
+  },
+
+  async mounted() {
+
+    const currentProvider = fbUser.providerData[0].providerId
+
+    if(currentProvider === 'oidc.unstoppable-domains'){
+      const domain = fbUser.providerData[0].uid
+      setTimeout(() => {
+        let UsernameInputEl = document.getElementById('username-input') 
+        UsernameInputEl.value = domain
+        UsernameInputEl.dispatchEvent(new Event('input'))
+      }, 1000)
+    }
   }
 }
 </script>
