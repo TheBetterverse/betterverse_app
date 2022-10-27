@@ -1,5 +1,6 @@
 /* DonorPortal_ConnectWallet.js */
 
+/*This throws for some reason but does work */
 var currentUserRowKey = this.DonorPortal_GetCurrentUserRowKey()
 var currentUserRow = this.DonorPortal_GetCurrentUser()
 var currentSubTab = this.currentSubTab
@@ -35,7 +36,7 @@ return function (event) {
           )
           if (
             currentSubTab == '-N4UIKK5MmraPqo_BhCH' &&
-            currentUserRow.walletAddress != null
+            wallet != null
           ) {
             $setCurrentSubTab('-N6OJKPA76EZPTjdgEMp', '-Mx_5FLL2jlxjXYUMdIL')
           }
@@ -56,9 +57,10 @@ return function (event) {
             currentUserRowKey + '.walletProvider',
             'metamask'
           )
-          if (
+
+            if (
             currentSubTab == '-N4UIKK5MmraPqo_BhCH' &&
-            currentUserRow.walletAddress != null
+            wallet != null
           ) {
             $setCurrentSubTab('-N6OJKPA76EZPTjdgEMp', '-Mx_5FLL2jlxjXYUMdIL')
           }
@@ -85,12 +87,12 @@ return function (event) {
       const torus = new Torus()
       window.torus = torus
       await window.torus.init({
-        buildEnv: 'test', // default: production
+        buildEnv: 'production', // default: production
         enableLogging: true, // default: false
         network: {
-          host: 'mumbai', // default: mainnet
-          chainId: 80001, // default: 1
-          networkName: 'Mumbai Test Network' // default: Main Ethereum Network
+          host: 'matic', // default: mainnet
+          chainId: 137, // default: 1
+          networkName: 'Polygon Mainnet' // default: Main Ethereum Network
         }
         // showTorusButton: false // default: true
       })
@@ -105,7 +107,7 @@ return function (event) {
       //If user is on the register page and connected wallet successful, redirect to topup page
       if (
         currentSubTab == '-N4UIKK5MmraPqo_BhCH' &&
-        currentUserRow.walletAddress != null
+        wallet != null
       ) {
         $setCurrentSubTab('-N6OJKPA76EZPTjdgEMp', '-Mx_5FLL2jlxjXYUMdIL')
       }
@@ -114,7 +116,7 @@ return function (event) {
 
     connectTorus()
 
-  //COINBASE
+  /*COINBASE
   } else if (walletProvider == 'connect-coinbase') {
     const connectWalletHandler = async () => {
       const { ethereum } = window
@@ -139,9 +141,10 @@ return function (event) {
             currentUserRowKey + '.walletProvider',
             'coinbase'
           )
-          if (
+
+              if (
             currentSubTab == '-N4UIKK5MmraPqo_BhCH' &&
-            currentUserRow.walletAddress != null
+            wallet != null
           ) {
             $setCurrentSubTab('-N6OJKPA76EZPTjdgEMp', '-Mx_5FLL2jlxjXYUMdIL')
           }
@@ -164,7 +167,7 @@ return function (event) {
           )
           if (
             currentSubTab == '-N4UIKK5MmraPqo_BhCH' &&
-            currentUserRow.walletAddress != null
+            wallet != null
           ) {
             $setCurrentSubTab('-N6OJKPA76EZPTjdgEMp', '-Mx_5FLL2jlxjXYUMdIL')
           }
@@ -181,7 +184,7 @@ return function (event) {
           window.open("https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad?hl=en")
         }
       }
-    }
+    }*/
 
     connectWalletHandler()
 
@@ -191,17 +194,18 @@ return function (event) {
     const connectSlide = async () => {
 
       const slide = new Slide.SDK()
-      await slide.init();
+      slide.preload();
+      window.slide = slide;
 
-      const wallet = await slide.request({ method: "eth_requestAcccounts " })
+      const wallet = await slide.request({ method: "eth_requestAccounts" })
 
-      $setDataGridVal('users', currentUserRowKey + '.walletAddress', wallet)
+      $setDataGridVal('users', currentUserRowKey + '.walletAddress', wallet[0])
       $setDataGridVal('users', currentUserRowKey + '.walletProvider', 'slide')
 
       //If user is on the register page and connected wallet successful, redirect to topup page
       if (
         currentSubTab == '-N4UIKK5MmraPqo_BhCH' &&
-        currentUserRow.walletAddress != null
+        wallet != null
       ) {
         $setCurrentSubTab('-N6OJKPA76EZPTjdgEMp', '-Mx_5FLL2jlxjXYUMdIL')
       }

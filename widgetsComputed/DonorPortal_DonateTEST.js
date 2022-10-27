@@ -74,7 +74,7 @@ return async function(){
                         gas = 0.1
                         var tokenID = [nftCount] //If nftCount == 1, store in [0]
 
-                        var json = 'ipfs://bafybeibccdeetnfvh4gcnzhxsyl2xrtbfgq7si52x4jggppl4xji4nyan4/15a.json'
+                        var json = 'https://ipfs.io/ipfs/bafybeib2nrkchurmel2sj47vrxacpbezmhg6hfrue66n2scsk7geytrwam/29a.json'
 
                         json = await this.DonorPortal_ResolveNFTURL(json)
 

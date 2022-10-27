@@ -1,26 +1,14 @@
-const TestBTRCAddress = this.Contracts().TestBTRCAddress
-const TreeContractAddress = this.Contracts().TreeContractAddress
-const MinterContractAddress = this.Contracts().MinterContractAddress
-const TreeContractABI = this.Contracts().TreeContractABI
-const MinterContractABI = this.Contracts().MinterContractABI
-const TestBTRCABI = this.Contracts().TestBTRCABI
+const TestBTRCAddress = this.ContractsTESTNET().TestBTRCAddress
+const TreeContractAddress = this.ContractsTESTNET().TreeContractAddress
+const MinterContractAddress = this.ContractsTESTNET().MinterContractAddress
+const TreeContractABI = this.ContractsTESTNET().TreeContractABI
+const MinterContractABI = this.ContractsTESTNET().MinterContractABI
+const TestBTRCABI = this.ContractsTESTNET().TestBTRCABI
+
 const getTokenURI = this.DonorPortal_GetTokenURI
 const walletProvider = this.DonorPortal_GetCurrentUserWalletProvider()
 
-//Get Donation modal data
-// const wallet = await this.DonorPortal_GetCurrentUserWalletAddress();
-// const user = await fbUser.uid
-// const charity = await $getUser('Donation_SelectedCharity')
-// const cause = await $getUser('Donation_SelectedProject')
-// const paymentMethod = '-MuQuXTPrcNddIlCbmAL'
-// const currency = '-MvOSbx1QKOeHNJWW7pQ'
-// const location = await this.DonorPortal_GetCurrentUserProfileLocation()
-// const amount = await this.DonorPortal_GetDonationAmountNumber()
-// const date = await this.DonorPortal_GetDateTime()
-// var nftCount = await this.DonorPortal_GetDonationNFTCount()
-
 return async function (tokenID, wallet, user, charity, cause, paymentMethod, currency, location, amount, gas, date, nftCount) {
-  console.log('here')
   if (!walletProvider) {
     alert('No wallet connected')
   } else {
@@ -30,6 +18,7 @@ return async function (tokenID, wallet, user, charity, cause, paymentMethod, cur
     const userParam = await JSON.stringify(userRow)
     const causeRow = await ($dataGrid('charityProjects')[cause])
     const projectParam = await JSON.stringify(causeRow)
+    console.log({userRow, userParam, causeRow, projectParam}, '-----')
 
     //Declaring charity variables needed for checks
     var project
@@ -70,7 +59,7 @@ return async function (tokenID, wallet, user, charity, cause, paymentMethod, cur
     const TreeContract = new web3.eth.Contract(TreeContractABI, TreeContractAddress, {
       from: wallet,
     });
- 
+    
     const MinterContract = new web3.eth.Contract(MinterContractABI, MinterContractAddress);
 
     const TestBTRContract = new web3.eth.Contract(TestBTRCABI, TestBTRCAddress, {
@@ -78,6 +67,7 @@ return async function (tokenID, wallet, user, charity, cause, paymentMethod, cur
     })
     const signer = await provider.getSigner()
     const TreeContractWithEther = new ethers.Contract(TreeContractAddress, TreeContractABI, signer)
+    const TestBTRContractWithEther = new ethers.Contract(TestBTRCAddress, TestBTRCABI, signer)
 
     //Check if charity and cause values are not null/invalid
     if (charity == null || cause == null) {
@@ -117,13 +107,12 @@ return async function (tokenID, wallet, user, charity, cause, paymentMethod, cur
             }
             //If wallet is connected
             else if (wallet != null) {
+
               //Task 3.1 trees.sol - treesInStorage() - Check if there are trees available to be minted
-              const availableTrees = await TreeContract.methods.treesInStorage().call({
-                from: wallet
-              });
+              const availableTrees = await TreeContract.methods.treesInStorage().call()
 
               if (nftCount > availableTrees) {
-                alert("No trees available, try again later.")
+                alert("Not enough trees available in smart contract.")
               }
               else {
                 var currencyCode = $dataGrid('currencies')[currency].code
@@ -141,17 +130,18 @@ return async function (tokenID, wallet, user, charity, cause, paymentMethod, cur
                     var charityID = charityRow.smartContractCharityID
 
                     //Task 3.3 minter.sol - function mintTree - 0x4A35ef8931a6636AA1e97303D82b38E34A57aB7A
-
                     const approveAmount = Web3.utils.toWei(amount.toString(), 'ether')
-                    await TestBTRContract.methods.approve(MinterContractAddress, approveAmount).send({
-                      from: wallet,
-                    })
-                    // console.log('------here')
-
-                    console.log('NFT COUNT: ' + nftCount)
-                    console.log('CHARITY ID: ' + charityID)
-                    console.log('AMOUNT (WEI) ' + approveAmount)
-                    console.log('TOKEN: ' + TestBTRCAddress)
+                    if(walletProvider == 'coinbase') {
+                      const tx = await TestBTRContractWithEther.approve(MinterContractAddress, approveAmount)
+                      await tx.wait()
+                    } else {
+                      await TestBTRContract.methods.approve(MinterContractAddress, approveAmount).send({
+                        from: wallet
+                      })
+                    }
+                   
+                    
+                    console.log('==============after approval')
 
                     MinterContract.methods.mintTree(nftCount, charityID, approveAmount, TestBTRCAddress).send({ from: wallet }, async (err, txHash) => {
                       if (err) {
@@ -160,7 +150,6 @@ return async function (tokenID, wallet, user, charity, cause, paymentMethod, cur
                         nftMint = false
                       } else {
                         // successfully minted
-
                         donationSuccess = true
                         nftMint = true
 
@@ -169,6 +158,7 @@ return async function (tokenID, wallet, user, charity, cause, paymentMethod, cur
                         let jsonArray = []
                         TreeContractWithEther.on('minted', async (token, user, event) => {
                           const mintedTokenID = web3.utils.hexToNumber(token)
+                          console.log(mintedTokenID, '====minted Token ID')
                           if (user.toLowerCase() == wallet.toLowerCase()) {
                             nftIDs.push(mintedTokenID)
                           }
@@ -179,18 +169,25 @@ return async function (tokenID, wallet, user, charity, cause, paymentMethod, cur
                               jsonArray.push(tokenURI)
                             }
 
+                            let data = []
                             web3.eth.getTransaction(txHash, async (error, res) => {
                               gas = res.gasPrice
-                              let data = []
                               nftIDs.map((nftID, idx) => {
-
                                 data.push({
                                   nftID,
                                   gas,
                                   json: jsonArray[idx]
                                 })
                               })
-                              console.log(data, '==========DATA*******')
+
+                              let collectedIDs = []
+                              data.map(item => {
+                                if(item && item.nftID) collectedIDs.push(item.nftID)
+                              })
+                              console.log({nftIDs, collectedIDs})
+
+                              const isSame = nftIDs.length >= 1 && collectedIDs.length >= 1 && (nftIDs.length == collectedIDs.length) && nftIDs.every((item, idx) => item === collectedIDs[idx])
+                              if(isSame) console.log(data,  '=======data')
 
                               //Once donation is succesful create a row to store data
                               if (donationSuccess == true && nftMint == true) {
@@ -273,7 +270,6 @@ return async function (tokenID, wallet, user, charity, cause, paymentMethod, cur
                               else {
                                 alert("Error with transaction/mint. Please contact support@betterverse.app");
                               }
-
                             })
                           }
                         })

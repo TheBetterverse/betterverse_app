@@ -13,8 +13,6 @@
   
   var currentProfileStage = $getUser('ProfileSetUpStage')
 
-
-
   /*--REDIRECT NEW ANON REGULAR USER TO SIGN/REGISTER --*/
   if (
     currentUser.role == '-MxdXEQ8xH5jcFGkUYP7' &&
@@ -53,7 +51,7 @@
     !isAnon
   ) {
     //Redirect to Dashboard
-    $setCurrentSubTab('-MyvUthgoLrT0z0HdIX9', '-Mx_5FLL2jlxjXYUMdIL')
     console.log("Existing User")
+    $setCurrentSubTab('-MyvUthgoLrT0z0HdIX9', '-Mx_5FLL2jlxjXYUMdIL')
   }
 })()

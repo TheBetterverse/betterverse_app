@@ -10,8 +10,8 @@
 
           <div style="display: flex; gap: 1rem; align-items: center; justify-content: flex-end;">
             <p class="d-none d-lg-block bv__settings__updatetxt hidden">Changes saved!</p>
-            <u-Components-Button secondary disabled type="submit"
-              class="d-none d-lg-block bv__settings__savechangesbtn">
+            <u-Components-Button secondary disabled type="submit" class="d-none d-lg-block bv__settings__savechangesbtn"
+              title="Save changes">
               <p>Save changes</p>
             </u-Components-Button>
           </div>
@@ -88,7 +88,8 @@
             <div style="display: flex; gap: 1rem; align-items: center; justify-content: flex-end;">
               <p class="d-lg-none bv__settings__updatetxt hidden">Changes saved!</p>
 
-              <u-Components-Button secondary disabled type="submit" class="d-lg-none bv__settings__savechangesbtn">
+              <u-Components-Button secondary disabled type="submit" class="d-lg-none bv__settings__savechangesbtn"
+                title="Save changes">
                 <p>Save changes</p>
               </u-Components-Button>
             </div>
@@ -117,7 +118,8 @@
             <div style="display: flex; gap: 1rem; align-items: center; justify-content: flex-end;">
               <p class="d-lg-none bv__settings__updatetxt hidden">Changes saved!</p>
 
-              <u-Components-Button secondary disabled type="submit" class="d-lg-none bv__settings__savechangesbtn">
+              <u-Components-Button secondary disabled type="submit" class="d-lg-none bv__settings__savechangesbtn"
+                title="Save changes">
                 <p>Save changes</p>
               </u-Components-Button>
             </div>
@@ -137,19 +139,19 @@
                   <u-Components-WalletDisplay class="w-100" />
                   <div class="bv__settings__connectwalletdropdownwrap">
                     <div class="bv__settings__connectwalletdropdown">
-                      <button type="submit" name="connect-metamask">
+                      <button type="submit" name="connect-metamask" title="Connect metamask wallet">
                         <u-Icons-Metamask />
                         Metamask
                       </button>
-                      <button type="submit" name="connect-torus">
+                      <button type="submit" name="connect-torus" title="Connect Torus wallet">
                         <u-Icons-Torus />
                         Torus
                       </button>
-                      <button type="submit" name="connect-coinbase">
-                        <u-Icons-Coinbase />
-                        Coinbase
+                      <button type="submit" name="connect-slide" title="Connect slide wallet">
+                        <u-Icons-Slide outline />
+                        Slide
                       </button>
-                      <button type="submit" name="connect-torus">
+                      <button type="submit" name="create-slide" title="Create wallet">
                         <u-Icons-Plus outline />
                         Create Wallet
                       </button>
@@ -162,7 +164,8 @@
             <div v-else>
               <p> Wallet connected </p>
 
-              <u-Components-WalletDisplay address checkmark :wallet="DonorPortal_GetCurrentUserWalletInformation()" />
+              <u-Components-WalletDisplay address checkmark :wallet="DonorPortal_GetCurrentUserWalletInformation()"
+                @click="DonorPortal_OpenWallet()" />
 
               <div id="bv__settings__walletbalance">
                 <div>
@@ -176,11 +179,11 @@
 
                 <div style="display: flex; gap: 0.5rem">
                   <u-Components-Button v-if="DonorPortal_GetCurrentUserWalletAddress() != null"
-                    @click="DonorPortal_LoadRamp('overlay')">
+                    @click="DonorPortal_LoadRamp('overlay')" title="Top up wallet">
                     <p> Top up wallet </p>
                   </u-Components-Button>
                   <u-Components-Button v-if="DonorPortal_GetCurrentUserWalletAddress() != null" color="#C72525"
-                    style="border: 1px solid #E15564" @click="DonorPortal_DisconnectWallet()">
+                    style="border: 1px solid #E15564" @click="DonorPortal_DisconnectWallet()" title="Disconnect wallet">
                     <p style="color: #C72525"> Disconnect Wallet </p>
                   </u-Components-Button>
                 </div>
@@ -252,7 +255,8 @@
               </div>
 
               <u-Components-Button
-                @click="$signOut({redirect: '/dashboard/-N3z8rEgVVtApDNoNjXV?tab=-Mx_5FLL2jlxjXYUMdIL&subtab=-N4IRMyIAw-t4q0VNr0C'});">
+                @click="$signOut({redirect: '/dashboard/-N3z8rEgVVtApDNoNjXV?tab=-Mx_5FLL2jlxjXYUMdIL&subtab=-N4IRMyIAw-t4q0VNr0C'});"
+                title="Log out">
                 <p>Log out</p>
                 <template #right-icon>
                   <u-Icons-Logout />
@@ -267,25 +271,26 @@
               </div>
 
               <u-Components-Button color="#C72525" style="border: 1px solid #E15564"
-                @click="DonorPortal_DeleteAccount()">
+                @click="DonorPortal_DeleteAccount()" title="Delete account">
                 <p style="color: #C72525">Delete account</p>
               </u-Components-Button>
             </div>
           </div>
         </div>
 
-        <u-Components-MobileNavBar @click="DonorPortal_TriggerMobileNav()" class="bv__globals__px">
-          <u-Components-Button secondary class="w-100"
-            @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ', '-Mx_5FLL2jlxjXYUMdIL')">
-            <p>View Projects</p>
-            <template #right-icon>
-              <u-Icons-Heart color="white" />
-            </template>
-          </u-Components-Button>
-        </u-Components-MobileNavBar>
       </form>
+      <u-Components-Footer />
+
+      <u-Components-MobileNavBar @click="DonorPortal_TriggerMobileNav()" class="bv__globals__px">
+        <u-Components-Button secondary class="w-100"
+          @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ', '-Mx_5FLL2jlxjXYUMdIL')" title="View Projects">
+          <p>View Projects</p>
+          <template #right-icon>
+            <u-Icons-Heart color="white" />
+          </template>
+        </u-Components-Button>
+      </u-Components-MobileNavBar>
     </main>
-    <u-Components-Footer />
   </div>
 </template>
 
@@ -297,6 +302,10 @@
 
   .dashboard__content>div::-webkit-scrollbar {
     display: none;
+  }
+
+  .bv__footer {
+    z-index: 500;
   }
 
   #bv__settings {
@@ -323,7 +332,7 @@
     border-top: 1px solid rgba(0, 0, 0, 0.05);
 
 
-    background: #eceae3;
+    background: var(--bg-primary);
   }
 
 
@@ -344,7 +353,7 @@
     padding-top: 15px;
     padding-bottom: 15px;
 
-    background: #eceae3;
+    background: var(--bg-primary);
   }
 
   #bv__settings__menu::-webkit-scrollbar {
@@ -489,7 +498,7 @@
     position: absolute;
     top: 2rem;
     width: 100%;
-    background: #eceae3 !important;
+    background: var(--bg-primary) !important;
 
   }
 
@@ -498,7 +507,7 @@
     align-items: flex-start;
     justify-content: flex-start;
 
-    background: #eceae3 !important;
+    background: var(--bg-primary) !important;
 
     margin-top: 0.5rem;
     border: 1px solid rgba(0, 0, 0, 0.1);
@@ -530,7 +539,7 @@
   @media screen and (min-width: 992px) {
 
     #bv__settings {
-      margin-bottom: 60px;
+      margin-bottom: 0;
     }
 
     #bv__settings__header {
@@ -541,10 +550,17 @@
     }
 
     #bv__settings__menu {
+      position: fixed;
       padding-left: 25% !important;
       width: 50% !important;
       flex-direction: column;
       top: 201px;
+      z-index: 0;
+    }
+
+    .bv__footer {
+      position: relative;
+      z-index: 100;
     }
 
     #bv__settings__main {

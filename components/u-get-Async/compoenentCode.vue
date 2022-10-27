@@ -2,6 +2,10 @@
   <span v-if="result" class="bv__getasync">
     {{ result }}
   </span>
+
+  <span v-else>
+    <slot name="default"></slot>
+  </span>
 </template>
 
 <script>

@@ -25,8 +25,8 @@ let debouncedPart = debounceInput(async event => {
   let amount = event.target.textContent
 
   if (!amount) amount = '100'
-  
-  if (parseInt(amount) < 10) amount = '10'
+
+  if (parseInt(amount) < 20) amount = '1'
   else if (parseInt(amount) > 1000000) amount = '1000000'
 
   event.target.textContent = parseInt(amount).toLocaleString('en-us')
@@ -36,13 +36,20 @@ let debouncedPart = debounceInput(async event => {
   await $setUser('DonorPortal_DonationAmount', event.target.textContent)
 })
 
-return event => {
-  if (event.target.textContent) {
-    event.target.textContent = event.target.textContent
-      .trim()
-      .replace(/\D/g, '')
-    setCaretToEnd(event.srcElement)
+return async event => {
+  if (event.target.id === 'bv__donatemodal__donationamountinput') {
+    if (event.target.textContent) {
+      event.target.textContent = event.target.textContent
+        .trim()
+        .replace(/\D/g, '')
+        .slice(0, 7)
+      setCaretToEnd(event.srcElement)
+    }
+
+    await debouncedPart(event)
   }
 
-  debouncedPart(event)
+  if (event.target.name === 'slide-donation-amount') {
+    await $setUser('DonorPortal_DonationAmount', event.target.value)
+  }
 }

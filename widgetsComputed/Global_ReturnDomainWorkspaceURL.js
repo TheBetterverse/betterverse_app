@@ -1,6 +1,6 @@
 return function(){
 
-    const domainAndWorkspace = 'https://' + 'tangleapps.com/dashboard/-N3z8rEgVVtApDNoNjXV'
+    const domainAndWorkspace = 'https://' + 'give.betterverse.app/dashboard/-N3z8rEgVVtApDNoNjXV'
 
     return domainAndWorkspace
 

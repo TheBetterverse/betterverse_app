@@ -30,7 +30,7 @@
     }
 
     //PROFILE SETUP PAGES - USER HASNT STARTED PROFILE SETUP
-    if(currentSubTab == '-MysZOod447ZdKXNCTey' || currentSubTab == '-N4UIKK5MmraPqo_BhCH' ){
+    if(currentSubTab == '-MysZOod447ZdKXNCTey' || currentSubTab == '-N4UIKK5MmraPqo_BhCH' || currentSubTab == '-N6OJKPA76EZPTjdgEMp' ){
         if (currentProfileStage == null){
             console.log('here')
                 $setCurrentSubTab('-N0ZsOs2dAbF9PTr_Hz0')

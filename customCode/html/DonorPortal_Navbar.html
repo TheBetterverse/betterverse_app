@@ -1,4 +1,5 @@
 <!-- DonorPortal_Navbar.html -->
+
 <nav id="bv__navbar" class="bv__globals__px">
   <div id="bv__navbar__left">
     <div class="d-lg-none">
@@ -7,14 +8,14 @@
     </div>
 
     <div class="d-lg-grid">
-      <button onclick="window.open('https:\/\/www.betterverse.app')" style="background: none">
+      <button onclick="window.open('https:\/\/www.betterverse.app')" style="background: none" title="Betterverse.app">
         <u-Icons-Betterverse></u-Icons-Betterverse>
       </button>
     </div>
 
     <div id="bv__navbar__leftmenu">
       <u-Components-Button tertiary @click="DonorPortal_RedirectToDashboard()"
-        :highlight="currentSubTab === '-MyvUthgoLrT0z0HdIX9'">
+        :highlight="currentSubTab === '-MyvUthgoLrT0z0HdIX9'" title="Dashboard">
         <p>Dashboard</p>
 
         <template #left-icon>
@@ -23,7 +24,7 @@
       </u-Components-Button>
 
       <u-Components-NavbarDropDown>
-        <u-Components-Button tertiary>
+        <u-Components-Button tertiary title="Resources">
           <template #left-icon>
             <u-Icons-Resources />
           </template>
@@ -31,59 +32,49 @@
           <p>Resources</p>
 
           <template #right-icon>
-            <u-Icons-Chevron />
+            <u-Icons-Chevron height="8px" width="8px" />
           </template>
         </u-Components-Button>
 
         <template #dropdown>
-          <span>
-            <a href="https://www.betterverse.app/#about">
-              <u-Icons-About/>
-              <p>About</p>
-            </a>
-          </span>
+          <a href="https://www.betterverse.app/#about">
+            <u-Icons-About />
+            <p>About</p>
+          </a>
 
-          <span>
-            <a href="https://www.betterverse.app/team">
-            <u-Icons-Team/>
+          <a href="https://www.betterverse.app/team">
+            <u-Icons-Team />
             <p>Team</p>
-            </a>
-          </span>
+          </a>
 
-          <span>
-            <a href="https://www.betterverse.app/#metaverse">
-            <u-Icons-Metaverse/>
+          <a href="https://www.betterverse.app/#metaverse">
+            <u-Icons-Metaverse />
             <p>Metaverse</p>
-            </a>
-          </span>
+          </a>
 
-          <span>
-            <a href="https://www.betterverse.app/roadmap">
-            <u-Icons-Roadmap/>
+          <a href="https://www.betterverse.app/roadmap">
+            <u-Icons-Roadmap />
             <p>Roadmap</p>
-            </a>
-          </span>
+          </a>
 
-          <span>
-            <a href="https://www.betteverse.app/team/#contact">
-            <u-Icons-Contact/>
+          <a href="https://www.betteverse.app/team/#contact">
+            <u-Icons-Contact />
             <p>Contact</p>
-            </a>
-          </span>
+          </a>
         </template>
       </u-Components-NavbarDropDown>
     </div>
   </div>
 
   <div id="bv__navbar__right" v-if="DonorPortal_GetCurrentUserProfileComplete() == true">
-    <u-Components-Button secondary class="d-none d-lg-flex"
-      @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ', '-Mx_5FLL2jlxjXYUMdIL')">
+    <u-Components-Button secondary class="d-none d-lg-flex" @click="DonorPortal_RedirectToProjects()"
+      title="View projects">
       <template #default>
         <p>View projects</p>
       </template>
 
       <template #right-icon>
-        <u-Icons-Heart color="white"></u-Icons-Heart>
+        <u-Icons-Heart color="var(--offwhite)"></u-Icons-Heart>
       </template>
     </u-Components-Button>
 
@@ -95,22 +86,27 @@
               :wallet="DonorPortal_GetCurrentUserWalletInformation()" />
 
             <template #dropdown>
-              <button type="submit" name="connect-metamask">
+              <button type="submit" name="connect-metamask" title="Connect metamask wallet">
                 <u-Icons-Metamask />
                 <p>Metamask</p>
               </button>
 
-              <button type="submit" name="connect-torus">
+              <button type="submit" name="connect-torus" title="Connect torus wallet">
                 <u-Icons-Torus />
                 <p>Torus</p>
               </button>
 
-              <button type="submit" name="connect-coinbase">
+              <!--button type="submit" name="connect-coinbase" title="Connect coinbase wallet">
                 <u-Icons-Coinbase />
                 <p>Coinbase</p>
+              </button-->
+
+              <button type="submit" name="connect-slide" title="Connect slide wallet">
+                <u-Icons-Slide />
+                <p>Slide</p>
               </button>
 
-              <button type="submit" name="connect-torus">
+              <button type="submit" name="create-wallet" title="Create wallet">
                 <u-Icons-Plus outline />
                 <p>Create wallet</p>
               </button>
@@ -119,7 +115,7 @@
         </form>
       </div>
 
-      <div id="bv__navbar__walletconnected" v-else>
+      <div id="bv__navbar__walletconnected" @click="DonorPortal_OpenWallet()" v-else>
         <u-Components-WalletDisplay :wallet="DonorPortal_GetCurrentUserWalletInformation()"
           @DonorPortal_TriggerWalletPopup="DonorPortal_TriggerWalletPopup" />
       </div>
@@ -158,31 +154,31 @@
       </li>
       <li>
         <div class="iconwrapper">
-          <u-Icons-About/>
+          <u-Icons-About />
         </div>
         <a href="https://www.betterverse.app/#about">About</a>
       </li>
       <li>
         <div class="iconwrapper">
-          <u-Icons-Team/>
+          <u-Icons-Team />
         </div>
         <a href="https://www.betterverse.app/team">Team</a>
       </li>
       <li>
         <div class="iconwrapper">
-          <u-Icons-Metaverse/>
+          <u-Icons-Metaverse />
         </div>
         <a href="https://www.betterverse.app/#metaverse">Metaverse</a>
       </li>
       <li>
         <div class="iconwrapper">
-          <u-Icons-Roadmap/>
+          <u-Icons-Roadmap />
         </div>
         <a href="https://www.betterverse.app/roadmap">Roadmap</a>
       </li>
       <li>
         <div class="iconwrapper">
-          <u-Icons-Contact/>
+          <u-Icons-Contact />
         </div>
         <a href="https://www.betteverse.app/team/#contact">Contact</a>
       </li>
@@ -200,7 +196,7 @@
     transition: all .5s;
     opacity: 0;
     pointer-events: none;
-    z-index: 100;
+    z-index: 1000;
   }
 
   #bv__mobile__navbar.display {
@@ -213,7 +209,7 @@
 
   #bv__mobile__navbar ul {
     height: auto;
-    background: #efede7;
+    background: var(--bg-secondary);
     z-index: 100 !important;
     position: relative;
     margin-bottom: 0;
@@ -264,8 +260,7 @@
 
     width: 100%;
     height: 67px;
-    background: #efede7;
-
+    background: var(--bg-secondary);
   }
 
   #bv__navbar__left {

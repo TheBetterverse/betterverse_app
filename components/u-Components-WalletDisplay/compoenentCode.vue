@@ -3,6 +3,7 @@
     primary
     name="bv-walletdisplay"
     class="bv__walletdisplay"
+    :title="walletTitle"
     :class="{ error: state >= STATES.ERROR }"
     @click="$emit('click', $event)"
   >
@@ -30,10 +31,13 @@
     <template v-if="state === STATES.WALLET_CONNECTED">
       <div class="bv__walletdisplay__inner bv__walletdisplay__walletconnected">
         <span>
-          <u-Icons-Metamask v-if="provider && provider === 'metamask'" />
-          <u-Icons-Torus v-if="provider && provider === 'torus'" />
-          <u-Icons-Coinbase v-if="provider && provider === 'coinbase'" />
-          <u-Icons-Wallet></u-Icons-Wallet>
+          <u-Icons-Metamask v-if="provider === 'metamask'"></u-Icons-Metamask>
+          <u-Icons-Torus v-else-if="provider === 'torus'"></u-Icons-Torus>
+          <u-Icons-Coinbase
+            v-else-if="provider === 'coinbase'"
+          ></u-Icons-Coinbase>
+          <u-Icons-Slide v-else-if="provider === 'slide'"></u-Icons-Slide>
+          <u-Icons-Wallet v-else></u-Icons-Wallet>
         </span>
 
         <span v-if="address" class="bv__walletdisplay__address">
@@ -41,7 +45,7 @@
         </span>
 
         <span v-else class="bv__walletdisplay__balance">
-          <p>{{ balance }}</p>
+          <p>{{ balanceValue }}</p>
           <u-Icons-Usdc height="20px" width="20px" />
         </span>
 
@@ -64,8 +68,8 @@
 module.exports = {
   props: {
     wallet: {
-      type: Function,
-      default: async () => {}
+      type: Promise,
+      default: new Promise(resolve => resolve())
     },
 
     address: {
@@ -91,6 +95,7 @@ module.exports = {
     uIconsMetamask: $getCustomComponent('u-Icons-Metamask'),
     uIconsTorus: $getCustomComponent('u-Icons-Torus'),
     uIconsCoinbase: $getCustomComponent('u-Icons-Coinbase'),
+    uIconsSlide: $getCustomComponent('u-Icons-Slide'),
     uIconsCheckmark: $getCustomComponent('u-Icons-Checkmark')
   },
 
@@ -99,6 +104,27 @@ module.exports = {
       let address = this.wallet_address
       let len = address.length
       return `${address.slice(0, 5)}...${address.slice(len - 3, len)}`
+    },
+
+    walletTitle() {
+      switch (this.state) {
+        case this.STATES.LOADING:
+          return 'Loading wallet'
+
+        case this.STATES.WALLET_NOT_CONNECTED:
+          return 'Wallet not connected'
+
+        case this.STATES.WALLET_CONNECTED:
+          let formated =
+            this.provider.charAt(0).toUpperCase() + this.provider.substr(1)
+          return `${formated} wallet connected (${this.formattedAddress})`
+
+        case this.STATES.ERROR:
+          return 'Wallet error'
+
+        default:
+          return 'Wallet'
+      }
     }
   },
 
@@ -107,7 +133,7 @@ module.exports = {
       let result = await this.wallet
 
       if (!result) {
-        this.state = 404
+        this.state = 1
         return
       }
 
@@ -116,7 +142,7 @@ module.exports = {
 
       this.wallet_address = result.address
       this.provider = result.provider
-      this.balance = result.balance
+      this.balanceValue = result.balance
     }
   },
 
@@ -124,7 +150,7 @@ module.exports = {
     return {
       wallet_address: null,
       provider: null,
-      balance: null,
+      balanceValue: this.balance,
       state: 0,
 
       STATES: {
@@ -140,7 +166,7 @@ module.exports = {
     await this.updateComponent()
   },
 
-  async beforeUpdate() {
+  async update() {
     await this.updateComponent()
   }
 }

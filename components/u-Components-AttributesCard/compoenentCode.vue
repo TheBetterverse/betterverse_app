@@ -1,14 +1,14 @@
 <!-- u-Components-AttributesCard -->
 
 <template>
-  <div class="bv__attributes__cards">
+  <div v-if="attributes" class="bv__attributes__cards">
     <div
-      v-for="(attribute, key) in result"
+      v-for="(attribute, key) in attributes"
       :key="key"
       class="bv__attributes__card"
     >
       <div v-html="icons[attribute['trait_type']]"></div>
-      
+
       <div>
         <div
           v-for="(item, j) in attribute"
@@ -20,31 +20,56 @@
       </div>
     </div>
   </div>
+
+  <div v-else class="bv__attributes__cards" style="gap: 15px">
+    <div
+      v-for="(icon, key) in icons"
+      style="height: 128px; border-radius: 5px"
+      class="bv__attributes__card"
+    >
+      <div v-html="icon"></div>
+
+      <div>
+        <b>
+          {{ key }}
+        </b>
+
+        <div
+          class="bv__animations__opacitywave"
+          style="font-family: 'Documan', sans-serif"
+        >
+          <span>.</span><span>.</span><span>.</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
 module.exports = {
   props: ['url'],
 
-  components: {
-    uIconsBiome: $getCustomComponent('u-Icons-Biome')
-  },
-
   data() {
     return {
-      result: [],
+      attributes: undefined,
       icons: {}
     }
   },
 
+  watch: {
+    async url() {
+      this.attributes = await this.getAttributes()
+    }
+  },
+
   methods: {
-    async getAttributes(){
-      if (!this.url) return
+    async getAttributes() {
+      if (!this.url) return undefined
 
       const response = await fetch(this.url)
       const json = await response.json()
 
-      this.result = json['attributes']
+      return json['attributes']
     },
 
     async getIconComponent(name) {
@@ -54,21 +79,17 @@ module.exports = {
 
   async created() {
     this.icons = {
-      "Biome": await this.getIconComponent('u-Icons-Biome'),
-      "Species": await this.getIconComponent('u-Icons-Species'),
-      "Foliage Palette": await this.getIconComponent('u-Icons-Foliage'),
-      "Fungi": await this.getIconComponent('u-Icons-Fungi'),
-      "Fungi Palette": await this.getIconComponent('u-Icons-FungiPalette'),
-      "Ground Palette": await this.getIconComponent('u-Icons-Ground'),
-      "Trunk Palette": await this.getIconComponent('u-Icons-Trunk'),
-      "Growth Phase": await this.getIconComponent('u-Icons-GrowthStage')
+      Biome: await this.getIconComponent('u-Icons-Biome'),
+      Species: await this.getIconComponent('u-Icons-Species'),
+      'Foliage Palette': await this.getIconComponent('u-Icons-Foliage'),
+      Fungi: await this.getIconComponent('u-Icons-Fungi'),
+      'Fungi Palette': await this.getIconComponent('u-Icons-FungiPalette'),
+      'Ground Palette': await this.getIconComponent('u-Icons-Ground'),
+      'Trunk Palette': await this.getIconComponent('u-Icons-Trunk'),
+      'Growth Phase': await this.getIconComponent('u-Icons-GrowthStage')
     }
 
-    await this.getAttributes()
-  },
-
-  async updated() {
-    await this.getAttributes()
+    this.attributes = await this.getAttributes()
   }
 }
 </script>
@@ -78,19 +99,18 @@ module.exports = {
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 100%;
+  gap: 30px;
 }
 
 .bv__attributes__card {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 15px;
 
   width: 100%;
-  height: 92px;
-
-  margin: 15px 0;
+  height: auto;
 }
 
 .bv__attributes__cardtrait_type {

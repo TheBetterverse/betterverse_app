@@ -1,14 +1,22 @@
 <template>
-<?xml version="1.0" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
- "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
- width="13.000000pt" height="13.000000pt" viewBox="0 0 504.000000 495.000000"
- preserveAspectRatio="xMidYMid meet">
-
-<g transform="translate(0.000000,495.000000) scale(0.100000,-0.100000)"
-fill="#000000" stroke="none">
-<path d="M2290 4921 c-494 -131 -1010 -370 -1370 -636 -530 -392 -823 -853
+  <!-- <?xml version="1.0" standalone="no"?>
+  <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd"> -->
+  <svg
+    version="1.0"
+    xmlns="http://www.w3.org/2000/svg"
+    width="13.000000pt"
+    height="13.000000pt"
+    viewBox="0 0 504.000000 495.000000"
+    preserveAspectRatio="xMidYMid meet"
+    style="display: flex; align-items: center"
+  >
+    <g
+      transform="translate(0.000000,495.000000) scale(0.100000,-0.100000)"
+      fill="#000000"
+      stroke="none"
+    >
+      <path
+        d="M2290 4921 c-494 -131 -1010 -370 -1370 -636 -530 -392 -823 -853
 -906 -1425 -33 -228 11 -464 126 -678 121 -225 360 -447 651 -605 413 -225
 1019 -377 1507 -377 l132 0 0 -522 c0 -588 -1 -576 76 -634 34 -26 46 -29 128
 -33 157 -6 359 41 603 140 891 361 1600 1044 1758 1693 55 225 55 390 -1 609
@@ -19,8 +27,8 @@ fill="#000000" stroke="none">
 -571 -355 -1071 -466 -71 -16 -138 -29 -147 -29 -17 0 -18 22 -18 315 0 349 0
 346 -64 403 -42 37 -56 39 -246 47 -282 11 -576 54 -810 119 -232 64 -388 143
 -496 250 -89 89 -108 138 -102 262 4 71 10 94 42 160 113 228 413 412 875 535
-114 31 372 87 402 88 14 1 17 -25 23 -206z"/>
-</g>
-</svg>
-
+114 31 372 87 402 88 14 1 17 -25 23 -206z"
+      />
+    </g>
+  </svg>
 </template>

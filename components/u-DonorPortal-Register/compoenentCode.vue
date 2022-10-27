@@ -67,13 +67,26 @@
         </div>
 
         <div class="d-flex justify-content-end">
-          <bv-button secondary type="submit" name="continue-email-button">
+          <bv-button
+            secondary
+            type="submit"
+            name="continue-email-button"
+            title="Continue with email"
+          >
             <template #default>
-              <p v-if="form.email.content">Continue with email </p>
+              <p v-if="form.email.content">Continue with email</p>
             </template>
             <template #right-icon>
-              <icon-rightarrow v-if="spinnerActive == false" color="white"></icon-rightarrow>
-              <div v-if="spinnerActive == true" class="spinner-border spinner-border-sm" role="status"></div>
+              <icon-arrow
+                right
+                v-if="spinnerActive == false"
+                color="white"
+              ></icon-arrow>
+              <div
+                v-if="spinnerActive == true"
+                class="spinner-border spinner-border-sm"
+                role="status"
+              ></div>
             </template>
           </bv-button>
         </div>
@@ -84,27 +97,55 @@
       <section name="socials">
         <div class="my-2">Or continue with</div>
         <div id="bv__register__socialsbuttons" class="w-100">
-          <bv-button responsive name="sign-up-google">
-            <template #left-icon>
-              <icon-google></icon-google>
+          <bv-button
+            responsive
+            name="sign-up-google"
+            title="Sign up with Google"
+          >
+            <template>
+              <div class="bv__register__socialbutton">
+                <icon-google></icon-google>
+                <p class="d-none d-xl-block">Google</p>
+              </div>
             </template>
-            <template> <p>Google</p> </template>
           </bv-button>
 
-          <bv-button responsive name="sign-up-facebook">
-            <template #left-icon>
+          <bv-button
+            responsive
+            name="sign-up-facebook"
+            title="Sign up with Facebook"
+          >
+            <div class="bv__register__socialbutton">
               <icon-facebook></icon-facebook>
-            </template>
-            <template> <p>Facebook</p> </template>
+              <p class="d-none d-xl-block">Facebook</p>
+            </div>
           </bv-button>
 
-          <bv-button responsive name="sign-up-discord">
-            <template #left-icon>
-              <icon-discord></icon-discord>
-            </template>
-            <template><p>UD</p> </template>
+          <bv-button
+            responsive
+            name="sign-up-unstoppable"
+            title="Sign up with Unstoppable"
+          >
+            <div class="bv__register__socialbutton">
+              <icon-unstoppable></icon-unstoppable>
+              <p class="d-none d-xl-block">Unstoppable</p>
+            </div>
           </bv-button>
         </div>
+      </section>
+
+      <section name="tos">
+        <icon-info height="32px" width="32px"></icon-info>
+        <p>
+          By creating an account with us you are confirming that you have read
+          and agree to be bound by our
+          <a
+            href="https://www.betterverse.app/legal#terms-of-use"
+            target="_blank"
+          >
+            Terms of Service </a
+          >.
+        </p>
       </section>
 
       <!-- For large displays -->
@@ -190,8 +231,8 @@ module.exports = {
         case 'sign-up-facebook':
           await this.signUpFacebook(e)
           break
-        case 'sign-up-discord':
-          await this.signUpDiscord(e)
+        case 'sign-up-unstoppable':
+          await this.signUpUnstoppable(e)
           break
       }
     },
@@ -204,19 +245,18 @@ module.exports = {
       if (!this.inputsAreValid) {
         return
       }
-      
+
       this.spinnerActive = true
 
-      await new Promise(r => setTimeout(r, 2000));
+      await new Promise(r => setTimeout(r, 2000))
 
       $anonUserToPermanent('emailAndPassword', {
         email: this.formContent.email,
         password: this.formContent.password
       })
         .then(() => {
-          
           //Redirect to personal info setup
-          $setUser('ProfileSetUpStage', 1)       
+          $setUser('ProfileSetUpStage', 1)
           $setCurrentTab('-Mx_5FLL2jlxjXYUMdIL')
         })
         .catch(err => {
@@ -235,11 +275,27 @@ module.exports = {
     },
 
     async signUpFacebook(e) {
-      throw 'Sign up with facebook is not implemented'
+      await $anonUserToPermanent('facebook')
+        .then(() => {
+          $setUser('ProfileSetUpStage', 1)
+          $setCurrentTab('-Mx_5FLL2jlxjXYUMdIL')
+        })
+        .catch(err => {
+          alert(err.message)
+          //spinnerActive == false
+        })
     },
 
-    async signUpDiscord(e) {
-      throw 'Sign up with discord is not implemented'
+    async signUpUnstoppable(e) {
+      await $anonUserToPermanent('unstoppableDomains')
+        .then(() => {
+          $setUser('ProfileSetUpStage', 1)
+          $setCurrentTab('-Mx_5FLL2jlxjXYUMdIL')
+        })
+        .catch(err => {
+          alert(err.message)
+          spinnerActive == false
+        })
     },
 
     /* View controller */
@@ -267,8 +323,9 @@ module.exports = {
     IconMail: $getCustomComponent('u-Icons-Mail'),
     IconGoogle: $getCustomComponent('u-Icons-Google'),
     IconFacebook: $getCustomComponent('u-Icons-Facebook'),
-    IconDiscord: $getCustomComponent('u-Icons-UnstoppableDomains'),
-    IconRightarrow: $getCustomComponent('u-Icons-ArrowRight'),
+    IconUnstoppable: $getCustomComponent('u-Icons-UnstoppableDomains'),
+    IconInfo: $getCustomComponent('u-Icons-Info-Normal'),
+    IconArrow: $getCustomComponent('u-Icons-Arrow'),
     IconBetterverse: $getCustomComponent('u-Icons-Betterverse'),
     BvButton: $getCustomComponent('u-Components-Button'),
     BvInput: $getCustomComponent('u-Components-Input')
@@ -291,11 +348,45 @@ div.status-bar-clearance {
 #bv__register__socialsbuttons {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  height: auto;
+  width: auto;
   gap: 10px;
 }
 
 #bv__register__socialsbuttons > button {
-  width: 100%;
+  height: 32px;
+  width: 32px;
+}
+
+.bv__register__socialbutton {
+  display: flex;
+  gap: 8px;
+}
+
+@media screen and (min-width: 992px) {
+  #bv__register__socialsbuttons {
+    justify-content: space-between;
+  }
+
+  #bv__register__socialsbuttons > button {
+    width: 100%;
+    height: 32px;
+  }
+}
+
+section[name='tos'] {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+
+  margin-top: 20px;
+}
+
+section[name='tos'] > p {
+  margin: 0;
+  padding: 0 !important;
 }
 </style>

@@ -1,17 +1,21 @@
 <template>
-  <span class="bv__comps__inlineinputwrapper">
-    <span class="bv__comps__topspan">
+  <span class="bv__inlineinput__wrapper">
+    <span class="bv__inlineinput__topspan">
       <p>Type amount here</p>
     </span>
 
-    <span
-      contenteditable="true"
-      :name="name"
-      :id="id"
-      @input="$emit('input', $event)"
-      class="bv__comps__inlineinput"
-      >{{ value() }}</span
-    >
+    <span class="bv__inlineinput__main">
+      <u-Icons-Usdc class="bv__inlineinput__usdc"></u-Icons-Usdc>
+      <span
+        contenteditable="true"
+        :name="name"
+        :id="id"
+        @input="$emit('input', $event)"
+        class="bv__inlineinput__input"
+      >
+        {{ value() }}
+      </span>
+    </span>
   </span>
 </template>
 
@@ -32,26 +36,51 @@ module.exports = {
 
     id: {
       type: String,
-      default: 'bv__comps__inlineinput'
+      default: 'bv__inlineinput__input'
     }
+  },
+
+  components: {
+    uIconsUsdc: $getCustomComponent('u-Icons-USDC')
   }
 }
 </script>
 
 <style>
-.bv__comps__inlineinputwrapper {
+.bv__inlineinput__wrapper {
   position: relative;
+  overflow-x: visible;
+
+  word-break: keep-all;
 }
 
-.bv__comps__inlineinput {
+.bv__inlineinput__main {
+  position: relative;
+  display: inline-flex;
+  gap: 6px;
+  min-width: 1rem;
+}
+
+.bv__inlineinput__main > svg {
+  position: relative;
+  display: inline-flex;
+  align-items: flex-end;
+  top: 4px;
+  width: 28px;
+  height: 28px;
+}
+
+.bv__inlineinput__input {
   align-items: center;
   justify-content: center;
 
   position: relative;
   min-width: 1rem;
+  bottom: 2px;
 
   border: none;
   background: #d7d5d0;
+  appearance: textfield;
   -moz-appearance: textfield;
 
   font-weight: 700;
@@ -59,7 +88,7 @@ module.exports = {
   text-align: center;
 }
 
-.bv__comps__topspan {
+.bv__inlineinput__topspan {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -74,14 +103,15 @@ module.exports = {
   text-align: center;
 }
 
-.bv__comps__inlineinput::-webkit-outer-spin-button,
-.bv__comps__inlineinput::-webkit-inner-spin-button {
+.bv__inlineinput__input::-webkit-outer-spin-button,
+.bv__inlineinput__input::-webkit-inner-spin-button {
+  appearance: none;
   -webkit-appearance: none;
   margin: 0;
   width: auto;
 }
 
-.bv__comps__inlineinput:focus {
+.bv__inlineinput__input:focus {
   outline: none;
 }
 
@@ -97,5 +127,21 @@ module.exports = {
 
 [contenteditable='true'] br {
   display: none;
+}
+
+@media screen and (min-width: 992px) {
+  .bv__inlineinput__main > svg {
+    width: 48px;
+    height: 48px;
+    top: 6px;
+  }
+
+  .bv__inlineinput__input {
+    bottom: 8px;
+  }
+
+  .bv__inlineinput__main {
+    gap: 10px;
+  }
 }
 </style>

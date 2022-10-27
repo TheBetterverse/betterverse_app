@@ -69,7 +69,7 @@ return async (walletAddress, currency = 'USDC') => {
         return tokenBalances
     }
   } catch (err) {
-    console.error('DonorPortal_GetCurrentUserWalletBalance')
+    //console.error('DonorPortal_GetCurrentUserWalletBalance')
     console.error(err)
   }
 }

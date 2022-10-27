@@ -38,32 +38,42 @@
           id="bv__registerwallet__connectwallet"
           class="d-flex justify-content-between w-100 mt-2 mb-4"
         >
-          <bv-button name="connect-metamask" type="submit">
+          <bv-button
+            name="connect-metamask"
+            type="submit"
+            title="Connect metamask wallet"
+          >
             <template v-slot:left-icon>
               <icon-metamask />
             </template>
             <template> <p>Metamask</p> </template>
           </bv-button>
 
-          <bv-button name="connect-torus" type="submit">
+          <bv-button
+            name="connect-torus"
+            type="submit"
+            title="Connect torus wallet"
+          >
             <template v-slot:left-icon> <icon-torus /> </template>
             <template> <p>Torus</p> </template>
           </bv-button>
 
-          <bv-button name="connect-coinbase" type="submit">
+          <!--bv-button name="connect-coinbase" type="submit">
             <template v-slot:left-icon>
               <icon-coinbase />
             </template>
             <template> <p>Coinbase</p> </template>
-          </bv-button>
+          </bv-button-->
         </div>
 
         <small>Or create wallet with</small>
-     
+
+        <div>
           <bv-button
             name="connect-slide"
             type="submit"
             id="bv__register__connectslide"
+            title="Create slide wallet"
           >
             <template #left-icon> <icon-slide /> </template>
             <template> <p>Slide</p> </template>
@@ -85,16 +95,20 @@
               secondary
               name="skip-step"
               type="submit"
+              title="Skip registration step"
             >
-              <template #default> <p>Skip step</p> 
-              </template>
+              <template #default> <p>Skip step</p> </template>
               <template #right-icon>
                 <div id="bv__right__arrow">
-                  <icon-rightarrow />
+                  <icon-arrow right />
                 </div>
-                <div id="bv__spinner" class="spinner-border spinner-border-sm" role="status" style="display: none;"></div>
+                <div
+                  id="bv__spinner"
+                  class="spinner-border spinner-border-sm"
+                  role="status"
+                  style="display: none"
+                ></div>
               </template>
-
             </bv-button>
           </div>
         </div>
@@ -112,45 +126,6 @@ module.exports = {
         provider: undefined,
         address: undefined,
         balance: 0
-      }
-    }
-  },
-
-  methods: {
-    async handleSubmit(e) {
-      let target = e.submitter.name
-
-      switch (target) {
-        case 'connect-metamask':
-          this.wallet.provider = 'metamask'
-          this.wallet.address = '1GAAr5LWGWpujJug7uKhwoQSzns1gcXpyS' // 0x6da...fNa
-          this.wallet.balance = 7053642
-          throw 'metamask not implemented'
-          break
-
-        case 'connect-torus':
-          this.wallet.provider = 'torus'
-          this.wallet.address = '1GAAr5LWGWpujJug7uKhwoQSzns1gcXpyS' // 0x6da...fNa
-          this.wallet.balance = 7053642
-          throw 'torus not implemented'
-          break
-
-        case 'connect-coinbase':
-          this.wallet.provider = 'coinbase'
-          this.wallet.address = '1GAAr5LWGWpujJug7uKhwoQSzns1gcXpyS' // 0x6da...fNa
-          this.wallet.balance = 7053642
-          throw 'coinbase not implemented'
-          break
-
-        case 'create-torus':
-          this.wallet.provider = 'torus'
-          this.wallet.address = '1GAAr5LWGWpujJug7uKhwoQSzns1gcXpyS' // 0x6da...fNa
-          this.wallet.balance = 7053642
-          throw 'create torus wallet not implemented'
-          break
-
-        case 'skip-step':
-          break
       }
     }
   },
@@ -180,7 +155,7 @@ module.exports = {
     IconCoinbase: $getCustomComponent('u-Icons-Coinbase'),
     IconUsdc: $getCustomComponent('u-Icons-USDC'),
     IconPlus: $getCustomComponent('u-Icons-Plus'),
-    IconRightarrow: $getCustomComponent('u-Icons-ArrowRight'),
+    IconArrow: $getCustomComponent('u-Icons-Arrow'),
     IconCheckmark: $getCustomComponent('u-Icons-Checkmark'),
     IconBetterverse: $getCustomComponent('u-Icons-Betterverse'),
     IconSlide: $getCustomComponent('u-Icons-Slide'),

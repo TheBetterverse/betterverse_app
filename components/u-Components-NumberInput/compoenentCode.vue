@@ -2,6 +2,7 @@
   <div class="bv__comps__inputwrapper" :class="{ disabled }">
     <button
       type="button"
+      title="Decrease"
       class="bv__comps__inputbutton"
       :disabled="value == min() || disabled"
       @click="value <= min() ? min() : value--"
@@ -21,6 +22,7 @@
 
     <button
       type="button"
+      title="Increase"
       class="bv__comps__inputbutton"
       :disabled="value == max() || disabled"
       @click="value >= max() ? max() : value++"
@@ -119,6 +121,7 @@ module.exports = {
 }
 
 .bv__comps__input {
+  appearance: textfield;
   -moz-appearance: textfield;
   outline: none;
   background: none;
@@ -151,6 +154,7 @@ module.exports = {
   text-align: center;
 
   user-select: none;
+  appearance: none;
 }
 
 .bv__comps__inputbutton > * {
@@ -167,12 +171,19 @@ module.exports = {
   opacity: 0.2;
 }
 
+.bv__comps__inputbutton:focus {
+  appearance: none;
+  user-select: none;
+  background: black;
+}
+
 .bv__comps__input:disabled {
   opacity: 0.8;
 }
 
 .bv__comps__input::-webkit-outer-spin-button,
 .bv__comps__input::-webkit-inner-spin-button {
+  appearance: none;
   -webkit-appearance: none;
   margin: 0;
 }

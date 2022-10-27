@@ -10,10 +10,13 @@
         <u-Icons-Betterverse height="32px" width="32px" />
       </div>
       <div style="display: flex; gap: 1rem;">
-        <u-Components-WalletDisplay v-if="DonorPortal_GetCurrentUserWalletAddress() != null && DonorPortal_GetCurrentUserProfileComplete() == true" :wallet="DonorPortal_GetCurrentUserWalletInformation()" class="d-none d-lg-block"
-          />
-        <button style="background: #efede7; border-radius: 100%;" @click="DonorPortal_TriggerProjectModal('hide')">
-          <u-Icons-Close></u-Icons-Close>       
+        <u-Components-WalletDisplay
+          v-if="DonorPortal_GetCurrentUserWalletAddress() != null && DonorPortal_GetCurrentUserProfileComplete() == true"
+          :wallet="DonorPortal_GetCurrentUserWalletInformation()" class="d-none d-lg-block"
+          @click="DonorPortal_OpenWallet()" />
+        <button style="background: var(--bg-secondary); border-radius: 100%;"
+          @click="DonorPortal_TriggerProjectModal('hide')" title="Close">
+          <u-Icons-Close></u-Icons-Close>
         </button>
       </div>
     </nav>
@@ -22,10 +25,6 @@
 
       <div id="bv__projectmodal__leftsideimage" class="bv__globals__skeleton">
         <img :src="DonorPortal_GetSpecificProject().projectImage.url" />
-
-        <!--div v-if="DonorPortal_GetAdditionalProjectImages()" id="bv__projectmodal__leftsideimagegallery">
-            <img v-for="image in DonorPortal_GetAdditionalProjectImages()" :src="image" @click="DonorPortal_ProjectImageSelector(image)">
-        </div-->
 
       </div>
 
@@ -86,19 +85,19 @@
           <div>
             <u-Components-Button secondary
               @click="DonorPortal_DonateToSelectedCharity(DonorPortal_GetSpecificProject())">
-              <p style="color: #ECEAE3">Donate</p>
+              <p style="color: var(--offwhite)">Donate</p>
               <template #right-icon>
-                <u-Icons-Heart color="#ECEAE3" />
+                <u-Icons-Heart color="var(--offwhite)" />
               </template>
             </u-Components-Button>
           </div>
 
           <div id="bv__projectmodal__bottomnav__nav">
             <button @click="DonorPortal_NavigateProjects('left', DonorPortal_GetSpecificProject().rowKey)">
-              <u-Icons-ArrowLeft color="black"></u-Icons-ArrowLeft>
+              <u-Icons-Arrow left color="black" title="Previous project"></u-Icons-Arrow>
             </button>
             <button @click="DonorPortal_NavigateProjects('right', DonorPortal_GetSpecificProject().rowKey)">
-              <u-Icons-ArrowRight color="black" />
+              <u-Icons-Arrow right color="black" title="Next project"></u-Icons-Arrow right>
             </button>
           </div>
         </div>
@@ -206,7 +205,7 @@
               @click="DonorPortal_OpenCharityLinks(DonorPortal_GetSpecificProject().$charity, 'twitter')">
               <p>Twitter</p>
               <template #right-icon>
-                <u-Icons-Twitter-Blue/>
+                <u-Icons-Twitter-Blue />
               </template>
             </u-Components-Button>
             <u-Components-Button v-if="DonorPortal_GetSpecificProject().$charity.discordURL"
@@ -249,18 +248,18 @@
         <div id="bv__projectmodal__share">
           <div class="bv__projectmodal__infocard bv__projectmodal__sharecard" style="background: black">
             <div>
-              <h2 style="color: #ECEAE3">
+              <h2 style="color: var(--offwhite)">
                 Donate
               </h2>
-              <p style="color: #ECEAE3">Ready to support this project?</p>
+              <p style="color: var(--offwhite)">Ready to support this project?</p>
             </div>
-            <u-Components-Button style="border: 1px solid #ECEAE3"
+            <u-Components-Button style="border: 1px solid var(--offwhite)"
               @click="DonorPortal_DonateToSelectedCharity(DonorPortal_GetSpecificProject())">
               <template #right-icon>
-                <u-Icons-Heart color="#ECEAE3" />
+                <u-Icons-Heart color="var(--offwhite)" />
               </template>
               <template #default>
-                <p style="color: #ECEAE3">
+                <p style="color: var(--offwhite)">
                   Donate
                 </p>
               </template>
@@ -279,7 +278,7 @@
               <u-Components-Button
                 @click="DonorPortal_GenerateSharableProjectURL(DonorPortal_GetSpecificProject().rowKey, 'twitter')">
                 <template #left-icon>
-                  <u-Icons-Twitter-Blue/>
+                  <u-Icons-Twitter-Blue />
                 </template>
               </u-Components-Button>
 
@@ -322,32 +321,19 @@
         </div>
 
 
-        <div id="bv__projectmodal__otherprojects" v-if="DonorPortal_GetCurrentUserNFTsCount() > 1">
-          <div class=" d-flex align-items-center justify-content-between">
-            <h2>
-              Other projects
-            </h2>
+        <div id="bv__projectmodal__otherprojects">
 
-            <div id="bv__projectmodal__otherprojectsnav">
-              <button
-                @click="document.getElementById('bv__projectmodal__otherprojectscarrousel').scrollBy({left: -250, behavior: 'smooth'})">
-                <u-Icons-ArrowLeft color="black"></u-Icons-ArrowLeft>
-              </button>
-              <button
-                @click="document.getElementById('bv__projectmodal__otherprojectscarrousel').scrollBy({left: 250, behavior: 'smooth'})">
-                <u-Icons-ArrowRight color="black" />
-              </button>
-            </div>
-          </div>
+          <u-Components-CardSlider name="otherprojects">
+            <template #title>Other projects</template>
 
-          <hr />
-
-          <div id="bv__projectmodal__otherprojectscarrousel">
-            <u-Components-ProjectCard v-for="(project, key) in DonorPortal_GetAllPublicCharityProjects()"
-              v-if="DonorPortal_GetSpecificProject().rowKey != project.rowKey" :key="key" :project="project"
-              @view="DonorPortal_ViewSelectedCharity($event); $('#bv__projectmodal').scrollTop(0);"
-              @donate="DonorPortal_DonateToSelectedCharity($event); $('#bv__projectmodal').scrollTop(0);" />
-          </div>
+            <template #default>
+              <u-Components-ProjectCard v-for="(project, key) in DonorPortal_GetAllPublicCharityProjects()"
+                v-if="DonorPortal_GetSpecificProject().rowKey != project.rowKey" :key="key" :project="project"
+                @view="DonorPortal_ViewSelectedCharity($event); $('#bv__projectmodal').scrollTop(0);"
+                @donate="DonorPortal_DonateToSelectedCharity($event); $('#bv__projectmodal').scrollTop(0);">
+              </u-Components-ProjectCard>
+            </template>
+          </u-Components-CardSlider>
         </div>
       </div>
     </div>
@@ -369,7 +355,7 @@
     padding: 0;
     margin: 0;
 
-    background-color: #ECEAE3;
+    background-color: var(--bg-primary);
   }
 
   #bv__projectmodal__logolg {
@@ -397,23 +383,9 @@
     background: none;
   }
 
-  #bv__projectmodal__navbar button:hover{
-    opacity: 80%; 
+  #bv__projectmodal__navbar button:hover {
+    opacity: 80%;
   }
-
-  #bv__projectmodal__bottomnav__nav button:hover{
-    opacity: 80%; 
-  }
-
-  #bv__projectmodal__otherprojectsnav button:hover{
-    opacity: 80%; 
-  }
-
-  #bv__projectmodal__navbarlogo {
-    height: 32px;
-    width: 32px;
-  }
-
 
   #bv__projectmodal__leftside {
     position: relative;
@@ -430,7 +402,7 @@
   }
 
   #bv__projectmodal__leftsideimage {
-    background: #eceae3;
+    background: var(--bg-primary);
 
     flex-shrink: 0;
     height: 100%;
@@ -457,7 +429,7 @@
     padding-top: 30px;
     padding-bottom: 30px;
 
-    background: #efede7;
+    background: var(--bg-secondary);
 
     display: flex;
     flex-direction: column;
@@ -654,7 +626,7 @@
     margin-right: 0.25rem;
     content: counter(item);
     background: black;
-    color: #ECEAE3;
+    color: var(--offwhite);
     border-radius: 100%;
     width: 1.2rem;
     height: 1.2rem;
@@ -740,33 +712,6 @@
     scroll-margin-top: 30px;
   }
 
-  #bv__projectmodal__otherprojectsnav {
-    display: flex;
-    gap: 10px;
-  }
-
-  #bv__projectmodal__otherprojectscarrousel {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-wrap: nowrap;
-    gap: 30px;
-    overflow-x: scroll;
-
-    padding-top: 10px !important;
-
-    width: 100%;
-    padding: 0;
-
-    scroll-snap-type: x mandatory;
-  }
-
-  .bv__projectmodal__card {
-    height: fit-content;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-  }
-
   .bv__projectmodal__image {
     height: 45%;
     max-height: 180px;
@@ -820,14 +765,6 @@
     gap: 25px;
   }
 
-  .bv__projectmodal__otherinfocard>p:last-child {
-    font-family: 'BN Cringe Sans';
-    font-style: normal;
-    font-weight: 500 !important;
-    font-size: 14px;
-    line-height: 20px;
-  }
-
   .bv__projectmodal__actions {
     display: flex;
     gap: 10px;
@@ -844,18 +781,9 @@
     stroke: white;
   }
 
-
-  #bv__projectmodal__otherprojectscarrousel::-webkit-scrollbar,
-  #bv__projectmodal__otherprojectscarrousel::-webkit-scrollbar-track,
-  #bv__projectmodal__otherprojectscarrousel::-webkit-scrollbar-thumb {
-    display: none;
-    visibility: hidden;
-  }
-
   #bv__projectmodal__footer {
     height: 30px;
   }
-
 
   #bv__projectmodal__info>hr {
     border: 1px solid #000000;
@@ -939,8 +867,7 @@
     width: 100%;
   }
 
-  #bv__projectmodal__bottomnav__nav>button,
-  #bv__projectmodal__otherprojectsnav>button {
+  #bv__projectmodal__bottomnav__nav>button {
     background: none;
     border: 1px solid black;
     height: 32px;
@@ -952,14 +879,9 @@
     justify-content: center
   }
 
-  /* #bv__projectmodal__footer {
-    position: relative;
-  } */
+
 
   @media screen and (min-width: 576px) {
-    /* #bv__projectmodal__footer {
-      position: relative;
-    } */
 
     #bv__projectmodal__charitydescription {
       display: flex;
@@ -1018,6 +940,8 @@
       height: 1px;
       width: calc(50% - 2px);
       backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+
       background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3))
     }
 
@@ -1053,7 +977,6 @@
       line-height: 28px;
       color: black;
     }
-
 
     #bv__projectmodal__maincontent>h1 {
       font-family: 'BN Cringe Sans';

@@ -41,6 +41,11 @@
       "order": 5,
       "type": "string"
     },
+    "smartContractID": {
+      "displayName": "smartContractID",
+      "order": 8,
+      "type": "number"
+    },
     "state": {
       "displayName": "State",
       "invisible": true,
@@ -157,6 +162,49 @@
                 "lookupOpenInModalDisabled": false,
                 "editorMode": "javascript",
                 "propName": "contract"
+              },
+              {
+                "type": "number",
+                "name": "control_ac6cca50-468c-11ed-9803-433e9110bd23",
+                "fieldName": "control_ac6cca50-468c-11ed-9803-433e9110bd23",
+                "label": "smartContractID",
+                "order": 0,
+                "defaultValue": "",
+                "value": "",
+                "className": "col-md-6",
+                "readonly": false,
+                "readonlyCondition": "",
+                "placeholder": "",
+                "required": false,
+                "requiredCondition": "",
+                "isMultiLine": false,
+                "isInteger": false,
+                "decimalPlace": 0,
+                "isTodayValue": false,
+                "isTodayValueCreated": true,
+                "dateFormat": "mm/dd/yy hh:mm p",
+                "isCurrentUser": false,
+                "isCurrentUserOwner": true,
+                "isNowTimeValue": false,
+                "timeFormat": "HH:mm",
+                "isMultiple": false,
+                "isAjax": false,
+                "dataOptions": [],
+                "ajaxDataUrl": "",
+                "isChecked": false,
+                "vif": "",
+                "customCode": "",
+                "invisible": false,
+                "invisibleCondition": "",
+                "invisibleInDataGrid": false,
+                "invisibleLabel": false,
+                "enableCustomValidation": false,
+                "customValidationRule": "",
+                "customValidationErrorMessage": "",
+                "mask": "",
+                "lookupOpenInModalDisabled": false,
+                "editorMode": "javascript",
+                "propName": "smartContractID"
               }
             ]
           }
@@ -396,7 +444,7 @@
       }
     ],
     "layout": "collapse",
-    "_uniqueId": 0.5660415137106605
+    "_uniqueId": 0.9613979834061324
   },
   "source": "currencies",
   "storageType": "dashboard",

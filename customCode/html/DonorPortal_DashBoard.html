@@ -1,10 +1,9 @@
 <!-- DonorPortal_DashBoard.html -->
+<template>
   <main class="bv__dashboard__main">
     <div class="bv__dashboard__header bv__globals__px">
       <div class="bv__dashboard__profile">
-        <u-Components-ProfilePicture v-if="DonorPortal_GetCurrentUserProfilePicture() != null" height="80px"
-          width="80px" :src="DonorPortal_GetCurrentUserProfilePicture()" />
-        <u-Icons-EmptyProfilePicture v-if="DonorPortal_GetCurrentUserProfilePicture() == null" />
+        <u-Components-ProfilePicture height="80px" width="80px" :src="DonorPortal_GetCurrentUserProfilePicture()" />
         <div>
           <h1 id="bv__dashboard__profileusername">
             {{ DonorPortal_GetCurrentUserNames('full') }}
@@ -46,9 +45,9 @@
           <div class="bv__dashboard__cardhead">
             <span class="w-100 d-flex align-items-center justify-content-between">
               <p> CO₂ Captured </p>
-              <u-Components-ToolTip @click="console.log($event)">
+              <u-Components-ToolTip>
                 <template #tooltip>
-                  <p><u>Learn</u> more about how we estimate this number.</p>
+                  <p>Want to know how we figure this out? Info coming soon.</p>
                 </template>
               </u-Components-ToolTip>
             </span>
@@ -75,8 +74,9 @@
       </div>
     </div>
 
-    <div class="bv__globals__px">
+    <div class="bv__dashboard__topborder"></div>
 
+    <div id="bv__dashboard__maincontent" class="bv__globals__px">
       <div class="bv__dashboard__currentnfts ">
         <div v-if="DonorPortal_GetCurrentUserNFTsCount() == 0"
           style="display: flex; flex-direction: column; gap: 1rem; width: auto;">
@@ -89,7 +89,7 @@
           </p>
 
           <u-Components-Button @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ', '-Mx_5FLL2jlxjXYUMdIL')" secondary
-            style="width: max-content">
+            style="width: max-content" title="View projects">
             <p> View projects </p>
             <template #right-icon>
               <u-Icons-Heart color="white"></u-Icons-Heart>
@@ -98,50 +98,47 @@
         </div>
 
         <div v-else>
-          <h2 style="font-weight: 400">
+          <h2 style="font-weight: 400; display: flex; align-items: center; justify-content: space-between;">
             You have {{ DonorPortal_GetCurrentUserNFTsCount() }}
             NFT{{ DonorPortal_GetCurrentUserNFTsCount() > 1 ? 's' : '' }}
+
+            <u-Components-RefreshButton @click="DonorPortal_GetLatestNFTTESTNET">
+            </u-Components-RefreshButton>
           </h2>
+
         </div>
       </div>
 
-      <div class="bv__dashboard__carrousel" v-if="DonorPortal_GetCurrentUserNFTs() != null">
-        <div v-for="(row, key) in DonorPortal_GetCurrentUserNFTs()" :key="key">
-          <u-Components-TreeCard
-            @view="DonorPortal_SelectedDonation(row.json, row.$initialDonationRow.rowKey, row.rowKey); DonorPortal_TriggerNFTModal('display');"
-            :treejson="row.json">
-            <template #description>
-              <b>${{row.$initialDonationRow.donationAmount.toLocaleString(undefined, {minimumFractionDigits: 2,
-                maximumFractionDigits: 2})}}</b> donated to
-              <b>{{row.$initialDonationRow.$charity$display}}</b> to plant
-              <b>{{row.$initialDonationRow.numberOfTreesPlanted.toLocaleString()}} trees</b> in
-              <b>{{row.$initialDonationRow.$charityProject.displayLocation}}</b>
-            </template>
-          </u-Components-TreeCard>
-        </div>
+      <div class="bv__dashboard__carrousel"
+        v-if="DonorPortal_GetCurrentUserNFTs() != null && !$getGlobalModel('dashboardRefresh')">
+
+        <u-Components-TreeCard v-for="(row, key) in DonorPortal_GetCurrentUserNFTs()" :data="row" :key="key"
+          @view="DonorPortal_ViewSelectedTree(row)">
+        </u-Components-TreeCard>
       </div>
 
-      <u-Components-MobileNavBar @click="DonorPortal_TriggerMobileNav()">
-        <u-Components-Button secondary class="w-100"
-          @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ', '-Mx_5FLL2jlxjXYUMdIL')">
-          View Projects
-          <template #right-icon>
-            <u-Icons-Heart color="white" />
-          </template>
-        </u-Components-Button>
-      </u-Components-MobileNavBar>
-
-    </div>
   </main>
   <u-Components-Footer />
+
+  <u-Components-MobileNavBar @click="DonorPortal_TriggerMobileNav()" class="bv__globals__px">
+    <u-Components-Button secondary class="w-100"
+      @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ', '-Mx_5FLL2jlxjXYUMdIL')" title="View projects">
+      View Projects
+      <template #right-icon>
+        <u-Icons-Heart color="white" />
+      </template>
+    </u-Components-Button>
+  </u-Components-MobileNavBar>
+</template>
 
 <style>
   .bv__dashboard__main {
     margin-top: 67px;
-    background: #eceae3;
+    background: var(--bg-primary);
     width: 100%;
     min-height: calc(92vh - 67px);
   }
+
 
   .bv__dashboard__header {
     display: flex;
@@ -156,8 +153,21 @@
     padding-top: 20px;
     padding-bottom: 25px;
 
-    background: #efede7 !important;
-    border-bottom: 1px solid #e3e1db;
+    background: var(--bg-secondary) !important;
+    /* border-bottom: 1px solid #e3e1db; */
+  }
+
+  #bv__dashboard__maincontent {
+    margin-bottom: 40px;
+  }
+
+  .bv__dashboard__topborder {
+    position: sticky;
+    top: 67px;
+    background: #e3e1db;
+    width: 100%;
+    height: 1px;
+    z-index: 50;
   }
 
   .bv__dashboard__profile {
@@ -217,29 +227,19 @@
   }
 
   .bv__dashboard__carrousel {
-    width: 100%;
-    padding-bottom: 20px;
-
     display: grid;
+    grid-template-columns: 1fr;
     gap: 20px;
 
-    justify-content: space-between;
-    grid-template-columns: repeat(1, 1fr);
-
+    width: 100%;
+    padding-bottom: 20px;
   }
 
   .bv__dashboard__totaldonated {
     gap: 0.25rem;
   }
 
-
-  @media only screen and (min-width: 480px) {
-    .bv__dashboard__carrousel {
-      grid-template-columns: repeat(1, 1fr);
-    }
-  }
-
-  @media only screen and (min-width: 576px) {
+  @media only screen and (min-width: 762px) {
     #bv__dashboard__profileusername {
       width: max-content;
     }
@@ -254,6 +254,11 @@
       margin-top: 92px;
       margin-bottom: 100px;
     }
+
+    .bv__dashboard__topborder {
+      top: 92px;
+    }
+
 
     .bv__dashboard__header {
       display: flex;
@@ -289,6 +294,31 @@
   @media only screen and (min-width: 2200px) {
     .bv__dashboard__carrousel {
       grid-template-columns: repeat(6, 1fr);
+    }
+  }
+
+
+
+  #bv__nftrefresh__elispsis:after {
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: bottom;
+    -webkit-animation: ellipsis steps(4, end) 900ms infinite;
+    animation: ellipsis steps(4, end) 900ms infinite;
+    content: "\2026";
+    /* ascii code for the ellipsis character */
+    width: 0px;
+  }
+
+  @keyframes ellipsis {
+    to {
+      width: 1.25em;
+    }
+  }
+
+  @-webkit-keyframes ellipsis {
+    to {
+      width: 1.25em;
     }
   }
 

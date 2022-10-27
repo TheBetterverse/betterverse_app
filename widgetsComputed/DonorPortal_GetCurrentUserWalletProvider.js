@@ -1,7 +1,6 @@
 return function () {
+  let walletProvider
   let currentUser = this.DonorPortal_GetCurrentUser()
-
-  var walletProvider
 
   if (currentUser.walletProvider != null) {
     walletProvider = currentUser.walletProvider
