@@ -13,6 +13,8 @@ return async function (tokenID, wallet, user, charity, cause, paymentMethod, cur
     alert('No wallet connected')
   } else {
 
+    console.log({ TreeContractAddress });
+
     // Preparing data for workflows
     const userRow = await ($dataGrid('users')[this.DonorPortal_GetCurrentUserRowKey()])
     const userParam = await JSON.stringify(userRow)
