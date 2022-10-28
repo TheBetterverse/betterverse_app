@@ -1,4 +1,4 @@
-/* DonorPortal_GetLatestNFT.js */
+/* DonorPortal_GetLatestNFTTESTNET.js */
 
 function setLoadingState(button) {
   button.setAttribute('state', 'loading')
@@ -73,12 +73,10 @@ return async event => {
     }
 
     //Check for NFT transfers
-    console.log('Checking for transfers')
+    //console.log('Checking for transfers')
 
     //Get current NFT token IDs and JSONs
-    for (let i = 0; i < currentUserNFTs.length; i++) {
-      this.DonorPortal_CheckNFTTransfersAlchemyTESTNET()
-    }
+    await this.DonorPortal_CheckNFTTransfersAlchemyTESTNET()
 
     await delay(3000)
 

@@ -73,12 +73,12 @@ return async event => {
     }
 
     //Check for NFT transfers
-    console.log('checking transfers')
+    //console.log('checking transfers')
 
     //Get current NFT token IDs and JSONs
-    for (let i = 0; i < currentUserNFTs.length; i++) {
-      this.DonorPortal_CheckNFTTransfersAlchemy()
-    }
+    //for (let i = 0; i < currentUserNFTs.length; i++) {
+      //this.DonorPortal_CheckNFTTransfersAlchemy()
+    //}
 
     await delay(3000)
 

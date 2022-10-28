@@ -1,19 +1,18 @@
 const TreeContractAddress = this.ContractsTESTNET().TreeContractAddress
 const TreeContractABI = this.ContractsTESTNET().TreeContractABI
+const web3 = new Web3('https://polygon-mumbai.g.alchemy.com/v2/dRrclX6ikOV1fZHA5fHhaORKzPB6MoEj');
+const TreeContract = new web3.eth.Contract(TreeContractABI, TreeContractAddress);
+//const currentUserWalletAddress = this.DonorPortal_GetCurrentUserWalletAddress()
 
 return async function(){
-    const web3 = new Web3('https://polygon-mumbai.g.alchemy.com/v2/dRrclX6ikOV1fZHA5fHhaORKzPB6MoEj');
-    const TreeContract = new web3.eth.Contract(TreeContractABI, TreeContractAddress);
-    const currentUserWalletAddress = this.DonorPortal_GetCurrentUserWalletAddress()
-
-    const response = await fetch("https://polygon-mumbai.g.alchemy.com/v2/dRrclX6ikOV1fZHA5fHhaORKzPB6MoEj",{
+    await fetch("https://polygon-mumbai.g.alchemy.com/v2/dRrclX6ikOV1fZHA5fHhaORKzPB6MoEj",{
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
                 id: 1,
                 jsonrpc: "2.0",
                 method: "alchemy_getAssetTransfers",
-                param: [
+                params: [
                     {
                         fromBlock: "0x0",
                         toBlock: "latest",
@@ -21,23 +20,27 @@ return async function(){
                                 TreeContractAddress
                         ],
                         category: [
-                                "external"
+                                "erc721"
                         ],
-                        withMetadata: true,
+                        withMetadata: false,
                         excludeZeroValue: true,
                         maxCount: "0x3e8",
-                        fromAddress: currentUserWalletAddress
+                        order: "desc"
+                        //fromAddress: currentUserWalletAddress
                     }
                 ]
         })
     })
-    .then((response) => {
-        var data = response.json()
-        console.log(data)
-    })
-    .catch((error) => {
-        console.log(error)
-    });
+    .then(response => response.json())
+    .then(result => $setGlobalModel('transfers', result.result.transfers))
+    .catch(error => console.log('error', error));
 
-    return data
+    var allTransfers = $getGlobalModel('transfers')
+
+    const nftTrades = allTransfers.filter(transfer => transfer.from =! "0x0000000000000000000000000000000000000000");
+
+    console.log(nftTrades)
+
+
+    return nftTrades
 }
