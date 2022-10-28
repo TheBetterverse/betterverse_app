@@ -1213,17 +1213,6 @@
     }
   },
   {
-    "filePath": "customCode/js/DonorPortal_GenerateNFTButton.js",
-    "savePath": "customCode/js/-NErRml9RUjiPMC2UpbH/code",
-    "customCodeName": "DonorPortal_GenerateNFTButton",
-    "customCodeScope": {
-      "-Mx_5FLL2jlxjXYUMdIL": {
-        "-NAtXkQSbLXO6CKKZj7d": true
-      }
-    },
-    "customCodeLifecycle": "beforeMount"
-  },
-  {
     "filePath": "settings.json",
     "savePath": "settings"
   },

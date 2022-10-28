@@ -76,7 +76,7 @@ return async event => {
     //console.log('Checking for transfers')
 
     //Get current NFT token IDs and JSONs
-    await this.DonorPortal_CheckNFTTransfersAlchemyTESTNET()
+    //await this.DonorPortal_CheckNFTTransfersAlchemyTESTNET()
 
     await delay(3000)
 

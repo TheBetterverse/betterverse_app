@@ -200,7 +200,6 @@ return async event => {
                                             })
                                             await USDCContract.methods.approve(MinterContractAddress, approveAmount).call()
                                         }
-
                                         console.log('NFT COUNT: ' + nftCount)
                                         console.log('CHARITY ID: ' + charityID)
                                         console.log('AMOUNT (WEI) ' + approveAmount)
@@ -243,9 +242,16 @@ return async event => {
 
                                                             if (nftCount == nftIDs.length) {
                                                                 for (let i = 0; i < nftCount; i++) {
-                                                                    let tokenURI = await getTokenURI(nftIDs[i], window_ethereum)
-                                                                    console.log('TokenID:' + nftIDs[i] + 'returned JSON ' + tokenURI)
-                                                                    jsonArray.push(tokenURI)
+                                                                    if(walletProvider == 'metamask'){
+                                                                        let tokenURI = await getTokenURI(nftIDs[i], window_ethereum)
+                                                                        console.log('TokenID:' + nftIDs[i] + 'returned JSON ' + tokenURI)
+                                                                        jsonArray.push(tokenURI)
+                                                                    }
+                                                                    else {
+                                                                        let tokenURI = await this.DonorPortal_GetTokenURIAlchemy(nftIDs[i])
+                                                                        console.log('TokenID:' + nftIDs[i] + 'returned JSON ' + tokenURI)
+                                                                        jsonArray.push(tokenURI)
+                                                                    }
                                                                 }
 
                                                                 /*web3.eth.getTransaction(txHash, async (error, res) => {
@@ -257,6 +263,7 @@ return async event => {
                                                                     gas,
                                                                     json: jsonArray[idx]
                                                                   })
+                                                                })
                                                                 })*/
 
                                                                 //Once donation is succesful create a row to store data
@@ -286,7 +293,7 @@ return async event => {
                                                                         donationAmount: finalDonationAmount,
                                                                         donationAmountGBP: donationAmountGBP,
                                                                         donationAmountEUR: donationAmountEUR,
-                                                                        gas: gas,
+                                                                        //gas: gas,
                                                                         date: date,
                                                                         nftCount: nftCount,
                                                                         json: jsonArray,
@@ -322,7 +329,7 @@ return async event => {
                                                                         donationAmount: equalDonationAmount,
                                                                         donationAmountGBP: equalDonationAmountGBP,
                                                                         donationAmountEUR: equalDonationAmountEUR,
-                                                                        gas: gas,
+                                                                        //gas: gas,
                                                                         date: date,
                                                                         nftCount: nftCount,
                                                                         json: jsonArray,
