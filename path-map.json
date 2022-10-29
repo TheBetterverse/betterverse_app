@@ -1461,6 +1461,14 @@
     "savePath": "widgets/-NEvMS83h5nZZJLMpZxZ"
   },
   {
+    "filePath": "widgets/-NFWtGhnKp6AVd1XObXd/widget.json",
+    "savePath": "widgets/-NFWtGhnKp6AVd1XObXd"
+  },
+  {
+    "filePath": "widgets/-NFWtGhnKp6AVd1XObXd/template.html",
+    "savePath": "widgets/-NFWtGhnKp6AVd1XObXd/template"
+  },
+  {
     "filePath": "widgetsComputed/Contracts.js",
     "savePath": "widgetsComputed/Contracts"
   },
@@ -2325,6 +2333,19 @@
   {
     "filePath": "workflow/DonorPortal_DonationTESTNET (-NFAJ5FTPC1S4DAUubnv).json",
     "savePath": "workflow/-NFAJ5FTPC1S4DAUubnv",
+    "conversion": "workflow"
+  },
+  {
+    "filePath": "workflow/scriptTasks/Flicker/Script Task (node1667015254210).js",
+    "savePath": "workflow/-NFWqTUfeJ_5BGMptbwq",
+    "isWorkflowScriptTask": true,
+    "workflowId": "-NFWqTUfeJ_5BGMptbwq",
+    "workflowFile": "workflow/Flicker (-NFWqTUfeJ_5BGMptbwq).json",
+    "nodeId": "node1667015254210"
+  },
+  {
+    "filePath": "workflow/Flicker (-NFWqTUfeJ_5BGMptbwq).json",
+    "savePath": "workflow/-NFWqTUfeJ_5BGMptbwq",
     "conversion": "workflow"
   }
 ]

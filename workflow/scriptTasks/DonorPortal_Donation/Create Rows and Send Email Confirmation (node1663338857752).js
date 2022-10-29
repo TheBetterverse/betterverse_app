@@ -979,6 +979,7 @@ const treeContractData = {
     ]
 }
 
+
 const gatewayURL = "https://assets.betterverse.app"
 const tokenID = await context.webhookdata.payload.tokenID
 const wallet = await context.webhookdata.payload.wallet
@@ -1129,8 +1130,8 @@ $log(nftRows[0])
 $log('NFT ROWS JSON:')
 $log(json[0])
 
-try{
 
+try{
     const TreeContract = new web3.eth.Contract(treeContractData.TreeContractABI, treeContractData.TreeContractAddress);
 
     for (let i = 0; i < nftRows.length; i++) {
@@ -1150,7 +1151,6 @@ try{
     
         await createLog(callDash, '', convertedURL, 'nFTs', nftRows[i], 'json')
     }
-
 }
 catch(err){
     $log(err)

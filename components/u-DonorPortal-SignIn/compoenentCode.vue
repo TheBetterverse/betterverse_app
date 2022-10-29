@@ -255,7 +255,9 @@ module.exports = {
 
     redirectToSignUp() {
       this.DonorPortal_RedirectToSignUp()
-    }
+    },
+
+    $getGlobalModel: window.$getGlobalModel,
   },
 
   computed: {

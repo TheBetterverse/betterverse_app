@@ -242,16 +242,16 @@ return async event => {
 
                                                             if (nftCount == nftIDs.length) {
                                                                 for (let i = 0; i < nftCount; i++) {
-                                                                    if(walletProvider == 'metamask'){
+                                                                    /*if(walletProvider == 'metamask'){
                                                                         let tokenURI = await getTokenURI(nftIDs[i], window_ethereum)
                                                                         console.log('TokenID:' + nftIDs[i] + 'returned JSON ' + tokenURI)
                                                                         jsonArray.push(tokenURI)
                                                                     }
-                                                                    else {
-                                                                        let tokenURI = await this.DonorPortal_GetTokenURIAlchemy(nftIDs[i])
-                                                                        console.log('TokenID:' + nftIDs[i] + 'returned JSON ' + tokenURI)
-                                                                        jsonArray.push(tokenURI)
-                                                                    }
+                                                                    else {*/
+                                                                    let tokenURI = await this.DonorPortal_GetTokenURIAlchemy(nftIDs[i])
+                                                                    console.log('TokenID:' + nftIDs[i] + 'returned JSON ' + tokenURI)
+                                                                    jsonArray.push(tokenURI)
+                                                                    //}
                                                                 }
 
                                                                 /*web3.eth.getTransaction(txHash, async (error, res) => {
@@ -304,9 +304,12 @@ return async event => {
                                                                         workflow: '-NAA9tsNod6psXPRUZr0',
                                                                         payload: payload,
                                                                     })
+
                                                                     return
                                                                 } else if (nftCount >= 2 && nftCount <= 10) {
+
                                                                     this.DonorPortal_RedirectToGeneration()
+
                                                                     const finalDonationAmount = await this.DonorPortal_DonationCut(amount)
                                                                     const donationAmountGBP = await this.Global_ConvertUSDtoGBP(finalDonationAmount)
                                                                     const donationAmountEUR = await this.Global_ConvertUSDtoEUR(finalDonationAmount)
@@ -340,6 +343,7 @@ return async event => {
                                                                         workflow: '-NAA9tsNod6psXPRUZr0',
                                                                         payload: payload,
                                                                     })
+
                                                                     return
                                                                 } else {
                                                                     document.getElementById("bv__spinner").style.display = "none";

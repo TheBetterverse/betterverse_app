@@ -1,4 +1,4 @@
-return async function(){
+return async event => {
 
     //Get Donation modal data
     const wallet = await this.DonorPortal_GetCurrentUserWalletAddress();
@@ -76,7 +76,7 @@ return async function(){
 
                         var json = 'https://ipfs.io/ipfs/bafybeib2nrkchurmel2sj47vrxacpbezmhg6hfrue66n2scsk7geytrwam/29a.json'
 
-                        json = await this.DonorPortal_ResolveNFTURL(json)
+                        //json = await this.DonorPortal_ResolveNFTURL(json)
 
                         console.log(json)
                     }
@@ -111,7 +111,7 @@ return async function(){
                                         donationAmount: finalDonationAmount,
                                         donationAmountGBP: donationAmountGBP,
                                         donationAmountEUR: donationAmountEUR,
-                                        gas: gas,
+                                        //gas: gas,
                                         date: date,
                                         nftCount: nftCount,
                                         json: json,
