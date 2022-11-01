@@ -91,7 +91,7 @@
       <p>
         Our dontation platform is currently in Alpha v1.0<br />so please bare
         with us or
-        <a href="mailto: help@betterverse.app"><u>report them here</u></a
+        <a href="mailto: help@betterverse.app"><u>report your issues here</u></a
         >.
       </p>
     </div>

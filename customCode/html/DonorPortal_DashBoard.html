@@ -1,135 +1,136 @@
 <!-- DonorPortal_DashBoard.html -->
-<main class="bv__dashboard__main">
-  <div class="bv__dashboard__header bv__globals__px">
-    <div class="bv__dashboard__profile">
-      <u-Components-ProfilePicture height="80px" width="80px" :src="DonorPortal_GetCurrentUserProfilePicture()" />
-      <div>
-        <h1 id="bv__dashboard__profileusername">
-          {{ DonorPortal_GetCurrentUserNames('full') }}
-        </h1>
-        <p>
-          Joined {{ DonorPortal_GetCurrentUserJoinedDate() }}
-        </p>
+<template>
+  <main class="bv__dashboard__main">
+    <div class="bv__dashboard__header bv__globals__px">
+      <div class="bv__dashboard__profile">
+        <u-Components-ProfilePicture height="80px" width="80px" :src="DonorPortal_GetCurrentUserProfilePicture()" />
+        <div>
+          <h1 id="bv__dashboard__profileusername">
+            {{ DonorPortal_GetCurrentUserNames('full') }}
+          </h1>
+          <p>
+            Joined {{ DonorPortal_GetCurrentUserJoinedDate() }}
+          </p>
+        </div>
+      </div>
+
+      <div class="bv__dashboard__cards">
+        <div class="bv__dashboard__card">
+          <div class="bv__dashboard__cardhead">
+            <p> Total donated </p>
+            <h2 class="bv__dashboard__totaldonated d-flex">
+              <u-Icons-USDC />
+              {{ parseFloat(DonorPortal_GetCurrentUserTotalDonationsAmount()).toLocaleString() }}
+            </h2>
+            <p v-if="DonorPortal_GetCurrentUserComparisonCurrency() != null"> ~{{
+              DonorPortal_GetCurrentUserTotalDonationsAmountComparisonCurrency() }} </p>
+          </div>
+          <div class="bv__dashboard__cardfoot">
+            <u-Icons-Donation />
+          </div>
+        </div>
+
+        <div class="bv__dashboard__card">
+          <div class="bv__dashboard__cardhead">
+            <p> Trees planted </p>
+            <h2> {{ DonorPortal_GetCurrentUserTotalTreesPlanted().toLocaleString() }} </h2>
+          </div>
+
+          <div class="bv__dashboard__cardfoot">
+            <u-Icons-TreesPlanted />
+          </div>
+        </div>
+
+        <div class="bv__dashboard__card">
+          <div class="bv__dashboard__cardhead">
+            <span class="w-100 d-flex align-items-center justify-content-between">
+              <p> CO₂ Captured </p>
+              <u-Components-ToolTip>
+                <template #tooltip>
+                  <p>Want to know how we figure this out? Info coming soon.</p>
+                </template>
+              </u-Components-ToolTip>
+            </span>
+
+            <h2> {{ parseFloat(DonorPortal_GetCurrentUserDailyCarbonSequestrationUpdate('all')).toLocaleString() }} kg
+            </h2>
+          </div>
+
+          <div class="bv__dashboard__cardfoot">
+            <u-Icons-CO2Captured />
+          </div>
+        </div>
+
+        <div class="bv__dashboard__card">
+          <div class="bv__dashboard__cardhead">
+            <span> Locations </span>
+            <h2> {{ DonorPortal_GetCurrentUserTotalDonationsProjectsLocations.toLocaleString() }} </h2>
+          </div>
+
+          <div class="bv__dashboard__cardfoot">
+            <u-Icons-Locations />
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="bv__dashboard__cards">
-      <div class="bv__dashboard__card">
-        <div class="bv__dashboard__cardhead">
-          <p> Total donated </p>
-          <h2 class="bv__dashboard__totaldonated d-flex">
-            <u-Icons-USDC />
-            {{ parseFloat(DonorPortal_GetCurrentUserTotalDonationsAmount()).toLocaleString() }}
+    <div class="bv__dashboard__topborder"></div>
+
+    <div id="bv__dashboard__maincontent" class="bv__globals__px">
+      <div class="bv__dashboard__currentnfts ">
+        <div v-if="DonorPortal_GetCurrentUserNFTsCount() == 0"
+          style="display: flex; flex-direction: column; gap: 1rem; width: auto;">
+          <h2 style="font-weight: 400">
+            You have 0 NFTs
           </h2>
-          <p v-if="DonorPortal_GetCurrentUserComparisonCurrency() != null"> ~{{
-            DonorPortal_GetCurrentUserTotalDonationsAmountComparisonCurrency() }} </p>
-        </div>
-        <div class="bv__dashboard__cardfoot">
-          <u-Icons-Donation />
-        </div>
-      </div>
 
-      <div class="bv__dashboard__card">
-        <div class="bv__dashboard__cardhead">
-          <p> Trees planted </p>
-          <h2> {{ DonorPortal_GetCurrentUserTotalTreesPlanted().toLocaleString() }} </h2>
+          <p>
+            Not to worry! You can make your first donation and start offsetting some CO₂.
+          </p>
+
+          <u-Components-Button @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ', '-Mx_5FLL2jlxjXYUMdIL')" secondary
+            style="width: max-content" title="View projects">
+            <p> View projects </p>
+            <template #right-icon>
+              <u-Icons-Heart color="white"></u-Icons-Heart>
+            </template>
+          </u-Components-Button>
         </div>
 
-        <div class="bv__dashboard__cardfoot">
-          <u-Icons-TreesPlanted />
-        </div>
-      </div>
+        <div v-else>
+          <h2 style="font-weight: 400; display: flex; align-items: center; justify-content: space-between;">
+            You have {{ DonorPortal_GetCurrentUserNFTsCount() }}
+            NFT{{ DonorPortal_GetCurrentUserNFTsCount() > 1 ? 's' : '' }}
 
-      <div class="bv__dashboard__card">
-        <div class="bv__dashboard__cardhead">
-          <span class="w-100 d-flex align-items-center justify-content-between">
-            <p> CO₂ Captured </p>
-            <u-Components-ToolTip>
-              <template #tooltip>
-                <p>Want to know how we figure this out? Info coming soon.</p>
-              </template>
-            </u-Components-ToolTip>
-          </span>
-
-          <h2> {{ parseFloat(DonorPortal_GetCurrentUserDailyCarbonSequestrationUpdate('all')).toLocaleString() }} kg
+            <u-Components-RefreshButton @click="DonorPortal_GetLatestNFT">
+            </u-Components-RefreshButton>
           </h2>
-        </div>
 
-        <div class="bv__dashboard__cardfoot">
-          <u-Icons-CO2Captured />
         </div>
       </div>
 
-      <div class="bv__dashboard__card">
-        <div class="bv__dashboard__cardhead">
-          <span> Locations </span>
-          <h2> {{ DonorPortal_GetCurrentUserTotalDonationsProjectsLocations.toLocaleString() }} </h2>
-        </div>
+      <div class="bv__dashboard__carrousel"
+        v-if="DonorPortal_GetCurrentUserNFTs() != null && !$getGlobalModel('dashboardRefresh')">
 
-        <div class="bv__dashboard__cardfoot">
-          <u-Icons-Locations />
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="bv__dashboard__topborder"></div>
-
-  <div id="bv__dashboard__maincontent" class="bv__globals__px">
-    <div class="bv__dashboard__currentnfts ">
-      <div v-if="DonorPortal_GetCurrentUserNFTsCount() == 0"
-        style="display: flex; flex-direction: column; gap: 1rem; width: auto;">
-        <h2 style="font-weight: 400">
-          You have 0 NFTs
-        </h2>
-
-        <p>
-          Not to worry! You can make your first donation and start offsetting some CO₂.
-        </p>
-
-        <u-Components-Button @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ', '-Mx_5FLL2jlxjXYUMdIL')" secondary
-          style="width: max-content" title="View projects">
-          <p> View projects </p>
-          <template #right-icon>
-            <u-Icons-Heart color="white"></u-Icons-Heart>
-          </template>
-        </u-Components-Button>
-      </div>
-
-      <div v-else>
-        <h2 style="font-weight: 400; display: flex; align-items: center; justify-content: space-between;">
-          You have {{ DonorPortal_GetCurrentUserNFTsCount() }}
-          NFT{{ DonorPortal_GetCurrentUserNFTsCount() > 1 ? 's' : '' }}
-
-          <u-Components-RefreshButton @click="DonorPortal_GetLatestNFTTESTNET">
-          </u-Components-RefreshButton>
-        </h2>
-
+        <u-Components-TreeCard v-for="(row, key) in DonorPortal_GetCurrentUserNFTs()" :data="row" :key="key"
+          @view="DonorPortal_ViewSelectedTree(row)">
+        </u-Components-TreeCard>
       </div>
     </div>
 
-    <div class="bv__dashboard__carrousel"
-      v-if="DonorPortal_GetCurrentUserNFTs() != null && !$getGlobalModel('dashboardRefresh')">
+  </main>
+  <u-Components-Footer />
 
-      <u-Components-TreeCard v-for="(row, key) in DonorPortal_GetCurrentUserNFTs()" :data="row" :key="key"
-        @view="DonorPortal_ViewSelectedTree(row)">
-      </u-Components-TreeCard>
-    </div>
-  </div>
-
-</main>
-
-<u-Components-Footer />
-
-<u-Components-MobileNavBar @click="DonorPortal_TriggerMobileNav()" class="bv__globals__px">
-  <u-Components-Button secondary class="w-100"
-    @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ', '-Mx_5FLL2jlxjXYUMdIL')" title="View projects">
-    View Projects
-    <template #right-icon>
-      <u-Icons-Heart color="white" />
-    </template>
-  </u-Components-Button>
-</u-Components-MobileNavBar>
+  <u-Components-MobileNavBar @click="DonorPortal_TriggerMobileNav()" class="bv__globals__px">
+    <u-Components-Button secondary class="w-100"
+      @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ', '-Mx_5FLL2jlxjXYUMdIL')" title="View projects">
+      View Projects
+      <template #right-icon>
+        <u-Icons-Heart color="white" />
+      </template>
+    </u-Components-Button>
+  </u-Components-MobileNavBar>
+</template>
 
 <style>
   .bv__dashboard__main {

@@ -5,14 +5,13 @@ return async function(){
           window.torus = torus
 
         await window.torus.init({
-        buildEnv: 'test', // default: production
-        enableLogging: true, // default: false
-        network: {
-          host: 'mumbai', // default: mainnet
-          chainId: 80001, // default: 1
-          networkName: 'Mumbai Test Network' // default: Main Ethereum Network
+          buildEnv: 'production',
+          enableLogging: true,
+          network: {
+            host: 'matic', 
+            chainId: 137, 
+            networkName: 'Polygon Mainnet' 
         }
-        // showTorusButton: false // default: true
       })
     }
 

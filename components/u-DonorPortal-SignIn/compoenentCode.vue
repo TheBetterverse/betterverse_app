@@ -226,7 +226,6 @@ module.exports = {
         })
         .catch(err => {
           alert(err.message)
-          spinnerActive == false
         })
     },
 
@@ -236,9 +235,7 @@ module.exports = {
           $setCurrentTab('-Mx_5FLL2jlxjXYUMdIL')
         })
         .catch(err => {
-          console.log(err)
           alert(err.message)
-          //spinnerActive == false
         })
     },
 
@@ -248,9 +245,7 @@ module.exports = {
           $setCurrentTab('-Mx_5FLL2jlxjXYUMdIL')
         })
         .catch(err => {
-          console.log(err)
           alert(err.message)
-          //spinnerActive == false
         })
     },
 
@@ -260,7 +255,9 @@ module.exports = {
 
     redirectToSignUp() {
       this.DonorPortal_RedirectToSignUp()
-    }
+    },
+
+    $getGlobalModel: window.$getGlobalModel,
   },
 
   computed: {

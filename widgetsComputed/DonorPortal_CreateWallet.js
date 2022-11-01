@@ -4,7 +4,6 @@ return function(walletProvider){
     var wallet = null
 
     if(walletProvider == "Slide"){
-        // wallet = 'TorusWalletAddressHere'
 
         (async () => {
             const slide = new Slide.SDK()
@@ -15,8 +14,8 @@ return function(walletProvider){
 
             const web3 = new Web3(slide);
 
-            //$setDataGridVal('users', currentUserRowKey + '.walletAddress', wallet)
-            //$setDataGridVal('users', currentUserRowKey + '.walletProvider', 'slide')
+            $setDataGridVal('users', currentUserRowKey + '.walletAddress', wallet)
+            $setDataGridVal('users', currentUserRowKey + '.walletProvider', 'slide')
 
             //If user is on the register page and connected wallet successful, redirect to topup page
             if (

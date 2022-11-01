@@ -1,12 +1,14 @@
 {
   "gsOptions": {
-    "h": 9,
+    "h": 2,
     "w": 13,
-    "x": 11,
-    "y": 18
+    "x": 0,
+    "y": 0
   },
   "layout": "b-card",
   "offSet": 0,
   "perPage": 2,
+  "subTab": "-N5Zy6y9RFxh7w7jY5uK",
+  "subtab": "-N5Zy6y9RFxh7w7jY5uK",
   "tab": "-Mx_2_VCOc__FGnUdqrq"
 }

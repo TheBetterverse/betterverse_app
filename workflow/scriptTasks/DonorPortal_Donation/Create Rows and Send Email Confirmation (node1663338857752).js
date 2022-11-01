@@ -2,13 +2,8 @@ const {userId} = context.webhookdata
 const email = await getUserEmailByUID(userId)
 context.data = email
 
-$log.debug('test')
-$log('Installing web3 packages')
-
 const Web3 = require("web3");
-$log('Loaded web3 packages')
 const web3 = new Web3(new Web3.providers.HttpProvider('https://polygon-mainnet.g.alchemy.com/v2/wWp7N5zX6mucrbV-RnKoDNDdD5n7cBOc'));
-$log('Configured web3 lfg')
 
 //Tree contract ABI
 const treeContractData = {
@@ -984,6 +979,7 @@ const treeContractData = {
     ]
 }
 
+
 const gatewayURL = "https://assets.betterverse.app"
 const tokenID = await context.webhookdata.payload.tokenID
 const wallet = await context.webhookdata.payload.wallet
@@ -998,7 +994,7 @@ const location = await context.webhookdata.payload.location
 const donationAmount = await context.webhookdata.payload.donationAmount
 const donationAmountGBP = await context.webhookdata.payload.donationAmountGBP
 const donationAmountEUR = await context.webhookdata.payload.donationAmountEUR
-const gas = await context.webhookdata.payload.gas
+//const gas = await context.webhookdata.payload.gas
 const date = await context.webhookdata.payload.date
 const nftCount = await context.webhookdata.payload.nftCount
 const json = await context.webhookdata.payload.json
@@ -1055,6 +1051,12 @@ $log('TokenID length: ' + tokenID.length)
 if (tokenID.length == 1) {
     $log('Creating single nft and donation row')
     
+    //Pinata Conversion
+    const splitUrl = json[0].split(/\/|\?/);
+    const cid = splitUrl[2]
+    const file = splitUrl[3]
+    var convertedURL = `${gatewayURL}/ipfs/${cid}/${file}`
+
     //Create donation row
     let newDonationRow = await $addRow('capturedDonationData', {
         tokenID: tokenID[0],
@@ -1066,7 +1068,7 @@ if (tokenID.length == 1) {
         currency: currency,
         donationLocation: location,
         donationAmount: donationAmount,
-        gas: gas,
+        //gas: gas,
         donationDate: date,
         numberOfTreesPlanted: numberOfTrees,
         yearlyCarbonSequestration: carbonSequestration,
@@ -1080,7 +1082,7 @@ if (tokenID.length == 1) {
         walletAddress: wallet,
         owner: user.user,
         initialDonationRow: newDonationRow,
-        json: json[0],
+        json: convertedURL,
         nftType: nftType
     })
     
@@ -1102,7 +1104,7 @@ if (tokenID.length == 1) {
             currency: currency,
             donationLocation: location,
             donationAmount: donationAmount,
-            gas: gas,
+            //gas: gas,
             donationDate: date,
             numberOfTreesPlanted: numberOfTrees,
             yearlyCarbonSequestration: carbonSequestration,
@@ -1128,8 +1130,8 @@ $log(nftRows[0])
 $log('NFT ROWS JSON:')
 $log(json[0])
 
-try{
 
+try{
     const TreeContract = new web3.eth.Contract(treeContractData.TreeContractABI, treeContractData.TreeContractAddress);
 
     for (let i = 0; i < nftRows.length; i++) {
@@ -1149,7 +1151,6 @@ try{
     
         await createLog(callDash, '', convertedURL, 'nFTs', nftRows[i], 'json')
     }
-
 }
 catch(err){
     $log(err)

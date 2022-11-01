@@ -65,21 +65,24 @@ module.exports = {
       const json = await response.json()
 
       //Image conversion
-      const splitUrl = json.image.split(/\/|\?/)
-      const imageUrlcid = splitUrl[2]
-      const imageUrlfile = splitUrl[3]
-      var convertedImgURL = `${gatewayURL}/ipfs/${imageUrlcid}/${imageUrlfile}`
-      const newImageURL = convertedImgURL
+      if(json.image){
+        const splitUrl = json.image.split(/\/|\?/)
+        const imageUrlcid = splitUrl[2]
+        const imageUrlfile = splitUrl[3]
+        var convertedImgURL = `${gatewayURL}/ipfs/${imageUrlcid}/${imageUrlfile}`
+        const newImageURL = convertedImgURL
+        this.imageResult = await newImageURL
+      }
 
       //Animation conversion
-      const animSplitUrl = json.animation_url.split(/\/|\?/)
-      const animUrlcid = animSplitUrl[2]
-      const animUrfile = animSplitUrl[3]
-      var convertedAnimURL = `${gatewayURL}/ipfs/${animUrlcid}/${animUrfile}`
-      const newAnimationURL = convertedAnimURL
-
-      this.animationResult = await newAnimationURL
-      this.imageResult = await newImageURL
+      if(json.animation_url){
+        const animSplitUrl = json.animation_url.split(/\/|\?/)
+        const animUrlcid = animSplitUrl[2]
+        const animUrfile = animSplitUrl[3]
+        var convertedAnimURL = `${gatewayURL}/ipfs/${animUrlcid}/${animUrfile}`
+        const newAnimationURL = convertedAnimURL
+        this.animationResult = await newAnimationURL
+      }
     }
   }
 }

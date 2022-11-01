@@ -67,6 +67,7 @@
       "type": "user"
     },
     "shareableLink": {
+      "Width": "175px",
       "displayName": "shareableLink",
       "invisible": false,
       "order": 6,

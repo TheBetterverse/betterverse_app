@@ -102,8 +102,7 @@
     "numberOfTreesPlanted": {
       "Width": "268px",
       "displayName": "numberOfTreesPlanted",
-      "invisible": false,
-      "onChange": "/*var carbonSequestration = rowData.$charityProject.yearlyCO2Sequestration\r\n\r\n//console.log(carbonSequestration)\r\n\r\nvar treesPlanted = rowData.numberOfTreesPlanted\r\nvar totalCarbonSequestration = (carbonSequestration*treesPlanted)\r\n\r\n    $setDataGridVal('capturedDonationData', rowData.rowKey + '.yearlyCarbonSequestration', totalCarbonSequestration)\r\n    //console.log(totalCarbonSequestration)\r\n\r\n/*if (treesPlanted != 0){\r\n\r\n}*/",
+      "onChange": "console.log('change happen')\n/*var carbonSequestration = rowData.$charityProject.yearlyCO2Sequestration\n\n//console.log(carbonSequestration)\n\nvar treesPlanted = rowData.numberOfTreesPlanted\nvar totalCarbonSequestration = (carbonSequestration*treesPlanted)\n\n    $setDataGridVal('capturedDonationData', rowData.rowKey + '.yearlyCarbonSequestration', totalCarbonSequestration)\n    //console.log(totalCarbonSequestration)\n\n/*if (treesPlanted != 0){\n\n}*/",
       "order": 6,
       "type": "number"
     },
@@ -797,7 +796,7 @@
                 "customCode": "",
                 "invisible": false,
                 "invisibleCondition": "",
-                "invisibleInDataGrid": true,
+                "invisibleInDataGrid": false,
                 "invisibleLabel": false,
                 "enableCustomValidation": false,
                 "customValidationRule": "",
