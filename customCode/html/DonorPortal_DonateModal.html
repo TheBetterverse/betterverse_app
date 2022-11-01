@@ -1,6 +1,6 @@
 <!-- DonorPortal_DonateModal.html -->
 <template>
-  <form @submit.prevent="DonorPortal_Donate">
+  <form>
     <div id="bv__donatemodal" class="w-100">
       <div class="bv__donatemodal__main" v-if="DonorPortal_GetSpecificProject()">
         <div class="bv__donatemodal__header  bv__globals__px">
@@ -25,7 +25,7 @@
           <div class="bv__donatemodal__donatemessagewrap">
             <h2 class="bv__donatemodal__donatemessage">
               <span>I want to donate</span>
-                <b v-if="DonorPortal_GetCurrentUserWalletProvider() == 'slide'"> $20 </b>
+              <b v-if="DonorPortal_GetCurrentUserWalletProvider() == 'slide'"> $20 </b>
               <!--span v-if="DonorPortal_GetCurrentUserWalletProvider() == 'slide'" style="position: relative">
                 <span class="bv__inlineinput__topspan">
                   <p>Select amount</p>
@@ -79,8 +79,7 @@
 
           <div>
             <hr class="d-none d-lg-block" />
-            <div class="bv__donatemodal__headerfoot" 
-            v-if="DonorPortal_GetCurrentUserWalletProvider() != 'slide'">
+            <div class="bv__donatemodal__headerfoot" v-if="DonorPortal_GetCurrentUserWalletProvider() != 'slide'">
               <u-Icons-Info />
               <p>By increasing your donation you are increasing your
                 chance
@@ -99,7 +98,7 @@
             <div>
               <p>Donation</p>
               <h2 style="display: flex; gap: 0.25rem; align-items: center;">
-                <u-Icons-USDC height="24px" width="24px"/>
+                <u-Icons-USDC height="24px" width="24px" />
                 {{ DonorPortal_GetDonationAmount() }}
               </h2>
             </div>
@@ -238,7 +237,9 @@
                 </label>
               </div>
 
-              <div v-if="DonorPortal_GetDonationAmountNumber() >= 20 && DonorPortal_GetCurrentUserWalletProvider() != 'slide'" class="bv__donatemodal__radioinputwrap">
+              <div
+                v-if="DonorPortal_GetDonationAmountNumber() >= 20 && DonorPortal_GetCurrentUserWalletProvider() != 'slide'"
+                class="bv__donatemodal__radioinputwrap">
                 <input type="radio" id="bv__donatemodal__customsplit" name="split_donation" value="yes" />
                 <label for="bv__donatemodal__customsplit">
                   <div style="display: flex; gap: 1rem; align-items: center">
@@ -285,7 +286,8 @@
                 </div>
               </label>
 
-              <div style="position: relative; float: right;" v-if="DonorPortal_GetCurrentUserWalletProvider() != 'slide'">
+              <div style="position: relative; float: right;"
+                v-if="DonorPortal_GetCurrentUserWalletProvider() != 'slide'">
                 <u-Components-Button v-if="DonorPortal_GetCurrentUserWalletAddress() != null"
                   @click="DonorPortal_LoadRamp('overlay')" title="Top up wallet">
                   <p> Top up wallet </p>
@@ -313,7 +315,8 @@
 
         <div class="grid-area-9"
           style="width: 100%; display: flex; align-items: center; justify-content: flex-end; padding: 1rem 0;">
-          <u-Components-Button secondary type="submit" id="bv__donate__button" title="Donate and generate NFT">
+          <u-Components-Button secondary type="submit" id="bv__donate__button" title="Donate and generate NFT"
+            @click="DonorPortal_Donate">
             <p id="bv__donate__buttontext">Donate and Generate NFT</p>
             <div style="margin-left: 6px; display: none;" class="spinner-border spinner-border-sm" id="bv__spinner"
               role="status"></div>
@@ -321,7 +324,8 @@
         </div>
 
         <small class="grid-area-10" v-if="DonorPortal_GetCurrentUserWalletProvider() != 'slide'">
-          Did you know you can split your donation to generate more NFTs? However, you'll a smaller chance to mint a rarer NFT. 
+          Did you know you can split your donation to generate more NFTs? However, you'll a smaller chance to mint a
+          rarer NFT.
           <!--u><a style="font-weight: 500;" href="https://www.betterverse.app"> mint a rarer NFT. </a></u-->
         </small>
       </div>

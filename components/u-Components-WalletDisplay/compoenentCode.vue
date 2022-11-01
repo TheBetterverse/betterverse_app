@@ -3,6 +3,7 @@
     primary
     name="bv-walletdisplay"
     class="bv__walletdisplay"
+    type="button"
     :title="walletTitle"
     :class="{ error: state >= STATES.ERROR }"
     @click="$emit('click', $event)"
@@ -36,7 +37,10 @@
           <u-Icons-Coinbase
             v-else-if="provider === 'coinbase'"
           ></u-Icons-Coinbase>
-          <u-Icons-Slide v-else-if="provider === 'slide'"></u-Icons-Slide>
+          <u-Icons-Slide
+            class="bv__walletdisplay__inner__slide"
+            v-else-if="provider === 'slide'"
+          ></u-Icons-Slide>
           <u-Icons-Wallet v-else></u-Icons-Wallet>
         </span>
 
@@ -186,5 +190,11 @@ module.exports = {
 .bv__walletdisplay__balance {
   display: flex;
   gap: 6px;
+}
+
+@media all and (min-width: 321px) and (max-width: 480px) {
+  .bv__walletdisplay__inner__slide {
+    margin-top: -3px;
+  }
 }
 </style>

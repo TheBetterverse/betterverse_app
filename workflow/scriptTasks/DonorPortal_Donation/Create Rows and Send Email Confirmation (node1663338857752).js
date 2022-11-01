@@ -1051,11 +1051,12 @@ $log('TokenID length: ' + tokenID.length)
 if (tokenID.length == 1) {
     $log('Creating single nft and donation row')
     
-    //Pinata Conversion
+    /*Pinata Conversion
     const splitUrl = json[0].split(/\/|\?/);
     const cid = splitUrl[2]
     const file = splitUrl[3]
     var convertedURL = `${gatewayURL}/ipfs/${cid}/${file}`
+    */
 
     //Create donation row
     let newDonationRow = await $addRow('capturedDonationData', {
@@ -1082,15 +1083,13 @@ if (tokenID.length == 1) {
         walletAddress: wallet,
         owner: user.user,
         initialDonationRow: newDonationRow,
-        json: convertedURL,
+        json: json[0],
         nftType: nftType
     })
     
     nftRows.push(newNFTRow)
     
 } else if (tokenID.length >= 2 && tokenID.length <= 10) {
-
-    //PINATA HERE
 
     for (let i = 0; i < tokenID.length; i++) {
         $log("Writing donation entry for " + tokenID[i])

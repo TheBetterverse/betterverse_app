@@ -52,6 +52,11 @@
   justify-content: flex-start;
   gap: 0.5rem;
   pointer-events: all;
+  border-radius: 4px;
+  appearance: none;
+  -moz-appearance: none;
+  color: black;
+  background: var(--bg-primary) !important;
 }
 
 .bv__dropdown__dropdownitems > *:focus,

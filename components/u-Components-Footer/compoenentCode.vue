@@ -141,6 +141,7 @@ module.exports = {
 .bv__footer__linksection {
   display: grid;
   grid-template-areas: 'learn follow' 'legal donate' 'reach reach';
+  justify-content: start;
   gap: 30px;
   width: 100%;
   margin-bottom: 22px;
@@ -199,7 +200,11 @@ module.exports = {
   max-width: 100%;
 }
 
-@media screen and (min-width: 772px) {
+.bv__footer__appinfosection {
+  justify-content: start;
+}
+
+@media screen and (min-width: 1080px) {
   .bv__footer {
     grid-template-areas: 'title linksection' 'bvinfo appinfo';
     align-items: flex-start;

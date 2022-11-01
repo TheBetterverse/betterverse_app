@@ -227,19 +227,22 @@ return async event => {
                                                     return
                                                     //Successful mint
                                                 } else {
-                                                    document.getElementById("bv__donate__buttontext").innerText = 'Please wait'
-                                                    await new Promise(resolve => setTimeout(resolve, 3000));
+                                                    // document.getElementById("bv__donate__buttontext").innerText = 'Please wait'
+                                                    // await new Promise(resolve => setTimeout(resolve, 3000));
                                                     document.getElementById("bv__donate__buttontext").innerText = 'Do not close this window'
 
                                                     //Task 3.4 Save NFT Data
                                                     let nftIDs = []
                                                     let jsonArray = []
                                                     try {
-                                                        TreeContractWithEther.on('minted', async (token, user, event) => {
+                                                        console.log('getting minted token')
+                                                        
+                                                        const handleNFTMinted = async (token, user, event) => {
                                                             const mintedTokenID = web3.utils.hexToNumber(token)
                                                             console.log(mintedTokenID, ': minted TokenID')
                                                             nftIDs.push(mintedTokenID)
 
+                                                            console.log('getting json urls')
                                                             if (nftCount == nftIDs.length) {
                                                                 for (let i = 0; i < nftCount; i++) {
                                                                     /*if(walletProvider == 'metamask'){
@@ -269,6 +272,7 @@ return async event => {
                                                                 //Once donation is succesful create a row to store data
                                                                 document.getElementById("bv__donate__buttontext").innerText = 'Generating tree'
 
+                                                                console.log('prepping data rows for db')
                                                                 if (nftCount == 1) {
 
                                                                     this.DonorPortal_RedirectToGeneration()
@@ -351,8 +355,40 @@ return async event => {
                                                                     alert("Error. Please contact support@betterverse.app");
                                                                 }
                                                             }
-                                                        })
+                                                        };
+
+                                                        console.log({ txHash });
+
+                                                        const transactionHash = typeof txHash === "string" ? txHash : txHash[0];
+
+                                                        const receipt = await provider.getTransactionReceipt(transactionHash);
+
+                                                        console.log({ receipt });
+
+                                                        if (receipt) {
+                                                            let mintEvent;
+                                                            receipt.logs.forEach((log) => {
+                                                                try {
+                                                                    event = TreeContractWithEther.interface.parseLog(log)
+
+                                                                    if (event.name.toLowerCase() === "minted") {
+                                                                        mintEvent = event;
+                                                                    }
+                                                                } catch {}
+                                                            });
+
+                                                            if (!mintEvent) {
+                                                                throw new Error("mint event not found on transaction");
+                                                            }
+
+                                                            console.log({ mintEvent });
+
+                                                            handleNFTMinted(mintEvent.args.token.toHexString(), mintEvent.args.user, mintEvent);
+                                                        } else {
+                                                            TreeContractWithEther.on('minted', handleNFTMinted);
+                                                        }
                                                     } catch (err) {
+                                                        console.log({ err });
                                                         document.getElementById("bv__spinner").style.display = "none";
                                                         document.getElementById("bv__donate__buttontext").innerText = 'Donate and Generate NFT'
                                                         alert("Error getting minted token. Please contact support@betterverse.app!");
