@@ -48,10 +48,10 @@
       </div>
 
       <div class="bv__footer__linklist" style="grid-area: donate">
-        <p>Donate</p>
+        <p>Give</p>
         <div>
           <p>
-            <a @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ')">Projects</a>
+            <a href="#" @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ')">Projects</a>
           </p>
         </div>
       </div>
@@ -59,7 +59,7 @@
       <div class="bv__footer__linklist" style="grid-area: legal">
         <p>Legal</p>
         <div>
-          <p><a href="https://www.betterverse.app/legal">Donation FAQs</a></p>
+          <p><a href="https://www.betterverse.app/legal">FAQs</a></p>
           <p>
             <a href="https://www.betterverse.app/legal">Cookies & Privacy</a>
           </p>
@@ -89,7 +89,7 @@
 
     <div class="bv__footer__appinfosection" style="grid-area: appinfo">
       <p>
-        Our dontation platform is currently in Alpha v1.0<br />so please bare
+        Our platform is currently in Alpha v1.0<br />so please bare
         with us or
         <a href="mailto: help@betterverse.app"><u>report your issues here</u></a
         >.

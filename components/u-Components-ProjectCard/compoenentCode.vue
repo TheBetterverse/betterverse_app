@@ -58,7 +58,7 @@
           @click="$emit('donate', project)"
           title="Donate to project"
         >
-          <p>Contribute</p>
+          <p>Give</p>
           <template #right-icon>
             <u-Icons-Heart color="black" />
           </template>

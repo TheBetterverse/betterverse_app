@@ -24,7 +24,7 @@ const emailTemplate =
                 </p>
                 <button style="border-radius: 20px; padding: 0px 15px; gap: 10px; width: 87px; height: 28px; background: #000000;">
                   <a href="https://give.betterverse.app" target="_blank" style="color: #ECEAE3; text-decoration: none;">
-                    <b style="font-family: 'Courier New', monospace; ">Donate</b>
+                    <b style="font-family: 'Courier New', monospace; ">Contribute</b>
                   </a>
                 </button>
           </div>

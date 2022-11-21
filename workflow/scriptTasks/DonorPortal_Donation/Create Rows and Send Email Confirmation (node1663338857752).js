@@ -1014,7 +1014,7 @@ var emailTemplate =
       <td align="center">
         <div style="font-family: 'Courier New', monospace; height: 100%; font-size: 14px; position: relative; background-color: #ECEAE3; line-height: 21px; border-bottom: 1px solid #E3E1DB; border-top: 1px solid #E3E1DB; vertical-align:middle; ">
           <div style="margin: auto; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 50%; margin-top: 100px; margin-bottom: 100px;">
-            <h3 style="color: black;">Your donation to <u>${charityName}</u> has planted <u>${numberOfTrees} trees</u>.</h3>
+            <h3 style="color: black;">Your contribution to <u>${charityName}</u> has planted <u>${numberOfTrees} trees</u>.</h3>
                 <p>
                 <div style="color: black;"> Your virtual tree is being generated. </div>
                 </p>
@@ -1157,7 +1157,7 @@ catch(err){
 var msg = {
     to: email,
     from: 'noreply@betterverse.app',
-    subject: 'Betterverse | Donation Confirmation',
+    subject: 'Betterverse | Contribution Confirmation',
     //text: 'Hi,!',
     html: emailTemplate
 }

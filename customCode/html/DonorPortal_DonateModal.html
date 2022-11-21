@@ -24,7 +24,7 @@
 
           <div class="bv__donatemodal__donatemessagewrap">
             <h2 class="bv__donatemodal__donatemessage">
-              <span>I want to contribute</span>
+              <span>I want to give</span>
               <b v-if="DonorPortal_GetCurrentUserWalletProvider() == 'slide'"> $20 </b>
               <!--span v-if="DonorPortal_GetCurrentUserWalletProvider() == 'slide'" style="position: relative">
                 <span class="bv__inlineinput__topspan">
@@ -96,7 +96,7 @@
         <div class="bv__donatemodal__description bv__globals__px">
           <div class="bv__donatemodal__donation ">
             <div>
-              <p>Contribute</p>
+              <p>Amount</p>
               <h2 style="display: flex; gap: 0.25rem; align-items: center;">
                 <u-Icons-USDC height="24px" width="24px" />
                 {{ DonorPortal_GetDonationAmount() }}
@@ -145,7 +145,7 @@
       <div class="bv__donatemodal__descriptioncont bv__globals__px">
         <div class="bv__donatemodal__donation grid-area-1">
           <div>
-            <p>Contribution</p>
+            <p>Amount</p>
             <h2 style="display: flex; gap: 0.25rem">
               {{ DonorPortal_GetDonationAmount() }}
               <u-Icons-USDC height="24px" width="24px"></u-Icons-USDC>
@@ -317,7 +317,7 @@
           style="width: 100%; display: flex; align-items: center; justify-content: flex-end; padding: 1rem 0;">
           <u-Components-Button secondary type="button" id="bv__donate__button" title="Donate and generate NFT"
             @click="DonorPortal_Donate">
-            <p id="bv__donate__buttontext">Contribute and Generate NFT</p>
+            <p id="bv__donate__buttontext">Give and generate NFT</p>
             <div style="margin-left: 6px; display: none;" class="spinner-border spinner-border-sm" id="bv__spinner"
               role="status"></div>
           </u-Components-Button>

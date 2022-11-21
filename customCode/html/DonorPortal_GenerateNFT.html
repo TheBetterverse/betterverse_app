@@ -20,7 +20,7 @@
 
         <div id="bv__generatenft__title" class="bv__globals__px">
           <p>
-            Thank you for your <b>donation</b>!
+            Thank you for your <b>contribution</b>!
           </p>
 
           <h1>
@@ -30,7 +30,7 @@
 
         <div id="bv__generatenft__subtitle" class="bv__globals__px">
           <p>
-            Your <b> {{ DonorPortal_GetDonationAmount() }} USDC </b> donation to <b> {{
+            Your <b> {{ DonorPortal_GetDonationAmount() }} USDC </b> contribution to <b> {{
               DonorPortal_GetSpecificProject()['$displayName'] }} </b> generated {{$getUser('Donation_NFTCount')}}
             <span v-if="$getUser('Donation_NFTCount') > 1"> NFTs. </span>
             <span v-if="$getUser('Donation_NFTCount') == 1"> NFT. </span>
