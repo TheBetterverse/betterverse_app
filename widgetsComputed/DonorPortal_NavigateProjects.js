@@ -18,7 +18,7 @@ return function(direction, selectedProject){
         }
         let newSelectedProjectRowKey = projects[currentProjectIndex-1].rowKey
         $setUser('Donation_SelectedProject', newSelectedProjectRowKey)
-        $setUser('SelectedProject_Image', projects[currentProjectIndex-1].projectImage.url)
+        $setGlobalModel('selectedProjectImage', projects[currentProjectIndex-1].projectImage.url)
 
         const gallery = document.getElementById('bv__projectmodal__leftsideimagegallery');
         if(gallery){
@@ -37,7 +37,7 @@ return function(direction, selectedProject){
             currentProjectIndex = 0
             let newSelectedProjectRowKey = projects[currentProjectIndex].rowKey
             $setUser('Donation_SelectedProject', newSelectedProjectRowKey)
-            $setUser('SelectedProject_Image', projects[currentProjectIndex].projectImage.url)
+            $setGlobalModel('selectedProjectImage', projects[currentProjectIndex].projectImage.url)
 
             const gallery = document.getElementById('bv__projectmodal__leftsideimagegallery');
             if(gallery){
@@ -52,7 +52,7 @@ return function(direction, selectedProject){
         else if (currentProjectIndex >= 0){
             let newSelectedProjectRowKey = projects[currentProjectIndex+1].rowKey
             $setUser('Donation_SelectedProject', newSelectedProjectRowKey)
-            $setUser('SelectedProject_Image', projects[currentProjectIndex+1].projectImage.url)
+            $setGlobalModel('selectedProjectImage', projects[currentProjectIndex+1].projectImage.url)
 
             const gallery = document.getElementById('bv__projectmodal__leftsideimagegallery');
             if(gallery){

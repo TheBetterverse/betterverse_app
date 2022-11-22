@@ -2,8 +2,7 @@
 
 return async function (charityRowKey, charityName, projectRowKey, projectName, projectImage) {
 
-    //window.selectedProjectImage = projectImage
-
+    await $setGlobalModel('selectedProjectImage', projectImage)
     await $setUser('Donation_SelectedCharity', charityRowKey)
     await $setUser('Donation_SelectedCharityName', charityName)
     await $setUser('Donation_SelectedProject', projectRowKey)

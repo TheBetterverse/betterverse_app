@@ -24,13 +24,13 @@
     <div id="bv__projectmodal__leftside">
 
       <div id="bv__projectmodal__leftsideimage" class="bv__globals__skeleton">
-        <img :src="DonorPortal_GetSpecificProject().projectImage.url">
-        <img :src="$getUser('SelectedProject_Image')" />
-        <!--img :src="window.selectedProjectImage" /-->
+        <!--img :src="DonorPortal_GetSpecificProject().projectImage.url"/-->
+        <!--img :src="$getUser('SelectedProject_Image')" /-->
+        <img :src="$getGlobalModel('selectedProjectImage')" />
 
-        <!--div v-if="DonorPortal_GetAdditionalProjectImages()" id="bv__projectmodal__leftsideimagegallery">
+        <div v-if="DonorPortal_GetAdditionalProjectImages()" id="bv__projectmodal__leftsideimagegallery">
           <img v-for="image in DonorPortal_GetAdditionalProjectImages()" :src="image" @click="DonorPortal_ProjectImageSelector(image)">
-        </div-->
+        </div>
 
       </div>
 
