@@ -302,7 +302,8 @@
                 "mask": "",
                 "lookupOpenInModalDisabled": false,
                 "propName": "charityLogo",
-                "gridId": "charities"
+                "gridId": "charities",
+                "skipCrop": true
               },
               {
                 "type": "text",

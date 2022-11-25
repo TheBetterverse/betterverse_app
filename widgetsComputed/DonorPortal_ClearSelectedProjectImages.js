@@ -5,18 +5,9 @@ return async function(){
     //Remove border(s)
     if(gallery){
         for (const child of gallery.children) {
-            if(child.src == $getUser('SelectedProject_Image')){
-                child.style.border = "0px solid #FFFFFF";
-            }
-            if(child.src == $getUser('PreviousSelectedProject_Image')){
-                child.style.border = "0px solid #FFFFFF";
-            }
+            child.style.border = "0px solid #FFFFFF";
         }
     }
-
-
-    $setUser('PreviousSelectedProject_Image', null)
-    $setUser('SelectedProject_Image', null)
 
     return null
 }

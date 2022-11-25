@@ -13,7 +13,7 @@ return async function(imageURL){
     */
     
     //Remove border
-    if(previousImage){
+    if(previousImage && gallery){
         for (const child of gallery.children) {
             if(child.src == previousImage){
                 child.style.border = "0px solid #FFFFFF";
@@ -22,7 +22,7 @@ return async function(imageURL){
     }
 
     //Add border
-    if(imageURL){
+    if(imageURL && gallery){
         $setGlobalModel('selectedProjectImage', imageURL) 
         for (const child of gallery.children) {
             if(child.src == imageURL){

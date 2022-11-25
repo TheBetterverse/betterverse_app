@@ -19,16 +19,8 @@ return function(direction, selectedProject){
         let newSelectedProjectRowKey = projects[currentProjectIndex-1].rowKey
         $setUser('Donation_SelectedProject', newSelectedProjectRowKey)
         $setGlobalModel('selectedProjectImage', projects[currentProjectIndex-1].projectImage.url)
-
-        const gallery = document.getElementById('bv__projectmodal__leftsideimagegallery');
-        if(gallery){
-          for (const child of gallery.children) {
-              if(child.src == projects[currentProjectIndex-1].projectImage.url){
-                  child.style.border = "1px solid #FFFFFF";
-              }
-          }
-        }
-
+        this.DonorPortal_ClearSelectedProjectImages()
+        this.DonorPortal_ProjectImageSelector(projects[currentProjectIndex-1].projectImage.url)
     }
 
     else if(direction == 'right'){
@@ -38,33 +30,17 @@ return function(direction, selectedProject){
             let newSelectedProjectRowKey = projects[currentProjectIndex].rowKey
             $setUser('Donation_SelectedProject', newSelectedProjectRowKey)
             $setGlobalModel('selectedProjectImage', projects[currentProjectIndex].projectImage.url)
-
-            const gallery = document.getElementById('bv__projectmodal__leftsideimagegallery');
-            if(gallery){
-                for (const child of gallery.children) {
-                    if(child.src == projects[currentProjectIndex].projectImage.url){
-                        child.style.border = "1px solid #FFFFFF";
-                    }
-                }
-            }
+            this.DonorPortal_ClearSelectedProjectImages()
+            this.DonorPortal_ProjectImageSelector(projects[currentProjectIndex].projectImage.url)
         }
 
         else if (currentProjectIndex >= 0){
             let newSelectedProjectRowKey = projects[currentProjectIndex+1].rowKey
             $setUser('Donation_SelectedProject', newSelectedProjectRowKey)
             $setGlobalModel('selectedProjectImage', projects[currentProjectIndex+1].projectImage.url)
-
-            const gallery = document.getElementById('bv__projectmodal__leftsideimagegallery');
-            if(gallery){
-                for (const child of gallery.children) {
-                    if(child.src == projects[currentProjectIndex+1].projectImage.url){
-                        child.style.border = "1px solid #FFFFFF";
-                    }
-                }
-            }
-
+            this.DonorPortal_ClearSelectedProjectImages()
+            this.DonorPortal_ProjectImageSelector(projects[currentProjectIndex+1].projectImage.url)
         }
-
     }
 
 }

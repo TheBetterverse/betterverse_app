@@ -28,8 +28,10 @@
         <!--img :src="$getUser('SelectedProject_Image')" /-->
         <img :src="$getGlobalModel('selectedProjectImage')" />
 
-        <div v-if="DonorPortal_GetAdditionalProjectImages()" id="bv__projectmodal__leftsideimagegallery">
-          <img v-for="image in DonorPortal_GetAdditionalProjectImages()" :src="image" @click="DonorPortal_ProjectImageSelector(image)">
+        <div v-if="DonorPortal_GetAdditionalProjectImages()" id="bv__projectmodal__leftsideimagegallerycontainer">
+          <div id="bv__projectmodal__leftsideimagegallery">
+            <img v-for="image in DonorPortal_GetAdditionalProjectImages()" :src="image" @click="DonorPortal_ProjectImageSelector(image)">
+          </div>
         </div>
 
       </div>
@@ -1050,81 +1052,50 @@
     }
   }
 
+  #bv__projectmodal__leftsideimagegallerycontainer {
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    bottom: 28px;
+    margin-left: 28px;
+    margin-right: 28px;
+  }
 
+  #bv__projectmodal__leftsideimagegallery {
+    gap: 20px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+  }
 
-  @media screen and (min-width: 10px) and (max-width: 780px) {
+  #bv__projectmodal__leftsideimagegallery>img {
+    border-radius: 5px !important;
+    cursor: pointer;
+  }
+
+  @media screen and (min-width: 10px) and (max-width: 635px) {
     #bv__projectmodal__leftsideimagegallery>img {
-      border-radius: 5px !important;
       width: 45px;
       height: 45px;
-      border-radius: 5px;
-      cursor: pointer;
     }
-
-    #bv__projectmodal__leftsideimagegallery {
-      position: sticky;
-      bottom: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      flex-wrap: nowrap;
-      gap: 20px;
-      overflow-x: scroll;
-      width: 100%;
-      scroll-snap-type: x mandatory;
-      margin-left: 28px;
-    }
-
   }
 
-  @media screen and (min-width: 780px) and (max-width: 1450px) {
-    #bv__projectmodal__leftsideimagegallery {
-      position: sticky;
-      bottom: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      flex-wrap: nowrap;
-      gap: 20px;
-      overflow-x: scroll;
-      width: 100%;
-      scroll-snap-type: x mandatory;
-      margin-left: 28px;
-    }
-
+  @media screen and (min-width: 636px) and (max-width: 779px) {
     #bv__projectmodal__leftsideimagegallery>img {
-      border-radius: 5px !important;
+      width: 45px;
+      height: 45px;
+    }
+  }
+
+  @media screen and (min-width: 780px){
+    #bv__projectmodal__leftsideimagegallery>img {
       width: 62px;
       height: 62px;
-      border-radius: 5px;
-      cursor: pointer;
     }
   }
 
 
-
-  @media screen and (min-width: 1450px) {
-    #bv__projectmodal__leftsideimagegallery {
-      position: sticky;
-      bottom: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: nowrap;
-      gap: 20px;
-      overflow-x: scroll;
-      width: 100%;
-      scroll-snap-type: x mandatory;
-    }
-
-    #bv__projectmodal__leftsideimagegallery>img {
-      border-radius: 5px !important;
-      width: 62px;
-      height: 62px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-  }
 
 </style>
