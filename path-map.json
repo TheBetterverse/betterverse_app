@@ -1593,6 +1593,10 @@
     "savePath": "widgetsComputed/DonorPortal_DonateTEST"
   },
   {
+    "filePath": "widgetsComputed/DonorPortal_DonateTESTNET.js",
+    "savePath": "widgetsComputed/DonorPortal_DonateTESTNET"
+  },
+  {
     "filePath": "widgetsComputed/DonorPortal_DonateToSelectedCharity.js",
     "savePath": "widgetsComputed/DonorPortal_DonateToSelectedCharity"
   },
@@ -2055,6 +2059,10 @@
   {
     "filePath": "widgetsComputed/Global_GetUserRoles.js",
     "savePath": "widgetsComputed/Global_GetUserRoles"
+  },
+  {
+    "filePath": "widgetsComputed/Global_IsProduction.js",
+    "savePath": "widgetsComputed/Global_IsProduction"
   },
   {
     "filePath": "widgetsComputed/Global_ReturnDomainWorkspaceURL.js",

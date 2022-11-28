@@ -165,13 +165,13 @@ module.exports = {
 .bv__comps__projectcharity > p {
   font-family: 'BN Cringe Sans', sans-serif;
   font-weight: 400;
+  width: 200px !important;
 }
 
 .bv__comps__projectinfo {
   display: flex;
   justify-content: start;
   width: 100%;
-
   gap: 2rem;
 }
 
