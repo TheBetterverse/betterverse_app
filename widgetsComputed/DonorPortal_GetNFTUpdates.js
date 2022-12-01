@@ -1,4 +1,4 @@
-/* DonorPortal_GetLatestNFT.js */
+/* DonorPortal_GetNFTUpdates.js */
 
 function setLoadingState(button) {
   button.setAttribute('state', 'loading')
@@ -32,6 +32,7 @@ return async event => {
   var returnedJSONs = []
   var returnedPNGs = []
   var returnedMP4s = []
+  const isProduction = this.Global_IsProduction()
 
   //Workflow data
   var updateRequiredNFTsRowKeys = []
@@ -45,10 +46,22 @@ return async event => {
 
   try {
     //Get latest JSON for each NFT
-    for (let n = 0; n < currentUserNFTs.length; n++) {
-      var returnedJSON = await this.DonorPortal_GetTokenURIAlchemy(currentUserNFTsIDs[n])
-      var gatewayURL = await this.DonorPortal_GetGatewayURL(returnedJSON)
-      returnedJSONs[n] = gatewayURL
+    if(isProduction == true){
+      for (let n = 0; n < currentUserNFTs.length; n++) {
+        var returnedJSON = await this.DonorPortal_GetTokenURIAlchemy(currentUserNFTsIDs[n])
+        var gatewayURL = await this.DonorPortal_GetGatewayURL(returnedJSON)
+        returnedJSONs[n] = gatewayURL
+      }
+    }
+    else {
+      for (let n = 0; n < currentUserNFTs.length; n++) {
+        var returnedJSON = await this.DonorPortal_GetTokenURIAlchemyTESTNET(currentUserNFTsIDs[n])
+        var splitUrl = returnedJSON.split(/\/|\?/)
+        var cid = splitUrl[2]
+        var file = splitUrl[3]
+        var ipfsUrl = `https://ipfs.io/ipfs/${cid}/${file}`
+        returnedJSONs[n] = ipfsUrl
+      }
     }
 
     for (let u = 0; u < currentUserNFTs.length; u++) {
@@ -73,12 +86,8 @@ return async event => {
     }
 
     //Check for NFT transfers
-    //console.log('checking transfers')
-
-    //Get current NFT token IDs and JSONs
-    //for (let i = 0; i < currentUserNFTs.length; i++) {
-      //this.DonorPortal_CheckNFTTransfersAlchemy()
-    //}
+    //console.log('Checking for transfers')
+    //await this.DonorPortal_CheckNFTTransfersAlchemy(currentUserNFTsIDs)
 
     await delay(3000)
 

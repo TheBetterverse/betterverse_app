@@ -1,6 +1,6 @@
 /* Contracts.js */
 
-//return () => ({
+return () => ({
   USDCAddress: '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174',
   TreeContractAddress: '0xA9cdB8fFdF37b8AE44c36519Cfc1Fe6d29CDF0F9',
   MinterContractAddress: '0x6A15Db2129026b01ebBB28AA470Ed6AffeaC20Cf',

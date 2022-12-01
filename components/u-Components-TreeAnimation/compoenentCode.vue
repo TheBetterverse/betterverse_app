@@ -57,6 +57,15 @@ module.exports = {
   methods: {
     async renderImage() {
       this.imageResult = null
+      const url = window.location.href;
+
+      var isProduction
+      if(url.includes("give.betterverse.app")){
+        isProduction = true
+      }
+      else{
+        isProduction = false
+      }
 
       if (!this.url) return
 
@@ -70,8 +79,15 @@ module.exports = {
         const imageUrlcid = splitUrl[2]
         const imageUrlfile = splitUrl[3]
         var convertedImgURL = `${gatewayURL}/ipfs/${imageUrlcid}/${imageUrlfile}`
-        const newImageURL = convertedImgURL
-        this.imageResult = await newImageURL
+
+        if(isProduction == true){
+          const newImageURL = convertedImgURL
+          this.imageResult = await newImageURL
+        }
+        else {
+          const ipfsUrl = `https://ipfs.io/ipfs/${imageUrlcid}/${imageUrlfile}`
+          this.imageResult = await ipfsUrl
+        }
       }
 
       //Animation conversion
@@ -80,8 +96,15 @@ module.exports = {
         const animUrlcid = animSplitUrl[2]
         const animUrfile = animSplitUrl[3]
         var convertedAnimURL = `${gatewayURL}/ipfs/${animUrlcid}/${animUrfile}`
-        const newAnimationURL = convertedAnimURL
-        this.animationResult = await newAnimationURL
+
+        if(isProduction == true){
+          const newAnimationURL = convertedAnimURL
+          this.animationResult = await newAnimationURL
+        }
+        else {
+          const ipfsUrl = `https://ipfs.io/ipfs/${animUrlcid}/${animUrfile}`
+          this.animationResult = await ipfsUrl
+        }
       }
     }
   }
