@@ -24,7 +24,15 @@
     <div id="bv__projectmodal__leftside">
 
       <div id="bv__projectmodal__leftsideimage" class="bv__globals__skeleton">
-        <img :src="DonorPortal_GetSpecificProject().projectImage.url" />
+        <!--img :src="DonorPortal_GetSpecificProject().projectImage.url"/-->
+        <!--img :src="$getUser('SelectedProject_Image')" /-->
+        <img :src="$getGlobalModel('selectedProjectImage')" />
+
+        <div v-if="DonorPortal_GetAdditionalProjectImages()" id="bv__projectmodal__leftsideimagegallerycontainer">
+          <div id="bv__projectmodal__leftsideimagegallery">
+            <img v-for="image in DonorPortal_GetAdditionalProjectImages()" :src="image" @click="DonorPortal_ProjectImageSelector(image)">
+          </div>
+        </div>
 
       </div>
 
@@ -52,7 +60,7 @@
             {{ DonorPortal_GetSpecificProject().projectName }}
           </h1>
           <p>
-            {{ DonorPortal_GetSpecificProject().overview.slice(0, 128) }}
+            {{ DonorPortal_GetSpecificProject().overview.slice(0, 235) }}
           </p>
 
           <div id="bv__projectmodal__maincontentinfo">
@@ -85,7 +93,7 @@
           <div>
             <u-Components-Button secondary
               @click="DonorPortal_DonateToSelectedCharity(DonorPortal_GetSpecificProject())">
-              <p style="color: var(--offwhite)">Donate</p>
+              <p style="color: var(--offwhite)">Contribute</p>
               <template #right-icon>
                 <u-Icons-Heart color="var(--offwhite)" />
               </template>
@@ -109,11 +117,11 @@
         <div id="bv__projectmodal__infoimpact">
           <div>
 
-            <p style="margin-bottom: 6px;">
+            <!--p style="margin-bottom: 6px;">
               About the project
-            </p>
-            <h2 style="margin-bottom: 8px;">
-              Something will say here
+            </p-->
+            <h2 style="margin-bottom: 6px;">
+              About the project
             </h2>
 
           </div>
@@ -137,7 +145,7 @@
           <div
             style="display: flex; flex-direction: column; align-items: start; justify-content: space-between; height: 100%;">
             <p>
-              Charity
+              {{ DonorPortal_GetSpecificProject().$organisationType$display}}
             </p>
             <h2>
               {{ DonorPortal_GetSpecificProject().$charity$display}}
@@ -234,13 +242,13 @@
 
           <ol class="bv__projectmodal__ol">
             <li>
-              Pick your project, set the amount you'd like to give and make your donation.
+              Pick your project, set the amount you'd like to give and make your contribution.
             </li>
             <li>
               Create your one of a kind, procedurally generated NFT tree.
             </li>
             <li>
-              Track the real-world impace of your donation and watch your virtual tree grow.
+              Track the real-world impace of your contribution and watch your virtual tree grow.
             </li>
           </ol>
         </div>
@@ -249,7 +257,7 @@
           <div class="bv__projectmodal__infocard bv__projectmodal__sharecard" style="background: black">
             <div>
               <h2 style="color: var(--offwhite)">
-                Donate
+                Give
               </h2>
               <p style="color: var(--offwhite)">Ready to support this project?</p>
             </div>
@@ -260,7 +268,7 @@
               </template>
               <template #default>
                 <p style="color: var(--offwhite)">
-                  Donate
+                  Give
                 </p>
               </template>
             </u-Components-Button>
@@ -271,47 +279,47 @@
               <h2>
                 Share
               </h2>
-              <p>Share your impact with friends and inspire your community.</p>
+              <p>Share this project with your friends, family or community. Disabled for closed beta.</p>
               <b-spinner id="bv__nftmodal__sharecard__spinner" small style="display: none;"></b-spinner>
             </div>
             <div id="bv__projectmodal__infocardsocials">
-              <u-Components-Button
-                @click="DonorPortal_GenerateSharableProjectURL(DonorPortal_GetSpecificProject().rowKey, 'twitter')">
+              <!--@click="DonorPortal_GenerateSharableProjectURL(DonorPortal_GetSpecificProject().rowKey, 'twitter')">-->
+              <u-Components-Button style="border: 1px solid #9f9d98; color: #9f9d98; cursor: not-allowed;">
                 <template #left-icon>
                   <u-Icons-Twitter-Blue />
                 </template>
               </u-Components-Button>
 
-              <u-Components-Button
-                @click="DonorPortal_GenerateSharableProjectURL(DonorPortal_GetSpecificProject().rowKey, 'facebook')">
+              <!--@click="DonorPortal_GenerateSharableProjectURL(DonorPortal_GetSpecificProject().rowKey, 'facebook')">-->
+              <u-Components-Button style="border: 1px solid #9f9d98; color: #9f9d98; cursor: not-allowed;">
                 <template #left-icon>
                   <u-Icons-Facebook />
                 </template>
               </u-Components-Button>
 
-              <u-Components-Button
-                @click="DonorPortal_GenerateSharableProjectURL(DonorPortal_GetSpecificProject().rowKey, 'telegram')">
+              <!--@click="DonorPortal_GenerateSharableProjectURL(DonorPortal_GetSpecificProject().rowKey, 'telegram')">-->
+              <u-Components-Button style="border: 1px solid #9f9d98; color: #9f9d98; cursor: not-allowed;">
                 <template #left-icon>
                   <u-Icons-Telegram />
                 </template>
               </u-Components-Button>
 
-              <u-Components-Button
-                @click="DonorPortal_GenerateSharableProjectURL(DonorPortal_GetSpecificProject().rowKey, 'whatsapp')">
+              <!--@click="DonorPortal_GenerateSharableProjectURL(DonorPortal_GetSpecificProject().rowKey, 'whatsapp')">-->
+              <u-Components-Button style="border: 1px solid #9f9d98; color: #9f9d98; cursor: not-allowed;">
                 <template #left-icon>
                   <u-Icons-WhatsApp />
                 </template>
               </u-Components-Button>
 
-              <u-Components-Button
-                @click="DonorPortal_GenerateSharableProjectURL(DonorPortal_GetSpecificProject().rowKey, 'linkedin')">
+              <!--@click="DonorPortal_GenerateSharableProjectURL(DonorPortal_GetSpecificProject().rowKey, 'linkedin')">-->
+              <u-Components-Button style="border: 1px solid #9f9d98; color: #9f9d98; cursor: not-allowed;">
                 <template #left-icon>
                   <u-Icons-Linkedin />
                 </template>
               </u-Components-Button>
 
-              <u-Components-Button
-                @click="DonorPortal_GenerateSharableProjectURL(DonorPortal_GetSpecificProject().rowKey, 'copy')">
+              <!--@click="DonorPortal_GenerateSharableProjectURL(DonorPortal_GetSpecificProject().rowKey, 'copy')">-->
+              <u-Components-Button style="border: 1px solid #9f9d98; color: #9f9d98; cursor: not-allowed;">
                 <template #left-icon>
                   <u-Icons-Copy />
                 </template>
@@ -422,6 +430,10 @@
     height: 100%;
     padding: 0;
     margin: 0;
+  }
+
+  .bv__projectmodal__charityname{
+    width: 300px;
   }
 
   #bv__projectmodal__overview {
@@ -754,7 +766,7 @@
   }
 
   .bv__projectmodal__charity>img {
-    max-height: 1.25rem;
+    max-height: 1.55rem;
   }
 
   .bv__projectmodal__otherinfo {
@@ -1044,81 +1056,50 @@
     }
   }
 
+  #bv__projectmodal__leftsideimagegallerycontainer {
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    bottom: 28px;
+    margin-left: 28px;
+    margin-right: 28px;
+  }
 
+  #bv__projectmodal__leftsideimagegallery {
+    gap: 20px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+  }
 
-  @media screen and (min-width: 10px) and (max-width: 780px) {
+  #bv__projectmodal__leftsideimagegallery>img {
+    border-radius: 5px !important;
+    cursor: pointer;
+  }
+
+  @media screen and (min-width: 10px) and (max-width: 635px) {
     #bv__projectmodal__leftsideimagegallery>img {
-      border-radius: 5px !important;
       width: 45px;
       height: 45px;
-      border-radius: 5px;
-      cursor: pointer;
     }
-
-    #bv__projectmodal__leftsideimagegallery {
-      position: sticky;
-      bottom: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      flex-wrap: nowrap;
-      gap: 20px;
-      overflow-x: scroll;
-      width: 100%;
-      scroll-snap-type: x mandatory;
-      margin-left: 28px;
-    }
-
   }
 
-  @media screen and (min-width: 780px) and (max-width: 1450px) {
-    #bv__projectmodal__leftsideimagegallery {
-      position: sticky;
-      bottom: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      flex-wrap: nowrap;
-      gap: 20px;
-      overflow-x: scroll;
-      width: 100%;
-      scroll-snap-type: x mandatory;
-      margin-left: 28px;
-    }
-
+  @media screen and (min-width: 636px) and (max-width: 779px) {
     #bv__projectmodal__leftsideimagegallery>img {
-      border-radius: 5px !important;
+      width: 45px;
+      height: 45px;
+    }
+  }
+
+  @media screen and (min-width: 780px){
+    #bv__projectmodal__leftsideimagegallery>img {
       width: 62px;
       height: 62px;
-      border-radius: 5px;
-      cursor: pointer;
     }
   }
 
 
-
-  @media screen and (min-width: 1450px) {
-    #bv__projectmodal__leftsideimagegallery {
-      position: sticky;
-      bottom: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: nowrap;
-      gap: 20px;
-      overflow-x: scroll;
-      width: 100%;
-      scroll-snap-type: x mandatory;
-    }
-
-    #bv__projectmodal__leftsideimagegallery>img {
-      border-radius: 5px !important;
-      width: 62px;
-      height: 62px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-  }
 
 </style>

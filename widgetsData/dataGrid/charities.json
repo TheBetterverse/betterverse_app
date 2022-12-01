@@ -9,7 +9,7 @@
       "type": "string"
     },
     "charityAccess": {
-      "Width": "191px",
+      "Width": "183px",
       "displayName": "CharityAccess",
       "invisible": false,
       "order": 0,
@@ -302,7 +302,8 @@
                 "mask": "",
                 "lookupOpenInModalDisabled": false,
                 "propName": "charityLogo",
-                "gridId": "charities"
+                "gridId": "charities",
+                "skipCrop": true
               },
               {
                 "type": "text",
@@ -1292,64 +1293,72 @@
       "filterBuilder": "{\"condition\":\"AND\",\"rules\":[{\"key\":\"charityName\",\"operator\":\"=\",\"value\":null,\"name\":\"Charity Name\",\"expression\":false,\"hidden\":false}]}",
       "meta": {
         "ceo": {
-          "order": 18
+          "invisible": false,
+          "order": 8
         },
         "charityAccess": {
           "invisible": false,
-          "order": 0
+          "order": 2
         },
         "charityCategory": {
           "invisible": true,
-          "order": 4
+          "order": 15
         },
         "charityDescription": {
           "invisible": true,
-          "order": 5
+          "order": 16
         },
         "charityLogo": {
           "invisible": false,
-          "order": 1
+          "order": 0
         },
         "charityName": {
           "invisible": false,
-          "order": 2
+          "order": 1
         },
         "createdDate": {
           "invisible": true,
-          "order": 7
+          "order": 18
         },
         "discordURL": {
-          "order": 24
-        },
-        "founded": {
-          "order": 15
-        },
-        "headquartersLocation": {
+          "invisible": false,
           "order": 14
         },
+        "founded": {
+          "invisible": false,
+          "order": 5
+        },
+        "headquartersLocation": {
+          "invisible": false,
+          "order": 4
+        },
         "image1": {
-          "order": 19
+          "invisible": false,
+          "order": 9
         },
         "image2": {
-          "order": 20
+          "invisible": false,
+          "order": 10
         },
         "image3": {
-          "order": 21
+          "invisible": false,
+          "order": 11
         },
         "image4": {
-          "order": 22
+          "invisible": false,
+          "order": 12
         },
         "lastEditDate": {
           "invisible": true,
-          "order": 8
+          "order": 19
         },
         "lastEditedBy": {
           "invisible": true,
-          "order": 9
+          "order": 20
         },
         "layout": {
           "invisible": true,
-          "order": 10
+          "order": 21
         },
         "locations": {
           "invisible": false,
@@ -1357,28 +1366,31 @@
         },
         "nextEvents": {
           "invisible": true,
-          "order": 11
+          "order": 22
         },
         "organisationType": {
           "invisible": true,
-          "order": 6
+          "order": 17
         },
         "owner": {
           "invisible": true,
-          "order": 12
+          "order": 23
         },
         "smartContractCharityID": {
-          "order": 23
+          "invisible": false,
+          "order": 13
         },
         "state": {
           "invisible": true,
-          "order": 13
+          "order": 24
         },
         "twitterURL": {
-          "order": 17
+          "invisible": false,
+          "order": 7
         },
         "websiteURL": {
-          "order": 16
+          "invisible": false,
+          "order": 6
         }
       },
       "title": "Donor View"

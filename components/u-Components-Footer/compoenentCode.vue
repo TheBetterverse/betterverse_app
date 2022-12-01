@@ -48,10 +48,10 @@
       </div>
 
       <div class="bv__footer__linklist" style="grid-area: donate">
-        <p>Donate</p>
+        <p>Give</p>
         <div>
           <p>
-            <a @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ')">Projects</a>
+            <a href="#" @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ')">Projects</a>
           </p>
         </div>
       </div>
@@ -59,7 +59,7 @@
       <div class="bv__footer__linklist" style="grid-area: legal">
         <p>Legal</p>
         <div>
-          <p><a href="https://www.betterverse.app/legal">Donation FAQs</a></p>
+          <p><a href="https://www.betterverse.app/legal">FAQs</a></p>
           <p>
             <a href="https://www.betterverse.app/legal">Cookies & Privacy</a>
           </p>
@@ -89,7 +89,7 @@
 
     <div class="bv__footer__appinfosection" style="grid-area: appinfo">
       <p>
-        Our dontation platform is currently in Alpha v1.0<br />so please bare
+        Our platform is currently in Alpha v1.0<br />so please bare
         with us or
         <a href="mailto: help@betterverse.app"><u>report your issues here</u></a
         >.
@@ -141,6 +141,7 @@ module.exports = {
 .bv__footer__linksection {
   display: grid;
   grid-template-areas: 'learn follow' 'legal donate' 'reach reach';
+  justify-content: start;
   gap: 30px;
   width: 100%;
   margin-bottom: 22px;
@@ -199,7 +200,11 @@ module.exports = {
   max-width: 100%;
 }
 
-@media screen and (min-width: 772px) {
+.bv__footer__appinfosection {
+  justify-content: start;
+}
+
+@media screen and (min-width: 1080px) {
   .bv__footer {
     grid-template-areas: 'title linksection' 'bvinfo appinfo';
     align-items: flex-start;

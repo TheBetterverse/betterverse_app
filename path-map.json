@@ -1461,14 +1461,6 @@
     "savePath": "widgets/-NEvMS83h5nZZJLMpZxZ"
   },
   {
-    "filePath": "widgets/-NFWtGhnKp6AVd1XObXd/widget.json",
-    "savePath": "widgets/-NFWtGhnKp6AVd1XObXd"
-  },
-  {
-    "filePath": "widgets/-NFWtGhnKp6AVd1XObXd/template.html",
-    "savePath": "widgets/-NFWtGhnKp6AVd1XObXd/template"
-  },
-  {
     "filePath": "widgetsComputed/Contracts.js",
     "savePath": "widgetsComputed/Contracts"
   },
@@ -1511,10 +1503,6 @@
   {
     "filePath": "widgetsComputed/DonorPortal_CheckNFTTransfersAlchemy.js",
     "savePath": "widgetsComputed/DonorPortal_CheckNFTTransfersAlchemy"
-  },
-  {
-    "filePath": "widgetsComputed/DonorPortal_CheckNFTTransfersAlchemyTESTNET.js",
-    "savePath": "widgetsComputed/DonorPortal_CheckNFTTransfersAlchemyTESTNET"
   },
   {
     "filePath": "widgetsComputed/DonorPortal_CheckRampActive.js",
@@ -1601,6 +1589,10 @@
     "savePath": "widgetsComputed/DonorPortal_DonateTEST"
   },
   {
+    "filePath": "widgetsComputed/DonorPortal_DonateTESTNET.js",
+    "savePath": "widgetsComputed/DonorPortal_DonateTESTNET"
+  },
+  {
     "filePath": "widgetsComputed/DonorPortal_DonateToSelectedCharity.js",
     "savePath": "widgetsComputed/DonorPortal_DonateToSelectedCharity"
   },
@@ -1675,10 +1667,6 @@
   {
     "filePath": "widgetsComputed/DonorPortal_GetCurrentUserDailyCarbonSequestrationUpdate.js",
     "savePath": "widgetsComputed/DonorPortal_GetCurrentUserDailyCarbonSequestrationUpdate"
-  },
-  {
-    "filePath": "widgetsComputed/DonorPortal_GetCurrentUserDailyCarbonSequestrationUpdateSpecific.js",
-    "savePath": "widgetsComputed/DonorPortal_GetCurrentUserDailyCarbonSequestrationUpdateSpecific"
   },
   {
     "filePath": "widgetsComputed/DonorPortal_GetCurrentUserDonationRows.js",
@@ -1785,14 +1773,6 @@
     "savePath": "widgetsComputed/DonorPortal_GetGatewayURL"
   },
   {
-    "filePath": "widgetsComputed/DonorPortal_GetLatestNFT.js",
-    "savePath": "widgetsComputed/DonorPortal_GetLatestNFT"
-  },
-  {
-    "filePath": "widgetsComputed/DonorPortal_GetLatestNFTTESTNET.js",
-    "savePath": "widgetsComputed/DonorPortal_GetLatestNFTTESTNET"
-  },
-  {
     "filePath": "widgetsComputed/DonorPortal_GetLocations.js",
     "savePath": "widgetsComputed/DonorPortal_GetLocations"
   },
@@ -1807,6 +1787,10 @@
   {
     "filePath": "widgetsComputed/DonorPortal_GetNFTRowOwnerNames.js",
     "savePath": "widgetsComputed/DonorPortal_GetNFTRowOwnerNames"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_GetNFTUpdates.js",
+    "savePath": "widgetsComputed/DonorPortal_GetNFTUpdates"
   },
   {
     "filePath": "widgetsComputed/DonorPortal_GetOtherProjects.js",
@@ -2063,6 +2047,10 @@
   {
     "filePath": "widgetsComputed/Global_GetUserRoles.js",
     "savePath": "widgetsComputed/Global_GetUserRoles"
+  },
+  {
+    "filePath": "widgetsComputed/Global_IsProduction.js",
+    "savePath": "widgetsComputed/Global_IsProduction"
   },
   {
     "filePath": "widgetsComputed/Global_ReturnDomainWorkspaceURL.js",

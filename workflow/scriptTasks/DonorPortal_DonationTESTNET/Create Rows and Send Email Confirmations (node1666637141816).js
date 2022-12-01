@@ -5,7 +5,7 @@ context.data = email
 $log.debug('test')
 $log('Installing web3 packages')
 
-const Web3 = require("web3");
+/*const Web3 = require("web3");
 $log('Loaded web3 packages')
 const web3 = new Web3(new Web3.providers.HttpProvider('https://polygon-mumbai.g.alchemy.com/v2/dRrclX6ikOV1fZHA5fHhaORKzPB6MoEj'));
 $log('Configured web3 lfg')
@@ -965,6 +965,7 @@ const treeContractData = {
         }
     ]
 }
+*/
 
 const gatewayURL = "https://assets.betterverse.app"
 const tokenID = await context.webhookdata.payload.tokenID
@@ -1118,6 +1119,7 @@ $log(nftRows[0])
 $log('NFT ROWS JSON:')
 $log(json[0])
 
+/*
 try{
 
     const TreeContract = new web3.eth.Contract(treeContractData.TreeContractABI, treeContractData.TreeContractAddress);
@@ -1144,6 +1146,7 @@ try{
 catch(err){
     $log(err)
 }
+*/
 
 
 var msg = {

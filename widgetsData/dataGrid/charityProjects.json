@@ -634,13 +634,14 @@
                 "invisibleCondition": "",
                 "invisibleInDataGrid": true,
                 "invisibleLabel": false,
-                "enableCustomValidation": false,
-                "customValidationRule": "",
-                "customValidationErrorMessage": "",
+                "enableCustomValidation": true,
+                "customValidationRule": "rowData.overview.length < 235",
+                "customValidationErrorMessage": "Overview cannot exceed 235 characters",
                 "mask": "",
                 "lookupOpenInModalDisabled": false,
                 "propName": "overview",
-                "gridId": "charityProjects"
+                "gridId": "charityProjects",
+                "description": "Max 235 characters"
               },
               {
                 "type": "multiline_text",
@@ -1822,7 +1823,7 @@
       }
     ],
     "layout": "collapse",
-    "_uniqueId": 0.3933673696229292
+    "_uniqueId": 0.9206311910469971
   },
   "source": "charityProjects",
   "storageType": "dashboard",

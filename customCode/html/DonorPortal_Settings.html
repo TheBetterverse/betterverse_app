@@ -51,12 +51,12 @@
 
             <u-Components-Input label="Username" name="username" :placeholder="DonorPortal_GetCurrentUserNames()"
               :validators="{
-          'Username already exists': Validation_UsernameDoesntExist,
-          'Username cannot contain profanity!': Validation_UsernameIsValid,
-          'Invalid characters': Validation_UsernameHasValidCharacters,
-          'Username must contain atleast 4 characters': Validation_UsernameValidLength,
-          'Username must contain atleast 3 letters': Validation_UsernameIncludeLetters
-        }" />
+              'Username already exists': Validation_UsernameDoesntExist,
+              'Username cannot contain profanity!': Validation_UsernameIsValid,
+              'Invalid characters': Validation_UsernameHasValidCharacters,
+              'Username must contain atleast 4 characters': Validation_UsernameValidLength,
+              'Username must contain atleast 3 letters': Validation_UsernameIncludeLetters
+            }" />
 
             <div class="bv__settings__formrow">
               <u-Components-Input label="First name" name="firstName"
@@ -177,7 +177,7 @@
                   </p>
                 </div>
 
-                <div style="display: flex; gap: 0.5rem">
+                <div style="display: flex; gap: 0.5rem;">
                   <u-Components-Button v-if="DonorPortal_GetCurrentUserWalletAddress() != null"
                     @click="DonorPortal_LoadRamp('overlay')" title="Top up wallet">
                     <p> Top up wallet </p>
@@ -523,12 +523,21 @@
     gap: 0.5rem;
     padding: 0.75rem 1rem;
     width: 100%;
+    color: black;
+    background: var(--bg-primary) !important;
+    border-radius: 4px;
+    appearance: none;
+    -moz-appearance: none;
   }
 
   .bv__settings__connectwalletdropdown>*:hover {
     background: #dfddd8;
     cursor: pointer;
+  }
 
+  .bv__settings__connectwalletdropdown button:hover {
+    background: rgba(0, 0, 0, 0.05) !important;
+    border-radius: 0px;
   }
 
   #bv__settings__connectwalletbutton:hover .bv__settings__connectwalletdropdownwrap,

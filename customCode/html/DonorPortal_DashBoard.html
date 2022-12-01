@@ -17,7 +17,7 @@
       <div class="bv__dashboard__cards">
         <div class="bv__dashboard__card">
           <div class="bv__dashboard__cardhead">
-            <p> Total donated </p>
+            <p> Total contributed </p>
             <h2 class="bv__dashboard__totaldonated d-flex">
               <u-Icons-USDC />
               {{ parseFloat(DonorPortal_GetCurrentUserTotalDonationsAmount()).toLocaleString() }}
@@ -85,7 +85,7 @@
           </h2>
 
           <p>
-            Not to worry! You can make your first donation and start offsetting some CO₂.
+            Not to worry! You can make your first contribution and start offsetting some CO₂.
           </p>
 
           <u-Components-Button @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ', '-Mx_5FLL2jlxjXYUMdIL')" secondary
@@ -102,7 +102,7 @@
             You have {{ DonorPortal_GetCurrentUserNFTsCount() }}
             NFT{{ DonorPortal_GetCurrentUserNFTsCount() > 1 ? 's' : '' }}
 
-            <u-Components-RefreshButton @click="DonorPortal_GetLatestNFT">
+            <u-Components-RefreshButton @click="DonorPortal_GetNFTUpdates">
             </u-Components-RefreshButton>
           </h2>
 
@@ -119,6 +119,7 @@
     </div>
 
   </main>
+
   <u-Components-Footer />
 
   <u-Components-MobileNavBar @click="DonorPortal_TriggerMobileNav()" class="bv__globals__px">

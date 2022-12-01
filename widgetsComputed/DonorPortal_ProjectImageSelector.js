@@ -2,15 +2,18 @@ return async function(imageURL){
 
     const gallery = await document.getElementById('bv__projectmodal__leftsideimagegallery');
 
-    var selectedImage = await $getUser('SelectedProject_Image')
+    var previousImage = $getGlobalModel('selectedProjectImage')
+    var selectedImage = $setGlobalModel('selectedProjectImage', imageURL)
 
+    /*
     if (selectedImage){
-        var previousImage = await selectedImage
-        $setUser('PreviousSelectedProject_Image', previousImage)
+        var previousImage = selectedImage
+        $setGlobalModel('selectedProjectImage', previousImage) 
     }
-
+    */
+    
     //Remove border
-    if(previousImage){
+    if(previousImage && gallery){
         for (const child of gallery.children) {
             if(child.src == previousImage){
                 child.style.border = "0px solid #FFFFFF";
@@ -19,8 +22,8 @@ return async function(imageURL){
     }
 
     //Add border
-    if(imageURL){
-        await $setUser('SelectedProject_Image' , imageURL)
+    if(imageURL && gallery){
+        $setGlobalModel('selectedProjectImage', imageURL) 
         for (const child of gallery.children) {
             if(child.src == imageURL){
                 child.style.border = "1px solid #FFFFFF";

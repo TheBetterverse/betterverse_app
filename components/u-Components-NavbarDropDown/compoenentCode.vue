@@ -52,11 +52,17 @@
   justify-content: flex-start;
   gap: 0.5rem;
   pointer-events: all;
+  border-radius: 4px;
+  appearance: none;
+  -moz-appearance: none;
+  color: black;
+  background: var(--bg-primary) !important;
 }
 
 .bv__dropdown__dropdownitems > *:focus,
 .bv__dropdown__dropdownitems > *:hover {
-  background: #dfddd8;
+  background: rgba(0, 0, 0, 0.05) !important;
+  border-radius: 0px;
   cursor: pointer;
 }
 
@@ -65,5 +71,3 @@
   display: flex;
 }
 </style>
-
-<script></script>

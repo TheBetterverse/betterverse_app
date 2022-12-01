@@ -44,7 +44,7 @@ module.exports = {
   justify-content: flex-end;
   gap: 10px;
 
-  position: sticky;
+  position: fixed;
   bottom: 10px;
 
   width: 100%;

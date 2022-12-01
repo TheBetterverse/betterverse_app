@@ -1,9 +1,8 @@
 return function(image){
 
     var project = this.DonorPortal_GetSpecificProject()
-    var imageMax = 6
 
-
+    //Push additional images into an array
     var additionalImages = []
 
     if(project.projectImage){
@@ -37,9 +36,13 @@ return function(image){
         additionalImages.push(project.additionalProjectImage9.url)
     }
     
-    if(additionalImages.length == 1){
+    var imageCount = additionalImages.length
+
+    //If there are no additional images
+    if(imageCount <= 1){
         return null
     }
+    //If there are additional images
     else{
         return additionalImages
     }

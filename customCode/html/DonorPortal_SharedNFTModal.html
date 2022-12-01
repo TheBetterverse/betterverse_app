@@ -15,7 +15,7 @@
     </nav>
     <div id="bv__nftmodal__leftside">
       <div id="bv__nftmodal__leftsideimage">
-        <u-Components-TreeAnimation :url="$getUser('Donation_SelectedNFT')" />
+        <u-Components-TreeAnimation autoplay :url="$getUser('Donation_SelectedNFT')" />
       </div>
 
       <div id="bv__nftmodal__leftsideimage__bottomborder"></div>
@@ -34,7 +34,7 @@
           </p>
         </div>
         <h1 id="bv__nftmodal__message">
-          This donation captured <b v-if="DonorPortal_GetCurrentUserDailyCarbonSequestrationUpdate('specific')">{{
+          This contribution captured <b v-if="DonorPortal_GetCurrentUserDailyCarbonSequestrationUpdate('specific')">{{
             DonorPortal_GetCurrentUserDailyCarbonSequestrationUpdate('specific')
             .toLocaleString(DonarPortal_NavigatorLanguage,{
             minimumFractionDigits: 0,
@@ -74,7 +74,7 @@
           <div class="bv__nftmodal__infocard">
             <div class="bv__nftmodal__infocardheader">
               <p>
-                Donation
+                Total contributed
               </p>
               <h2 class="d-flex">
                 <u-Icons-USDC style="margin-right: 4px;" />
@@ -266,7 +266,7 @@
               <h2>
                 Download
               </h2>
-              <p>Here will say something about this</p>
+              <p>Take this tree with you wherever you go.</p>
             </div>
             <u-Components-Button @click="DonorPortal_DownloadNFT($getUser('Donation_SelectedNFT'))">
               <template #right-icon>
@@ -281,7 +281,7 @@
               <h2>
                 Share
               </h2>
-              <p>Here will say something about this</p>
+              <p>Share this contribution impact with friends and inspire your community.</p>
             </div>
             <div id="bv__nftmodal__infocardsocials">
               <u-Components-Button
