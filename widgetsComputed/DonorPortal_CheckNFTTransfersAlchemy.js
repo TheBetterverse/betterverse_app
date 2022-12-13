@@ -50,7 +50,8 @@ return async function(tokenIDs){
     var allTransfers = $getGlobalModel('transfers')
     var filteredTransfers = []
 
-    var tokenID = ethers.utils.hexDataLength(278)
+    var tokenID = ethers.utils.hexValue(278)
+
     console.log(tokenID)
 
     //filter out transfers for each nft I currently own (by tokenID)

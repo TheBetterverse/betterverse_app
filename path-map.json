@@ -780,6 +780,38 @@
     "savePath": "components/-NF9G-tnrUlOqpLt-zsY/code"
   },
   {
+    "filePath": "components/u-Components-DonationCarousel/index.json",
+    "savePath": "components/-NICygO7duK5fpjQXkcn"
+  },
+  {
+    "filePath": "components/u-Components-DonationCarousel/compoenentCode.vue",
+    "savePath": "components/-NICygO7duK5fpjQXkcn/code"
+  },
+  {
+    "filePath": "components/u-Components-TreeImage/index.json",
+    "savePath": "components/-NIHr1R4rH5dQ6qlcSzB"
+  },
+  {
+    "filePath": "components/u-Components-TreeImage/compoenentCode.vue",
+    "savePath": "components/-NIHr1R4rH5dQ6qlcSzB/code"
+  },
+  {
+    "filePath": "components/u-Components-InfiniteSlider/index.json",
+    "savePath": "components/-NIIYWN2EZZnrIBUmA0X"
+  },
+  {
+    "filePath": "components/u-Components-InfiniteSlider/compoenentCode.vue",
+    "savePath": "components/-NIIYWN2EZZnrIBUmA0X/code"
+  },
+  {
+    "filePath": "components/u-Icons-Forbidden/index.json",
+    "savePath": "components/-NIWfm2v1hxbOS2fLBGq"
+  },
+  {
+    "filePath": "components/u-Icons-Forbidden/compoenentCode.vue",
+    "savePath": "components/-NIWfm2v1hxbOS2fLBGq/code"
+  },
+  {
     "filePath": "customCode/css/Betterverse_Bootstrap.css",
     "savePath": "customCode/css/-MvYLPXgaHOT2LWKJD3-/code",
     "customCodeName": "Betterverse_Bootstrap",
@@ -1301,6 +1333,10 @@
     "savePath": "subTabs/-Mx_5FLL2jlxjXYUMdIL/-NAtXkQSbLXO6CKKZj7d"
   },
   {
+    "filePath": "subPages/-Mx_5FLL2jlxjXYUMdIL/-NIWd_TSAlNKOlZsGwf8.json",
+    "savePath": "subTabs/-Mx_5FLL2jlxjXYUMdIL/-NIWd_TSAlNKOlZsGwf8"
+  },
+  {
     "filePath": "pages/-Mx_2_VCOc__FGnUdqrq.json",
     "savePath": "tabs/-Mx_2_VCOc__FGnUdqrq"
   },
@@ -1639,6 +1675,10 @@
   {
     "filePath": "widgetsComputed/DonorPortal_GetAllDonationRows.js",
     "savePath": "widgetsComputed/DonorPortal_GetAllDonationRows"
+  },
+  {
+    "filePath": "widgetsComputed/DonorPortal_GetAllNFTRows.js",
+    "savePath": "widgetsComputed/DonorPortal_GetAllNFTRows"
   },
   {
     "filePath": "widgetsComputed/DonorPortal_GetAllPublicCharityProjects.js",

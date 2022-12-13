@@ -22,7 +22,7 @@ const emailTemplate =
                 <br>
                 <div style="color: black;"> You’re all set to make your first donation and mint your NFT tree. </div>
                 </p>
-                <button style="border-radius: 20px; padding: 0px 15px; gap: 10px; width: 87px; height: 28px; background: #000000;">
+                <button style="border-radius: 20px; padding: 0px 15px; gap: 10px; width: 87px; height: 28px; background: #000000; width: 100px;">
                   <a href="https://give.betterverse.app" target="_blank" style="color: #ECEAE3; text-decoration: none;">
                     <b style="font-family: 'Courier New', monospace; ">Contribute</b>
                   </a>

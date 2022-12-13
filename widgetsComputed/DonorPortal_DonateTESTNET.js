@@ -375,9 +375,10 @@ return async event => {
                                       ).innerText = 'Generating NFT'
 
                                       if (nftCount == 1) {
-                                        this.DonorPortal_RedirectToGeneration()
 
                                         nftCount = 1
+                                        await $setUser('Donation_NFTCount', nftCount)
+                                        this.DonorPortal_RedirectToGeneration()
 
                                         const finalDonationAmount =
                                           await this.DonorPortal_DonationCut(
@@ -434,6 +435,8 @@ return async event => {
                                         nftCount >= 2 &&
                                         nftCount <= 10
                                       ) {
+
+                                        await $setUser('Donation_NFTCount', nftCount)
                                         this.DonorPortal_RedirectToGeneration()
 
                                         const finalDonationAmount =

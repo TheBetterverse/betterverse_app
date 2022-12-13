@@ -85,7 +85,7 @@
           </h2>
 
           <p>
-            Not to worry! You can make your first contribution and start offsetting some CO₂.
+            Not to worry! You can make your first </br> contribution and start offsetting some CO₂.
           </p>
 
           <u-Components-Button @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ', '-Mx_5FLL2jlxjXYUMdIL')" secondary
@@ -109,13 +109,17 @@
         </div>
       </div>
 
-      <div class="bv__dashboard__carrousel"
+      <div class="bv__dashboard__donations"
         v-if="DonorPortal_GetCurrentUserNFTs() != null && !$getGlobalModel('dashboardRefresh')">
-
         <u-Components-TreeCard v-for="(row, key) in DonorPortal_GetCurrentUserNFTs()" :data="row" :key="key"
           @view="DonorPortal_ViewSelectedTree(row)">
         </u-Components-TreeCard>
       </div>
+    </div>
+
+    <div class="bv__dashboard__carousel"
+    v-if="DonorPortal_GetCurrentUserNFTsCount() < 1">
+      <u-Components-DonationCarousel />
     </div>
 
   </main>
@@ -134,6 +138,11 @@
 </template>
 
 <style>
+
+  .bv__dashboard__carousel{
+    width: 100%;
+  }
+
   .bv__dashboard__main {
     margin-top: 67px;
     background: var(--bg-primary);
@@ -160,7 +169,7 @@
   }
 
   #bv__dashboard__maincontent {
-    margin-bottom: 40px;
+    margin-bottom: 0px;
   }
 
   .bv__dashboard__topborder {
@@ -228,7 +237,7 @@
     margin-bottom: 15px;
   }
 
-  .bv__dashboard__carrousel {
+  .bv__dashboard__donations {
     display: grid;
     grid-template-columns: 1fr;
     gap: 20px;
@@ -246,7 +255,7 @@
       width: max-content;
     }
 
-    .bv__dashboard__carrousel {
+    .bv__dashboard__donations {
       grid-template-columns: repeat(2, 1fr);
     }
   }
@@ -274,27 +283,27 @@
       justify-content: end;
     }
 
-    .bv__dashboard__carrousel {
+    .bv__dashboard__donations {
       grid-template-columns: repeat(3, 1fr);
     }
   }
 
   @media only screen and (min-width: 1300px) {
-    .bv__dashboard__carrousel {
+    .bv__dashboard__donations {
       grid-template-columns: repeat(4, 1fr);
     }
   }
 
 
   @media only screen and (min-width: 1800px) {
-    .bv__dashboard__carrousel {
+    .bv__dashboard__donations {
       grid-template-columns: repeat(5, 1fr);
     }
   }
 
 
   @media only screen and (min-width: 2200px) {
-    .bv__dashboard__carrousel {
+    .bv__dashboard__donations {
       grid-template-columns: repeat(6, 1fr);
     }
   }

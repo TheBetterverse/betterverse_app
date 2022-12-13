@@ -9,7 +9,7 @@ return function (value) {
   if (this.DonorPortal_GetCurrentUserWalletProvider() === 'slide') {
     $setUser('DonorPortal_DonationAmount', '20')
   } else {
-    $setUser('DonorPortal_DonationAmount', '100')
+    $setUser('DonorPortal_DonationAmount', '20')
   }
 
   let element = document.getElementById('bv__donatemodal')

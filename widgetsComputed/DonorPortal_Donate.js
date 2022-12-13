@@ -276,9 +276,11 @@ return async event => {
                                                                     console.log('prepping data rows for db')
                                                                     if (nftCount == 1) {
 
+                                                                        nftCount = 1
+                                                                        await $setUser('Donation_NFTCount', nftCount)
+
                                                                         this.DonorPortal_RedirectToGeneration()
 
-                                                                        nftCount = 1
                                                                         const finalDonationAmount = await this.DonorPortal_DonationCut(amount)
                                                                         const donationAmountGBP = await this.Global_ConvertUSDtoGBP(finalDonationAmount)
                                                                         const donationAmountEUR = await this.Global_ConvertUSDtoEUR(finalDonationAmount)
@@ -312,7 +314,8 @@ return async event => {
 
                                                                         return
                                                                     } else if (nftCount >= 2 && nftCount <= 10) {
-
+                                                                        
+                                                                        await $setUser('Donation_NFTCount', nftCount)
                                                                         this.DonorPortal_RedirectToGeneration()
 
                                                                         const finalDonationAmount = await this.DonorPortal_DonationCut(amount)

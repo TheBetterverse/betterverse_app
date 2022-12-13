@@ -42,6 +42,11 @@
       //Redirect to wallet setup
       $setCurrentSubTab('-N4UIKK5MmraPqo_BhCH', '-Mx_5FLL2jlxjXYUMdIL')
     }
+    //CLOSED BETA INVITE
+    else if (fbUser.email && currentProfileStage == null){
+      await $setUser('ProfileSetUpStage', 1)
+      $setCurrentSubTab('-MysZOod447ZdKXNCTey', '-Mx_5FLL2jlxjXYUMdIL')
+    }
   }
 
   /*REDIRECT EXISTING REGULAR USER*/

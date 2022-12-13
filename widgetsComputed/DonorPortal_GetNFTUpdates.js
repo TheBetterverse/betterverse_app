@@ -86,7 +86,7 @@ return async event => {
     }
 
     //Check for NFT transfers
-    //console.log('Checking for transfers')
+    console.log('Checking for transfers')
     //await this.DonorPortal_CheckNFTTransfersAlchemy(currentUserNFTsIDs)
 
     await delay(3000)
