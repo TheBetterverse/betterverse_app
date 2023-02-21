@@ -51,25 +51,6 @@ return async event => {
             if (walletProvider == 'torus') {
                 web3 = new Web3(window.torus.provider)
                 provider = new ethers.providers.Web3Provider(window.torus.provider)
-            } else if (walletProvider === 'slide') {
-                window.slide.send = function(request, callback) {
-                    slide.request(request).then((result) => {
-                        console.log({
-                            request
-                        });
-                        callback(null, {
-                            id: request.id,
-                            jsonrpc: request.jsonrpc,
-                            method: request.method,
-                            result,
-                            error: undefined,
-                        });
-                    }).catch(e => {
-                        callback(e, null);
-                    });
-                }
-                web3 = new Web3(window.slide);
-                provider = new ethers.providers.Web3Provider(slide);
             } else {
                 let window_ethereumm
                 if (window.ethereum.providers && window.ethereum.providers.length == 2) {
@@ -195,7 +176,7 @@ return async event => {
                                                 const tx = await USDCContractWithEther.approve(MinterContractAddress, approveAmount)
                                                 await tx.wait()
                                                 await USDCContract.methods.approve(MinterContractAddress, approveAmount).call()
-                                            } else if (walletProvider !== 'slide') { // Don't do approval step for slide
+                                            } else {
                                                 await USDCContract.methods.approve(MinterContractAddress, approveAmount).send({
                                                     from: wallet
                                                 })
@@ -207,10 +188,6 @@ return async event => {
                                             console.log('TOKEN: ' + USDCAddress)
 
                                             let gas;
-                                            if (walletProvider === 'slide') {
-                                                // Set gas for slide so estimating gas doesn't fail
-                                                gas = "0x3000000"
-                                            }
 
                                             document.getElementById("bv__donate__buttontext").innerText = 'Requesting mint'
 

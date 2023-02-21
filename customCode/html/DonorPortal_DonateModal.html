@@ -25,7 +25,7 @@
           <div class="bv__donatemodal__donatemessagewrap">
             <h2 class="bv__donatemodal__donatemessage">
               <span>I want to give</span>
-              <b v-if="DonorPortal_GetCurrentUserWalletProvider() == 'slide'"> $20 </b>
+              <!--b v-if="DonorPortal_GetCurrentUserWalletProvider() == 'slide'"> $20 </b-->
               <!--span v-if="DonorPortal_GetCurrentUserWalletProvider() == 'slide'" style="position: relative">
                 <span class="bv__inlineinput__topspan">
                   <p>Select amount</p>
@@ -286,18 +286,17 @@
                 </div>
               </label>
 
-              <div style="position: relative; float: right;"
-                v-if="DonorPortal_GetCurrentUserWalletProvider() != 'slide'">
+              <!--div style="position: relative; float: right;">
                 <u-Components-Button v-if="DonorPortal_GetCurrentUserWalletAddress() != null"
                   @click="DonorPortal_LoadRamp('overlay')" title="Top up wallet">
                   <p> Top up wallet </p>
                 </u-Components-Button>
-              </div>
+              </div-->
             </div>
 
-            <p v-if="DonorPortal_GetCurrentUserWalletProvider() == 'slide'">
+            <!--p v-if="DonorPortal_GetCurrentUserWalletProvider() == 'slide'">
               Pay with crypto or bank card with Slide
-            </p>
+            </p-->
 
             <!--div class="bv__donatemodal__radioinputwrap" style="opacity: 60%;">
               <input type="radio" id="bv__donatemodal__payment" name="payment_method" value="card" disabled />

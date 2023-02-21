@@ -1,6 +1,9 @@
 /* DonorPortal_SubmitPersonalInfo.js */
 
 return async form => {
+
+  console.log('Edit Row - DonorPortal_SubmitPersonalInfo.js')
+
   let currentUserRowKey = this.DonorPortal_GetCurrentUserRowKey()
 
   let { profilepic, username, fname, lname, phone, country, currency } = form

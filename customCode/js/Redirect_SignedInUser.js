@@ -1,5 +1,5 @@
 (async () => {
-    console.log('running redirect_signedinuser')
+    //console.log('running redirect_signedinuser')
 
     const users = $getGrid('users')
     const currentUser = _.find(users, { user: fbUser.uid })

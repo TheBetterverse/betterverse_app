@@ -833,7 +833,7 @@
                 "customValidationRule": "",
                 "customValidationErrorMessage": "",
                 "propName": "role",
-                "ableToAddLookUpVal": true,
+                "ableToAddLookUpVal": false,
                 "gridId": "users"
               },
               {

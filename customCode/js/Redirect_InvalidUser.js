@@ -1,5 +1,5 @@
 (async () => {
-    console.log('running redirect_invaliduser')
+    //console.log('running redirect_invaliduser')
     var isAnon = $vm.isUserAnonymous
     var currentSubTab = $vm.currentSubTab
     const users = $getGrid('users')
@@ -8,7 +8,6 @@
 
     if (currentUser.profileComplete == true){
         isAnon = false
-
     }
 
     //ANONYMOUS USER

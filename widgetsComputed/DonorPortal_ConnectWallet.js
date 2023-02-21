@@ -187,32 +187,6 @@ return function (event) {
     }*/
 
     connectWalletHandler()
-
-  //SLIDE
-  } else if (walletProvider === "connect-slide") {
-
-    const connectSlide = async () => {
-
-      const slide = new Slide.SDK()
-      slide.preload();
-      window.slide = slide;
-
-      const wallet = await slide.request({ method: "eth_requestAccounts" })
-
-      $setDataGridVal('users', currentUserRowKey + '.walletAddress', wallet[0])
-      $setDataGridVal('users', currentUserRowKey + '.walletProvider', 'slide')
-
-      //If user is on the register page and connected wallet successful, redirect to topup page
-      if (
-        currentSubTab == '-N4UIKK5MmraPqo_BhCH' &&
-        wallet != null
-      ) {
-        $setCurrentSubTab('-N6OJKPA76EZPTjdgEMp', '-Mx_5FLL2jlxjXYUMdIL')
-      }
-    }
-
-    connectSlide()
   }
-
   return null
 }

@@ -2,8 +2,6 @@ return function(){
 
     const currentSubTab = this.currentSubTab
 
-    console.log('redirecting to dashboard')
-
     if(this.DonorPortal_GetCurrentUserProfileComplete() != true){
         this.DonorPortal_RedirectToSignIn()
     }

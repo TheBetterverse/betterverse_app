@@ -70,13 +70,13 @@
 
         <div>
           <bv-button
-            name="connect-slide"
+            name="connect-torus"
             type="submit"
             id="bv__register__connectslide"
-            title="Create slide wallet"
+            title="Create Torus wallet"
           >
-            <template #left-icon> <icon-slide /> </template>
-            <template> <p>Slide</p> </template>
+            <template #left-icon> <icon-torus /> </template>
+            <template> <p>Torus</p> </template>
           </bv-button>
         </div>
 

@@ -1,5 +1,5 @@
 ;(async () => {
-  console.log('running redirect_main')
+  //console.log('running redirect_main')
   //const currentUser = $vm.DonorPortal_GetCurrentUser()
   
   const users = $getGrid('users')
@@ -22,7 +22,7 @@
     isAnon
   ) {
     //Redirect to Sign in/Register Page
-    console.log("New User: Login/Register!")
+    //console.log("New User: Login/Register!")
     $setCurrentSubTab('-N0ZsOs2dAbF9PTr_Hz0', '-Mx_5FLL2jlxjXYUMdIL')
 
   /*REDIRECT EXISTING REGULAR USER WHERE PROFILE IS NOT COMPLETE*/
@@ -56,7 +56,7 @@
     !isAnon
   ) {
     //Redirect to Dashboard
-    console.log("Existing User")
+    //console.log("Existing User")
     $setCurrentSubTab('-MyvUthgoLrT0z0HdIX9', '-Mx_5FLL2jlxjXYUMdIL')
   }
 })()

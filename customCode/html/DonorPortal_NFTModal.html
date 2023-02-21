@@ -326,7 +326,7 @@
             </div>
           </div>
 
-          <div class="bv__nftmodal__actioncard disabled">
+          <!--div class="bv__nftmodal__actioncard disabled">
             <div class="bv__nftmodal__statustext">
               <small>coming soon</small>
             </div>
@@ -346,26 +346,27 @@
                 Betterverse</u-Components-Button>
             </div>
           </div>
-        </div>
+        </div-->
 
-        <u-Components-CardSlider v-if="DonorPortal_GetCurrentUserNFTsCount() > 1" name="othernfts">
-          <template #title>
-            You've got {{ DonorPortal_GetCurrentUserNFTsCount() - 1 }} other NFT{{
-            (DonorPortal_GetCurrentUserNFTsCount() - 1) > 1 ? 's' :
-            '' }}
-          </template>
-
-          <template #default>
-            <u-Components-TreeCard v-for="(row, key) in DonorPortal_GetCurrentUserNFTs()"
-              v-if="row.$initialDonationRow.rowKey !== DonorPortal_GetSpecificDonation().rowKey" :data="row" :key="key"
-              @view="DonorPortal_ViewSelectedTree(row)">
-            </u-Components-TreeCard>
-          </template>
-        </u-Components-CardSlider>
 
 
       </div>
 
+      <u-Components-CardSlider v-if="DonorPortal_GetCurrentUserNFTsCount() > 1" name="othernfts">
+        <template #title>
+          You've got {{ DonorPortal_GetCurrentUserNFTsCount() - 1 }} other NFT{{
+          (DonorPortal_GetCurrentUserNFTsCount() - 1) > 1 ? 's' :
+          '' }}
+        </template>
+
+        <template #default>
+          <u-Components-TreeCard v-for="(row, key) in DonorPortal_GetCurrentUserNFTs()"
+            v-if="row.$initialDonationRow.rowKey !== DonorPortal_GetSpecificDonation().rowKey" :data="row" :key="key"
+            @view="DonorPortal_ViewSelectedTree(row)">
+          </u-Components-TreeCard>
+        </template>
+      </u-Components-CardSlider>
+      
     </div>
   </div>
 </template>

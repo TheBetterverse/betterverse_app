@@ -1,0 +1,22 @@
+{
+  "-MuQi_91I-xfAzRoAbBM": {
+    "_id": 1,
+    "createdDate": 1643290185361,
+    "description": "Non-Governmental Organisation",
+    "lastEditDate": 1643290201314,
+    "lastEditedBy": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
+    "name": "NGO",
+    "owner": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
+    "rowKey": "-MuQi_91I-xfAzRoAbBM"
+  },
+  "-MuQidQ1lqHGUsPY9L3j": {
+    "_id": 2,
+    "createdDate": 1643290202833,
+    "description": "Non-Profit Organisation",
+    "lastEditDate": 1643290254435,
+    "lastEditedBy": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
+    "name": "Charity",
+    "owner": "rC3Im0KZsschZQG0D6zOrPG3GiZ2",
+    "rowKey": "-MuQidQ1lqHGUsPY9L3j"
+  }
+}
