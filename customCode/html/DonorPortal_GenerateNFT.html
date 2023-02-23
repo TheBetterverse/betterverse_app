@@ -24,16 +24,16 @@
           </p>
 
           <h1>
-            We're generating your <b>NFT Tree<b v-if="$getUser('Donation_NFTCount') > 1">s</b>!</b>
+            We're generating your <b>Tree<b v-if="$getUser('Donation_NFTCount') > 1">s</b>!</b>
           </h1>
         </div>
 
         <div id="bv__generatenft__subtitle" class="bv__globals__px">
           <p>
             Your <b> {{ DonorPortal_GetDonationAmount() }} USDC </b> contribution to <b> {{
-              DonorPortal_GetSpecificProject()['$displayName'] }} </b> generated {{$getUser('Donation_NFTCount')}}
-            <span v-if="$getUser('Donation_NFTCount') > 1"> NFTs. </span>
-            <span v-if="$getUser('Donation_NFTCount') == 1"> NFT. </span>
+              DonorPortal_GetSpecificCharity()['$displayName'] }} </b> generated {{$getUser('Donation_NFTCount')}}
+            <span v-if="$getUser('Donation_NFTCount') > 1"> Trees. </span>
+            <span v-if="$getUser('Donation_NFTCount') == 1"> Tree. </span>
             They will show on your dashboard when they're ready.
           </p>
         </div>

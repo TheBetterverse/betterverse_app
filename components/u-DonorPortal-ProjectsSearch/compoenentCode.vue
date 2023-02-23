@@ -3,7 +3,7 @@
 <template>
   <div id="bv__projects">
     <div id="bv__projects__nav">
-      <h1>Projects</h1>
+      <h1>Charities</h1>
 
       <div id="bv__projects__navfilters">
         <div id="bv__projects__navinputwrapper">
@@ -13,7 +13,7 @@
             name="search-input"
             id="bv__projects__navinput"
             type="text"
-            placeholder="Search projects"
+            placeholder="Search charities"
             autocomplete="none"
             @input="onSearchInput"
           />

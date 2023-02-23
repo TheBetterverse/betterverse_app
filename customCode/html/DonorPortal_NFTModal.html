@@ -51,7 +51,7 @@
             maximumFractionDigits:2}) }}kgs</b>
           of <b>CO2</b>
           by planting <b>{{DonorPortal_GetSpecificDonation().numberOfTreesPlanted.toLocaleString() }} trees</b>
-          in <b>{{ DonorPortal_GetSpecificDonation().$charityProject.displayLocation }}</b>
+          <!-- in <b>{{ DonorPortal_GetSpecificDonation().$charityProject.displayLocation }}</b-->
         </h1>
 
         <div id="bv__nftmodal__bottomnav">
@@ -108,7 +108,17 @@
 
           <div class="bv__nftmodal__infocard">
             <div class="bv__nftmodal__infocardheader">
-              <p> Trees planted </p>
+              <span class="w-100 d-flex justify-content-between">
+                <p> Trees planted </p>
+                <a href="https://www.betterverse.app/legal">
+                  <u-Components-ToolTip>
+                    <template #tooltip>
+                      <p>Want to know how we figure this out? Check our FAQ.</p>
+                    </template>
+                  </u-Components-ToolTip>
+                  </a>
+              </span>
+
               <h2 class="m-0">
                 {{ DonorPortal_GetSpecificDonation().numberOfTreesPlanted.toLocaleString() }}
               </h2>
@@ -122,11 +132,13 @@
             <div class="bv__nftmodal__infocardheader">
               <span class="w-100 d-flex justify-content-between">
                 <p> CO2 capture </p>
-                <u-Components-ToolTip>
-                  <template #tooltip>
-                    <p>Want to know how we figure this out? Info coming soon.</p>
-                  </template>
-                </u-Components-ToolTip>
+                <a href="https://www.betterverse.app/legal">
+                  <u-Components-ToolTip>
+                    <template #tooltip>
+                      <p>Want to know how we figure this out? Check our FAQ.</p>
+                    </template>
+                  </u-Components-ToolTip>
+                  </a>
               </span>
               <h2>
                 {{
@@ -139,7 +151,7 @@
             </div>
           </div>
 
-          <div class="bv__nftmodal__infocard">
+          <!--div class="bv__nftmodal__infocard">
             <div class="bv__nftmodal__infocardheader">
               <p> Location </p>
               <h2>
@@ -149,7 +161,7 @@
             <div class="bv__nftmodal__infocardfooter">
               <u-Icons-Location />
             </div>
-          </div>
+          </div-->
 
           <div class="bv__nftmodal__infocard">
             <div class="bv__nftmodal__infocardheader">
@@ -305,7 +317,7 @@
             </div>
           </div>
 
-          <div class="bv__nftmodal__actioncard disabled">
+          <!-- div class="bv__nftmodal__actioncard disabled">
             <div class="bv__nftmodal__statustext">
               <small>coming soon</small>
             </div>
@@ -324,7 +336,7 @@
                 title="Buy fertiliser">Buy
                 fertiliser</u-Components-Button>
             </div>
-          </div>
+          </div -->
 
           <!--div class="bv__nftmodal__actioncard disabled">
             <div class="bv__nftmodal__statustext">
@@ -354,7 +366,7 @@
 
       <u-Components-CardSlider v-if="DonorPortal_GetCurrentUserNFTsCount() > 1" name="othernfts">
         <template #title>
-          You've got {{ DonorPortal_GetCurrentUserNFTsCount() - 1 }} other NFT{{
+          You've got {{ DonorPortal_GetCurrentUserNFTsCount() - 1 }} other Tree{{
           (DonorPortal_GetCurrentUserNFTsCount() - 1) > 1 ? 's' :
           '' }}
         </template>

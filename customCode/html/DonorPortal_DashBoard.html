@@ -32,7 +32,18 @@
 
         <div class="bv__dashboard__card">
           <div class="bv__dashboard__cardhead">
-            <p> Trees planted </p>
+            <span class="w-100 d-flex align-items-center justify-content-between">
+              <p> Trees planted </p>
+              <a href="https://www.betterverse.app/legal">
+              <u-Components-ToolTip>
+                <template #tooltip>
+                  <p>Want to know how we figure this out? Check our FAQ.</p>
+                </template>
+              </u-Components-ToolTip>
+              </a>
+            </span>
+
+
             <h2> {{ DonorPortal_GetCurrentUserTotalTreesPlanted().toLocaleString() }} </h2>
           </div>
 
@@ -45,15 +56,16 @@
           <div class="bv__dashboard__cardhead">
             <span class="w-100 d-flex align-items-center justify-content-between">
               <p> CO₂ Captured </p>
+              <a href="https://www.betterverse.app/legal">
               <u-Components-ToolTip>
                 <template #tooltip>
-                  <p>Want to know how we figure this out? Info coming soon.</p>
+                  <p>Want to know how we figure this out? Check our FAQ.</p>
                 </template>
               </u-Components-ToolTip>
+              </a>
             </span>
 
-            <h2> {{ parseFloat(DonorPortal_GetCurrentUserDailyCarbonSequestrationUpdate('all')).toLocaleString() }} kg
-            </h2>
+            <h2> {{ parseFloat(DonorPortal_GetCurrentUserDailyCarbonSequestrationUpdate('all')).toLocaleString() }} kg </h2>
           </div>
 
           <div class="bv__dashboard__cardfoot">
@@ -61,7 +73,7 @@
           </div>
         </div>
 
-        <div class="bv__dashboard__card">
+        <!--div class="bv__dashboard__card">
           <div class="bv__dashboard__cardhead">
             <span> Locations </span>
             <h2> {{ DonorPortal_GetCurrentUserTotalDonationsProjectsLocations.toLocaleString() }} </h2>
@@ -70,7 +82,7 @@
           <div class="bv__dashboard__cardfoot">
             <u-Icons-Locations />
           </div>
-        </div>
+        </div-->
       </div>
     </div>
 

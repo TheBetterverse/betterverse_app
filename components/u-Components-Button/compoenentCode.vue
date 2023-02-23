@@ -2,7 +2,6 @@
   <button
     class="bv__button"
     :name="name"
-    :title="title"
     :class="{
       primary,
       secondary,

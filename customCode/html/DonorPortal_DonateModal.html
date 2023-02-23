@@ -26,12 +26,12 @@
             <h2 class="bv__donatemodal__donatemessage">
               <span>I want to give</span>
               <!--b v-if="DonorPortal_GetCurrentUserWalletProvider() == 'slide'"> $20 </b-->
-              <!--span v-if="DonorPortal_GetCurrentUserWalletProvider() == 'slide'" style="position: relative">
-                <span class="bv__inlineinput__topspan">
+              <span v-if="DonorPortal_GetCurrentUserWalletProvider() == 'slide'" style="position: relative">
+                <!--span class="bv__inlineinput__topspan">
                   <p>Select amount</p>
-                </span>
+                </span-->
 
-                <span>
+                <!--span>
                   <select name="slide-donation-amount" id="bv__donatemodal__slidedonationinput"
                     @input="DonorPortal_ProcessDonationAmount">
                     <option value="1" default>1</option>
@@ -53,18 +53,17 @@
                   <u-Icons-Chevron width="12px" height="12px"
                     class="bv__donatemodal__chevron bv__donatemodal__chevronsm">
                   </u-Icons-Chevron>
-                </span>
-              </span-->
+                </span-->
+              </span>
 
               <u-Components-InlineInput v-else name="donation-amount" :value="DonorPortal_GetDonationAmount"
                 @input="DonorPortal_ProcessDonationAmount" id="bv__donatemodal__donationamountinput" />
-
-              to <b>{{ DonorPortal_GetSpecificProject().$charity$display }}</b>
-              to plant <b>{{ DonorPortal_CalculateTreesPlanted( $getUser('DonorPortal_DonationAmount',
-                DonorPortal_GetSpecificProject().pricePerTree ),
-                DonorPortal_GetSpecificProject().pricePerTree).toLocaleString() }}</b> trees
-              in <b>{{DonorPortal_GetSpecificProject().displayLocation}}</b> to help with
-              <b>{{ DonorPortal_GetSpecificProject().$cause$display.toLowerCase() }}.</b>
+                to <b>{{ DonorPortal_GetSpecificProject().$charity$display }}</b>
+                to plant <b>{{ DonorPortal_CalculateTreesPlanted( $getUser('DonorPortal_DonationAmount',
+                  DonorPortal_GetSpecificProject().pricePerTree ),
+                  DonorPortal_GetSpecificProject().pricePerTree).toLocaleString() }}</b> trees.
+                <!-- in <b>{{DonorPortal_GetSpecificProject().displayLocation}}</b> to help with
+                <b>{{ DonorPortal_GetSpecificProject().$cause$display.toLowerCase() }}.</b-->
             </h2>
 
             <u-Components-Button secondary class="bv__donatemodal__donatebutton"
@@ -79,12 +78,12 @@
 
           <div>
             <hr class="d-none d-lg-block" />
-            <div class="bv__donatemodal__headerfoot" v-if="DonorPortal_GetCurrentUserWalletProvider() != 'slide'">
+            <div class="bv__donatemodal__headerfoot">
               <u-Icons-Info />
               <p>By increasing your contribution you are increasing your
                 chance
                 to mint a
-                rarer NFT.
+                rarer tree.
                 <!--a style="font-weight: 500;" href="https://www.betterverse.app">  </a-->
               </p>
             </div>
@@ -128,7 +127,7 @@
 
           <hr />
 
-          <div class="bv__donatemodal__projectname">
+          <!--div class="bv__donatemodal__projectname">
             <div class="w-100">
               <p>Project</p>
               <h2>
@@ -137,12 +136,13 @@
             </div>
           </div>
 
-          <hr />
+          <hr /-->
 
         </div>
       </div>
 
       <div class="bv__donatemodal__descriptioncont bv__globals__px">
+
         <div class="bv__donatemodal__donation grid-area-1">
           <div>
             <p>Amount</p>
@@ -173,7 +173,7 @@
           </div>
         </div>
 
-        <div class="bv__donatemodal__projectname grid-area-3">
+        <!--div class="bv__donatemodal__projectname grid-area-3">
           <div class="w-100">
             <p>Project</p>
             <h2>
@@ -189,11 +189,9 @@
               {{DonorPortal_GetSpecificProject().displayLocation }}
             </h2>
           </div>
-        </div>
+        </div-->
 
-        <hr class="d-block d-lg-none" />
-
-        <div class="bv__donatemodal__treeamount grid-area-5">
+        <div class="bv__donatemodal__treeamount grid-area-3">
           <div class="w-100">
             <p>Trees to be planted</p>
             <h2>
@@ -205,7 +203,7 @@
 
         <hr class="d-block d-lg-none" />
 
-        <div class="bv__donatemodal__projectcause grid-area-6">
+        <div class="bv__donatemodal__projectcause grid-area-4">
           <div class="w-100">
             <p>Cause</p>
             <h2>
@@ -216,7 +214,7 @@
 
         <hr class="d-block d-lg-none" />
 
-        <div class="grid-area-7">
+        <div class="grid-area-5">
           <div class="bv__donatemodal__donationsplit w-100">
             <p>
               Split contribution to generate:
@@ -273,7 +271,7 @@
 
         <hr class="d-block d-lg-none" />
 
-        <div class="grid-area-8">
+        <div class="grid-area-6">
           <div class="bv__donatemodal__paymentmethod">
             <p>Payment method:</p>
 
@@ -309,14 +307,13 @@
           </div>
         </div>
 
-
         <hr class="d-block d-lg-none" />
 
         <div class="grid-area-9"
           style="width: 100%; display: flex; align-items: center; justify-content: flex-end; padding: 1rem 0;">
           <u-Components-Button secondary type="button" id="bv__donate__button" title="Donate and generate NFT"
             @click="DonorPortal_Donate">
-            <p id="bv__donate__buttontext">Give and generate NFT</p>
+            <p id="bv__donate__buttontext">Give and generate Tree</p>
             <div style="margin-left: 6px; display: none;" class="spinner-border spinner-border-sm" id="bv__spinner"
               role="status"></div>
           </u-Components-Button>
@@ -324,7 +321,7 @@
 
         <small class="grid-area-10" v-if="DonorPortal_GetCurrentUserWalletProvider() != 'slide'">
           Did you know you can split your contribution to generate more NFTs? However, you'll a smaller chance to mint a
-          rarer NFT.
+          rarer tree.
           <!--u><a style="font-weight: 500;" href="https://www.betterverse.app"> mint a rarer NFT. </a></u-->
         </small>
       </div>
@@ -464,7 +461,6 @@
 
   .bv__donatemodal__charity {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: flex-start;
   }
@@ -485,14 +481,12 @@
 
   .bv__donatemodal__projectcause {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: flex-start;
   }
 
   .bv__donatemodal__treeamount {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: flex-start;
 
@@ -524,7 +518,6 @@
 
     padding-bottom: 1.25rem;
     scroll-snap-align: start;
-
   }
 
   .bv__donatemodal__descriptioncont>hr {
@@ -742,19 +735,17 @@
     }
 
     .bv__donatemodal__descriptioncont {
-      height: 94vh;
       gap: 1.25rem;
 
       display: grid;
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr 1fr;
-      align-items: center;
+      grid-template-rows: 1fr 1fr 1fr;
       justify-content: center;
       column-gap: 0;
-      row-gap: 0.5rem;
+      row-gap: 0.1rem;
 
       grid-template-areas: "a b" "c d" "e f" "g h" "j i";
-      padding: 10% 20% !important;
+      padding: 15% 20% !important;
 
       width: 100%;
 
@@ -769,7 +760,6 @@
 
     .grid-area-1 {
       grid-area: a;
-
       height: auto;
       padding: 1rem 0;
       padding-right: 1rem;

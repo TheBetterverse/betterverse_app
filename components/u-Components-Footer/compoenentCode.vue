@@ -22,7 +22,6 @@
           <p><a href="https://www.betterverse.app/#about">About</a></p>
           <p><a href="https://www.betterverse.app/team">Team</a></p>
           <p><a href="https://www.betterverse.app/roadmap">Roadmap</a></p>
-          <p><a href="https://www.betterverse.app/#metaverse">Metaverse</a></p>
         </div>
       </div>
 
@@ -51,7 +50,7 @@
         <p>Give</p>
         <div>
           <p>
-            <a href="#" @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ')">Projects</a>
+            <a href="#" @click="$setCurrentSubTab('-Myvhn-hQMIUPkvnAyCQ')">Charity</a>
           </p>
         </div>
       </div>

@@ -12,14 +12,19 @@
     <div class="bv__comps__projectdescription">
       <div class="bv__comps__projecttitle">
         <div class="bv__comps__projectcharity">
-          <img :src="project.$charity.charityLogo.url" />
+          <!--img :src="project.$charity.charityLogo.url" />
 
           <p>
             {{ project.$charity.charityName }}
-          </p>
+          </p-->
+
+          <img :src="project.$charity.charityLogo.url" />
+          <h2 class="bv__projectmodal__charityname">
+            {{ project.$charity.charityName }}
+          </h2>
         </div>
 
-        <h2>{{ formattedProjectName }}</h2>
+        <!--h2>{{ project.$charity.charityName }}</h2-->
       </div>
 
       <div class="bv__comps__projectinfo">
@@ -27,10 +32,10 @@
           <p>Cause</p>
           <p>{{ project.$cause$display }}</p>
         </div>
-        <div class="bv__comps__projectinfocard">
+        <!--div class="bv__comps__projectinfocard">
           <p>Location</p>
           <p>{{ project.displayLocation }}</p>
-        </div>
+        </div-->
         <div class="bv__comps__projectinfocard">
           <p>Price / tree</p>
           <p style="display: flex; gap: 0.25rem">
@@ -42,7 +47,7 @@
 
       <div class="bv__comps__projectactions">
         <u-Components-Button
-          title="View project"
+          title="View charity"
           class="bv__comps__projectactionsview"
           @click="$emit('view', project)"
         >
@@ -56,7 +61,7 @@
         </u-Components-Button>
         <u-Components-Button
           @click="$emit('donate', project)"
-          title="Donate to project"
+          title="Donate to charity"
         >
           <p>Give</p>
           <template #right-icon>

@@ -17,7 +17,7 @@
 
         <h2 class="bv-treecard-hoveroverlay-description">
           <b> ${{ donationAmount }} </b> donated to <b> {{ charity }} </b> to
-          plant <b> {{ numberOfTrees }} trees </b> in <b>{{ location }}</b>
+          plant <b> {{ numberOfTrees }} trees </b> <!--b> in {{ location }}</b-->
         </h2>
 
         <div>

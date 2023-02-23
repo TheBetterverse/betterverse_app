@@ -53,11 +53,13 @@
         </div>
 
         <div id="bv__projectmodal__maincontent">
-          <h3>{{ DonorPortal_GetSpecificProject().$cause$display }} in {{
-            DonorPortal_GetSpecificProject().displayLocation }}
+          <h3>
+            Tree Planting
+            <!--{{ DonorPortal_GetSpecificProject().$cause$display }} in {{DonorPortal_GetSpecificProject().displayLocation }}-->
           </h3>
           <h1 style="font-weight: 500">
-            {{ DonorPortal_GetSpecificProject().projectName }}
+            Why give?
+            <!-- {{ DonorPortal_GetSpecificProject().projectName }} -->
           </h1>
           <p>
             {{ DonorPortal_GetSpecificProject().overview.slice(0, 235) }}
@@ -121,7 +123,7 @@
               About the project
             </p-->
             <h2 style="margin-bottom: 6px;">
-              About the project
+              Mission Statement
             </h2>
 
           </div>
@@ -144,11 +146,12 @@
         <div id="bv__projectmodal__infoheader">
           <div
             style="display: flex; flex-direction: column; align-items: start; justify-content: space-between; height: 100%;">
-            <p>
+            <!--p>
               {{ DonorPortal_GetSpecificProject().$organisationType$display}}
-            </p>
+            </p-->
             <h2>
-              {{ DonorPortal_GetSpecificProject().$charity$display}}
+              More info
+              <!--{{ DonorPortal_GetSpecificProject().$charity$display}}-->
             </h2>
           </div>
           <div id="bv__projectmodal__infoheadercharitylogo">
@@ -195,10 +198,10 @@
             </div>
           </div>
 
-          <div class="bv__projectmodal__charitytext"
-            v-if="DonorPortal_GetSpecificProject().$charity.charityDescription">
+          <!--div class="bv__projectmodal__charitytext"
+             v-if="DonorPortal_GetSpecificProject().$charity.charityDescription">
             <p>{{DonorPortal_GetSpecificProject().$charity.charityDescription}}</p>
-          </div>
+          </div-->
 
 
           <div class="bv__projectmodal__charityinfolinks">
@@ -235,7 +238,7 @@
           </p>
 
           <h2>
-            Generate your NFT
+            Generate your Tree
           </h2>
 
           <hr />
@@ -245,10 +248,10 @@
               Pick your project, set the amount you'd like to give and make your contribution.
             </li>
             <li>
-              Create your one of a kind, procedurally generated NFT tree.
+              Create your one of a kind, procedurally generated collectable tree.
             </li>
             <li>
-              Track the real-world impace of your contribution and watch your virtual tree grow.
+              Track the impact of your contribution and watch your virtual tree grow.
             </li>
           </ol>
         </div>
@@ -259,7 +262,7 @@
               <h2 style="color: var(--offwhite)">
                 Give
               </h2>
-              <p style="color: var(--offwhite)">Ready to support this project?</p>
+              <p style="color: var(--offwhite)">Ready to support this charity?</p>
             </div>
             <u-Components-Button style="border: 1px solid var(--offwhite)"
               @click="DonorPortal_DonateToSelectedCharity(DonorPortal_GetSpecificProject())">
@@ -279,7 +282,7 @@
               <h2>
                 Share
               </h2>
-              <p>Share this project with your friends, family or community. Disabled for closed beta.</p>
+              <p>Share this charity with your friends, family or community. Disabled for closed beta.</p>
               <b-spinner id="bv__nftmodal__sharecard__spinner" small style="display: none;"></b-spinner>
             </div>
             <div id="bv__projectmodal__infocardsocials">
@@ -332,7 +335,7 @@
         <div id="bv__projectmodal__otherprojects">
 
           <u-Components-CardSlider name="otherprojects">
-            <template #title>Other projects</template>
+            <template #title>Other charities</template>
 
             <template #default>
               <u-Components-ProjectCard v-for="(project, key) in DonorPortal_GetAllPublicCharityProjects()"
@@ -855,7 +858,7 @@
     padding-top: 10px;
     display: grid;
     grid-template-rows: repeat(3, max-content);
-    gap: 2rem;
+    gap: 0rem;
   }
 
   .bv__projectmodal__charityinfolinks {
