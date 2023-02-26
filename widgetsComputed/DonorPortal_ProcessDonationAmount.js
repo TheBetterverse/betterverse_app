@@ -24,9 +24,9 @@ function setCaretToEnd(el) {
 let debouncedPart = debounceInput(async event => {
   let amount = event.target.textContent
 
-  if (!amount) amount = '20'
+  if (!amount) amount = '25'
 
-  if (parseInt(amount) < 20) amount = '20'
+  if (parseInt(amount) < 25) amount = '25'
   else if (parseInt(amount) > 1000000) amount = '1000000'
 
   event.target.textContent = parseInt(amount).toLocaleString('en-us')
