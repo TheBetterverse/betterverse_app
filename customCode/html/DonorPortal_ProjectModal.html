@@ -334,7 +334,7 @@
 
         <div id="bv__projectmodal__otherprojects">
 
-          <u-Components-CardSlider name="otherprojects">
+          <u-Components-CardSlider name="otherprojects" v-if="DonorPortal_GetAllPublicCharityProjects() > 1">
             <template #title>Other charities</template>
 
             <template #default>
@@ -820,6 +820,7 @@
     width: 100%;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, minmax(1fr, 180px));
+    margin-bottom: 15px;
   }
 
   #bv__projectmodal__additionalpictures>* {
