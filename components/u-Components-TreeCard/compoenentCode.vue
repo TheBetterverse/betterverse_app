@@ -133,6 +133,9 @@ module.exports = {
     this.location =
       this.data.$initialDonationRow.$charityProject.displayLocation
 
+    if(this.data.json === 'ipfs://QmQN53p4CvaknM1v7fbViWLrVf6BuJ8CEBhBeCuwXB1XgS/1a.json'){
+      this.data.json = 'https://ipfs.io/ipfs/QmQN53p4CvaknM1v7fbViWLrVf6BuJ8CEBhBeCuwXB1XgS/1a.json' 
+    }
     const response = await fetch(this.data.json)
     const data = await response.json()
 
