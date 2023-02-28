@@ -236,7 +236,7 @@
               </div>
 
               <div
-                v-if="DonorPortal_GetDonationAmountNumber() >= 20 && DonorPortal_GetCurrentUserWalletProvider() != 'slide'"
+                v-if="DonorPortal_GetDonationAmountNumber() >= 50"
                 class="bv__donatemodal__radioinputwrap">
                 <input type="radio" id="bv__donatemodal__customsplit" name="split_donation" value="yes" />
                 <label for="bv__donatemodal__customsplit">
@@ -313,7 +313,7 @@
           style="width: 100%; display: flex; align-items: center; justify-content: flex-end; padding: 1rem 0;">
           <u-Components-Button secondary type="button" id="bv__donate__button" title="Donate and generate NFT"
             @click="DonorPortal_Donate">
-            <p id="bv__donate__buttontext">Give and generate Tree</p>
+            <p id="bv__donate__buttontext">Give and generate tree</p>
             <div style="margin-left: 6px; display: none;" class="spinner-border spinner-border-sm" id="bv__spinner"
               role="status"></div>
           </u-Components-Button>
