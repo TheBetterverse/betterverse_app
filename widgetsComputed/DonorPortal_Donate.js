@@ -182,9 +182,10 @@ return async event => {
                                                 })
                                                 await USDCContract.methods.approve(MinterContractAddress, approveAmount).call()
                                             }
+
                                             console.log('NFT COUNT: ' + nftCount)
                                             console.log('CHARITY ID: ' + charityID)
-                                            console.log('AMOUNT (WEI) ' + approveAmount)
+                                            console.log('AMOUNT: ' + approveAmount)
                                             console.log('TOKEN: ' + USDCAddress)
 
                                             let gas;
