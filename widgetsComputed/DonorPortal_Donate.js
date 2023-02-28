@@ -251,7 +251,7 @@ return async event => {
                                                                     //Once donation is succesful create a row to store data
                                                                     document.getElementById("bv__donate__buttontext").innerText = 'Generating tree'
 
-                                                                    console.log('prepping data rows for db')
+                                                                    //console.log('prepping data rows for db')
                                                                     if (nftCount == 1) {
 
                                                                         nftCount = 1
