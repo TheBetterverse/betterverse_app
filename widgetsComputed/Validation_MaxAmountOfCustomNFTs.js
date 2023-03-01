@@ -2,7 +2,7 @@
 
 return () => {
     let donation = this.DonorPortal_GetDonationAmountNumber()
-    let max = Math.floor(donation / 20)
+    let max = Math.floor(donation / 25)
 
     if (max > 10) max = 10
 

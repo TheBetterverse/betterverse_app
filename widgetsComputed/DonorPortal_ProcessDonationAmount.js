@@ -27,6 +27,10 @@ let debouncedPart = debounceInput(async event => {
   if (!amount) amount = '25'
 
   if (parseInt(amount) < 25) amount = '25'
+  else if(parseInt(amount) < 50){
+    console.log('yes')
+    document.getElementById("bv__donatemodal__nosplit").checked = true;
+  }
   else if (parseInt(amount) > 1000000) amount = '1000000'
 
   event.target.textContent = parseInt(amount).toLocaleString('en-us')
@@ -49,7 +53,7 @@ return async event => {
     await debouncedPart(event)
   }
 
-  if (event.target.name === 'slide-donation-amount') {
+  /*if (event.target.name === 'slide-donation-amount') {
     await $setUser('DonorPortal_DonationAmount', event.target.value)
-  }
+  }*/
 }

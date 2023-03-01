@@ -223,7 +223,7 @@
             <div class="bv__donatemodal__radioinputlist">
               <div class="bv__donatemodal__radioinputwrap">
                 <input type="radio" id="bv__donatemodal__nosplit" name="split_donation" value="no"
-                  :checked="DonorPortal_GetDonationAmountNumber() < 20 ? 'checked' : 'false'" />
+                  :checked="DonorPortal_GetDonationAmountNumber() < 50 ? 'checked' : 'true'" />
                 <label for="bv__donatemodal__nosplit" style="display: flex; gap: 0.5rem; align-items: center;">
                   <p>
                     1 NFT (1 tree)
@@ -253,7 +253,7 @@
 
               <div v-else class="bv__donatemodal__radioinputwrap">
                 <input type="radio" id="bv__donatemodal__customsplitdisabled" value="disabled" style="opacity: 60%"
-                  disabled />
+                  disabled :checked='false'/>
                 <label for="bv__donatemodal__customsplitdisabled">
                   <div style="display: flex; gap: 1rem; align-items: center; opacity: 60%">
                     <p id="bv__donatemodal_customsplit__text">
