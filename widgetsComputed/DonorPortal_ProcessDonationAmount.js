@@ -28,7 +28,6 @@ let debouncedPart = debounceInput(async event => {
 
   if (parseInt(amount) < 25) amount = '25'
   else if(parseInt(amount) < 50){
-    console.log('yes')
     document.getElementById("bv__donatemodal__nosplit").checked = true;
   }
   else if (parseInt(amount) > 1000000) amount = '1000000'
